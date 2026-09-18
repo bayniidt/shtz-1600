@@ -1,0 +1,59 @@
+/* Tailwind v4：仅引入 theme + utilities，跳过 preflight，避免覆盖 antd 基础样式 */
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-brand: #1e96d4;
+  --color-brand-strong: #0f7cbc;
+  --color-brand-soft: #e8f5fc;
+  --color-brand-accent: #ed5736;
+}
+
+/* 品牌 CSS 变量（由 ThemeProvider 运行时覆盖） */
+:root {
+  --adfly-brand: #1e96d4;
+  --adfly-brand-strong: #0f7cbc;
+  --adfly-brand-soft: #e8f5fc;
+  --adfly-brand-accent: #ed5736;
+  --adfly-header-h: 64px;
+  --adfly-sider-w: 220px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Montserrat, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+}
+
+/* 后台不使用动画 */
+*,
+*::before,
+*::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+
+.adfly-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--adfly-brand);
+}
+
+.adfly-logo-sub {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: #989898;
+  text-transform: uppercase;
+}

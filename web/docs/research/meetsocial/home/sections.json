@@ -1,0 +1,2040 @@
+{
+  "url": "https://www.meetsocial.com/",
+  "title": "飞书深诺Meetsocial-领先的AI 全球营销科技平台-飞书深诺官网",
+  "meta": {
+    "viewport": "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
+    "screen-orientation": "portrait",
+    "keywords": "飞书深诺Meetsocial,AI 出海营销,海外营销推广服务商,企业出海营销服务,海外广告投放代理商",
+    "description": "飞书深诺Meetsocial是领先的AI全球营销科技平台。公司以Marvy AgentOS为智能中枢，构建融合数据、工具与AI能力的技术底座，形成覆盖洞察、媒介、创意、优化、品效与数智的全链路产品体系，并面向电商、品牌、游戏与应用出海提供行业化解决方案，已助力17万家企业实现全球增长。",
+    "og:title": " - 飞书深诺官网",
+    "og:description": " - 飞书深诺官网 凭借超宽幅全球媒体资源、数据技术应用、专家服务团队及三大行业垂直子品牌，引领海外营销专业服务标准。助力企业获得海外成功，建立全球品牌。",
+    "og:site_name": " - 飞书深诺官网",
+    "og:url": "https://www.meetsocial.com/",
+    "og:image": "",
+    "twitter:title": " - 飞书深诺官网",
+    "twitter:description": " - 飞书深诺官网 凭借超宽幅全球媒体资源、数据技术应用、专家服务团队及三大行业垂直子品牌，引领海外营销专业服务标准。助力企业获得海外成功，建立全球品牌。",
+    "twitter:image": "",
+    "twitter:card": "summary_large_image",
+    "author": "https://www.uunn.cn/",
+    "baidu-site-verification": "codeva-rT0nMaODe3"
+  },
+  "viewport": {
+    "w": 1440,
+    "h": 900
+  },
+  "docHeight": 8559,
+  "sections": [
+    {
+      "tag": "section",
+      "cls": "row ind_r1 pub_banner ind_banner_case",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900
+      },
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "relative",
+      "transition": "transform 1.2s cubic-bezier(0.76, 0, 0.24, 1), opacity 1s cubic-bezier(0.76, 0, 0.24, 1)",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "row_case ind_banner_box",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 900
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "relative",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "swiper swiper-fade swiper-initialized swiper-horizontal swiper-pointer-events",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 1440,
+                "h": 900
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "zIndex": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "swiper-wrapper",
+                  "id": "swiper-wrapper-657bb459a10621495",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 1440,
+                    "h": 900
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "relative",
+                  "transition": "transform",
+                  "opacity": "1",
+                  "zIndex": "1"
+                },
+                {
+                  "tag": "div",
+                  "cls": "swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal",
+                  "rect": {
+                    "x": 0,
+                    "y": 833,
+                    "w": 1440,
+                    "h": 7
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "alanGo alanUpEl ind_r1_nav_case go",
+          "rect": {
+            "x": 1134,
+            "y": 628,
+            "w": 210,
+            "h": 223
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "absolute",
+          "transition": "opacity 1s cubic-bezier(0.76, 0, 0.24, 1) 0.1s, transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.1s, color 0.3s cubic-bezier(0.76, 0, 0.24, 1) 0.1s",
+          "transform": "matrix(1, 0, 0, 1, 0, 10.9401)",
+          "opacity": "0.316245",
+          "zIndex": "3",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "swiper",
+              "rect": {
+                "x": 1134,
+                "y": 642,
+                "w": 210,
+                "h": 208
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "zIndex": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "swiper-wrapper",
+                  "rect": {
+                    "x": 1134,
+                    "y": 642,
+                    "w": 210,
+                    "h": 208
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "transform",
+                  "opacity": "1",
+                  "zIndex": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "alanGo alanUpEl ind_ban_right_b go",
+          "rect": {
+            "x": 38,
+            "y": 637,
+            "w": 407,
+            "h": 137
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "absolute",
+          "transition": "opacity 1s cubic-bezier(0.76, 0, 0.24, 1) 0.15s, transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.15s, color 0.3s cubic-bezier(0.76, 0, 0.24, 1) 0.15s",
+          "transform": "matrix(1, 0, 0, 1, 0, 15.9559)",
+          "opacity": "0.202206",
+          "zIndex": "3",
+          "children": [
+            {
+              "tag": "p",
+              "cls": "pub_info",
+              "rect": {
+                "x": 38,
+                "y": 655,
+                "w": 407,
+                "h": 18
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "18px",
+              "weight": "400",
+              "lh": "18px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "flex",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1",
+              "text": "领先的全球AI营销科技平台",
+              "children": [
+                {
+                  "tag": "img",
+                  "cls": "",
+                  "rect": {
+                    "x": 38,
+                    "y": 656,
+                    "w": 19,
+                    "h": 16
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "18px",
+                  "weight": "400",
+                  "lh": "18px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            },
+            {
+              "tag": "p",
+              "cls": "pub_info_en",
+              "rect": {
+                "x": 38,
+                "y": 684,
+                "w": 407,
+                "h": 19
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "13.5px",
+              "weight": "500",
+              "lh": "18.9px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1",
+              "text": "Leading AI-Powered Global Marketing Technology Platform"
+            },
+            {
+              "tag": "a",
+              "cls": "btn_sty text_cen btn_sty_hover",
+              "rect": {
+                "x": 38,
+                "y": 728,
+                "w": 135,
+                "h": 45
+              },
+              "bg": "rgb(0, 120, 255)",
+              "color": "rgb(255, 255, 255)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "13.5px",
+              "weight": "400",
+              "lh": "18.9px",
+              "ls": "normal",
+              "radius": "36px",
+              "display": "flex",
+              "position": "relative",
+              "transition": "background-color 0.015s cubic-bezier(0.46, 0, 0.02, 1), color 0.5s cubic-bezier(0.46, 0, 0.02, 1), border-radius 0.5s cubic-bezier(0.46, 0, 0.02, 1), border-width 0.5s cubic-bezier(0.46, 0, 0.02, 1), ",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "",
+                  "rect": {
+                    "x": 38,
+                    "y": 744,
+                    "w": 135,
+                    "h": 14
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(255, 255, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "13.5px",
+                  "weight": "400",
+                  "lh": "18.9px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "relative",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r2",
+      "rect": {
+        "x": 0,
+        "y": 899,
+        "w": 1440,
+        "h": 376
+      },
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "relative",
+      "transition": "all",
+      "opacity": "1",
+      "zIndex": "2",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 967,
+            "w": 1440,
+            "h": 234
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "relative",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "ind_r2_con alanGo",
+              "rect": {
+                "x": 0,
+                "y": 967,
+                "w": 1440,
+                "h": 234
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "pub_title_case",
+                  "rect": {
+                    "x": 506,
+                    "y": 1027,
+                    "w": 428,
+                    "h": 113
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "all",
+                  "transform": "matrix(1, 0, 0, 1, -213.75, -56.25)",
+                  "opacity": "1",
+                  "zIndex": "3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r8",
+      "rect": {
+        "x": 0,
+        "y": 1275,
+        "w": 1440,
+        "h": 937
+      },
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "relative",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "ind_r8_bg",
+          "rect": {
+            "x": 0,
+            "y": 1275,
+            "w": 1440,
+            "h": 937
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "absolute",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "img",
+              "cls": "",
+              "rect": {
+                "x": 0,
+                "y": 1275,
+                "w": 1440,
+                "h": 937
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 1275,
+            "w": 1440,
+            "h": 937
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "relative",
+          "transition": "all",
+          "opacity": "1",
+          "zIndex": "2",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "pub_case",
+              "rect": {
+                "x": 72,
+                "y": 1396,
+                "w": 1296,
+                "h": 730
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "ind_r8_top alanGo",
+                  "rect": {
+                    "x": 72,
+                    "y": 1396,
+                    "w": 1296,
+                    "h": 140
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r8_con alanGo",
+                  "rect": {
+                    "x": 72,
+                    "y": 1594,
+                    "w": 1296,
+                    "h": 398
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r8_btm alanGo",
+                  "rect": {
+                    "x": 72,
+                    "y": 2042,
+                    "w": 1296,
+                    "h": 84
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r3",
+      "rect": {
+        "x": 0,
+        "y": 2213,
+        "w": 1440,
+        "h": 900
+      },
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "static",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 2213,
+            "w": 1440,
+            "h": 900
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "static",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "ind_r3_con alanGo",
+              "rect": {
+                "x": 0,
+                "y": 2213,
+                "w": 1440,
+                "h": 900
+              },
+              "bg": "rgb(11, 0, 190)",
+              "color": "rgb(0, 172, 255)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "flex",
+              "position": "relative",
+              "transition": "background-color 0.5s cubic-bezier(0.46, 0, 0.02, 1), color 0.3s cubic-bezier(0.46, 0, 0.02, 1)",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "on ind_r3_block",
+                  "rect": {
+                    "x": 0,
+                    "y": 2213,
+                    "w": 675,
+                    "h": 900
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 172, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+                  "opacity": "1",
+                  "zIndex": "2"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r3_block",
+                  "rect": {
+                    "x": 675,
+                    "y": 2213,
+                    "w": 255,
+                    "h": 900
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 172, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+                  "opacity": "1",
+                  "zIndex": "2"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r3_block",
+                  "rect": {
+                    "x": 930,
+                    "y": 2213,
+                    "w": 255,
+                    "h": 900
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 172, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+                  "opacity": "1",
+                  "zIndex": "2"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r3_block",
+                  "rect": {
+                    "x": 1185,
+                    "y": 2213,
+                    "w": 255,
+                    "h": 900
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 172, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+                  "opacity": "1",
+                  "zIndex": "2"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r3_title_box",
+                  "rect": {
+                    "x": 0,
+                    "y": 2213,
+                    "w": 1440,
+                    "h": 202
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 172, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+                  "opacity": "1",
+                  "zIndex": "1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r4",
+      "rect": {
+        "x": 0,
+        "y": 3113,
+        "w": 1440,
+        "h": 3150
+      },
+      "bg": "rgb(239, 246, 255)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "static",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 3113,
+            "w": 1440,
+            "h": 900
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "sticky",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "alanGo",
+              "rect": {
+                "x": 0,
+                "y": 3113,
+                "w": 1440,
+                "h": 900
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "ind_r4_tit",
+                  "rect": {
+                    "x": 0,
+                    "y": 3162,
+                    "w": 505,
+                    "h": 146
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "absolute",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "3"
+                },
+                {
+                  "tag": "div",
+                  "cls": "hint_box",
+                  "rect": {
+                    "x": 699,
+                    "y": 3941,
+                    "w": 42,
+                    "h": 30
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(255, 255, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "all",
+                  "transform": "matrix(1, 0, 0, 1, -21, 0)",
+                  "opacity": "1",
+                  "zIndex": "3"
+                },
+                {
+                  "tag": "div",
+                  "cls": "bg_img",
+                  "rect": {
+                    "x": 0,
+                    "y": 3264,
+                    "w": 1440,
+                    "h": 810
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "absolute",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "1"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r4_case alanGo",
+                  "rect": {
+                    "x": 64,
+                    "y": 3312,
+                    "w": 1312,
+                    "h": 1312
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "absolute",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r5",
+      "rect": {
+        "x": 0,
+        "y": 6263,
+        "w": 1440,
+        "h": 858
+      },
+      "bg": "rgba(0, 0, 0, 0)",
+      "bgImage": "url(\"https://www.meetsocial.com/templates/dist/images/coo/r5_bg.jpg.webp\")",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "static",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "alanGo",
+          "rect": {
+            "x": 0,
+            "y": 6350,
+            "w": 1440,
+            "h": 154
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "static",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "ind_r5_tit",
+              "rect": {
+                "x": 0,
+                "y": 6350,
+                "w": 1440,
+                "h": 154
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "pub_title_box ",
+                  "rect": {
+                    "x": 0,
+                    "y": 6399,
+                    "w": 1440,
+                    "h": 104
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(255, 255, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "12px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 6504,
+            "w": 1440,
+            "h": 551
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "relative",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "ind_r5_con alanGo",
+              "rect": {
+                "x": 0,
+                "y": 6636,
+                "w": 1440,
+                "h": 306
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "ind_r5_cen",
+                  "rect": {
+                    "x": 555,
+                    "y": 6624,
+                    "w": 330,
+                    "h": 330
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "100%",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "all",
+                  "transform": "matrix(1, 0, 0, 1, -165, -165)",
+                  "opacity": "1",
+                  "zIndex": "3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "section",
+      "cls": "row ind_r6",
+      "rect": {
+        "x": 0,
+        "y": 7121,
+        "w": 1440,
+        "h": 810
+      },
+      "bg": "rgb(247, 250, 255)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "relative",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "div",
+          "cls": "row_case",
+          "rect": {
+            "x": 0,
+            "y": 7207,
+            "w": 1440,
+            "h": 1675
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "static",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "ind_r6_top alanGo",
+              "rect": {
+                "x": 38,
+                "y": 7207,
+                "w": 1365,
+                "h": 149
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "flex",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "ind_r6_tit",
+                  "rect": {
+                    "x": 38,
+                    "y": 7207,
+                    "w": 395,
+                    "h": 149
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                },
+                {
+                  "tag": "div",
+                  "cls": "ind_r6_btn_box",
+                  "rect": {
+                    "x": 38,
+                    "y": 7371,
+                    "w": 315,
+                    "h": 68
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "absolute",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "cls": "ind_r6_con alanGo",
+              "rect": {
+                "x": 38,
+                "y": 7356,
+                "w": 1365,
+                "h": 1526
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "static",
+              "transition": "all",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "cls": "footer_box",
+      "rect": {
+        "x": 0,
+        "y": 7931,
+        "w": 1440,
+        "h": 628
+      },
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+      "size": "12px",
+      "weight": "400",
+      "lh": "16.7999px",
+      "ls": "normal",
+      "radius": "0px",
+      "display": "block",
+      "position": "static",
+      "transition": "all",
+      "opacity": "1",
+      "children": [
+        {
+          "tag": "section",
+          "cls": "row pub_con",
+          "rect": {
+            "x": 0,
+            "y": 7931,
+            "w": 1440,
+            "h": 387
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "15px 15px 0px 0px",
+          "display": "block",
+          "position": "relative",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "div",
+              "cls": "pub_bg_img",
+              "rect": {
+                "x": 0,
+                "y": 7931,
+                "w": 1440,
+                "h": 387
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "absolute",
+              "transition": "all",
+              "opacity": "1",
+              "zIndex": "0",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "pub_img_box hei_img",
+                  "rect": {
+                    "x": 0,
+                    "y": 7931,
+                    "w": 1440,
+                    "h": 387
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "relative",
+                  "transition": "all",
+                  "opacity": "1",
+                  "zIndex": "1"
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "cls": "row_case",
+              "rect": {
+                "x": 0,
+                "y": 7931,
+                "w": 1440,
+                "h": 387
+              },
+              "bg": "rgba(0, 0, 0, 0)",
+              "color": "rgb(0, 0, 0)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "0px",
+              "display": "block",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "zIndex": "2",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "alanGo",
+                  "rect": {
+                    "x": 38,
+                    "y": 8017,
+                    "w": 1365,
+                    "h": 215
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(0, 0, 0)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "block",
+                  "position": "static",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "section",
+          "cls": "row footer_case",
+          "rect": {
+            "x": 0,
+            "y": 8303,
+            "w": 1440,
+            "h": 256
+          },
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+          "size": "12px",
+          "weight": "400",
+          "lh": "16.7999px",
+          "ls": "normal",
+          "radius": "0px",
+          "display": "block",
+          "position": "static",
+          "transition": "all",
+          "opacity": "1",
+          "children": [
+            {
+              "tag": "footer",
+              "cls": "row rowFoot ",
+              "rect": {
+                "x": 0,
+                "y": 8303,
+                "w": 1440,
+                "h": 256
+              },
+              "bg": "rgb(15, 120, 253)",
+              "bgImage": "url(\"https://www.meetsocial.com/templates/dist/images/f001-1.jpg\")",
+              "color": "rgb(255, 255, 255)",
+              "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+              "size": "12px",
+              "weight": "400",
+              "lh": "16.7999px",
+              "ls": "normal",
+              "radius": "15px 15px 0px 0px",
+              "display": "flex",
+              "position": "relative",
+              "transition": "all",
+              "opacity": "1",
+              "zIndex": "2",
+              "children": [
+                {
+                  "tag": "div",
+                  "cls": "pub_case alanGo",
+                  "rect": {
+                    "x": 38,
+                    "y": 8373,
+                    "w": 1365,
+                    "h": 130
+                  },
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(255, 255, 255)",
+                  "font": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+                  "size": "12px",
+                  "weight": "400",
+                  "lh": "16.7999px",
+                  "ls": "normal",
+                  "radius": "0px",
+                  "display": "flex",
+                  "position": "relative",
+                  "transition": "all",
+                  "opacity": "1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "census": {
+    "colors": [
+      {
+        "value": "rgb(0, 0, 0)",
+        "count": 630
+      },
+      {
+        "value": "rgb(255, 255, 255)",
+        "count": 147
+      },
+      {
+        "value": "rgb(0, 172, 255)",
+        "count": 29
+      },
+      {
+        "value": "rgb(51, 51, 51)",
+        "count": 27
+      },
+      {
+        "value": "rgb(0, 120, 255)",
+        "count": 18
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.8)",
+        "count": 16
+      },
+      {
+        "value": "rgba(237, 238, 254, 0.5)",
+        "count": 9
+      },
+      {
+        "value": "rgba(255, 255, 255, 0.2)",
+        "count": 8
+      },
+      {
+        "value": "rgb(11, 0, 190)",
+        "count": 6
+      },
+      {
+        "value": "rgba(255, 255, 255, 0.35)",
+        "count": 5
+      },
+      {
+        "value": "rgba(255, 255, 255, 0.8)",
+        "count": 5
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.7)",
+        "count": 4
+      },
+      {
+        "value": "rgba(0, 0, 0, 0.2)",
+        "count": 3
+      },
+      {
+        "value": "rgb(64, 64, 64)",
+        "count": 3
+      },
+      {
+        "value": "rgb(245, 248, 255)",
+        "count": 1
+      },
+      {
+        "value": "rgb(239, 246, 255)",
+        "count": 1
+      },
+      {
+        "value": "rgb(247, 250, 255)",
+        "count": 1
+      },
+      {
+        "value": "rgb(15, 120, 253)",
+        "count": 1
+      }
+    ],
+    "fonts": [
+      {
+        "value": "Montserrat, \"Noto Sans SC\", sans-serif, \"PingFang SC\", \"Microsoft JhengHei\", \"Source Han Sans CN\"",
+        "count": 791
+      },
+      {
+        "value": "400 / 12px",
+        "count": 694
+      },
+      {
+        "value": "iconfont",
+        "count": 83
+      },
+      {
+        "value": "400 / 13.5px",
+        "count": 35
+      },
+      {
+        "value": "500 / 81px",
+        "count": 26
+      },
+      {
+        "value": "300 / 45px",
+        "count": 26
+      },
+      {
+        "value": "400 / 12.75px",
+        "count": 14
+      },
+      {
+        "value": "400 / 14.25px",
+        "count": 9
+      },
+      {
+        "value": "400 / 25.5px",
+        "count": 8
+      },
+      {
+        "value": "400 / 10.5px",
+        "count": 7
+      },
+      {
+        "value": "400 / 15px",
+        "count": 7
+      },
+      {
+        "value": "400 / 18px",
+        "count": 5
+      },
+      {
+        "value": "400 / 9px",
+        "count": 4
+      },
+      {
+        "value": "700 / 24.75px",
+        "count": 4
+      },
+      {
+        "value": "500 / 36px",
+        "count": 4
+      },
+      {
+        "value": "500 / 27px",
+        "count": 4
+      },
+      {
+        "value": "600 / 12px",
+        "count": 4
+      },
+      {
+        "value": "500 / 45px",
+        "count": 4
+      },
+      {
+        "value": "400 / 19.5px",
+        "count": 3
+      },
+      {
+        "value": "400 / 16.5px",
+        "count": 3
+      },
+      {
+        "value": "500 / 12px",
+        "count": 2
+      },
+      {
+        "value": "400 / 9.74995px",
+        "count": 2
+      },
+      {
+        "value": "500 / 22.5px",
+        "count": 2
+      },
+      {
+        "value": "400 / 20.25px",
+        "count": 2
+      },
+      {
+        "value": "Times",
+        "count": 1
+      },
+      {
+        "value": "400 / 80px",
+        "count": 1
+      },
+      {
+        "value": "500 / 13.5px",
+        "count": 1
+      },
+      {
+        "value": "500 / 49.5px",
+        "count": 1
+      },
+      {
+        "value": "500 / 51px",
+        "count": 1
+      },
+      {
+        "value": "700 / 45px",
+        "count": 1
+      },
+      {
+        "value": "600 / 16.5px",
+        "count": 1
+      }
+    ],
+    "sizes": [
+      {
+        "value": "12px 16.7999px normal",
+        "count": 543
+      },
+      {
+        "value": "12px 60px normal",
+        "count": 86
+      },
+      {
+        "value": "12px 12px normal",
+        "count": 62
+      },
+      {
+        "value": "45px 45px normal",
+        "count": 31
+      },
+      {
+        "value": "81px 81px normal",
+        "count": 26
+      },
+      {
+        "value": "12.75px 12.75px normal",
+        "count": 14
+      },
+      {
+        "value": "13.5px 18.9px normal",
+        "count": 14
+      },
+      {
+        "value": "13.5px 13.5px normal",
+        "count": 10
+      },
+      {
+        "value": "12px 36px normal",
+        "count": 9
+      },
+      {
+        "value": "14.25px 15.1049px normal",
+        "count": 9
+      },
+      {
+        "value": "15px 15px normal",
+        "count": 6
+      },
+      {
+        "value": "18px 18px normal",
+        "count": 5
+      },
+      {
+        "value": "13.5px 16.2px normal",
+        "count": 5
+      },
+      {
+        "value": "25.5px 25.5px normal",
+        "count": 5
+      },
+      {
+        "value": "9px 60px normal",
+        "count": 4
+      },
+      {
+        "value": "24.75px 24.75px normal",
+        "count": 4
+      },
+      {
+        "value": "36px 36px normal",
+        "count": 4
+      },
+      {
+        "value": "13.5px 21.75px normal",
+        "count": 4
+      },
+      {
+        "value": "10.5px 10.5px normal",
+        "count": 4
+      },
+      {
+        "value": "13.5px 60px normal",
+        "count": 3
+      },
+      {
+        "value": "25.5px 35.6999px normal",
+        "count": 3
+      },
+      {
+        "value": "27px 27px normal",
+        "count": 3
+      },
+      {
+        "value": "19.5px 27.3001px normal",
+        "count": 2
+      },
+      {
+        "value": "9.74995px 13.6499px normal",
+        "count": 2
+      },
+      {
+        "value": "22.5px 22.5px normal",
+        "count": 2
+      },
+      {
+        "value": "16.5px 23.0999px normal",
+        "count": 2
+      },
+      {
+        "value": "20.25px 20.25px normal",
+        "count": 2
+      },
+      {
+        "value": "16.5px 16.5px normal",
+        "count": 2
+      },
+      {
+        "value": "10.5px 14.7001px normal",
+        "count": 2
+      },
+      {
+        "value": "80px normal normal",
+        "count": 1
+      },
+      {
+        "value": "10.5px 36px normal",
+        "count": 1
+      },
+      {
+        "value": "49.5px 49.5px normal",
+        "count": 1
+      },
+      {
+        "value": "51px 51px normal",
+        "count": 1
+      },
+      {
+        "value": "27px 35.91px normal",
+        "count": 1
+      },
+      {
+        "value": "15px 21.0001px normal",
+        "count": 1
+      },
+      {
+        "value": "19.5px 19.5px normal",
+        "count": 1
+      }
+    ],
+    "radii": [
+      {
+        "value": "0px",
+        "count": 817
+      },
+      {
+        "value": "6.00005px",
+        "count": 25
+      },
+      {
+        "value": "100%",
+        "count": 10
+      },
+      {
+        "value": "27px",
+        "count": 5
+      },
+      {
+        "value": "50%",
+        "count": 5
+      },
+      {
+        "value": "30px",
+        "count": 4
+      },
+      {
+        "value": "13.5px",
+        "count": 4
+      },
+      {
+        "value": "36px",
+        "count": 3
+      },
+      {
+        "value": "15px 15px 0px 0px",
+        "count": 2
+      }
+    ],
+    "shadows": [],
+    "transitions": [
+      {
+        "value": "all",
+        "count": 695
+      },
+      {
+        "value": "color 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 77
+      },
+      {
+        "value": "0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 25
+      },
+      {
+        "value": "opacity 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 20
+      },
+      {
+        "value": "transform 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 10
+      },
+      {
+        "value": "color 0.5s cubic-bezier(0.46, 0, 0.02, 1), font-weight 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 9
+      },
+      {
+        "value": "background-color 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 5
+      },
+      {
+        "value": "background-color 0.5s cubic-bezier(0.46, 0, 0.02, 1), color 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 5
+      },
+      {
+        "value": "background-color 0.5s cubic-bezier(0.46, 0, 0.02, 1), box-shadow 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 3
+      },
+      {
+        "value": "opacity 0.3s cubic-bezier(0.46, 0, 0.02, 1), transform 0.5s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 3
+      },
+      {
+        "value": "opacity 0.3s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 2
+      },
+      {
+        "value": "background-color 0.015s cubic-bezier(0.46, 0, 0.02, 1), color 0.5s cubic-bezier(0.46, 0, 0.02, 1), border-radius 0.5s cubic-bezier(0.46, 0, 0.02, 1), border-wid",
+        "count": 2
+      },
+      {
+        "value": "transform",
+        "count": 2
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.03s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.03s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.03s",
+        "count": 2
+      },
+      {
+        "value": "color 0.3s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 1
+      },
+      {
+        "value": "transform 1.2s cubic-bezier(0.76, 0, 0.24, 1), opacity 1s cubic-bezier(0.76, 0, 0.24, 1)",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.76, 0, 0.24, 1)",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.23s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.23s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.23s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.26s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.26s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.26s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.29s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.29s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.29s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.32s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.32s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.32s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.35s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.35s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.35s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.06s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.06s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.06s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.38, 0, 0, 1) 0.09s, transform 1s cubic-bezier(0.38, 0, 0, 1) 0.09s, filter 1s cubic-bezier(0.38, 0, 0, 1) 0.09s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.76, 0, 0.24, 1) 0.1s, transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.1s, color 0.3s cubic-bezier(0.76, 0, 0.24, 1) 0.1s",
+        "count": 1
+      },
+      {
+        "value": "opacity 1s cubic-bezier(0.76, 0, 0.24, 1) 0.15s, transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.15s, color 0.3s cubic-bezier(0.76, 0, 0.24, 1) 0.15s",
+        "count": 1
+      },
+      {
+        "value": "background-color 0.5s cubic-bezier(0.46, 0, 0.02, 1), color 0.3s cubic-bezier(0.46, 0, 0.02, 1)",
+        "count": 1
+      }
+    ]
+  },
+  "libs": {
+    "globals": {},
+    "hooks": []
+  },
+  "cssVars": {
+    "--ease": "cubic-bezier(.76,0,.24,1)",
+    "--ease3": "cubic-bezier(.76,0,.24,1)",
+    "--ease1": "cubic-bezier(.4,0,.2,1)",
+    "--ease2": "cubic-bezier(.25,.74,.22,.99)",
+    "--picEase": "cubic-bezier(.65,0,.35,1)",
+    "--hoverBg": "#0b00be",
+    "--hoverFont": "#00acff",
+    "--H": "36",
+    "--Himg": "36",
+    "--hon_info_heightvw": "6.25vw",
+    "--colorF": "#0164f6",
+    "--r4H": "4.89583vw",
+    "--r2Height": "9.27083vw",
+    "--lineColor": "#0078ff",
+    "--viColor": "#6521f2",
+    "--pHeight": "9.375vw",
+    "--imgW": "1",
+    "--soColor": "#5e11e0"
+  }
+}

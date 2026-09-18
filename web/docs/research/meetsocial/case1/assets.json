@@ -1,0 +1,58 @@
+{
+  "requests": [
+    "https://www.meetsocial.com/cases/1",
+    "https://at.alicdn.com/t/c/font_5184046_tz86hwbip1.css",
+    "https://www.meetsocial.com/templates/dist/index.78d8c051.css?v=4997659",
+    "https://www.meetsocial.com/templates/dist/images/lan_icon.png",
+    "https://www.meetsocial.com/templates/dist/images/lan_icon_w.png",
+    "https://www.meetsocial.com/templates/dist/images/foot/20260813-102946.png",
+    "https://www.meetsocial.com/templates/dist/images/case001.png.webp",
+    "https://www.meetsocial.com/upfiles/cases/old/849bf376-33c6-428f-a6ac-4124f3b5bd95.jpg",
+    "https://www.meetsocial.com/templates/dist/images/cased002.png.webp",
+    "https://www.meetsocial.com/templates/dist/images/cased003.png.webp",
+    "https://www.meetsocial.com/templates/dist/images/cased004.png.webp",
+    "https://www.meetsocial.com/templates/dist/images/cased006.png.webp",
+    "https://www.meetsocial.com/omo-oss-image.thefastimg.com/portal-saas/ngc202211030002/cms/image/0c555b24-c0cf-4bbe-97b3-7ed8348a32a0.png",
+    "https://www.meetsocial.com/templates/dist/images/case_dot.png",
+    "https://www.meetsocial.com/omo-oss-image.thefastimg.com/portal-saas/ngc202211030002/cms/image/0c89412b-ad17-4a6c-905d-baeee62a6bb6.png",
+    "https://www.meetsocial.com/omo-oss-image.thefastimg.com/portal-saas/ngc202211030002/cms/image/65bdae8a-c1b3-418b-9209-3e094eb748c7.png",
+    "https://www.meetsocial.com/templates/dist/images/cased009.png.webp",
+    "https://www.meetsocial.com/upfiles/onepage/202607/SF9BWGU5CK1Q.webp",
+    "https://www.meetsocial.com/upfiles/onepage/202607/2GMEK8G6KJ59.webp",
+    "https://www.meetsocial.com/templates/dist/images/dot.png",
+    "https://www.meetsocial.com/templates/dist/images/logo_w.png",
+    "https://www.meetsocial.com/templates/dist/images/code_g.jpg",
+    "https://www.meetsocial.com/templates/dist/images/code_xhs.jpg",
+    "https://www.meetsocial.com/templates/dist/images/code_dy.jpg",
+    "https://www.meetsocial.com/templates/dist/index.091b56b7.js?v=%3C?php%20echo%20rand(1000000,9999999);%20?%3E",
+    "https://v1.cnzz.com/z.js?id=1281481352",
+    "https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Noto+Sans+SC:wght@100..900&display=swap",
+    "https://hm.baidu.com/hm.js?ce9dbc1cc69492f57e423a1c4e20aac9",
+    "https://www.meetsocial.com/templates/dist/images/f001-1.jpg",
+    "https://at.alicdn.com/t/c/font_5184046_tz86hwbip1.woff2?t=1786088760162",
+    "https://hm.baidu.com/hm.gif?hca=46E94AEE41D54F53&cc=1&ck=1&cl=24-bit&ds=800x600&vl=900&et=0&ja=0&ln=en-us&lo=0&rnd=1480319849&si=ce9dbc1cc69492f57e423a1c4e20aac9&v=1.3.2&lv=1&sn=2557&r=0&ww=1440&u=https%3A%2F%2Fwww.meetsocial.com%2Fcases%2F1&tt=%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6%E6%B5%B7%E5%A4%96%E8%BE%BE%E4%BA%BA%E8%90%A5%E9%94%80%EF%BC%9A%E4%BB%A5%E7%9C%9F%E5%AE%9E%E8%B5%A2%E5%BE%97%E4%BF%A1%E4%BB%BB",
+    "https://www.meetsocial.com/templates/dist/images/logo@2x.png",
+    "https://www.meetsocial.com/templates/dist/images/logo_w_1@2x.png",
+    "https://www.meetsocial.com/favicon.ico"
+  ],
+  "byType": {
+    "Document": [
+      null
+    ],
+    "Image": [
+      null
+    ],
+    "Stylesheet": [
+      null
+    ],
+    "Font": [
+      null
+    ],
+    "Script": [
+      null
+    ],
+    "Other": [
+      null
+    ]
+  }
+}

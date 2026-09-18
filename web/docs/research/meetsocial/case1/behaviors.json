@@ -1,0 +1,54 @@
+{
+  "scrollBehavior": "auto",
+  "htmlClass": "lenis",
+  "bodyClass": "cases_det_body",
+  "inlineStyles": [
+    972
+  ],
+  "cssVarCount": 7275,
+  "observers": {
+    "intersection": "function",
+    "resize": "function",
+    "scrollTimeline": true,
+    "viewTransitions": "function"
+  },
+  "stickyFixed": [
+    {
+      "tag": "header",
+      "cls": "nav",
+      "position": "fixed",
+      "top": "18.75px",
+      "z": "99",
+      "h": 60,
+      "transition": "0.5s cubic-bezier(0.46, 0, 0.02, 1)"
+    },
+    {
+      "tag": "div",
+      "cls": "layer-pop",
+      "position": "fixed",
+      "top": "0px",
+      "z": "3000",
+      "h": 0,
+      "transition": "transform 1.017s ease-in-out, opacity 1.017s ease-in-out, visibility 0s 1.017s, -webkit-transform 1.017s ease-in-out"
+    },
+    {
+      "tag": "div",
+      "cls": "layer-pop",
+      "position": "fixed",
+      "top": "0px",
+      "z": "3000",
+      "h": 0,
+      "transition": "transform 1.017s ease-in-out, opacity 1.017s ease-in-out, visibility 0s 1.017s, -webkit-transform 1.017s ease-in-out"
+    },
+    {
+      "tag": "div",
+      "cls": "right_l",
+      "position": "fixed",
+      "top": "0px",
+      "z": "8",
+      "h": 900,
+      "transition": "all"
+    }
+  ],
+  "scrollDrivenCss": []
+}

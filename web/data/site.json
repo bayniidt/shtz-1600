@@ -1,0 +1,2690 @@
+{
+  "site": {
+    "name": "上海翼投智能科技有限公司",
+    "nameEn": "Shanghai ADFLY Intelligent Technology Co., Ltd.",
+    "logoText": "ADFLY",
+    "logoSub": "飞书汇",
+    "nav": [
+      {
+        "label": "服务与产品",
+        "href": "/"
+      },
+      {
+        "label": "客户案例",
+        "href": "/cases"
+      },
+      {
+        "label": "关于我们",
+        "href": "/about"
+      },
+      {
+        "label": "加入我们",
+        "href": "/careers"
+      }
+    ],
+    "contactEmail": "master@adflymobile.com",
+    "businessEmail": "market@adflymobile.com",
+    "phone": "+86 21 5436 8877",
+    "address": "上海市徐汇区宜山路425号光启城710室",
+    "icp": "沪ICP备18047852号-1",
+    "seo": {
+      "title": "ADFLY 飞书汇｜全球智能营销科技服务商",
+      "description": "ADFLY 飞书汇专注效果类出海营销解决方案，覆盖 Facebook、Google、TikTok 等 50+ 海外主流媒体资源，以人工智能与大数据分析为全球广告主提供精准营销服务。",
+      "keywords": "出海营销,海外广告投放,Facebook代理,Google代理,TikTok代理,AI营销,效果营销,ADFLY,飞书汇"
+    },
+    "footerLinks": [
+      {
+        "label": "服务与产品",
+        "href": "/"
+      },
+      {
+        "label": "客户案例",
+        "href": "/cases"
+      },
+      {
+        "label": "关于我们",
+        "href": "/about"
+      },
+      {
+        "label": "加入我们",
+        "href": "/careers"
+      },
+      {
+        "label": "飞书招聘",
+        "href": "https://q6y68vu0j8.jobs.feishu.cn/index"
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "GLOBAL AI-POWERED MARTECH SOLUTION PROVIDER",
+      "title": "全球智能营销科技服务商",
+      "titleEn": "GLOBAL AI-POWERED MARTECH SOLUTION PROVIDER",
+      "primaryCta": {
+        "label": "免费开户",
+        "href": "/cases"
+      },
+      "secondaryCta": {
+        "label": "预约咨询",
+        "href": "#contact"
+      },
+      "marquee": [
+        "Facebook",
+        "Google",
+        "TikTok",
+        "SmartNews",
+        "Unity",
+        "Pinterest",
+        "YouTube",
+        "Naver",
+        "Kwai",
+        "X",
+        "Meta",
+        "Instagram"
+      ],
+      "stats": [
+        {
+          "value": "2017",
+          "label": "成立年份"
+        },
+        {
+          "value": "4000+",
+          "label": "年服务客户"
+        },
+        {
+          "value": "10年+",
+          "label": "广告投放经验"
+        },
+        {
+          "value": "50+",
+          "label": "海外媒体资源"
+        }
+      ],
+      "description": "Facebook、Google、TikTok 等 50+ 海外媒体渠道，助力品牌高效出海。以人工智能与大数据分析，为全球广告主提供精准营销解决方案。"
+    },
+    "media": {
+      "title": "覆盖全球 50+ 海外主流媒体资源",
+      "subtitle": "TikTok、Google 官方一级代理",
+      "cta": {
+        "label": "立即开户",
+        "href": "#contact"
+      },
+      "benefits": [
+        {
+          "title": "官方认证代理资质",
+          "description": "Meta、Google、TikTok、SmartNews 等平台官方授权，开户即享绿色通道。"
+        },
+        {
+          "title": "0 元开户绿色审核通道",
+          "description": "零开户费、零服务费快速过审，最快当天开通投放账户。"
+        },
+        {
+          "title": "专属代理政策支持",
+          "description": "一级代理返点与流量扶持政策，让每一分预算都花在刀刃上。"
+        },
+        {
+          "title": "1 对 1 广告投放指导",
+          "description": "资深优化师全托管服务，从建账户到放量全程陪跑。"
+        },
+        {
+          "title": "多媒体账户一站式管理",
+          "description": "跨平台账户统一面板，预算、素材、数据一处掌握。"
+        },
+        {
+          "title": "多平台、多渠道、多币种便捷充值",
+          "description": "支持多币种结算与合规充值，资金流转高效透明。"
+        }
+      ],
+      "partners": [
+        {
+          "name": "SmartNews",
+          "mark": "Smartnews",
+          "category": "Content"
+        },
+        {
+          "name": "Facebook",
+          "mark": "Facebook",
+          "category": "Social",
+          "accent": "#1877F2"
+        },
+        {
+          "name": "Unity",
+          "mark": "Unity",
+          "category": "Ads",
+          "accent": "#111111"
+        },
+        {
+          "name": "Kwai",
+          "mark": "Kwai",
+          "category": "Social",
+          "accent": "#FF7300"
+        },
+        {
+          "name": "Pinterest",
+          "mark": "Pinterest",
+          "category": "Social",
+          "accent": "#E60023"
+        },
+        {
+          "name": "YouTube",
+          "mark": "Youtube",
+          "category": "Content",
+          "accent": "#FF0000"
+        },
+        {
+          "name": "Google",
+          "mark": "Google",
+          "category": "Search",
+          "accent": "#4285F4"
+        },
+        {
+          "name": "Naver",
+          "mark": "Naver",
+          "category": "Search",
+          "accent": "#03C75A"
+        },
+        {
+          "name": "X",
+          "mark": "X",
+          "category": "Social",
+          "accent": "#000000"
+        },
+        {
+          "name": "TikTok",
+          "mark": "TikTok",
+          "category": "Social",
+          "accent": "#000000"
+        },
+        {
+          "name": "Meta",
+          "mark": "Meta",
+          "category": "Ads",
+          "accent": "#0668E1"
+        },
+        {
+          "name": "Instagram",
+          "mark": "Instagram",
+          "category": "Social",
+          "accent": "#E1306C"
+        }
+      ]
+    },
+    "flow": {
+      "eyebrow": "FLOW AI SYSTEM",
+      "title": "自研 Flow Ai 智能广告系统",
+      "description": "滚动查看四大能力，了解 Flow Ai 如何驱动投放全流程。",
+      "cta": {
+        "label": "马上体验",
+        "href": "#contact"
+      },
+      "orbit": [
+        {
+          "label": "大模型"
+        },
+        {
+          "label": "机器学习"
+        },
+        {
+          "label": "海量数据"
+        }
+      ],
+      "features": [
+        {
+          "title": "一键生成广告素材",
+          "mark": "Flow Creative",
+          "description": "智能解析商品链接与图片，精准提炼产品卖点，自动匹配内容策略；结合优质广告案例分析，快速生成符合目标市场需求的高转化创意素材。",
+          "points": "链接与图片智能解析 / 卖点精准提炼 / 内容策略自动匹配 / 高转化创意批量产出"
+        },
+        {
+          "title": "大数据精确分析",
+          "mark": "Flow Insight",
+          "description": "深度分析用户画像、市场趋势及投放表现，精准匹配目标客群与流量渠道，从选品、受众圈层、版位选择到竞价策略，为投放决策赋能。",
+          "points": "用户画像深度洞察 / 市场趋势追踪 / 投放表现归因 / 受众圈层与版位智能匹配"
+        },
+        {
+          "title": "机器学习引擎",
+          "mark": "Flow Engine",
+          "description": "基于大模型的 AI Agent 智能数据分析，融合平台真实客户营销数据沉淀与行业营销经验，通过持续学习用户行为、素材表现及投放效果，智能优化广告策略，实现全链路 AI 驱动增长。",
+          "points": "AI Agent 智能分析 / 真实营销数据沉淀 / 行为与素材持续学习 / 全链路策略自动优化"
+        },
+        {
+          "title": "广告投放优化管理",
+          "mark": "Flow Optimize",
+          "description": "小程序实时可视化投放数据跟踪，智能识别异常波动与转化瓶颈，提供优化建议，覆盖广告创建、投放、分析、迭代全周期管理。",
+          "points": "实时可视化投放跟踪 / 异常波动智能识别 / 转化瓶颈诊断 / 全周期投放管理"
+        }
+      ]
+    },
+    "clients": {
+      "title": "10000+ 客户选择",
+      "subtitle": "服务对象覆盖游戏、APP、电商、金融、区块链等多个行业",
+      "industries": [
+        {
+          "key": "ecommerce",
+          "name": "电商",
+          "stat": "上架后单日增量突破 10000 人次",
+          "description": "从独立站到平台店铺，打通选品、素材、投放与复购的全链路增长。"
+        },
+        {
+          "key": "game",
+          "name": "游戏",
+          "stat": "上架后单日增量突破 10000 人次",
+          "description": "覆盖测试期、首发期与长线运营期的全球化买量与素材产能。"
+        },
+        {
+          "key": "app",
+          "name": "App",
+          "stat": "上架后单日下载破 10000 人次",
+          "description": "以数据驱动的安装、留存与付费优化，规模化获取高质量用户。"
+        }
+      ],
+      "logos": [
+        {
+          "name": "4399游戏",
+          "industry": "game"
+        },
+        {
+          "name": "心动",
+          "industry": "game"
+        },
+        {
+          "name": "funplus",
+          "industry": "game"
+        },
+        {
+          "name": "鹰角网络",
+          "industry": "game"
+        },
+        {
+          "name": "紫龙游戏",
+          "industry": "game"
+        },
+        {
+          "name": "触宝",
+          "industry": "app"
+        },
+        {
+          "name": "恺英网络",
+          "industry": "game"
+        },
+        {
+          "name": "巨人网络",
+          "industry": "game"
+        },
+        {
+          "name": "SHAREit",
+          "industry": "app"
+        },
+        {
+          "name": "HAGO",
+          "industry": "app"
+        },
+        {
+          "name": "likee",
+          "industry": "app"
+        },
+        {
+          "name": "Blued",
+          "industry": "app"
+        },
+        {
+          "name": "DINO",
+          "industry": "app"
+        },
+        {
+          "name": "MANGA",
+          "industry": "app"
+        },
+        {
+          "name": "全民小说",
+          "industry": "app"
+        },
+        {
+          "name": "live",
+          "industry": "app"
+        },
+        {
+          "name": "克丽缇娜",
+          "industry": "ecommerce"
+        },
+        {
+          "name": "得物",
+          "industry": "ecommerce"
+        },
+        {
+          "name": "江小白",
+          "industry": "ecommerce"
+        }
+      ]
+    },
+    "strength": {
+      "title": "让出海，更简单！",
+      "cta": {
+        "label": "联系我们",
+        "href": "#contact"
+      },
+      "nodes": [
+        {
+          "city": "总部上海",
+          "role": "全球总部",
+          "x": "82",
+          "y": "42",
+          "major": "yes"
+        },
+        {
+          "city": "东京",
+          "role": "日本子公司",
+          "x": "88",
+          "y": "26"
+        },
+        {
+          "city": "义乌",
+          "role": "电商服务中心",
+          "x": "79",
+          "y": "50"
+        },
+        {
+          "city": "福州",
+          "role": "华南运营中心",
+          "x": "78",
+          "y": "56"
+        },
+        {
+          "city": "广州",
+          "role": "广州分公司",
+          "x": "74",
+          "y": "60"
+        }
+      ],
+      "stats": [
+        {
+          "value": "2017",
+          "suffix": "",
+          "label": "成立年份"
+        },
+        {
+          "value": "4000",
+          "suffix": "+",
+          "label": "年服务客户"
+        },
+        {
+          "value": "10",
+          "suffix": "年+",
+          "label": "广告投放经验"
+        },
+        {
+          "value": "50",
+          "suffix": "+",
+          "label": "海外媒体资源"
+        }
+      ],
+      "description": "上海翼投智能科技有限公司 ADFLY 专注于效果类营销解决方案，打造以出海客户为中心的数字化营销策略。累计服务超过 10000 家客户，拥有海外多个本地化团队（如日本、泰国等）；服务对象涉及游戏、APP、电商、金融、区块链等多个行业。"
+    },
+    "honors": {
+      "title": "企业荣誉 实力见证",
+      "subtitle": "权威资质与行业认可，见证 ADFLY 的专业能力",
+      "groups": [
+        {
+          "key": "qualification",
+          "title": "权威资质",
+          "items": [
+            {
+              "title": "国家高新技术企业",
+              "issuer": "国家级 · 科技部认证",
+              "year": "2021"
+            },
+            {
+              "title": "国家专精特新企业",
+              "issuer": "国家级 · 工信部认证",
+              "year": "2023"
+            },
+            {
+              "title": "上海创新中小企业",
+              "issuer": "省市级 · 上海市认定",
+              "year": "2022"
+            }
+          ]
+        },
+        {
+          "key": "industry",
+          "title": "行业认可",
+          "items": [
+            {
+              "title": "中国 Top100 数字营销公司",
+              "issuer": "中国数字营销大会",
+              "year": "2024"
+            },
+            {
+              "title": "最具投资价值高成长企业奖",
+              "issuer": "出海行业峰会",
+              "year": "2024"
+            },
+            {
+              "title": "CFS2026 AI 创新应用先锋奖",
+              "issuer": "CFS 财经峰会",
+              "year": "2026"
+            },
+            {
+              "title": "TikTok 年度飞跃增长奖",
+              "issuer": "TikTok for Business",
+              "year": "2025"
+            },
+            {
+              "title": "2025 年度黑马合作伙伴",
+              "issuer": "TikTok for Business",
+              "year": "2025"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cases": {
+    "page": {
+      "title": "海外营销成功案例",
+      "subtitle": "以数据与创意驱动的全球化增长实践",
+      "filters": [
+        {
+          "key": "all",
+          "label": "全部"
+        },
+        {
+          "key": "ecommerce",
+          "label": "电商品牌"
+        },
+        {
+          "key": "game",
+          "label": "游戏"
+        },
+        {
+          "key": "app",
+          "label": "APP"
+        }
+      ]
+    },
+    "items": [
+      {
+        "id": "longzhu-global-launch",
+        "title": "紫龙游戏《梦幻模拟战》日本市场长线买量",
+        "client": "紫龙游戏",
+        "industry": "game",
+        "region": "日本",
+        "summary": "以素材工业化产能与分层受众策略，帮助经典 IP 在日本市场实现首发即巅峰，并维持 12 个月以上的稳定 ROI。",
+        "cover": "/images/adfly/banner01.png",
+        "awards": [
+          "TikTok 年度飞跃增长奖"
+        ],
+        "tags": [
+          "日本",
+          "游戏",
+          "长线买量"
+        ],
+        "year": "2024",
+        "featured": true,
+        "stats": [
+          {
+            "value": "320",
+            "unit": "%",
+            "label": "首发期 ROI 提升"
+          },
+          {
+            "value": "1800",
+            "unit": "万+",
+            "label": "素材总曝光"
+          },
+          {
+            "value": "42",
+            "unit": "%",
+            "label": "CPA 下降"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "《梦幻模拟战》是拥有 30 年历史的经典 SRPG 系列，日本是该 IP 的核心市场，也是竞争最激烈的买量战场。客户希望在首发期快速建立声量，同时把成本控制在可持续的区间内。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "日本市场用户对素材品质极其敏感，传统换皮素材难以打动核心玩家；同时头部 IP 密集投放，竞价成本持续走高。"
+            ],
+            "points": [
+              "素材同质化严重，CTR 持续下滑",
+              "核心玩家与泛用户需要不同的沟通语言",
+              "首发窗口期短，需快速验证并放量"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "ADFLY 以 Flow Ai 系统承接素材分析，结合日本本地团队的内容判断，搭建分层受众 × 分层素材的投放矩阵。"
+            ],
+            "points": [
+              "IP 情怀向、玩法展示向、真人剧情向三条素材线并行测试",
+              "按付费深度拆分为核心玩家、泛用户、二次元人群三组受众包",
+              "TikTok、YouTube、X 多平台组合，按周迭代素材与出价策略"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "首发 30 天内完成规模化放量，ROI 稳定在目标线以上，项目进入长达一年的长线运营阶段。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hypergryph-arknights-en",
+        "title": "鹰角网络《明日方舟》欧美版本地化素材营销",
+        "client": "鹰角网络",
+        "industry": "game",
+        "region": "北美、欧洲",
+        "summary": "以本地化创意与社区运营联动，重建欧美玩家对二次元塔防品类的认知，激活老用户并拉新。",
+        "cover": "/images/adfly/banner02.png",
+        "awards": [
+          "CFS2026 AI 创新应用先锋奖"
+        ],
+        "tags": [
+          "欧美",
+          "二次元",
+          "创意"
+        ],
+        "year": "2025",
+        "featured": true,
+        "stats": [
+          {
+            "value": "2.4",
+            "unit": "倍",
+            "label": "ROI 提升"
+          },
+          {
+            "value": "150",
+            "unit": "%",
+            "label": "CTR 提升"
+          },
+          {
+            "value": "30",
+            "unit": "%",
+            "label": "品牌搜索量增长"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "二次元品类在欧美属于细分市场，用户获取成本高、素材生命周期短。客户希望借助版本更新节点，实现一次高效率的拉新与回流。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "欧美玩家对日系美术风格的接受度分化明显，直接翻译的素材转化表现平淡。"
+            ],
+            "points": [
+              "文化与审美差异导致素材沟通力不足",
+              "版本节点集中，素材需求量大",
+              "回流与拉新需要不同的转化路径"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以 AI 辅助生成 + 本地创意团队二次创作为核心流程，输出符合欧美审美的角色向与剧情向素材。"
+            ],
+            "points": [
+              "Flow Ai 批量生成素材脚本，人工完成美术本地化",
+              "TikTok 挑战赛 + YouTube 长视频组合覆盖不同决策路径",
+              "以社区 UGC 内容作为素材二次分发来源"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "版本更新期新增用户与回流用户均超预期，素材复用率提升 60%。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "funplus-slots-latam",
+        "title": "FunPlus 休闲游戏拉美市场规模化获客",
+        "client": "FunPlus",
+        "industry": "game",
+        "region": "拉美",
+        "summary": "以低单价素材工业化测试与智能出价组合，在拉美市场实现单日万级安装的规模化获客。",
+        "cover": "/images/adfly/banner03.png",
+        "awards": [],
+        "tags": [
+          "拉美",
+          "休闲游戏",
+          "规模化"
+        ],
+        "year": "2024",
+        "featured": true,
+        "stats": [
+          {
+            "value": "12000",
+            "unit": "+",
+            "label": "单日峰值安装"
+          },
+          {
+            "value": "35",
+            "unit": "%",
+            "label": "CPI 下降"
+          },
+          {
+            "value": "7",
+            "unit": "天",
+            "label": "素材迭代周期"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "拉美市场用户规模大、付费能力分散，需要在控制 CPI 的前提下快速起量。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "流量池相对集中，竞价激烈，素材衰减速度快。"
+            ],
+            "points": [
+              "单一素材生命周期不足 7 天",
+              "需同时兼顾安装量与留存质量",
+              "多国货币与合规结算复杂"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以周为单位进行素材工业化迭代，配合智能出价与分国家预算分配。"
+            ],
+            "points": [
+              "每周产出 40+ 条可测试素材",
+              "按国家分层设定目标 CPI 与留存门槛",
+              "多币种一站式充值保障资金效率"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "单日峰值安装突破 12000，CPI 下降 35%，7 日留存达到目标线以上。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "xindong-social-app",
+        "title": "心动网络社区 App 东南亚用户增长",
+        "client": "心动网络",
+        "industry": "app",
+        "region": "东南亚",
+        "summary": "以短视频内容矩阵撬动自然流量，结合付费投放实现东南亚市场安装量与活跃度双增长。",
+        "cover": "/images/adfly/banner04.png",
+        "awards": [
+          "2025 年度黑马合作伙伴"
+        ],
+        "tags": [
+          "东南亚",
+          "App",
+          "内容营销"
+        ],
+        "year": "2025",
+        "featured": false,
+        "stats": [
+          {
+            "value": "260",
+            "unit": "万",
+            "label": "累计安装"
+          },
+          {
+            "value": "48",
+            "unit": "%",
+            "label": "次留提升"
+          },
+          {
+            "value": "3.1",
+            "unit": "倍",
+            "label": "自然流量增长"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "社区类 App 在东南亚面临本土竞品竞争，需要在有限预算下建立内容心智。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "纯付费流量成本高且难以沉淀品牌资产。"
+            ],
+            "points": [
+              "付费流量占比过高，获客成本难以下降",
+              "本地语言与文化差异影响内容传播",
+              "活跃度与留存需要产品侧配合"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以本地 KOL 内容为杠杆，付费投放为放大器，形成内容—投放—社区闭环。"
+            ],
+            "points": [
+              "签约 60+ 本地 KOL 进行内容共创",
+              "TikTok 与 Instagram 双平台内容分发",
+              "以社区活跃数据反哺投放人群包"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "自然流量增长 3.1 倍，次留提升 48%，付费流量占比下降至 55%。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shareit-user-reactivation",
+        "title": "SHAREit 新兴市场老用户召回",
+        "client": "SHAREit",
+        "industry": "app",
+        "region": "印度、中东",
+        "summary": "以人群分层与再营销组合，将沉默用户重新激活，显著提升 DAU 与广告变现效率。",
+        "cover": "/images/adfly/banner05.png",
+        "awards": [],
+        "tags": [
+          "再营销",
+          "新兴市场",
+          "DAU"
+        ],
+        "year": "2023",
+        "featured": false,
+        "stats": [
+          {
+            "value": "90",
+            "unit": "万+",
+            "label": "召回用户"
+          },
+          {
+            "value": "22",
+            "unit": "%",
+            "label": "DAU 提升"
+          },
+          {
+            "value": "40",
+            "unit": "%",
+            "label": "召回成本下降"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "工具类 App 面临用户流失与变现效率下降的双重压力，需要低成本召回沉默用户。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "沉默用户规模大但触达难度高，传统推送效果有限。"
+            ],
+            "points": [
+              "缺乏精细的人群分层",
+              "召回素材与用户场景不匹配",
+              "变现与体验需要平衡"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以行为数据划分沉默周期与场景人群，匹配差异化的召回素材与渠道组合。"
+            ],
+            "points": [
+              "按 30/60/90 天沉默周期分层",
+              "原生广告与激励视频组合召回",
+              "以变现数据反推最优召回频率"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "召回 90 万+ 用户，DAU 提升 22%，召回成本下降 40%。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kltina-brand-dtc",
+        "title": "克丽缇娜品牌独立站出海增长",
+        "client": "克丽缇娜",
+        "industry": "ecommerce",
+        "region": "北美、东南亚",
+        "summary": "以品牌内容与效果投放双轮驱动，帮助美妆品牌建立独立站心智并跑通 DTC 增长模型。",
+        "cover": "/images/adfly/banner06.png",
+        "awards": [
+          "中国 Top100 数字营销公司"
+        ],
+        "tags": [
+          "美妆",
+          "DTC",
+          "独立站"
+        ],
+        "year": "2025",
+        "featured": false,
+        "stats": [
+          {
+            "value": "3.6",
+            "unit": "倍",
+            "label": "ROAS 提升"
+          },
+          {
+            "value": "68",
+            "unit": "%",
+            "label": "复购率提升"
+          },
+          {
+            "value": "5.2",
+            "unit": "倍",
+            "label": "自然搜索增长"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "品牌希望摆脱对平台流量的依赖，建立可持续的独立站生意。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "美妆品类内容门槛高，且欧美市场对成分与合规要求严格。"
+            ],
+            "points": [
+              "素材需要兼顾品牌调性与转化效率",
+              "独立站信任度建立周期长",
+              "多市场合规与物流差异"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以品牌内容资产为核心，结合效果投放与红人种草，构建全链路转化路径。"
+            ],
+            "points": [
+              "产品卖点结构化，AI 辅助生成多语言素材",
+              "YouTube + TikTok 内容种草组合",
+              "以复购数据反向优化首购人群"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "ROAS 提升 3.6 倍，复购率提升 68%，独立站自然搜索增长 5.2 倍。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dewu-sea-expansion",
+        "title": "得物 App 东南亚潮流社区扩张",
+        "client": "得物",
+        "industry": "ecommerce",
+        "region": "东南亚",
+        "summary": "以潮流文化内容切入年轻人群，帮助潮流电商 App 在东南亚建立品牌认知与安装增长。",
+        "cover": "/images/adfly/banner07.png",
+        "awards": [],
+        "tags": [
+          "潮流",
+          "社区",
+          "年轻人群"
+        ],
+        "year": "2024",
+        "featured": false,
+        "stats": [
+          {
+            "value": "180",
+            "unit": "万",
+            "label": "累计安装"
+          },
+          {
+            "value": "55",
+            "unit": "%",
+            "label": "18-24 岁用户占比"
+          },
+          {
+            "value": "2.8",
+            "unit": "倍",
+            "label": "互动量增长"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "潮流电商在东南亚属于新兴赛道，用户教育成本高，但年轻人群增长迅速。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "潮流文化与本地语言深度耦合，标准化素材难以奏效。"
+            ],
+            "points": [
+              "需要本地潮流 KOL 背书",
+              "内容与电商转化链路需要打通",
+              "多国支付与履约体验差异"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以本地潮流内容矩阵构建品牌入口，配合效果投放完成转化承接。"
+            ],
+            "points": [
+              "签约本地潮流 KOL 与球鞋社群",
+              "TikTok 内容挑战 + 直播间联动",
+              "以互动数据优化投放人群定向"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "累计安装 180 万，18-24 岁用户占比 55%，互动量增长 2.8 倍。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "jiangxiaobai-overseas-brand",
+        "title": "江小白海外社媒品牌年轻化",
+        "client": "江小白",
+        "industry": "ecommerce",
+        "region": "全球",
+        "summary": "以社媒内容重构品牌叙事，让中国白酒品牌在海外年轻消费群体中建立记忆点。",
+        "cover": "/images/adfly/client_3.png",
+        "awards": [
+          "最具投资价值高成长企业奖"
+        ],
+        "tags": [
+          "酒饮",
+          "社媒运营",
+          "品牌"
+        ],
+        "year": "2023",
+        "featured": false,
+        "stats": [
+          {
+            "value": "6200",
+            "unit": "万+",
+            "label": "内容累计曝光"
+          },
+          {
+            "value": "320",
+            "unit": "%",
+            "label": "社媒粉丝增长"
+          },
+          {
+            "value": "45",
+            "unit": "%",
+            "label": "互动率提升"
+          }
+        ],
+        "blocks": [
+          {
+            "key": "background",
+            "title": "项目背景",
+            "body": [
+              "中国白酒在海外认知度低，需要以年轻人熟悉的语言重新讲述品牌故事。"
+            ]
+          },
+          {
+            "key": "challenge",
+            "title": "挑战",
+            "body": [
+              "品类文化壁垒高，直接的产品广告难以引发共鸣。"
+            ],
+            "points": [
+              "文化与口味认知差异",
+              "社媒内容缺少本地化表达",
+              "品牌资产难以沉淀"
+            ]
+          },
+          {
+            "key": "solution",
+            "title": "解决方案",
+            "body": [
+              "以生活方式内容替代产品硬广，通过本地内容创作者建立品类认知。"
+            ],
+            "points": [
+              "以调酒、聚会场景为核心内容主题",
+              "Instagram 与 TikTok 双平台运营",
+              "建立品牌内容素材库持续复用"
+            ]
+          },
+          {
+            "key": "result",
+            "title": "效果",
+            "body": [
+              "内容累计曝光 6200 万+，社媒粉丝增长 320%，互动率提升 45%。"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "heroEyebrow": "ABOUT ADFLY",
+    "heroTitle": "全球成功，从这里开始",
+    "heroDescription": "上海翼投智能科技有限公司成立于 2017 年，一直专注于效果类营销解决方案，打造以出海客户为中心的数字化营销策略。结合广告主活动目标和需求，专注于整合的效果类营销服务，是 Facebook、Google、SmartNews 的优质代理商。",
+    "stats": [
+      {
+        "value": "2017",
+        "unit": "年",
+        "label": "公司成立"
+      },
+      {
+        "value": "10000",
+        "unit": "+",
+        "label": "累计服务客户"
+      },
+      {
+        "value": "50",
+        "unit": "+",
+        "label": "海外媒体资源"
+      },
+      {
+        "value": "10",
+        "unit": "年+",
+        "label": "广告投放经验"
+      }
+    ],
+    "visionTitle": "用数智有效联结 中国企业和全球消费者",
+    "visionText": "我们拥有 ADFLYMIND 数字化广告系统，为企业分析影响广告效果的最关键因素和优秀的素材创意方向，选择并分析优质的素材元素，从而获得更好的投放效果，大大提升了投放效率，降低投放成本。",
+    "values": [
+      {
+        "title": "使命",
+        "description": "帮助客户走向全球，让产品更成功。"
+      },
+      {
+        "title": "愿景",
+        "description": "做广告界里最懂数据，在数据里最懂广告的企业。"
+      },
+      {
+        "title": "原则",
+        "description": "一切以数据说话。"
+      }
+    ],
+    "timeline": [
+      {
+        "period": "2017",
+        "title": "ADFLY 正式成立",
+        "description": "组建出海效果营销团队，服务第一批游戏与工具类出海客户。"
+      },
+      {
+        "period": "2018",
+        "title": "成为 SmartNews 官方指定代理商",
+        "description": "同时获得 Facebook、Google 优质代理资质，服务客户超过 1000 家。"
+      },
+      {
+        "period": "2019",
+        "title": "进军海外电子商务业务",
+        "description": "在跨境电商赛道建立行业化解决方案，服务品牌独立站与平台卖家。"
+      },
+      {
+        "period": "2021",
+        "title": "海外本地化团队落地",
+        "description": "日本、泰国等本地团队成立，提供线下 PR 与在地化内容服务。"
+      },
+      {
+        "period": "2023",
+        "title": "自研 Flow Ai 智能广告系统",
+        "description": "以大模型驱动素材生成、数据分析与投放优化，实现全链路 AI 增长。"
+      },
+      {
+        "period": "2025",
+        "title": "服务客户突破 10000 家",
+        "description": "服务对象覆盖游戏、APP、电商、金融、区块链等多个行业。"
+      }
+    ],
+    "teamIntro": "核心成员来自于猎豹、网易、恺英等国际知名互联网企业，已帮助数百家国内企业走出国门；并聘请有着至少 5 年 SEM 从业经验的专业广告优化师，为客户提供海外媒体的选择、制作到监测的一对一全托管顾问式服务。",
+    "team": [
+      {
+        "name": "莫夏芸",
+        "role": "董事长 / CEO",
+        "avatar": "/images/adfly/new_team_1.png",
+        "bio": "连续创业者、中国第一批出海先锋。南洋理工大学创业与创新专业硕士，拥有 10 年公司管理经验，曾作为三家成功公司的早期员工与核心管理层，伴随公司成功登陆 A 股。"
+      },
+      {
+        "name": "Roy Yao",
+        "role": "首席数字官 / CDO",
+        "avatar": "/images/adfly/team_2.png",
+        "bio": "连续创业者，跨境全链路物流云平台蜂运 SaaS 创始人；明星项目 Plern 时尚出海电商创始人、Ororx 出海搜索引擎创始人 CEO。联合张斌博士创办柏拉图人工智能，为电商、网络舆情、大模型厂商类客户提供解决方案。"
+      },
+      {
+        "name": "Aaron",
+        "role": "优化总监",
+        "avatar": "/images/adfly/new_team_3.png",
+        "bio": "从事海外市场推广工作 8 年，熟悉 App 与手游的海外推广思路和渠道投放，先后对接中手游《刀塔传奇》、游族《女神联盟》、tap4fun《Invasion》、AviaGames《Pocket7Games》等客户产品。"
+      }
+    ],
+    "offices": [
+      {
+        "city": "上海",
+        "label": "总部",
+        "address": "上海市徐汇区宜山路425号光启城710室"
+      },
+      {
+        "city": "广州",
+        "label": "广州分公司",
+        "address": "广东省广州市荔枝湾区大马站商业中心5层"
+      },
+      {
+        "city": "北京",
+        "label": "北京分公司",
+        "address": "北京市朝阳区创达三路1号院国信大厦8层"
+      },
+      {
+        "city": "成都",
+        "label": "成都分公司",
+        "address": "四川省成都市武侯区天府五街菁蓉汇6A1楼"
+      },
+      {
+        "city": "东京",
+        "label": "日本分公司",
+        "address": "日本千葉県千葉市稲毛区長沼町189-51"
+      }
+    ]
+  },
+  "careers": {
+    "heroTitle": "加入 ADFLY",
+    "heroSubtitle": "我们的世界就是你的画布",
+    "heroDescription": "与具有全球化视野、积极进取且富有创新精神的出海营销人一起，助力 ADFLY 实现「帮助客户走向全球」的企业愿景，为中国企业的全球化注入营销新动力。",
+    "citiesEyebrow": "OPEN POSITIONS",
+    "citiesTitle": "招聘城市",
+    "citiesDescription": "选择你所在或期望工作的城市，查看该城市的全部在招职位。",
+    "cultureTitle": "企业文化",
+    "culture": [
+      {
+        "title": "客户为先",
+        "description": "从客户角度出发，想客户所想、急客户所急。"
+      },
+      {
+        "title": "结果导向",
+        "description": "以客户满意为结果，以创造价值为结果，以提高联结为结果。"
+      },
+      {
+        "title": "开放沟通",
+        "description": "直面问题，勇于表达，乐于倾听。"
+      },
+      {
+        "title": "成长心态",
+        "description": "保持空杯状态，勇敢尝试，不进则退。"
+      },
+      {
+        "title": "守正出奇",
+        "description": "专注于业务上的不断精进是守正，守到极致是出奇。"
+      }
+    ],
+    "benefitsTitle": "加入我们",
+    "benefits": [
+      {
+        "group": "基础福利",
+        "items": "五险一金 / 年终奖金 / 带薪假期 / 年度体检"
+      },
+      {
+        "group": "激励计划",
+        "items": "业务奖金 / 内推奖金 / 长期服务奖 / 期权激励"
+      },
+      {
+        "group": "成长支持",
+        "items": "体系化培训 / 领导力培养 / 海外轮岗 / 行业峰会"
+      },
+      {
+        "group": "日常关怀",
+        "items": "免费早餐 / 话费补贴 / 健身卡 / 团队团建"
+      }
+    ],
+    "jobsEyebrow": "FEATURED ROLES",
+    "jobsTitle": "热招职位",
+    "cities": [
+      {
+        "id": "shanghai",
+        "name": "上海",
+        "nameEn": "Shanghai",
+        "code": "CT_125",
+        "summary": "集团总部 · 媒介策略 / 产品技术 / 品牌市场",
+        "featured": "yes"
+      },
+      {
+        "id": "shenzhen",
+        "name": "深圳",
+        "nameEn": "Shenzhen",
+        "code": "CT_128",
+        "summary": "华南中心 · 电商品牌 / 亚马逊运营 / 客户成功",
+        "featured": "yes"
+      },
+      {
+        "id": "guangzhou",
+        "name": "广州",
+        "nameEn": "Guangzhou",
+        "code": "CT_45",
+        "summary": "研发与广告业务中心 · Java 工程 / 质量保障 / 亚马逊广告",
+        "featured": "yes"
+      },
+      {
+        "id": "beijing",
+        "name": "北京",
+        "nameEn": "Beijing",
+        "code": "CT_11",
+        "summary": "华北中心 · 游戏行业客户与商务",
+        "featured": "yes"
+      },
+      {
+        "id": "chengdu",
+        "name": "成都",
+        "nameEn": "Chengdu",
+        "code": "CT_22",
+        "summary": "西南中心 · 创意设计 / 游戏优化 / 商务拓展",
+        "featured": "yes"
+      },
+      {
+        "id": "hefei",
+        "name": "合肥",
+        "nameEn": "Hefei",
+        "code": "CT_55",
+        "summary": "AI 内容中心 · AI 视频生成 / AI 导演",
+        "featured": "yes"
+      },
+      {
+        "id": "xian",
+        "name": "西安",
+        "nameEn": "Xi'an",
+        "code": "CT_155",
+        "summary": "研发中心 · Java 工程",
+        "featured": "yes"
+      }
+    ],
+    "positions": [
+      {
+        "id": "7685963815004457270",
+        "title": "编审中心负责人",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "2026-09-16",
+        "summary": "制定内容方向与开发计划",
+        "description": "1. 制定内容方向与开发计划\n• 根据公司战略、北美用户需求及平台表现，制定题材布局、内容定位和项目开发计划。\n• 建立选题储备与项目梯队，统筹原创开发、改编及外部剧本合作。\n• 明确各项目的目标受众、故事卖点、质量要求及开发优先级。\n2. 负责项目评审与剧本质量\n• 建立从选题、故事梗概、人物设定、分集大纲到完整剧本的评审标准。\n• 主导项目立项评审、阶段审稿和最终定稿，提出明确的推进、重写或终止建议。\n• 把控英语表达、文化适配、人物逻辑、情绪递进、冲突反转和集尾悬念。\n• 亲自参与重点项目的故事开发、核心改稿及必要的剧本创作。\n3. 建立 AI 短剧创作与制作协作机制\n• 与导演、AI 视觉及制作团队共同确定剧本的可制作标准。\n• 在人物数量、场景设计、动作复杂度和视觉连续性等方面，平衡故事效果、制作成本与交付周期。\n• 参与样片评审和成片反馈，推动剧本问题在制作前及制作过程中及时解决。\n• 总结适合 AI 表现的题材与叙事方法，形成团队可复用的创作经验。\n4. 搭建并管理编剧团队\n• 招募、培养和管理内部编剧及外部创作者，建立试稿、合作和评价机制。\n• 合理分配项目与创作任务，管理开发排期、审稿节点和交付质量。\n• 提供具体、可执行的改稿意见，提升团队英语原创和短剧叙事能力。\n5. 推动内容表现复盘\n• 与运营、增长及数据团队协作，分析 App 内的观看留存、追剧和付费表现，以及 TikTok 的传播反馈。\n• 将数据和用户反馈转化为选题、剧本及内容节奏的改进方案。\n• 对重点项目进行复盘，持续提升优质内容产出率和开发效率。\n6. 熟悉 AI 短剧制作流程。配合剧本侧 AI Agent 工具研发\n• 与产品、研发团队协作，将选题策划、大纲生成、剧本创作、审稿及改稿流程转化为清晰的工具需求。\n• 提供优质剧本案例、编审标准及测试样本，参与 AI Agent 的效果评测与迭代，重点评估故事逻辑、人物一致性、英语表达和制作适配性。\n• 推动工具在编剧团队中的实际应用，持续反馈问题，提升剧本开发效率与内容质量。\n可脱敏提供。",
+        "requirement": "• 具备面向北美市场的英语短剧爆款经验：**曾作为编审负责人、主编、主笔或核心编剧主导已上线爆款项目，能够提供可核实的作品、表现数据及个人贡献说明。具备 AI 短剧爆款经验：**曾实质主导已上线爆款 AI 短剧的内容开发或剧本创作，熟悉从剧本到成片的制作流程。仅有工具使用或概念样片经验不符合要求。\n• 具备团队及多项目管理经验：能够统筹多个项目的开发、审稿、资源安排与交付，并有指导编剧提升作品质量的实际案例。\n• 具备英语原创与定稿能力：能够直接审阅、创作和深度修改英语剧本，准确判断对白自然度、人物声音及北美文化适配。\n• 具备成熟的内容判断力：能够识别项目潜力和核心问题，给出具体创作方案，并清楚解释判断依据。\n• 具备商业与数据意识：能够结合内容质量、用户反馈和制作投入评估项目，理解传播成绩与平台商业表现之间的区别。\n• 能够亲自承担核心创作：适应初创团队节奏，在管理之外，直接推进重点项目的写作、改稿和定稿。",
+        "bonus": "• 同时拥有真人精品短剧和 AI 精品短剧经验。\n• 有从零搭建编审体系或编剧团队的经历。\n• 熟悉自有 App 连载、付费短剧及 TikTok 剧情内容。\n• 拥有优质英语编剧或其他内容创作者资源。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7685963815004457270/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7685701060728604934",
+        "title": "财务数据开发工程师",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "2026-09-15",
+        "summary": "负责财务域数据仓库建模：参与业财一体化数据体系规划，完成结算、总账、应收应付等主题的维度建模与分层设计",
+        "description": "1. 负责财务域数据仓库建模：参与业财一体化数据体系规划，完成结算、总账、应收应付等主题的维度建模与分层设计\n2. 开发与优化财务数据处理链路：编写高质量 SQL 与 Python 脚本，完成数据加工与对账逻辑，保障财务数据准确性与时效性\n3. 支撑财务结算与经营分析：配合月结/年结节奏完成数据交付，沉淀指标口径，输出财务分析所需数据集\n4. 报表与看板搭建：基于 Quick BI 等报表工具搭建财务经营报表与管理看板，负责取数逻辑配置、口径维护与权限管理\n5. 数据质量管理：建立数据对账与校验机制，负责数据任务的上线流程与版本管理",
+        "requirement": "1. 本科及以上，3年以上数仓/数据开发经验，具备扎实的维度建模能力\n2. 精通 SQL，熟练使用 Python 进行数据处理（Pandas/NumPy）\n3. 熟悉阿里云大数据生态（MaxCompute、DataWorks 等），了解调度配置与数仓分层架构\n4. 熟悉 Quick BI 等报表/BI 工具，有报表平台搭建或维护经验者优先\n5. 有财务结算或业财一体化项目经验者优先，理解总账/成本分摊等财务概念者优先\n6. 数据敏感度高，擅长口径对账与问题定位，沟通协作良好",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7685701060728604934/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7685673267861063987",
+        "title": "用户增长产品经理（平台型）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "2026-09-15",
+        "summary": "搭建用户全生命周期运营体系：设计用户分层模型与差异化运营策略（激活、留存、转化、流失预警），推动策略产品化、自动化。",
+        "description": "1. 搭建用户全生命周期运营体系：设计用户分层模型与差异化运营策略（激活、留存、转化、流失预警），推动策略产品化、自动化。\n2. 负责CRM及运营中台产品规划：将CRM定位为运营策略执行终端，建设标签、触达、策略引擎等中台能力，支撑多业务线。\n3. 增长策略落地与数据闭环：配合增长团队优化转化漏斗，通过产品手段提升关键节点转化率；建立核心指标体系，用数据验证并迭代策略。",
+        "requirement": "• 3-5年产品经验，2年以上用户运营/增长/CRM领域经验，有从0到1搭建用户运营体系或客户生命周期管理体系的完整项目经历；\n• 强策略思维与数据sense，能独立完成用户行为分析，熟练使用SQL/BI工具；\n• 熟悉B端/SaaS/平台型产品用户运营逻辑，具备优秀的跨团队推动力。\n加分项：有PLG、AI/Agent产品经验，或广告/素材/社交类产品背景。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7685673267861063987/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7683732409996953906",
+        "title": "AI产品经理（广告创意策略方向）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "2026-09-10",
+        "summary": "负责广告创意策略类 AI Agent 的产品规划与落地，围绕广告创意决策链路，重点覆盖素材洞察、市场/本地化热点洞察、创意策略生成、执行方案",
+        "description": "1. 负责广告创意策略类 AI Agent 的产品规划与落地，围绕广告创意决策链路，重点覆盖素材洞察、市场/本地化热点洞察、创意策略生成、执行方案生成、素材诊断及效果预测等方向，帮助业务提升创意决策效率与素材成功率。\n2. 构建从洞察、策略、生产到投放效果的数据闭环，打通策略、制作与投放数据之间的链路，使素材表现数据（如 CTR、CVR、消耗、转化等）能够反哺策略推荐与模型优化，持续提升策略有效性。\n3. 负责创意策略与评估模型的产品化设计，与业务方、算法、数据团队共同定义质量评分、效果预测、策略推荐等模型的输入输出、标签体系、评估标准、反馈机制及迭代路径，推动模型能力稳定应用于业务场景。\n4. 沉淀并产品化广告创意方法论，将优秀创意人员的经验、案例及分析框架结构化，转化为可理解、可执行、可评估的 Agent 能力，推动创意决策从“经验驱动”向“数据 + AI 驱动”升级。\n5. 持续优化策略 Agent 的产品效果，围绕策略采纳率、推荐准确度、用户满意度、素材生产转化率及投放表现提升等核心指标，结合用户反馈和业务数据持续迭代产品能力。",
+        "requirement": "1. 3 年以上产品经理经验，有策略产品、Agent 产品、广告创意产品或数据智能产品经验者优先。\n2. 对效果广告及创意生产有较深入理解，能够理解影响广告素材表现的核心因素，包括创意主题、受众、卖点、内容结构、表现形式、投放场景等，并熟悉 CTR、CVR、CPA、ROAS、消耗等核心效果指标及基本归因逻辑。\n3. 熟悉广告素材生产全链路，理解从 Brief、洞察、策略、创意方案、素材制作、投放到效果复盘的完整业务流程，并能够识别其中适合通过 AI 产品化解决的问题。\n4. 熟悉大模型及 Agent 产品的典型能力与设计方式，包括 Prompt Engineering、多轮对话、结构化输出、RAG、Tool Use / Function Calling、工作流编排等，能够结合业务场景进行产品设计。\n5. 具备较强的数据敏感度和模型评估意识，能够与算法、数据团队共同定义评估指标及模型迭代方向。\n6. 具备较强的产品抽象及复杂问题拆解能力，能够将非结构化的创意经验、业务规则和数据反馈转化为明确的产品机制和产品能力。",
+        "bonus": "- 有效果广告、广告科技、营销科技、创意平台等相关行业经验；\n- 有 LLM Agent 从 0 到 1 的产品规划及落地经验，而非仅作为工具使用者；\n- 具备较强的数据分析能力，能够使用codex/Claude code等工具独立完成基础数据探索；\n- 有广告创意、内容策略、设计或创意制作背景，对创意方法论及素材表现具有较好的判断力；\n- 有推荐系统、质量评分、效果预测或智能决策类产品经验。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7683732409996953906/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7677846083767421238",
+        "title": "海外社媒优化师",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "2026-08-25",
+        "summary": "投放策略及项目管理：",
+        "description": "1. 投放策略及项目管理：\n独立负责海外品牌社媒投放项目，根据品牌目标、市场特点及预算制定投放策略，统筹项目从前期准备、上线、优化、复盘到结项的完整流程；\n负责 TikTok 、Meta等平台的 Media Plan、预算拆分、KPI 测算及投放规划，管理项目预算、节奏、资源及风险，保障多个 Retainer / Campaign 项目稳定交付。\n2. 广告投放及效果优化：\n深度参与重点项目投放，对账户结构、预算、人群、素材及出价策略持续优化；独立处理品牌曝光、互动、增粉、流量等不同投放目标；熟悉 TikTok 达人内容投流、Spark Ads、达人追投及内容放量逻辑；\n根据不同国家、产品、区域及目标用户制定差异化投放策略；及时识别投放异常，通过素材、人群、预算及投放模型调整持续提升效果。\n3. 数据分析与业务洞察：\n负责周报、月报、Campaign 复盘及专项分析；从用户、产品、地域、素材、人群等维度提炼有效 Insight；不局限于 CPM、CTR、CPC、CPL 等媒体指标，能够结合业务目标判断投放实际价值；\n能够结合品牌词 / 产品词搜索趋势、用户渗透、人群流转等维度进行品牌投后分析；将投放数据转化为下一阶段媒体、内容及营销策略建议。\n4.团队协同与业务交付：\n指导 Junior / Intern 提升投放、数据分析及项目执行能力，对广告关键交付进行 QA；协同内容、创意、客户服务等团队推进项目落地。\n作为项目核心投放接口，独立参与客户周会、月会及专项沟通，能够快速响应客户临时数据及业务分析需求；\n清晰解释投放逻辑、数据变化、优化动作及后续策略；独立完成投放方案、汇报材料及项目复盘，并对最终交付质量负责。",
+        "requirement": "1.具有3–5 年海外数字广告 / 社媒广告投放经验；熟练掌握 Meta Ads、TikTok Ads，熟悉 Google Ads、LinkedIn Ads 者优先；\n2.有独立负责大型品牌客户、海外 Campaign 或年度 Retainer 项目经验；\n3.能独立完成 Media Plan、预算规划、KPI Forecast 及投放策略制定，具备较强的数据分析、Excel 及 PPT 能力；\n4.具备良好的英文阅读及工作能力，可熟练使用英文广告后台；逻辑清晰，具备较强的客户沟通、项目管理及跨部门协同能力；责任心强，能够独立承担项目结果及交付责任。\n5.加分项：\n有消费电子、家电、新能源、汽车等出海品牌服务经验；\n有千万级以上人民币媒体预算管理经验；\n有大型代理商或国际品牌服务经验；\n有带小型项目团队经验优先",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7677846083767421238/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7677497817744705834",
+        "title": "媒介经理",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "2026-08-24",
+        "summary": "拓展并维护与海外媒体平台的官方合作关系（如Meta、Google、Pinterest、X等平台），争取独家政策与高优先级资源支持，制定长短期",
+        "description": "1. 拓展并维护与海外媒体平台的官方合作关系（如Meta、Google、Pinterest、X等平台），争取独家政策与高优先级资源支持，制定长短期媒介合作策略，建立优质稳定的媒体资源库；\n2. 主导各类媒介合作项目的谈判工作，包含但不限于广告投放、赞助合作、内容合作等；确保公司在合作条款、价格、权益等方面获得最有利的条件；\n3. 与公司内部团队紧密协作，为内部团队提供实时媒体政策解读、资源匹配建议及风险预警支持等，共同推动项目落地执行",
+        "requirement": "1. 英语沟通能力；\n2.有过同类代理媒介经验优先，有过tiktok媒介工作经验最佳；\n3. 对于海外市场以及程序化广告有基础的认知",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7677497817744705834/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7675997318717524251",
+        "title": "AI Agent 全栈开发工程师（广告投放智能体）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "关于我们",
+        "description": "关于我们\n我们正在打造新一代 AI 广告投放产品，用 AI Agent 重构广告投放、运营和优化的工作方式。\n1、负责广告投放 AI Agent 的全栈开发，包括 Agent 框架、工具调用、任务编排、数据处理、后端服务和前端交互。\n2、将广告投放、账户管理、素材分析、数据诊断和策略优化等业务流程，转化为 AI 可理解、可执行的能力。\n3、设计和实现 Harness、RAG、Tool Calling、任务规划、Agent 记忆、评测监控等核心能力。\n4、与产品、算法、广告优化师和业务团队协作，快速理解问题并完成从 0 到 1 的产品落地。\n5、持续探索大模型、AI Agent工程实现等新技术，并将其应用于真实业务。",
+        "requirement": "1、具备2年及以上全栈开发经验，熟悉 Python、Go、Java、Node.js 等至少一种后端语言。\n2、有大模型或 AI Agent 实践经验，能够独立完成从模型调用、工具设计到产品落地的完整链路。\n3、高度 AI Native，能够熟练使用 AI 编程和各类 AI 工具，并将 AI 融入日常工作方式。\n4、具备较强的抽象能力、问题解决能力和学习能力，能够快速进入陌生领域并形成判断。\n5、对产品和用户有敏感度，愿意深入理解广告投放和增长业务。\n6、能适应快速变化和高不确定性的环境，具备良好的沟通协作和持续交付能力。",
+        "bonus": "1、近两年有 AI 创业或 AI 产品从 0 到 1 的经验。\n2、有广告投放、效果营销、增长或营销自动化经验。\n3、熟悉 Google Ads、Meta Ads、TikTok Ads 等广告平台及其 API。\n4、有 LLM Agent、RAG、模型评测或多模态应用实践。\n5、有个人产品、开源项目或创业团队经历。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7675997318717524251/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7675993494939044138",
+        "title": "AI产品经理（广告投放智能体）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "参与 AI 广告投放产品从 0 到 1 的需求分析、方案设计与版本推进；",
+        "description": "1、参与 AI 广告投放产品从 0 到 1 的需求分析、方案设计与版本推进；\n2、拆解广告投放场景，识别适合用 AI 重构的关键环节；\n3、与研发、业务团队协作，推动产品按计划交付；\n4、持续使用 AI 工具完成调研、分析、原型、数据处理、设计等工作流；\n5、持续支持产品运营以及GTM相关工作。",
+        "requirement": "1、0–3 年产品、AI、广告或数据分析相关经验；\n2、AI Native，日常高频使用 AI 工具以及Vibe coding有自己见解；\n3、能把模糊问题拆解为结构化任务，有较强的逻辑和分析能力；\n4、动手能力强，愿意快速做原型、处理数据、验证想法；\n5、学习速度快，对陌生领域有主动探索习惯；\n6、对结果负责，愿意深入细节直到问题解决。",
+        "bonus": "1、做过 AI Agent、Copilot、营销科技或广告投放产品；\n2、熟悉 Meta、Google、TikTok 等广告平台；\n3、AI相关创业经历；\n4、有个人 AI 项目、作品集或持续输出。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7675993494939044138/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7675307301289789715",
+        "title": "媒介创意策略经理（出海游戏）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "素材与创意策略",
+        "description": "1、素材与创意策略\n基于游戏行业，不同游戏类型，熟悉素材数据、投放表现及产品特点，分析素材转化逻辑，提炼高潜创意方向及测试策略。\n结合竞品素材调研及行业趋势，输出创意Benchmark，指导创意团队提升素材产出质量及测试效率。\n2、客户策略与预期管理\n基于客户投放数据、素材表现及竞品Benchmark，诊断客户创意能力及素材短板，输出可落地的创意优化方案。\n通过数据及行业案例与客户沟通素材投入、创意方向及效果预期，提升客户对代理商专业能力的认可。\n3、策略方案与提案\n独立完成游戏客户媒介及创意策略方案，参与新客Pitch、存量客户提案及重点营销项目。\n将市场、竞品、用户及投放洞察转化为清晰的策略逻辑和可执行方案，推动商务及客户转化。\n4、团队协同与方法论\n协同优化、创意、商务及PM团队推进策略落地，明确创意方向、测试优先级及效果评估标准。\n沉淀游戏行业创意策略、竞品素材及优秀案例，形成可复用的方法论及方案资产。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7675307301289789715/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7672652334077528326",
+        "title": "AI创意工业化平台负责人",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "• 共建 AI 创意商业化战略:负责 AI 创意平台整体产品规划与演进，制定产品路线图(Roadmap)，推动产品MVP 落地并持续迭代 。",
+        "description": "• 共建 AI 创意商业化战略:负责 AI 创意平台整体产品规划与演进，制定产品路线图(Roadmap)，推动产品MVP 落地并持续迭代 。\n• AI 技术与出海业务深度融合:深入出海营销与创意生产业务场景，推动LM、Agent、Workflow、RAG 等前沿 AI 技术落地，打造覆盖\"洞察-策略-生成-优化-分发-效果反馈”的全流程产品解决方案 。\n• 创意赋能与对业务结果负责:作为创意策略与技术落地之间的桥梁，精准将创意逻辑转化为标准化产品方案;负责产品全生命周期管理，对核心业务指标(如:AI素材消耗占比、素材 ROI 提升、服务收入增长等)负责持续优化产品体验。\n• 搭建高效产研组织:组建并管理高效的 AI 产研团队(涵盖产品、研发、算法等)，建立规范的产品研发流程，确保系统的高可用性、稳定性与可扩展性。",
+        "requirement": "• 学历背景:本科及以上学历，计算机、软件工程、人工智能等相关专业优先;\n• 工作经验:8 年以上互联网产品或技术相关经验，3年以上团队管理经验;\n• 项目实战:具备 AI 产品(SaaS、AIGC、AI Agent、创意工具等)从0到1成功落地并实现商业价值的完整经验;\n• 技术理解与落地:熟悉 LLM、RAG、Agent、Workflow 等 AI 技术原理，具备优秀的产研沟通能力，能准确评估技术落地可行性与 ROI;\n• 产品架构能力:具备优秀的产品架构能力与业务抽象能力，能将复杂、多样的营销创意需求转化为标准化的产品方案;\n• 组织协同能力:具备良好的业务服务意识、跨部门沟通协调能力及向上协同能力，能无缝对接创意与业务团队，确保产研与业务战略高度一致。",
+        "bonus": "• 有 AI Native 产品、创意生成工具、广告技术或营销科技(MarTech)相关经验。\n• 有出海 Saas 或国际化产品的架构/产品经验。\n• 有创业公司或创新业务从 0到1的成功经验。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7672652334077528326/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7667774656439650570",
+        "title": "电商品牌客户经理（上海）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责核心客户的长期服务与管理，深度理解客户需求；",
+        "description": "1、负责核心客户的长期服务与管理，深度理解客户需求；\n2、在客户管理过程中，与内部团队紧密协作，拆解客户需求；\n3、在项目交付周期内，统筹整体项目进度，协调内外部资源，确保排期清晰、沟通顺畅与交付结果达成预期；\n4、参与客户合同、报价和服务内容的把控，关注项目成本与应收款进度，确保业务流程合规与健康；\n5、维护良好的客户关系，保证客户满意度，提升公司在行业与客户侧的品牌口碑；\n6、有参与 pitch、新客户提案或项目招投标经验者优先；\n7、有媒介策略策划、整合营销、媒介投放经验者优先。",
+        "requirement": "1、本科及以上学历，市场营销、广告、国际商务等相关专业优先；拥有数字营销、代理商等海外业务经验者优先；\n2、具备较强的客户管理能力，能够独立负责项目推进；\n3、客户服务意识强，具备良好的沟通协调能力和谈判能力；\n4、目标导向，能够在多任务与跨时区沟通环境中保持高效推进，具备责任心与自驱力；\n5、具备英语读写能力，可阅读海外媒体等英文资料；具备海外实习/工作/教育经历者加分；\n6、熟悉海外主流媒体（如 Meta、TikTok、Google、Pinterest 等）者优先。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7667774656439650570/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7664859821062146347",
+        "title": "市场主管/总监",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "一、市场活动与线索转化",
+        "description": "一、市场活动与线索转化\n负责线上线下活动整体策略与执行，包括：直播、闭门沙龙、行业峰会、客户答谢会、联合营销等；\n建立从线索获取→筛选→分发→跟进→商机转化的闭环机制，与销售团队共同对线索数量、转化率、Pipeline负责；\n对ROI、获客成本、线索质量等核心指标进行持续监控与优化；\n二、媒介关系与亚马逊生态对接\n建立并维护与亚马逊官方团队的深度联系，争取官方背书及联合市场机会；\n拓展渠道商、官方讲堂、跨境协会等渠道，获取稳定商机；\n三、数据洞察与行业研究：主导输出高质量行业报告，将数据洞察转化为市场获客的核心物料和销售话术支持，建立公司在亚马逊DSP生态的话语权；\n四、品牌建设与内容营销：打造公司在行业内的技术品牌形象，负责公众号、视频号等渠道的高阶内容体系；\n五、团队管理与目标拆解：负责市场团队的搭建与管理，制定团队目标、工作计划、执行节奏；",
+        "requirement": "经验要求：5年以上ToB市场经验，其中至少1年在亚马逊生态圈（亚马逊官方、头部大卖、头部服务商），具备团队管理经验；\n活动获客能力：熟悉ToB销售模式下的获客链路，有直播、沙龙、行业活动的完整策划与执行经验；\n资源整合能力：具备外部合作拓展经验，包括平台方、媒体、KOL、协会等；\n内容/研究能力：能够输出高质量行业报告、深度文章（简历请附过往作品）",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7664859821062146347/detail",
+        "extraCities": "beijing/shenzhen"
+      },
+      {
+        "id": "7664859085074696454",
+        "title": "财务Reporting负责人",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1、财报管理与财务分析：搭建集团标准化财报体系，制定结账及报表编制规范，统筹月度/季度/年度合并报表出具，保障数据准确、按期交付。开展常态化财务深度分析，排查业务及核算风险，落地问题整改。统一集团会计政策，针对互联网特色业务制定核算方案，跟进准则更新，清理历史账务，夯实IPO财务基础\n2、资本市场对接：作为财务核心对接人，支撑投资者沟通、路演、管理层汇报等工作，输出资本市场财务材料。配合投融资、券商及中介机构尽调，提供审计底稿，完成对外财报解读与答疑工作\n3、IPO审计专项工作：主导美股/港股IPO财务筹备，规范三年一期财务数据，梳理收入确认、研发费用、股权激励、关联交易等核心核查事项。统筹会计师预审及正式审计工作，研判审计调整、应对监管问询，优化财务内控与台账流程，满足上市合规要求\n4、团队与流程优化：负责报表团队管理、人员培养及绩效管控，提升团队专业能力。沉淀标准化工具模型，推进财报数字化、自动化升级，优化结账流程，闭环落地各类专项财务核查工作\n【任职要求】\n1、本科及以上学历，需持有CPA或者ACCA证书（硬性要求）\n2、8年以上财务工作经验，其中具备四大/内资八大证券所审计背景和互联网/广告/科技行业甲方经验。拥有完整港股、A股IPO全流程实操经历，其中深度参与过三年一期预审、申报及问询回复工作者优先考虑\n3、精通中国企业会计准则，熟悉IFRS准则优先；熟练掌握互联网行业上市监管核查要点，涵盖收入确认、研发费用、股份支付、关联交易等核心模块；熟知IPO全流程、审计预审重点及监管财务问询高频问题\n4、精通多层股权架构、交叉持股、内部交易抵消等全套复杂合并报表业务，可独立研判复杂交易会计处理、审阅审计底稿\n5、熟练运用Excel高级函数、Power Query，掌握Oracle、SAP、金蝶/用友等集团财务软件，可独立搭建财务分析模型\n6、具备优秀的跨部门沟通、商务博弈及统筹推进能力，可高效对接中介机构、资本市场及管理层；抗压能力强、做事严谨细致、数据敏感度高，具备风险预判思维与团队管理能力；保密意识强，职业操守良好，无不良执业记录及IPO相关重大财务负面问题",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7664859085074696454/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7662579951384774958",
+        "title": "财务分析专家",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1、预算编制与管控\n- 主导公司年度预算的编制、滚动预测及执行跟踪，建立并优化预算模型与模板；\n- 组织各业务部门进行预算沟通、审核与汇总，确保预算目标与公司战略一致；\n- 定期输出预算执行分析报告，识别偏差原因并提出改进建议。\n2、财报与管报的校对与分析\n- 负责月度/季度/年度财务报表（GAAP/IFRS）与管理报表（管报）的编制、校对与差异分析；\n- 深入解读财务数据，从收入、成本、费用、利润等维度进行多角度分析，为管理层提供决策支持；\n- 建立并维护财报与管报的勾稽关系校验机制，确保数据一致性。\n3、其他财务数据分析\n- 根据业务需求，开展专项财务分析（如产品线盈利分析、客户贡献度分析、投资回报分析等）；\n- 支持业务部门进行定价、成本优化、资源分配等决策，提供数据驱动的洞察；\n- 参与公司战略规划、投融资项目中的财务建模与测算。\n4、数据规则制定与标准化\n- 制定并维护财报与管报的数据口径、核算规则、分摊逻辑及报表模板，确保数据口径统一、可追溯；\n- 推动财务数据标准化建设，建立数据字典与指标定义文档，减少人为理解偏差；\n- 协同IT/数据团队，优化财务系统（如ERP、BI、预算系统）的数据映射与自动化流程。\n5、流程优化与数据准确性提升\n- 深入梳理采购流程、线下审批流程等业务环节，识别数据失真或滞后的风险点；\n- 推动流程改进（如采购订单与财务入账的自动对账、费用报销的线上化管控），从源头提升数据准确性；\n- 建立数据质量监控机制，定期审计关键数据节点，输出改进计划并跟踪落地。\n【任职要求】\n1、教育背景： 财务、会计、金融、经济等相关专业本科及以上学历，CPA、CMA、ACCA等证书优先；\n2、工作经验： 8年以上财务分析或财务管理工作经验，其中至少3年团队管理经验，有大型企业或上市公司FP&A经验者优先；\n3、专业技能：\n- 精通预算编制、财务建模、报表分析及数据可视化工具（如Excel、Power BI、Tableau、SAP BPC等）；\n- 熟悉会计准则（IFRS/GAAP）及管理会计体系，具备较强的数据敏感度与逻辑分析能力；\n- 具备流程优化与系统实施经验（如ERP上线、预算系统搭建）者优先；\n4、综合素质：\n- 优秀的跨部门沟通与协调能力，能推动业务与财务的协同；\n- 结果导向，抗压能力强，能适应快节奏工作环境；\n- 具备战略思维，能从财务数据中提炼业务洞察。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7662579951384774958/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7661851350715844927",
+        "title": "达人营销专员",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "熟练驾驭从达人筛选到上线的全流程：熟悉TikTok, YouTube, Instagram等平台的玩法与生态，能独立挖掘、筛选优质KoL/达",
+        "description": "1.熟练驾驭从达人筛选到上线的全流程：熟悉TikTok, YouTube, Instagram等平台的玩法与生态，能独立挖掘、筛选优质KoL/达人资源，搭建分层KOL矩阵，负责合作洽谈、内容对接与效果跟踪，为营销项目完成度和效果负责。\n2.数据驱动与结果导向：能够熟练使用各类红人工具(Nox,Scrumball, HypeAuditor等)及AI辅助工具提升效率对ROI、CPM等核心指标敏感，能通过数据复盘不断优化投放策略。\n3.具备撰写及优化达人营销方案能力",
+        "requirement": "1.市场营销、广告传播、媒体、新闻或相关专业背景优先，具备海外留学或跨文化交流经验者更佳。\n2.具备1年以上海外KOL/KOC 营销经验，熟悉海外KOL筛选标准、合作模式及效果评估方法，有成功的KOL营销案例者优先。\n3.县备优秀的沟通协调能力及数据分析能力，主观能动性强，工作积极可靠\n4.具备APP类达人资源或相应行业客户服务经验者优先。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7661851350715844927/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7660351480315021618",
+        "title": "高级客户经理-华东",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责跟进重要客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；",
+        "description": "1、负责跟进重要客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；\n2、在客户管理过程中，能与商务紧密配合，深度挖掘客户需求，参与客户方案的撰写和提案；\n3、在客户项目交付期，能够统筹整个项目，协调内外部资源，并协调其所负责的客户及其他部门之间的合作关系，确保项目进度和交付结果；\n4、负责客户合同签署内容的把控和审核，管理客户应收款回收的进程；\n5、能与客户维护良好的客情关系，维系公司和行业的品牌声誉。",
+        "requirement": "1、本科以上学历，广告、市场营销等相关专业，5年以上出海广告、海外效果营销或头部代理商 AM/CSM工作 经验。；\n2、3年以上广告公关、整合营销从业经验；\n3、 有短剧（Short Drama）、AI等App出海行业经验者优先，对主要流量渠道（如 TikTok Meta, Google 等）的消耗逻辑与买量机制有深度理解。\n4、能拉通资源产出客户方案，有较好的客户把控及管理能力;\n5、拥有强烈的“商业化敏感度”和抗压能力，擅长在客情服务中发现销售机会，具备大客户谈判与危机公关能力。\n6、积极进取，目标导向，具有高度的工作热情与责任心。\n7、具备优秀的数据分析能力，能从 GMV、ROI、转化率等维度诊断问题，并转化为客户可理解、可执行的策略建议。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7660351480315021618/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7657776811007281462",
+        "title": "客户增长顾问—上海",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "对客户海外业务增长负责，服务于客户在各个平台的业务落地和成长，包括但不限于Meta/Google/TTS",
+        "description": "1、对客户海外业务增长负责，服务于客户在各个平台的业务落地和成长，包括但不限于Meta/Google/TTS\n2、深入客户实际场景需求，链接多方资源，结合公司服务产品，解决客户在平台上遇到的问题，并为客户提供平台产品最佳实践和解决方案\n3、围绕客户成长的生命周期，为客户建立完善的客户画像和服务策略，提升客户信任&黏性，并总结为成功案例\n4 、诊断、挖掘、识别和理解客户的需求，并将客户需求准确反馈团队，推动平台产品迭代优化",
+        "requirement": "1、一年以上工作经验，熟悉FB/INS/TT等海外主流社交媒体特性，对主流海外社交媒体有投放优化理解，熟练使用各投放平台\n2、1-3年信息流广告优化经验，同时具备甲方电商/品牌方与乙方服务商投放经验者优先\n3、有CSM服务/SAAS服务/项目管理/顾问咨询的经验者优先\n4、本科及以上学历，英语良好，广告学/市场营销/统计学/社会学/计算机专业优先",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7657776811007281462/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7657072035017820443",
+        "title": "经营分析经理",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "参与集团各BU季度经营指标的制定、分解与落地，推动战略转化为可执行路径。",
+        "description": "1、参与集团各BU季度经营指标的制定、分解与落地，推动战略转化为可执行路径。\n2、参与指标经营体系的搭建，定期组织经营分析会议（月、季度），识别业务偏差与风险，推动纠偏改善。\n3、协调跨部门目标与策略对齐，针对经营缺口组织专项诊断并督导闭环。\n4、协同跨部门，拉通业务资源，推动关键项目落地并取得结果；\n6、参与流程优化与资源整合，系统性减少内部浪费，提升协同效能。\n7、参与公司经营分析模型、报表体系及会议管理制度的制定，保障数据有效支撑决策。",
+        "requirement": "1、985、211本科及以上学历，经济管理、财务等相关专业；\n2、3-5年以上企业经营分析或战略运营工作经验，参与过跨部门全链路经营改善项目，理解行业价值链与商业模式，具备前瞻业务洞察力；\n3、战略经营分析能力：能参与公司级经营分析体系建设，擅长多业务联动分析，具备战略诊断能力；\n4、高阶风险识别与决策能力：对经营数据与市场变化敏锐，能识别系统性风险并建立预警机制，提供多情景战略决策建议；\n5、跨域协同与闭环推动能力：具备资源整合与组织协同能力，能设计高效协作机制，推动课题全闭环落地；\n6、高层沟通与影响能力：善于以清晰逻辑呈现复杂洞察，有效影响高层决策并推动组织共识其他信息。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7657072035017820443/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7655528175557118234",
+        "title": "财务bp（上海）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "全面负责业务单元预算编制、滚动预测与差异分析，持续优化预算模型，引导成本意识；",
+        "description": "1. 全面负责业务单元预算编制、滚动预测与差异分析，持续优化预算模型，引导成本意识；\n2. 实施费用分级审批与利润全链路跟踪，严控低效支出，优化资源配置；\n3. 深入业务前端（合同、报价、信用等环节），协助业务管控亏损、坏账及合规风险；\n4. 负责新项目的财务可行性测算及项目全周期监控和预警，防范超支风险；\n5. 向业务侧提供及时有效的财务支持，通过普及财务规则、输出财务工具、搭建常态沟通机制等，赋能业务；\n6. 推动经营优化方案落地，参与战略研讨，建立盈利考核机制，助力业务目标达成。",
+        "requirement": "1. 985、211本科及以上学历，财务、会计、金融、经济、统计等相关专业优先，持有CPA等专业资质者优先；\n2. 8年以上财务相关工作经验，其中至少3年以上团队管理经验；\n3. 具备财务BP、财务分析、预算管理或经营分析等相关岗位的完整闭环实践经验；\n4.具备出色的业务洞察力与数据分析能力，能够从复杂数据中提炼关键驱动因素和可执行的业务洞察；\n5.优秀的沟通协调能力与跨部门影响力，能与不同层级的业务管理者建立信任、推动共识；\n6.具备成长型思维和团队管理能力，能够持续提升团队的专业价值与影响力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7655528175557118234/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7649951890222467338",
+        "title": "效果创意产品经理",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "围绕效果创意业务，定义素材生产方向的产品目标",
+        "description": "1. 围绕效果创意业务，定义素材生产方向的产品目标\n负责理解效果创意部门从客户意向、订单确认、需求流转、素材制作、交付、复盘的全链路，结合部门已有统一生产操作平台与 Agent 基座，识别素材制作环节中的核心痛点、效率瓶颈与质量问题，明确平台产品在不同场景下的优化目标。\n2. 深入一线创意生产场景，挖掘真实需求并转化为产品方案\n持续在创意策划、设计、视频、文案、项目管理、交付、复盘等流程中，通过访谈、流程观察、数据分析、案例复盘等方式，识别高频、重复、耗时、低质量或高返工环节，并将业务问题抽象为可落地的产品需求、流程设计和能力模块。\n3. 负责素材制作相关 AI 产品规划与方案设计\n基于业务场景设计面向创意生产的 AI 能力，包括但不限于：\n创意理解与需求拆解、素材生成/改写/迭代、多模态内容辅助制作、创意资产复用与检索、标签体系与素材结构化管理、生产流程自动化与协同提效、质量审核、风险识别与交付检查、复盘分析与效果归因辅助\n4. 在统一平台与 Agent 基座上推动能力落地\n基于现有技术底座，规划并拆解可复用的产品能力，推动 AI 能力以组件、工作流、Agent、工具链等形式嵌入实际创意生产流程，提升生产效率、交付质量与规模化能力，而不是停留在概念验证或单点工具。\n5. 推动研发、设计、运营、业务团队高效协作\n作为连接业务与技术的核心角色，负责将业务语言转化为产品语言和研发需求，推动需求评审、方案设计、排期推进、上线验收、灰度试点、效果跟踪与迭代优化，确保能力真正被使用、被依赖、被持续优化。\n6. 建立面向创意生产的指标体系与效果评估机制\n围绕素材制作的核心目标，建立可衡量的产品与业务指标，例如：\n生产效率：单条素材产出耗时、返工率、排期周期\n产出质量：通过率、修改轮次、采纳率\n使用效果：工具使用率、活跃度、功能渗透率\n业务价值：交付时效、客户满意度、转化提升、毛利优化\n复盘价值：素材标签准确率、策略复用率、经验沉淀率\n7. 参与创意资产体系与经验沉淀机制建设\n推动素材、脚本、标签、策略、案例、复盘结论等资产的结构化沉淀，帮助团队建立可复用的创意知识库和生产范式，减少“每次从头开始”的低效问题。\n8. 关注业务变化并持续迭代产品方向\n结合客户类型、行业趋势、平台变化、创意形态变化与团队生产方式变化，持续评估产品能力是否仍然贴合业务，定期输出优化建议与产品路线图，保证产品方向与业务增长同频。\n1. 具备较强的 AI 产品理解能力\n理解大模型、Agent、工作流自动化、多模态内容生产、知识库、标签体系、推荐/检索等 AI 产品形态，知道哪些问题适合用自动化解决，哪些适合用辅助决策解决，哪些只能通过流程重构来解决。\n2. 有复杂业务场景下的产品抽象能力\n能够从具体的业务流程中提炼共性问题，把分散、零碎、经验化的创意生产问题，抽象成标准流程、产品模块、能力组件和可持续迭代的产品体系。\n3. 具备强业务理解和一线洞察能力\n对效果广告、创意生产、素材交付、创意复盘等链路有较强理解，能够听懂业务诉求背后的真实问题，分辨“表面需求”和“根因问题”，并提出更合理的产品解法。\n4. 具备较强的数据意识和分析能力\n能够用数据判断问题优先级和方案效果，熟悉业务指标、流程指标、使用指标的设计与分析，能通过数据和案例共同验证产品价值，而不是只靠主观判断推进。\n5. 具备良好的跨团队协作与推动能力\n能够高效协同研发、设计、运营、业务、交付、管理层等多个角色，在资源有限、需求多变、目标复杂的情况下推动项目落地，具备强执行力、推进力和抗压能力。\n6. 具备产品设计与需求表达能力\n能独立完成需求调研、问题定义、PRD/原型输出、方案评审、项目跟进、验收复盘等工作，表达清晰，结构化能力强，能把复杂问题讲明白、拆明白、做明白。\n7. 具备创意生产相关行业经验更佳\n有广告创意、素材制作、效果营销、内容生产、出海业务、代理公司、创意中台、AIGC 工具等相关经验者优先。熟悉设计、视频、文案、剪辑、项目管理等任一环节者加分。\n8. 对工具落地和使用推广有实际经验\n不仅关注“做出来”，也关注“用起来”。理解工具类产品在真实组织中的推广、教育、反馈闭环与习惯养成，能够把产品能力真正嵌入工作流，而不是停留在展示层。\n9. 具备一定的技术理解能力\n需要能与研发顺畅沟通，理解接口、数据结构、权限、流程编排、Agent 调用、埋点、性能限制等基本技术概念，能清楚判断产品方案的实现复杂度与边界。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7649951890222467338/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7648863594931063082",
+        "title": "海外广告投放（游戏）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "ob Description:",
+        "description": "ob Description:\n1-Managing the full UA process for a mobile game: Planning and execution of user acquisition campaigns\n2-Oversee acquisition marketing campaigns across multiple mobile channels\n3-Produce comprehensive UA reporting, analyse ROI and identify new opportunities to support growth.\n4-Experiment and analyse campaigns for existing and upcoming projects\n5-Running multiple marketing tests and present results to stakeholders with concrete recommendations\n6-Use data-driven insights to enhance performance through sub-publisher optimization, customized targeting and segmentation.\n7-Develop briefings for new ad creatives and oversee the production of marketing material\n8-Manage business relationships with day-to-day communication and reporting\n9-Full understanding of UA eco-system, creative research, design, reporting, planning and execution\nQualifications:\n1-Bachelor/Masters degree in marketing or equivalent experience\n2- 2-4 years of experience managing performance marketing or UA campaigns for games, gaming experience is a plus.\n3-Hands-on UA experience with meaningful budget management ($50k+/month) and proven results.4-Management experience is a plus\n5-Analytical mindset: Let data guide decisions.\n6-Detail-oriented, organized, and highly-motivated\n7-Passionate about gaming and media is a plus\n8-Ability to use English as working language (or foreign national); able to write ad copy, localize content, and communicate fluently in a global team environment.",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7648863594931063082/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7646267983165720883",
+        "title": "SC电商优化—上海",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责 Facebook、Google 等海外媒体平台的电商效果类广告投放工作，包括账户搭建、广告上线、预算控制、数据监控和效果优化；",
+        "description": "1. 负责 Facebook、Google 等海外媒体平台的电商效果类广告投放工作，包括账户搭建、广告上线、预算控制、数据监控和效果优化；\n2. 根据客户业务目标、产品特点、目标市场及用户画像，制定海外广告投放策略和阶段性推广计划；\n3. 持续跟踪广告数据表现，分析 CTR、CVR、CPA、ROAS 等核心指标，及时调整投放策略，提升广告效果；\n4. 负责广告素材测试、受众测试、落地页及转化链路分析，推动素材方向和投放策略持续优化；\n5. 定期输出投放数据分析报告和复盘总结，向客户或内部团队清晰说明数据表现、问题原因及后续优化方向；\n6. 与商务、创意、技术、产品等团队协作，准确传达投放需求和素材需求，保障项目按时、高质量推进；\n7. 关注 Facebook、Google 及其他海外广告平台的政策变化、投放规则和行业趋势，持续提升投放方法论。",
+        "requirement": "1. 全日制本科及以上学历，具有海外留学或工作经验者优先考虑;\n2. 有3年以上电商、效果类海外广告投放实操经验（非APP&游戏），Facebook、Google有两大主流平台深度投放经验，有从0到1或规模化扩量成功案例者优先;\n3. 具备卓越的数据分析与用户行为洞察能力，结果导向，逻辑清晰，执行力强，能独立承担高复杂度项目;\n4. 具有成熟的账户结构、出价策略与受众拓展方法论",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7646267983165720883/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7644046862836484388",
+        "title": "亚马逊DSP广告优化师-上海&深圳&成都&广州",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；",
+        "description": "1、负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；\n2、投放计划的执行：预算及成本控制、效果优化等，对最终负责客户的投放效果负责；\n3、 负责广告投放数据的挖掘和分析，通过分析流量、策略、人群、素材，及时调整并优化广告效果，提供给客户关于投放策略及新营销机会的数据洞察；\n4、与销售部门合作，协助pitch客户，完成投放前的广告方案制定帮助客户转化；\n5、 对接客户进行运营相关沟通，负责收集、了解客户的日常需求，为客户讲解推广表现及下一步优化建议；",
+        "requirement": "1、本科及以上学历，广告学、国际贸易、理工类等相关专业优先，英语口语能作为工作语言使用；\n2、2年以上广告投放经验，有服务品牌客户经验或亚马逊大卖从业经验为加分项；\n3、熟悉出海电商平台，熟悉亚马逊平台以及亚马逊大盘情况为加分项；\n对数据敏感，具备数据分析能力，能借助数据分析的能力深挖细节，并熟练撰写方案；\n4、学习能力强并具备钻研创新的精神、高效执行且善于总结经验，具备团队协助精神并有较强的表达能力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7644046862836484388/detail",
+        "extraCities": "shenzhen"
+      },
+      {
+        "id": "7641518886374263067",
+        "title": "媒介策略高级经理",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "**媒体政策解析与策略透传**",
+        "description": "1. **媒体政策解析与策略透传**\n- 深度解读头部媒体（如Meta、Google、TikTok等）的广告政策变动，建立数字化分析模型，输出可落地的策略建议。\n- 联动行业团队制定优先级项目，推动政策红利向客户收入转化。\n2. **存量客户增长策略优化**\n- 基于客户历史数据及行业趋势，设计分层运营策略（如激活休眠客户、提升高净值客户预算占比）。\n- 搭建客户健康度评估体系，通过ROI分析、预算拆解等工具实现精细化运营。\n3. **SKA客户媒介策划与管理**\n- 实时监测市场竞争动态，调整媒介组合策略以应对流量波动。\n- 支持头部客户的年度/季度Media Plan制定，整合跨媒体资源（如程序化购买、信息流广告、KOL合作），确保投放效率与预算达成。\n4. **新客开拓与增量抢夺**\n- 设计行业抢量策略（如预算前置、政策对冲），结合客户情报制定竞争性报价方案。\n- 建立全盘媒体收入测算模型，预判市场趋势并提前布局资源。",
+        "requirement": "1. **政策解读与资源整合**\n-对媒体政策敏感度高,能快速提炼关键信息并转化为商业机会\n-具备跨部门(产品、运营、销售)协同经验,能高效调动资源推动项目落地\n-具备市场竞争预判能力,可针对流量波动制定对冲策略。\n2. **行业洞察与客户经营**\n-掌握客户预算决策链与竞对动态,能预判行业趋势并提前布局。\n-擅长通过客户访谈、舆情监控等方式收集关键情报,支撑商务谈判。\n3. **数据分析与解读**\n-数据洞察与策略转化:擅长从数据中挖掘业务逻辑,例如通过分析存量客户投放数据定位增长瓶颈或激活机会,通过SKA客户媒介数据优化渠道组合,通过行业数据预判新客开拓赛道。\n-能将数据结论转化为可落地的优化建议,为政策策略调整、客户运营、媒介策划提供直接决策支撑。\n4. **媒体广告运营/品牌客户服务**\n-历史广告投放优化/运营经验\n-品牌客户服务经验",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7641518886374263067/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7641508326651463974",
+        "title": "高级创意pm",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "需求把控与策略推演（做聪明的“策略大脑”）",
+        "description": "1. 需求把控与策略推演（做聪明的“策略大脑”）\n- 深入对接前端业务团队（商务/优化）与外部客户，精准洞察客户的商业诉求与视觉偏好，评估需求可行性并排查品牌合规风险。\n- 独立完成从“原始需求”到“创意策略”的推演，向下游执行团队下达标准、清晰的执行指令，确保创意方向与商业目标高度对齐。\n2. 产能调度与效能管理（做降本增效的“操盘手”）\n- 根据项目紧急程度与难易度，高效统筹内外产能。积极引入并调度内部AI设计资源，推动创意生产的智能化与批量化，实现降本增效。\n- 作为外部供应商的管理者，负责筛选、对接并综合评价供应商，持续优化高性价比的产能供给池。\n3. 质量守门与交付履约（做专业底线的“捍卫者”）\n- 严格把控项目流转中的关键里程碑，坚守客观质量底线，确保交付素材100%还原核心需求，保障按期交付与SLA履约。\n- 具备极强的专业定力，能够有效甄别并过滤前端的主观模糊反馈，引导各方提供具体的修改方向与客观依据，保障项目高效推进。\n4. 数据复盘与资产沉淀（做数据驱动的“分析师”）\n- 主动获取多渠道投放数据，对素材进行前链路吸引力（CTR等）与后链路转化力（CVR/ROAS/ROI/CPA等）的深度归因与漏斗分析。\n- 针对头部KA客户输出高质量的素材复盘报告，并主导对客汇报，用数据反哺后续创意迭代。\n- 组织团队拆解爆款素材的核心转化要素，配合内部系统完成创意标签的沉淀，丰富公司的优质创意资产库。",
+        "requirement": "【经验与行业认知】\n1. 资深经验：本科及以上学历，5年以上数字营销、知名广告代理商或互联网大厂创意项目管理/创意策略运营经验。\n2. 行业洞察：深入理解效果广告逻辑，对出海营销（Meta, Google, TikTok等主流媒体平台）的创意玩法与平台规则有深刻认知。\n【核心专业能力】\n3. 复杂项目统筹：具备极强的多线程任务管理与风险预判能力，能在高压、快节奏的环境下合理排期、调度资源，保障大型项目的平稳落地。\n4. 商业与数据敏锐度：懂业务、懂数据。能熟练通过核心营销指标（CTR, CVR, ROAS等）进行创意归因，具备将“数据表现”转化为“创意迭代策略”的能力。\n5. 前沿技术视野：拥抱AI技术，熟悉主流AI生成工具（如NanoBanana、GPT-Image、Kling、SeedDance等）在创意生产中的应用场景，具备强烈的“效能提升”管理意识。\n【软性素质与领导力】\n6. 横向领导力/横向协同：具备出色的跨部门协同与预期管理能力。能够作为业务中枢，以专业度驱动上下游达成共识，建立清晰、高效的协作边界，实现多方共赢。\n7. 沟通与抗压：具备优秀的对客沟通与提案汇报能力，逻辑清晰，情绪稳定，能在复杂多变的业务场景中保持专业定力。\n【加分项】\n8. 具备良好的英语读写及商务沟通能力，能直接对接海外客户及阅读英文品牌规范。\n9. 持有 PMP 认证，或有大型 DAM 系统、AIGC 产品深度使用经验者优先。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7641508326651463974/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7639700419728574771",
+        "title": "新媒体策略主管",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "投放策略与执行：独立完成新媒体广告（Tiktok、Pinterest、Snapchat等）投放策略与优化执行。分析广告数据并提出可落地执行的",
+        "description": "1、投放策略与执行：独立完成新媒体广告（Tiktok、Pinterest、Snapchat等）投放策略与优化执行。分析广告数据并提出可落地执行的优化方向，对客独立汇报投放效果。为广告成效和新媒体业务增长负责\n2、市场洞察：持续收集整理新媒体行业趋势，拆解分析营销打法。通过市场数据与业务数据分析挖掘新媒体业务潜力方向。\n3、售前支持：协同商务完成新媒体业务售前方案，协助完善商务售前话术。\n4、方法论沉淀：建立新媒体广告投放SOP、搭建新媒体知识库、组织部门内外部培训，实现方法论沉淀与新媒体业务快速复制拓展",
+        "requirement": "1、本科及以上学历，英语流利可作为工作语言、精通excel和PPT\n2、至少3年海外广告投放经验，有新媒体投放经验者优先\n3、具备清晰的逻辑思考能力和优秀的表达沟通能力，能够胜任跨团队协作\n4、结果导向、勇于挑战、乐于创新",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7639700419728574771/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7632217564974156095",
+        "title": "媒介经理-Una组",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "海外搜索媒体资源牌照管理：承接Google、Microsoft Advertising、Apple Ads年度牌照目标，制定季度媒体任务、分",
+        "description": "1. 海外搜索媒体资源牌照管理：承接Google、Microsoft Advertising、Apple Ads年度牌照目标，制定季度媒体任务、分解策略，动态监控执行进度并协调补量方案，确保指标达成；\n2. 媒体关系维护及政策谈判：主导媒体政策谈判(返点/授信/项目合作)，维护核心媒体关系，策划执行联合市场活动；\n3. 业务赋能支持：通过周会/QBR等机制对齐媒体与业务需求，设计媒体政策解读，投放优化等内外部培训课程；\n4. 运营效能提升：联动产研部门优化媒体合作流程，推动产品功能迭代与外部项目落地；\n5. 行业动态管理：实时监控媒体政策变化以及行业信息输入，并及时根据外部变化提供策略建议，并推动内部业务策略调整。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7632217564974156095/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7631404614999247131",
+        "title": "项目专员（达人方向）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "熟练驾驭从达人筛选到上线的全流程：熟悉TikTok，YouTube，Instagram等平台的玩法与生态; 能独立挖掘、筛选优质KOL/达人",
+        "description": "1. 熟练驾驭从达人筛选到上线的全流程：熟悉TikTok，YouTube，Instagram等平台的玩法与生态; 能独立挖掘、筛选优质KOL/达人资源，搭建分层KOL矩阵，负责合作洽谈、内容对接与效果跟踪，为营销项目完成度和效果负责。\n2. 数据驱动与结果导向：能够熟练使用各类红人工具(如Nox, Scrumball, HypeAuditor等)及AI辅助工具提升效率; 对ROI、CPM等核心指标敏感，能通过数据复盘不断优化投放策略。\n3. 具备撰写及优化达人营销方案能力。",
+        "requirement": "1. 市场营销、广告传播、媒体、新闻或相关专业背景优先，具备海外留学或跨文化交流经验者更佳。\n2. 具备1年以上海外KOL/KOC 营销经验，熟悉海外KOL筛选标准、合作模式及效果评估方法，有成功的KOL营销案例者优先。\n3. 具备优秀的沟通协调能力及数据分析能力，主观能动性强，工作积极可靠。\n4. 具备3C科技&车企行业或相应行业客户服务经验者优先。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7631404614999247131/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7630735534507411766",
+        "title": "媒介经理-aimee组",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "拓展并维护与海外媒体平台的官方合作关系（如Meta、Google、Pinterest、X等平台），争取独家政策与高优先级资源支持，制定长短期",
+        "description": "1. 拓展并维护与海外媒体平台的官方合作关系（如Meta、Google、Pinterest、X等平台），争取独家政策与高优先级资源支持，制定长短期媒介合作策略，建立优质稳定的媒体资源库； 2. 主导各类媒介合作项目的谈判工作，包含但不限于广告投放、赞助合作、内容合作等；确保公司在合作条款、价格、权益等方面获得最有利的条件； 3. 与公司内部团队紧密协作，为内部团队提供实时媒体政策解读、资源匹配建议及风险预警支持等，共同推动项目落地执行",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7630735534507411766/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629188798098000166",
+        "title": "亚马逊广告客户经理-SH",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1. 主要负责公司多种出海产品的推广和销售，包括亚马逊DSP广告投放、亚马逊代运营&广告托管产品、视频拍摄、线下广告等；\n2.主要针对跨境电商客户，进行顾问型、解决方案型销售，包括前期商机跟进、多渠道拓客、广告方案撰写及提案、销售商机转化；\n3.定期与客户进行服务产品回顾，做下一阶段投放规划以争取更大投入，完成周期性复盘、新阶段营销方案输出，客户日常沟通、定期客户拜访；\n4.有一定项目管理能力，可以推进跨团队合作，以及对接外部服务商和渠道合作；\n5.开拓商机并管理现存客户，跟进并转化公司提供的商机，开拓并维护行业客户，协助推动交付；\n【任职要求】\n1.本科及以上学历，传媒学科、计算机学科、商科等相关专业优先；\n2.有3年以上互联网，跨境服务，数字广告，国外电商从业背景，有亚马逊跨境品牌/工贸一体客户资源优先；\n3.有成功从0到1的跟进客户经验，有运营品牌出海数字化营销经验优先；\n4.具有强烈的客户责任感及服务意识，精益求进的追求工作高效完成，承压能力强；\n5.具备良好沟通表达通能力、逻辑性，乐观皮实，跨团队协作能力和责任心.。\n热招城市：广州/深圳/上海/杭州同步招聘",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629188798098000166/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629186832978528531",
+        "title": "亚马逊DSP广告优化师-SH",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；",
+        "description": "1、负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；\n2、投放计划的执行：预算及成本控制、效果优化等，对最终负责客户的投放效果负责；\n3、 负责广告投放数据的挖掘和分析，通过分析流量、策略、人群、素材，及时调整并优化广告效果，提供给客户关于投放策略及新营销机会的数据洞察；\n4、与销售部门合作，协助pitch客户，完成投放前的广告方案制定帮助客户转化；\n5、 对接客户进行运营相关沟通，负责收集、了解客户的日常需求，为客户讲解推广表现及下一步优化建议；",
+        "requirement": "1、本科及以上学历，广告学、国际贸易、理工类等相关专业优先，英语口语能作为工作语言使用；\n2、2年以上广告投放经验，有服务品牌客户经验或亚马逊大卖从业经验为加分项；\n3、熟悉出海电商平台，熟悉亚马逊平台以及亚马逊大盘情况为加分项；\n对数据敏感，具备数据分析能力，能借助数据分析的能力深挖细节，并熟练撰写方案；\n4、学习能力强并具备钻研创新的精神、高效执行且善于总结经验，具备团队协助精神并有较强的表达能力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629186832978528531/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7623996048016640298",
+        "title": "Amazon dsp投放",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "针对不同类型的客户，持续挖掘需求，充分理解营销目标，结合市场调研和竞品分析，运用Amazon及其他DSP平台制定针对性解决方案，帮助客户成功",
+        "description": "1. 针对不同类型的客户，持续挖掘需求，充分理解营销目标，结合市场调研和竞品分析，运用Amazon及其他DSP平台制定针对性解决方案，帮助客户成功落地海外营销规划；\n2. 充分运用各项统计工具，对投放效果进行实时监控和深度分析，灵活调整优化方向，利用多种测试方式达成 KPI 目标\n3. 深度剖析目标推广产品，构建精准用户画像，熟练运用媒体工具设定分层目标受众；\n4. 在营销各个关键阶段核查目标达成情况，梳理并撰写分维度分析报告，全面挖掘定位拓展方向，调整投放策略，完善定位模型结构；\n5. 协调商务、创意、技术等其他部门同事，调配各项人力物力资源，确保项目顺利进行。",
+        "requirement": "1. 熟悉Amazon及其他DSP特性；\n2. 具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系，进行优化和调整；\n3. 善于独立思考和积极主动给出解决方案的意识和能力；\n4. 具备至少2年的客户对接经验；\n5. 具备独立的账户管理能力，能捕捉不同市场的本地化风格。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7623996048016640298/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7619227581057616155",
+        "title": "客户经理-游戏向",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责跟进客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；",
+        "description": "1、负责跟进客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；\n2、在客户管理过程中，能与商务紧密配合，挖掘客户需求，参与客户方案的撰写和提案；\n3、在客户项目交付期，能够统筹整个项目，协调内外部资源，并协调其所负责的客户及其他部门之间的合作关系，确保项目进度和交付结果；\n4、负责客户合同签署内容的把控和审核，管理客户应收款回收的进程；\n5、能与客户维护良好的客情关系，维系公司和行业的品牌声誉。",
+        "requirement": "1、本科以上学历，广告、市场营销等相关专业，3-5年以上工作经验；\n2、1年以上广告公关、整合营销从业经验；\n3、能拉通资源产出客户方案，具备客户把控及管理能力;\n4、客户服务意识强，良好的沟通、谈判能力；\n5、积极进取，目标导向，具有高度的工作热情与责任心。\"",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7619227581057616155/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7615098337273121051",
+        "title": "TikTok高级运营",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责公司Tiktok团队在东南亚和美区的运营规划，制定TikTok业务目标，对业务增长目标负责；",
+        "description": "1、负责公司Tiktok团队在东南亚和美区的运营规划，制定TikTok业务目标，对业务增长目标负责；\n2、制定TikTok店铺、达人运营及服务商管理等工作目标及策略，并在过程中进行策略落地和结果把控；\n3、负责管理团队日常的TikTok账户操作，了解最新的社交媒体实践和技术，善于捕捉热点，获取平台流量与关注；具有发散性思维，了解海外用户习惯，有良好的网感；\n4、负责与当地直播间联动进行直播间的各项销售活动运营，对直播各环节给出合理的运营建议，配合制定各类营销策略；\n5、负责执行和优化TikTok广告的投放，分析TikTok的广告后台，调整广告内容和投放针对特定受众，达到提高网站的转化率；\n6、负责保持对TikTok带货品类的了解，不断探索发现优质产品；嗅觉敏锐，能及时发现并测试美区热销产品，作垂直矩阵爆品。",
+        "requirement": "1、英语CET4以上，口语流利、书写熟练；\n2、具有TikTok的整体运营工作经验，精通数据分析，具备较强的逻辑思维、调研及数据分析能力；\n3、有tiktok运营经验，对tiktok投放精通；\n4、在某个产品类目有0-1操盘成功经验优先；\n5、有较强的沟通能力，具备高度责任心与团队合作精神。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7615098337273121051/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7611048477468035370",
+        "title": "创意pm（ECBR）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "根据客户的要求，梳理创意方向（包含平面与视频），完成前期的创意策划，分镜头脚本创作，撰写文案",
+        "description": "1、根据客户的要求，梳理创意方向（包含平面与视频），完成前期的创意策划，分镜头脚本创作，撰写文案\n2、项目全流程管理与创意交付保障：统筹项目从启动到落地的整体进程，把控时间节点与执行质量，确保创意方案及素材按时、按标准交付\n3、聚焦投放市场创意本地化与审美的创意素材QC：重点检查创意素材的本地化适配性，同时把控素材的创意审美\n4、投后创意数据分析与效果迭代：基于广告投放后的数据反馈，进行创意复盘，分析创意对投放效果的影响（效果归因），并据此推动创意方案的迭代升级，持续提升广告的投放效果与转化能力",
+        "requirement": "1. 学历本科及以上，广告设计、市场营销、编导专业可视为加分项\n2. 至少两年以上信息流及效果类买量素材制作经验，有海外Facebook、YouTube、TikTok素材制作经验为加分项\n3. 对优质的效果类创意有较强的敏锐度，悉知素材的投放数据和优化迭代逻辑\n4. 有AI生图、AI生视频等利用AI在创意领域做执行的经验\n5. 沟通能力强、学习能力强\n6. 熟练掌握一门外语为加分项",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7611048477468035370/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7600607651508259135",
+        "title": "上海-电商品牌中高级优化师",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "针对不同类型的客户，持续挖掘需求，充分理解营销目标，结合市场调研和竞品分析，运用海外媒体制定贯穿营销周期的针对性解决方案，帮助客户成功落地海",
+        "description": "1. 针对不同类型的客户，持续挖掘需求，充分理解营销目标，结合市场调研和竞品分析，运用海外媒体制定贯穿营销周期的针对性解决方案，帮助客户成功落地海外营销规划；\n2. 充分运用各项统计工具，对媒体投放效果进行实时监控和深度分析，灵活调整优化方向，利用多种测试方式达成 KPI 目标\n3. 深度剖析目标推广产品，构建精准用户画像，熟练运用媒体工具设定分层目标受众；\n4. 在营销各个关键阶段核查目标达成情况，梳理并撰写分维度分析报告，全面挖掘定位拓展方向，调整投放策略，完善定位模型结构；\n5. 协调商务、创意、技术等其他部门同事，调配各项人力物力资源，确保项目顺利进行",
+        "requirement": "1. 熟悉Google/Meta等媒体特性；\n2. 具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系，进行优化和调整；\n3. 善于独立思考和积极主动给出解决方案的意识和能力；\n4. 具备至少2年的账户管理经验；\n5. 具备独立的广告文案撰写能力，能捕捉不同市场的本地化风格",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7600607651508259135/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541372105787623731",
+        "title": "上海-APP/游戏优化师",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "结合客户情况和投放现状，提出优化和产品策略组合建议，帮助客户增量",
+        "description": "1.结合客户情况和投放现状，提出优化和产品策略组合建议，帮助客户增量\n2.和商务媒体共同开拓新客，提升新客数量\n3.需求结构化，提高产出效率和质量",
+        "requirement": "1.熟悉FB/GG/TT/TW等主流媒体特性\n2.具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系，进行优化和调整；\n3.善于独立思考和积极主动给出解决方案的意识和能力；\n4.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力",
+        "bonus": "1. 本科及以上学历，互联网相关专业优先，有相关行业从业经验为佳\n2. 对三方数据分析工具有一定的了解\n3. 具备独立撰写项目报告及提案能力\n4.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541372105787623731/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541370320801941814",
+        "title": "客户执行（上海）",
+        "cityId": "shanghai",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "协助客户经理进行客户日常服务及项目执行，跟进项目计划、执行节点及交付要求，确保各项工作按时推进；",
+        "description": "1.协助客户经理进行客户日常服务及项目执行，跟进项目计划、执行节点及交付要求，确保各项工作按时推进；\n2.负责项目相关资料收集、信息整理、数据汇总及基础分析，支持行业、竞品、营销案例等案头研究工作；\n3.协助完成广告营销方案、客户汇报、项目复盘及结案报告等PPT材料撰写与制作，能够根据项目背景及既定思路完成资料研究、内容梳理及页面呈现；\n4.支持客户日常需求响应、会议准备、会议纪要及会后事项跟进，及时做好内外部信息同步；\n5.协助协调内部团队，跟进任务进度及交付情况；\n6.支持CRM维护、合同、报价、开票及项目流程等基础商务工作。",
+        "requirement": "1.本科及以上学历，1–3年广告代理、数字营销、客户服务或项目执行相关经验，有4A、广告代理公司、数字营销公司或品牌营销项目经验优先；\n2.具备较强的案头研究能力，能够独立进行行业、竞品、市场及营销案例的信息搜集、筛选、整理和归纳；\n3.具备较强的PPT制作能力，能够理解Brief及方案逻辑，将研究信息、数据及案例转化为结构清晰、重点明确的PPT页面，具备较好的文字提炼、内容组织及视觉呈现能力；\n4.工作细致、有责任心，对文字、数据及交付细节敏感，具备良好的时间管理及多任务处理能力；\n5.服务意识强、主动性高，能够积极响应客户及团队需求，主动跟进任务并推动事项闭环；\n6.学习能力强，能够快速理解不同客户的业务背景、营销需求及项目要求；\n7.具备良好的沟通协调和团队协作能力，执行力强，能够适应广告行业快节奏、多项目并行的工作环境。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541370320801941814/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7678159836726528275",
+        "title": "创意素质设计师—深圳",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "2026-08-26",
+        "summary": "3年以上设计/广告相关行业工作经验，有成熟的商业项目经验。",
+        "description": "1、3年以上设计/广告相关行业工作经验，有成熟的商业项目经验。\n2、有出海广告或海外广告代理商工作经验，熟悉海外广告素材的制作流程和基本逻辑。\n3、具备平面 + 视频综合设计能力，自带作品集。\n4、熟练使用 Photoshop、Illustrator、Figma、Premiere、After Effects、剪映等相关设计/视频工具。\n5、熟练使用 AI 创意工具，能将 AI 应用于广告创意和素材生产。\n6、对Meta、Google、TikTok等海外内容平台有一定了解。\n7、具备较强的视觉审美、广告创意和内容理解能力，能够独立完成从创意到落地。\n8、对海外社交媒体趋势和互联网文化敏感，能够快速捕捉热门内容及视觉趋势。",
+        "requirement": "",
+        "bonus": "1、有Meta、Google、TikTok等平台广告素材经验；\n2、有品牌电商等出海项目经验。\n3、有较强的短视频广告创意能力，能够独立完成脚本、剪辑及视觉包装。\n4、有广告数据意识，了解 CTR、CVR、CPA、ROAS 等基础指标，并能根据数据优化素材。\n5、英语能力较好，能够配合完成海外广告素材及文案的本地化工作。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7678159836726528275/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7672330798612449586",
+        "title": "电商品牌客户经理（深圳）",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "",
+        "summary": "岗位职责：1、负责核心客户的长期服务与管理，深度理解客户需求；",
+        "description": "岗位职责：1、负责核心客户的长期服务与管理，深度理解客户需求；\n2、在客户管理过程中，与内部团队紧密协作，拆解客户需求；\n3、在项目交付周期内，统筹整体项目进度，协调内外部资源，确保排期清晰、沟通顺畅与交付结果达成预期；\n4、参与客户合同、报价和服务内容的把控，关注项目成本与应收款进度，确保业务流程合规与健康；\n5、维护良好的客户关系，保证客户满意度，提升公司在行业与客户侧的品牌口碑；\n6、有参与 pitch、新客户提案或项目招投标经验者优先。\n7、有媒介策略策划、整合营销、媒介投放经验者、竞标经验优先\n能力经验要求：任职要求：\n1、本科及以上学历，市场营销、广告、国际商务等相关专业优先；拥有数字营销、代理商等海外业务经验者优先；5-7年以上工作经验。\n2、具备较强的客户管理能力，能够独立负责项目推进；\n3、客户服务意识强，具备良好的沟通协调能力和谈判能力；\n4、目标导向，能够在多任务与跨时区沟通环境中保持高效推进，具备责任心与自驱力；\n5、具备英语读写能力，可阅读海外媒体等英文资料；具备海外实习/工作/教育经历者加分；\n6、熟悉海外主流媒体（如 Meta、TikTok、Google、Pinterest 等）者优先。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7672330798612449586/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7670432956149811499",
+        "title": "市场活动专员",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "市场活动执行落地：根据活动方案，执行线上线下市场营销活动的全流程推进，包括Webinar、行业沙龙、平台招商会、闭门会、合作伙伴联合活动、客",
+        "description": "1. 市场活动执行落地：根据活动方案，执行线上线下市场营销活动的全流程推进，包括Webinar、行业沙龙、平台招商会、闭门会、合作伙伴联合活动、客户私享会等\n2. 内容策划与营销物料输出：结合跨境电商市场需求，输出活动推广文案、海报文案、公众号推文、朋友圈文案、社群话术、销售邀约话术、PPT方案等营销材料，将 SinoClick的服务能力转化为客户能理解的业务价值表达\n3. 活动获客与线索运营：负责活动线索数据整理，跟进并优化活动获客路径，包括报名表单、社群承接、销售跟进机制、会后培育内容等，推动活动线索从 Leads 到 MQL，再到销售商机的流转",
+        "requirement": "本科及以上学历，市场营销、广告、传媒、电子商务、国际贸易、英语等相关专业\n2年及以上的市场活动相关经验，能独立完成活动节奏规划、资源协调、落地执行及复盘分析\n具备较强的线索运营意识，理解 Leads、MQL、SQL等商机转化基本逻辑\n具备较好的内容策划和文案能力，能够将复杂的服务产品转化为清晰、有吸引力的客户沟通语言\n具备数据分析能力，能通过 Excel 或其他工具分析活动效果，并提出优化建议\n具备良好的跨部门沟通能力，能推动销售、运营、设计、产品、合作伙伴等多方协同\n目标感强，对活动结果负责，关注线索质量、客户转化和业务增长",
+        "bonus": "* TikTok Shop、亚马逊、独立站等跨境电商生态从业经验\n* ToB 内容营销、私域社群运营、销售赋能材料制作经验",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7670432956149811499/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7667784048140618020",
+        "title": "游戏行业客户执行-深圳/广州",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1、商务合作协助：协助处理商务合作相关事务，包括合同整理、条款核对、信息对接（如双方资质确认、合作细节沟通），跟进合同签署进度并及时归档\n2、跨部门协同跟进：跟进客户项目执行进度，对接内部财务、法务等部门，确保各环节信息传达准确、协作顺畅，推动新客合作计划落地\n3、问题跟进解决：针对项目执行中出现的基础问题，快速响应并协调解决，复杂问题及时上报解决\n4、日常事务处理：协助BD完成各类日常事务性工作（如文件传递、数据统计辅助、跨部门事务协调等），确保高效落实\n【任职要求】\n1、本科及以上学历，1-3年广告行业 AE 执行、客户服务、商务助理或相关岗位经验优先（综合素质佳的应届生可招聘，有广告代理公司实习经验者加分）\n2、沟通协作能力：逻辑清晰，善于倾听，能准确传达销售、客户、内部部门三方信息，具备良好的团队协作意识，高效推进跨角色协作\n3、执行落地能力：工作细致认真，责任心强，能高效完成多客户商务对接，严格把控工作节点，确保任务按时保质完成",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7667784048140618020/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7664510822425069870",
+        "title": "AMC高级经理",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "对客服务与产品运营：建立AMC数据支持服务的SLA机制与应急预案，保障对客响应时效与交付质量，对客户满意度及产品稳定运行负责。",
+        "description": "1. 对客服务与产品运营：建立AMC数据支持服务的SLA机制与应急预案，保障对客响应时效与交付质量，对客户满意度及产品稳定运行负责。\n2. 客户赋能与价值感知：搭建面向客户的分层级培训体系（售前Demo、新签Onboarding、版本更新宣讲），提升客户使用粘性；建立高层汇报（QBR/YBR等）标准化支持机制，紧急情况下可独立带队完成对客洞察汇报；主导标杆案例库构建，沉淀可对外传播的成功案例。\n3. 产品升级与商业价值验证：规划AMC分析报告模型的主题拓展与结论深度迭代，确保输出具备可执行性；深度参与战略级客户投放策略会，协助完成效果验证与增量价值测算，探索AMC服务商业化及产品化路径。\n4. 生态共建与行业影响：作为公司与亚马逊AMC团队的核心对接人，建立常态化沟通机制，推动平台功能优化；代表公司在行业峰会或专业渠道发声，提升专业影响力。\n5. 团队建设与效能提升：负责团队人才招募与梯队培养，建立内部培训考核机制，提升整体交付效率与复杂需求承接能力。",
+        "requirement": "1. 本科及以上学历；5年以上数据分析/广告技术/商业智能经验，其中至少2年以上团队管理经验。\n2. 精通SQL及Python，具备大规模数据处理能力；深入理解广告归因模型、增量价值评估逻辑；熟悉亚马逊AMC生态者优先。\n3. 具备客户赋能体系搭建经验，能将复杂技术逻辑转化为商业价值语言；具备商业量化思维，能设计效果验证方案并推动分析成果产品化；具备与平台方进行产品需求沟通的经验者优先。\n4. 综合素质目标导向，抗压能力强；出色的跨部门协同与资源整合能力；英语流利，能独立完成英文汇报及与海外团队无障碍沟通。\n三、加分项\n有从0到1搭建数据分析部门或AMC服务线的经验",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7664510822425069870/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7660056607670552883",
+        "title": "海外达人运营 senior",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "1- 协助上级做团队目标的拆解和规划，统筹管理红人BD团队，对接品牌需求，为品牌的marketing目标/销售目标负责；",
+        "description": "1- 协助上级做团队目标的拆解和规划，统筹管理红人BD团队，对接品牌需求，为品牌的marketing目标/销售目标负责；\n2- 统筹海外媒体平台营销，包括但不限于FB/INS/X/TK/YT等，每周持续产出内容，获得品牌曝光，熟悉海外社交媒体付费推广路径，有内容策划及输出能力；\n3- 制定整体营销策略，负责各平台KOL开发规划，梳理KOL营销流程，提升开发效率和专业度，建构高效的KOL资源库；\n4- 实现各营销项目的品牌和业务目标，规划红人资源投入与执行计划，评估红人内容上线效果，对数据进行分析并提出改善建议，持续提高内容产出质量和转化；\n5- 建立长期稳定的红人沟通及合作渠道，维护优质红人的长期稳定合作关系；",
+        "requirement": "1- 本科及以上学历，英语六级及以上，读写熟练，口语沟通优秀，具备良好的跨文化沟通与交流能力，熟悉欧美市场，有海外留学生活经历优先；\n2- 5年以上相关营销工作经验，有3年以上团队管理经验，有丰富的北美/东南亚MCN/KOL资源，具备成熟的出海品牌工作经历；\n3- 结果导向，具备较强的资源管理和项目管理能力，具有一定的抗压性，适应多线程的对内及对客沟通。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7660056607670552883/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7655265994184739108",
+        "title": "亚马逊运营主管",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "店铺全面运营管理：负责代运营的Amazon账号（1-3个，视体量而定）日常运营，包括Listing上架与优化、库存与FBA管理、账户健康监控",
+        "description": "店铺全面运营管理：负责代运营的Amazon账号（1-3个，视体量而定）日常运营，包括Listing上架与优化、库存与FBA管理、账户健康监控与风险预警，确保账号安全。\n销售与广告策略制定：根据品牌方/工厂的产品特点与市场数据，制定完整的年度/季度运营计划与PPC广告架构。精准调控SP/SB/SD广告，结合ACOS/ROI指标，在预算内最大化销售增长。\n数据复盘与优化：每周/月输出详细运营数据报告（含流量、转化率、广告结构、竞品分析），基于数据调整定价、促销、广告策略，向甲方清晰解释业绩变化原因及下一步动作。\n平台活动与增长：策划并执行Deal活动（LD/BD）、Coupon、Prime专享折扣等。利用POST、Vine计划、买家消息互动等工具积累评论与品牌粉丝。\n库存与供应链协调：与客户或内部供应链团队协作，制定备货计划与发货节奏，管理在途/在仓库存，避免断货或冗余，优化库存周转率与IPI分数。\n竞品与市场调研：持续监控核心竞品排名、打法、差评点，撰写品类机会分析报告，为甲方产品迭代或新品开发提供数据支持。\n客户对接与关系管理（关键）：作为运营端主要对接人，定期向甲方进行业务复盘会议，管理客户预期，将专业术语转化为客户易懂的进展说明。处理客户临时需求及异议。",
+        "requirement": "*精通亚马逊后台所有操作（SC/VC优先），熟练使用卖家精灵、Jungle Scout、H10等第三方工具。\n*掌握Excel/Google Sheets高级功能（透视表、VLOOKUP、图表制作），能用数据讲故事。\n*英语CET-6或同等水平以上，具备优秀的Listing文案撰写与优化能力（或能与外籍/外部写手配合）。\n*熟悉Amazon Attribution、TikTok/红人引流通路，或有其他欧美/日本站点经验。\n*结果导向与抗压能力：能同时应对多店铺/多SKU的复杂任务，对销售目标负责，适应大促期高强度响应。\n*客户沟通与共情力：能把“ACOS高”解释为“新品期测试关键词，后续会收割”，而非抛出数据让客户自行消化。能礼貌管理甲方不合理的推爆期待。\n*逻辑与汇报能力：具备结构化思维，能制作整洁、有洞察的周报/月报，而不是罗列数据截图。\n*主动性与风控意识：提前预警跟卖、合规风险、品类政策变化，主动提出备选方案。\n*Amazon运营经验3年以上，其中至少1年纯代运营（乙方）或多品类多店铺运营经验。\n*有单店铺月销20万美金以上的成功案例，并了解从0到1或从1到10的关键节点。\n*主导过至少2个不同类目的运营（如3C、家居、服装、户外、美妆等），证明快速的品类适应能力。\n*有对接工厂型客户、品牌出海客户的实际项目交付经验。\n*有亚马逊品牌运营认证、广告高阶认证。\n*曾带过1-2人小团队，能辅导初级运营执行。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7655265994184739108/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7654771306173712686",
+        "title": "客户经理-华南",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "客户管理：能很好维护现有客户关系，处理日常沟通与需求对接；能挖掘客户潜在需求，促成续签或业务扩展。",
+        "description": "1、客户管理：能很好维护现有客户关系，处理日常沟通与需求对接；能挖掘客户潜在需求，促成续签或业务扩展。\n2、业务拓展与销售：能独立完成中大型客户的基本需求梳理及方案跟进；熟悉报价、排期、执行流程，并能协调内外部资源完成交付；具备一定的谈判意识，能识别客户潜在需求，推动复购或规模升级。\n3、诊断、解决方案能力：能独立开展客户沟通，准确获取核心需求，识别关键痛点；能组织内部资源完成提案或定制化调整，并清晰传达给客户。\n4、项目管理能力：能独立管理中大型项目，跟进执行进度与质量；能有效协调内部资源，识别风险并主动反馈问题；能进行客户预期管理，确保信息同步与交付节奏一致。",
+        "requirement": "1、本科以上学历，广告、市场营销等相关专业优先，3年以上工作经验，品牌项目优先；\n2、能拉通资源产出客户方案，具备独立服务大型客户把控及管理能力;\n3、客户服务意识强，良好的沟通、谈判能力；\n4、积极进取，目标导向，具有高度的工作热情与责任心。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7654771306173712686/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7652179492065249542",
+        "title": "游戏行业客户经理-深圳/广州",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【工作地点】",
+        "description": "【工作地点】\n可base深圳或者广州，负责集团游戏行业-华南区域的客户管理与跟进\n【岗位职责】\n1、负责跟进重要客户的长期管理，挖掘既有客户的新业务潜力，促成售卖\n2、在客户管理过程中，能与商务紧密配合，深度挖掘客户需求，参与客户方案的撰写和提案\n3、在客户项目交付期，能够统筹整个项目，协调内外部资源，并协调其所负责的客户及其他部门之间的合作关系，确保项目进度和交付结果\n4、负责客户合同签署内容的把控和审核，管理客户应收款回收的进程\n5、能与客户维护良好的客情关系，维系公司和行业的品牌声誉\n【岗位要求】\n1、本科及以上学历，至少3年+广告公关、整合营销、游戏发行从业经验\n2、能拉通资源产出客户方案，有较好的客户把控及管理能力\n3、具备良好的客户服务意识、优秀的沟通和谈判能力\n4、积极进取，目标导向，具有高度的工作热情与责任心\n【你将获得】\n1、黄金赛道行业：聚焦海外营销 + 广告智能体双热门赛道\n2、清晰高阶发展路径：业务处于高速增长周期，AI 为核心战略引擎，拓展全域海外 MarTech、大模型平台管理赛道\n3、极具竞争力薪酬包：对标一线互联网大厂薪资水平\n4、完善配套福利：足额五险一金、补充商业保险、年度体检、培训预算、行业峰会、带薪年假、团建、下午茶等全套大厂福利",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7652179492065249542/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7650046834744887558",
+        "title": "亚马逊高级运营",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "精通亚马逊后台所有操作（SC/VC优先），熟练使用卖家精灵、Jungle Scout、H10等第三方工具。",
+        "description": "精通亚马逊后台所有操作（SC/VC优先），熟练使用卖家精灵、Jungle Scout、H10等第三方工具。\n*掌握Excel/Google Sheets高级功能（透视表、VLOOKUP、图表制作），能用数据讲故事。\n*英语CET-6或同等水平以上，具备优秀的Listing文案撰写与优化能力（或能与外籍/外部写手配合）。\n*熟悉Amazon Attribution、TikTok/红人引流通路，或有其他欧美/日本站点经验。\n*结果导向与抗压能力：能同时应对多店铺/多SKU的复杂任务，对销售目标负责，适应大促期高强度响应。\n*逻辑与汇报能力：具备结构化思维，能制作整洁、有洞察的周报/月报，而不是罗列数据截图。\n*主动性与风控意识：提前预警跟卖、合规风险、品类政策变化，主动提出备选方案。",
+        "requirement": "*Amazon运营经验3年以上，其中至少1年纯代运营（乙方）或多品类多店铺运营经验。\n*有单店铺月销20万美金以上的成功案例，并了解从0到1或从1到10的关键节点。\n*主导过至少2个不同类目的运营（如3C、家居、服装、户外、美妆等），证明快速的品类适应能力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7650046834744887558/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7649667316515129609",
+        "title": "Customer Success Manager",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "客户洞察与策略输出：面向跨境电商客户，基于AMC等多源数据完成用户人群画像分析，输出覆盖品牌建设、产品开发、营销投放策略的深度洞察报告。",
+        "description": "客户洞察与策略输出：面向跨境电商客户，基于AMC等多源数据完成用户人群画像分析，输出覆盖品牌建设、产品开发、营销投放策略的深度洞察报告。\n数据模型与研究方法：持续优化人群分析数据模型，建立系统化的用户研究及商业分析体系，提升分析效率与结论价值。\n市场与竞争分析：追踪市场动态与竞争格局，识别品类趋势与增长机会点，为客户营销方案落地提供高质量数据输入。\n客户沟通与落地支持：具备对客沟通能力，能将复杂分析结论转化为客户易懂、可执行的商业语言，辅助客户进行营销决策。\nAI分析探索（加分项）：结合AI相关工具或方法（如机器学习聚类、预测模型等），探索在用户洞察、投放优化中的创新应用场景。",
+        "requirement": "学历与语言：统招本科及以上学历，数学、统计、经济学、市场营销等相关专业优先；\n工作经验：3-5年电商平台（内容/经营分析/用户分析）或商业分析/数据分析岗位经验者优先。\n数据能力：具备数据分析能力，熟练使用Excel、Power BI等工具；掌握SQL或Python更佳。\n商业思维：具备宏观商业视野，能结合数据与行业理解提出有洞察的建议，不限于执行层面。\n对客经验：有直接面向客户（内部或外部）输出分析结论、参与策略沟通的经验。\nAI项目经验（加分）：接触过AI相关项目，理解基本建模逻辑或应用场景。\n软性素质：强自我驱动、逻辑清晰、抗压能力强，对跨境电商与广告营销有持续热情。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7649667316515129609/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7649348185547032886",
+        "title": "AMC高级数据分析师",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "深入了解广告投放的数据模型和指标背后的数据逻辑，为运营团队提供模型支持，广告优化建议和决策建议，助力客户获取销售增长；",
+        "description": "1、深入了解广告投放的数据模型和指标背后的数据逻辑，为运营团队提供模型支持，广告优化建议和决策建议，助力客户获取销售增长；\n2、参与并协助客户pitch，向客户准确阐述数据模型、分析成果以及广告优化方案的价值，建立和维护良好的客户关系，提高客户满意度和忠诚度；\n3、为重点客户提供高价值数据分析报告服务；\n4、对接亚马逊平台侧，协同合作探索挖掘广告数据应用，共建行业生态；\n5、协同产品同事设计、落地、优化投放优化解决方案，并不断迭代提升使用体验；",
+        "requirement": "1、 本科以上学历，2年以上工作经验，有亚马逊AMC/商业化广告分析/用户增长/广告投放/广告运营等相关经验优先；\n2、 较强的数据敏感，思维逻辑严谨，具备独立编写数据分析报告与分析看板能力；\n3、 优秀的语言表达能力和跨部门协助能力，擅长沟通，能主动、有效地推进和解决问题；\n4、 熟练掌握SQL，Python及其他相关办公软件（Excel、PPT），能准确理解并优化数据模型；\n5、 自我驱动力和抗压能力强，良好的英文听读写能力，有志于在跨境领域深耕；",
+        "bonus": "有亚马逊平台投放数据分析经验的优先，在Agency为大品牌方提供相关服务经验的优先",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7649348185547032886/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7647097861615700287",
+        "title": "SC商务拓展—上海",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "",
+        "description": "",
+        "requirement": "1、负责公司海外媒介采买、达人营销，全链路代运营等服务的销售工作，完成个人业绩指标\n2、主动跟进市场部分配的销售线索，挖掘需求并提供解决方案\n3、主动识别、开拓并签下能带来长期价值的新客户和新业务机会，为公司的营收增长构建坚实的\n拥有1-3年相关跨境电商行业的商务、销售或客户服务经验，熟悉跨境电商运营流程及广告推广痛点",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7647097861615700287/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7641492912856893732",
+        "title": "游戏行业商务经理-深圳/广州",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【工作地点】",
+        "description": "【工作地点】\n可base深圳或者广州，负责集团游戏行业-华南区域的新客开拓及销售目标达成\n【岗位职责】\n1、负责游戏行业新客拓展及销售工作，达成业务合作及业务对接、建立顺畅且深度的合作关系\n2、承接团队的商务指标，对自己的指标负责，达成业绩交付\n3、收集市场及竞品信息、动态，帮助自己更有针对性的获客\n4、对于行业客户需求有充分认知，深度理解客户痛点和需求，并很好的承接和服务\n【岗位要求】\n1、本科及以上学历，至少3年+互联网公司、广告公司、媒体等行业商务或广告销售经验\n2、熟悉商务工作流程，能够独立、有效的管理全流程\n3、有一定的市场敏锐度及洞察力，强力的责任心和自我驱动力\n4、出色的沟通表达能力&跨部门协作能力，较强的提案汇报能力\n【你将获得】\n1、黄金赛道行业：聚焦海外营销 + 广告智能体双热门赛道\n2、清晰高阶发展路径：业务处于高速增长周期，AI为核心战略引擎，拓展全域海外 MarTech、大模型平台管理赛道\n3、极具竞争力薪酬包：对标一线互联网大厂薪资水平\n4、完善配套福利：足额五险一金、补充商业保险、年度体检、培训预算、行业峰会、带薪年假、团建、下午茶等全套大厂福利",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7641492912856893732/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629188498104781098",
+        "title": "亚马逊广告客户经理-SZ",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1. 主要负责公司多种出海产品的推广和销售，包括亚马逊DSP广告投放、亚马逊代运营&广告托管产品、视频拍摄、线下广告等；\n2.主要针对跨境电商客户，进行顾问型、解决方案型销售，包括前期商机跟进、多渠道拓客、广告方案撰写及提案、销售商机转化；\n3.定期与客户进行服务产品回顾，做下一阶段投放规划以争取更大投入，完成周期性复盘、新阶段营销方案输出，客户日常沟通、定期客户拜访；\n4.有一定项目管理能力，可以推进跨团队合作，以及对接外部服务商和渠道合作；\n5.开拓商机并管理现存客户，跟进并转化公司提供的商机，开拓并维护行业客户，协助推动交付；\n【任职要求】\n1.本科及以上学历，传媒学科、计算机学科、商科等相关专业优先；\n2.有3年以上互联网，跨境服务，数字广告，国外电商从业背景，有亚马逊跨境品牌/工贸一体客户资源优先；\n3.有成功从0到1的跟进客户经验，有运营品牌出海数字化营销经验优先；\n4.具有强烈的客户责任感及服务意识，精益求进的追求工作高效完成，承压能力强；\n5.具备良好沟通表达通能力、逻辑性，乐观皮实，跨团队协作能力和责任心.。\n热招城市：广州/深圳/上海/杭州同步招聘",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629188498104781098/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629185953316276506",
+        "title": "亚马逊DSP广告优化师-SZ",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；",
+        "description": "1、负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；\n2、投放计划的执行：预算及成本控制、效果优化等，对最终负责客户的投放效果负责；\n3、 负责广告投放数据的挖掘和分析，通过分析流量、策略、人群、素材，及时调整并优化广告效果，提供给客户关于投放策略及新营销机会的数据洞察；\n4、与销售部门合作，协助pitch客户，完成投放前的广告方案制定帮助客户转化；\n5、 对接客户进行运营相关沟通，负责收集、了解客户的日常需求，为客户讲解推广表现及下一步优化建议；",
+        "requirement": "1、本科及以上学历，广告学、国际贸易、理工类等相关专业优先，英语口语能作为工作语言使用；\n2、2年以上广告投放经验，有服务品牌客户经验或亚马逊大卖从业经验为加分项；\n3、熟悉出海电商平台，熟悉亚马逊平台以及亚马逊大盘情况为加分项；\n对数据敏感，具备数据分析能力，能借助数据分析的能力深挖细节，并熟练撰写方案；\n4、学习能力强并具备钻研创新的精神、高效执行且善于总结经验，具备团队协助精神并有较强的表达能力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629185953316276506/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7594344807092390182",
+        "title": "商务副总监",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "1:协助团队打造完善全链路新客拓展团队，完善团队人员和价值。",
+        "description": "1:协助团队打造完善全链路新客拓展团队，完善团队人员和价值。\n2:商务机会获取：通过不限于自身资源、客户转介绍、榜单搜索、参加论坛、展会、沙龙等方式，获取有效客户资源并及时跟进客户需求。\n3:商务机会跟进：寻找机会点挖掘客户合作意愿，并与客户就商业条款进行谈判沟通，促成商务合作。\n4:项目比稿：针对涉及项目比稿的客户，统筹协调内部资源进行，相关材料准备，并负责向客户进行述标。\n5:客户关系维护与日常拜访：可以独自拜访以及协助客户经理进行日常客勤关系维护并，围绕客户存在的痛点、需求进行沟通并提出建议；\n6:内部管理流程执行：基于公司合规等内部管理要求，与客户沟通协调并准备相关资料，并完成内部管理流程执行工作。",
+        "requirement": "1:具备5年以上出海行业商务拓展经验，必须是出海行业ECBR经验。\n2:具备多年销售团队管理经验。\n3:具备丰富海外媒体渠道销售、数字营销经验；\n4:具有丰富中国出海客户资源（出海跨境电商、品牌、DTC、独立站方向）有大客户资源优先。\n5:具备丰富的相关行业知识，有相关行业从业经验优先；\n6:能够拓展出海全链路资源，过往业绩优良者优先。\n商业思维（能够了解市场趋势与商务背景，并依此行动）；\n搜集信息（能够通过探究、调查与询问，收集相关信息）；\n获取信任（开放、真诚，值得信任）；\n积极主动（能够采取积极主动的态度与客户沟通）；\n结果达成（勇于承担责任，努力实现有挑战性的目标）；\n团队协作（具备良好的团队协作能力，能够跨团队合作，重视他人的意见）；",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7594344807092390182/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7572491457375340851",
+        "title": "海外达人运营—深圳",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责全球TikTok 达人和其他渠道达人的推广工作&活动策划；",
+        "description": "1. 负责全球TikTok 达人和其他渠道达人的推广工作&活动策划；\n2. 根据客户品牌需求制定红人营销方案，策划符合海外用户偏好的创意内容（包括但不限于 YT、TikTok、INS、FB，Reddit等）；\n3. 跟踪项目执行流程，管理达人运营团队确保内容按时交付；\n4. 通过数据分析，优化达人合作策略，提高品牌曝光和用户转化率。\n5. 拓展并建立KOL资源库，挖掘高潜力达人。\n6.拓展KOL机构资源，建立合作和管理；",
+        "requirement": "1. 本科学历及以上，英语CET6级或同等托福雅思，能使用英文作为工作语言。\n2. 有1-3年以上KOL/KOC管理经验；\n3. 熟悉品牌的内容营销需求，有较丰富的项目方案，项目执行管理经验；\n4.有达人机构资源、达人库沉淀者优先；\n5.有较强的数据敏感性以及数据整合能力；",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7572491457375340851/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7555384474553420041",
+        "title": "SC商务拓展—深圳",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "",
+        "description": "",
+        "requirement": "1、负责公司海外媒介采买、达人营销，全链路代运营等服务的销售工作，完成个人业绩指标\n2、主动跟进市场部分配的销售线索，挖掘需求并提供解决方案\n3、主动识别、开拓并签下能带来长期价值的新客户和新业务机会，为公司的营收增长构建坚实的\n拥有1-3年相关跨境电商行业的商务、销售或客户服务经验，熟悉跨境电商运营流程及广告推广痛点",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7555384474553420041/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541370320800942390",
+        "title": "客户经理（ECBR深圳）",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "客户拓展及管理：具备良好的客户服务意识，深入了解客户行业市场情况，洞悉所负责行业、核心客户及其竞争对手的信息及动态，积极与客户进行深度沟通，",
+        "description": "1.客户拓展及管理：具备良好的客户服务意识，深入了解客户行业市场情况，洞悉所负责行业、核心客户及其竞争对手的信息及动态，积极与客户进行深度沟通，做好客户预期管理，准确理解、把握和挖掘客户需求，与客户保持良好合作关系及拓展新业务能力；\n2.策略管理：能够带领并引导团队的策略思考、消费者洞察，制定客户年度和各阶段性的传播方案，包含整体策略，数字营销传播，能够独立完成方案撰写和交付等能力；\n3.项目管理：能够同时负责多项目管理，负责项目全流程环节及细节把控、项目报价及利润率管理。整合公司资源，负责团队的工作安排及进展的管理，保证团队的执行效率和执行效果。同时协调公司各部门之间的工作进度及质量，化完成客户的需求；\n4.团队管理：组建与管理高效团队，担任项目核心负责人角色，做好协同者的工作任务协调安排和执行监督，对团队人员赋能（指导工作方法论、团队影响力），负责团队成员的业绩表现、发展规划，挖掘与培养有潜力的人才，提升团队凝聚力，保持团队以效率为前提的稳定性；\n5.商务谈判能力：参与和完成商务合作谈判，管控项目的报价、合同、成本、执行进度、项目结案与回款等事项；\n6.客户关系发展与维护，建设与管理公司与客户的长期，信任的合作关系，负责客户潜在及延展性需求的实现；\n7.承担并完成年度销售业绩指标，与售前团队协作，发掘商机，管理商机销售漏斗，完成商务谈判、合同签订、合同回款等工作；\n8.协调内外部资源，及时高效协助解决重大客户需求或投诉，维持客户满意度和忠诚度。",
+        "requirement": "1.本科及以上学历，英语四六级，有海外教育背景，英语熟练，书面翻译能力上佳者优先；\n2.有甲乙方的从业经历，具备5年以上数字营销公司工作经历，至少 1-2 年的出海营销服务经验；\n3.熟悉跨境市场环境，对于出海熟悉营销领域有极高的热情，兴趣，对于海外媒介有相关了解优先；\n4.具备良好的协作、沟通能力，有独立分析和解决问题的能力，并可以主动、积极地与内外部沟通，帮助客户成功 ；\n5.具备客户关系的构建能力，能快速与客户方建立长期稳定的合作关系；\n6.对团队成员的专业能力.服务意识进行有效的培训和指导；\n7.逻辑思维能力强，做事积极主动，严谨负责，有项目管理经验者优先 。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541370320800942390/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541370279349258559",
+        "title": "商务经理（ECBR深圳）",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "商务机会获取：通过不限于自身资源、客户转介绍、榜单搜索、参加论坛、展会、沙龙等方式，获取有效客户资源并及时跟进客户需求；",
+        "description": "1.商务机会获取：通过不限于自身资源、客户转介绍、榜单搜索、参加论坛、展会、沙龙等方式，获取有效客户资源并及时跟进客户需求；\n2.商务机会跟进：寻找机会点挖掘客户合作意愿，并与客户就商业条款进行谈判沟通，促成商务合作；\n3.项目比稿：针对涉及项目比稿的客户，统筹协调内部资源进行，相关材料准备，并负责向客户进行述标；\n4.客户关系维护与日常拜访：可以独自拜访以及协助客户经理进行日常客勤关系维护并，围绕客户存在的痛点、需求进行沟通并提出建议；\n5.内部管理流程执行：基于公司合规等内部管理要求，与客户沟通协调并准备相关资料，并完成内部管理流程执行工作。",
+        "requirement": "1.具备2年以上出海行业商务拓展经验，必须是出海行业领域经验；\n2.具备海外媒体渠道销售、数字营销经验；\n3.具有中国出海客户资源（出海跨境电商、品牌、DTC、独立站方向）有大客户资源优先；\n4.具备一定的相关行业知识，有相关行业从业经验优先；\n5.能够独立拓展客户，过往业绩优良者优先。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541370279349258559/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541370255986411819",
+        "title": "深圳-游戏/APP优化师",
+        "cityId": "shenzhen",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "服务大型客户，接触不同类型的产品投放",
+        "description": "1.服务大型客户，接触不同类型的产品投放\n2.理解从曝光到转化的完整漏斗逻辑，能根据漏斗各阶段的转化瓶颈制定差异化策略\n3.为团队提供账户诊断、策略指导和操作标准，提升整体团队能力\n4.能带教初中级优化师，形成知识沉淀和优化方法论体系。\n1. 独立负责广告账户的日常操作，优化投放效果；\n2. 制定广告投放策略，从不同维度分析历史投放数据，发现并解决现有投放问题，寻找最优投放方案；\n3.定期与客户进行数据review, 准确表达相关数据报告内容；\n4. 与商务，技术，创意，产品部等紧密合作，确保项目正常进行；\n5. 了解客户的需求，提供针对性的营销投放策略和解决方案；\n6. 担任项目PM, 对整个项目交付结果负责",
+        "requirement": "1. 熟练账户海外媒介知识以及5年账户管理操作经验，尤其需要google ads经验丰富；\n2. 具备较完善的游戏客户行业知识；\n3. 具备一定的（中大型）项目管理能力；\n4. 能够独立撰写项目报告，并获得客户的认可；\n5.中大型项目的提案能力\n1. 可独立管理并推动中大型项目发展，适当指导初级同时进行项目写作；\n2. 能够快速响应客户需求并进行针对性的分析，提供切实有效的解决方案；\n3.能够进行有效的内外部沟通；\n4. 能够为团队成员提供业务知识和优化技巧方面的初级培训，提升团队业务水平",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541370255986411819/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7647421452317329673",
+        "title": "资深JAVA研发工程师/技术专家（广州）",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "",
+        "summary": "能够独立完成中大型项目的搭建、系统分析及设计，能够主导完成核心代码的开发，确保项目的质量和进度；",
+        "description": "1、能够独立完成中大型项目的搭建、系统分析及设计，能够主导完成核心代码的开发，确保项目的质量和进度；\n2、有企业级产品的架构经验和能力；\n3、能够按照开发规范和流程独立完成迭代周期内的需求交付工作，并能够优化团队开发效率；\n4、参与飞书深诺技术架构全面升级建设过程中的开发与设计工作；\n5、负责初/中/高级程序开发人员培养工作；\n6、负责日常联调/协查工作；",
+        "requirement": "1、10年以上Java开发/架构经验，本科以上学历（计算机相关专业优先）；\n2、掌握至少一种微服务开发框架，包括但不限于SpringCloud，Dubbo；\n3、掌握至少一种消息中间件，如RabbitMQ，Kafka，掌握至少一种任务调度框架，如Saturn，elasticJob；\n3、熟练掌握如redis，MySQL，elasticSearch，maven，git等技能，有JVM调优经验和数据库调优经验者优先；\n4、有良好的团队协作和沟通能力，积极主动，既能独立完成工作也能有效融入团队；\n5、对海外媒体/国内媒体的marketing API有一定的经验；\n6、有过大型分布式并发系统开发经验，有广告/AI行业背景者优先；\n7、积极拥抱AI，对于AI相关知识的储备、AI在工程提效，业务产品应用方面有自己的见解；\n8、有良好的质量意识和生产环境意识；",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7647421452317329673/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7644872642927872266",
+        "title": "高级/资深质量工程师（广告业务方向）",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "质量体系建设：参与广告投放平台、数据报表系统、自动化规则引擎等核心业务模块的全流程质量保障，建立并优化质量度量标准与过程改进机制。",
+        "description": "1、质量体系建设：参与广告投放平台、数据报表系统、自动化规则引擎等核心业务模块的全流程质量保障，建立并优化质量度量标准与过程改进机制。\n2、广告业务专项测试：深入理解 Amazon/Meta/ASA/TikTok 等平台的广告投放逻辑、数据对接与归因逻辑，设计针对性的测试场景，保障广告数据采集、创编、效果回传等链路的准确性。\n3、AI 与自动化测试开发：构建和维护接口自动化、UI 自动化测试框架，并探索引入 AI 能力（如测试脚本生成、测试数据生成、智能断言、缺陷预测等）提升测试效率与覆盖率。\n4、持续集成与质量左移：推动测试左移，参与需求与技术方案评审，结合 CI/CD 流程，实现自动化测试在开发阶段的快速反馈。\n5、缺陷分析与风险管控：对线上/线下缺陷进行根因分析，识别风险点，推动开发团队形成系统性解决方案，并沉淀测试资产与知识库。",
+        "requirement": "1、全日制本科及以上学历，计算机、软件工程、信息管理等相关专业；5-10年测试或测试开发经验，其中至少 1 年专注于广告系统或程序化广告平台。有代理商或 SaaS 广告平台质量保障经验者优先。\n2、广告平台经验：熟悉 Amazon Ads、Meta Ads、Apple Search Ads、TikTok Ads 中至少一个平台的广告管理 API、归因规则及常见问题模式；理解广告结构、归因、素材审核、转化回传等广告业务核心概念。\n3、质量管理能力：掌握常用质量模型与度量方法（如缺陷逃逸率、自动化通过率、测试覆盖度），能主导制定测试计划与质量报告；具备良好的风险判断能力与跨团队沟通推动能力。\n4、自动化与 AI 实践经验：\n-熟练使用至少一种主流自动化测试框架（如 Pytest、TestNG、Robot Framework）及持续集成工具（Jenkins、GitLab CI）。\n-具备 AI 在测试中的实际应用经验或研究能力：如利用大模型生成测试用例/断言、异常检测算法辅助定位问题等。\n-熟练使用 Python/Java 中的至少一种语言完成测试工具开发。\n5、良好的英文读写能力（能阅读广告平台官方技术文档）。",
+        "bonus": "1、主导过自动化覆盖率提升或测试效能平台建设。\n2、了解大数据测试（如 Spark、Hive）或实时数据流测试（Kafka、Flink）。\n3、有广告归因模型、MMM 或竞价策略 A/B 测试相关经验。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7644872642927872266/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629187594065201454",
+        "title": "亚马逊广告客户经理-GZ",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "【岗位职责】",
+        "description": "【岗位职责】\n1. 主要负责公司多种出海产品的推广和销售，包括亚马逊DSP广告投放、亚马逊代运营&广告托管产品、视频拍摄、线下广告等；\n2.主要针对跨境电商客户，进行顾问型、解决方案型销售，包括前期商机跟进、多渠道拓客、广告方案撰写及提案、销售商机转化；\n3.定期与客户进行服务产品回顾，做下一阶段投放规划以争取更大投入，完成周期性复盘、新阶段营销方案输出，客户日常沟通、定期客户拜访；\n4.有一定项目管理能力，可以推进跨团队合作，以及对接外部服务商和渠道合作；\n5.开拓商机并管理现存客户，跟进并转化公司提供的商机，开拓并维护行业客户，协助推动交付；\n【任职要求】\n1.本科及以上学历，传媒学科、计算机学科、商科等相关专业优先；\n2.有3年以上互联网，跨境服务，数字广告，国外电商从业背景，有亚马逊跨境品牌/工贸一体客户资源优先；\n3.有成功从0到1的跟进客户经验，有运营品牌出海数字化营销经验优先；\n4.具有强烈的客户责任感及服务意识，精益求进的追求工作高效完成，承压能力强；\n5.具备良好沟通表达通能力、逻辑性，乐观皮实，跨团队协作能力和责任心.。\n热招城市：广州/深圳/上海/杭州同步招聘",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629187594065201454/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7629186372402940198",
+        "title": "亚马逊DSP广告优化师-GZ",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "工作地点：",
+        "description": "工作地点：\n广州市天河区棠下智汇Park D栋301-302\n1、负责Amazon DSP广告策略的规划和实际投放，完成广告策略制定、广告上线、数据观测及调优，定期内部团队/外部客户复盘会议；\n2、投放计划的执行：预算及成本控制、效果优化等，对最终负责客户的投放效果负责；\n3、 负责广告投放数据的挖掘和分析，通过分析流量、策略、人群、素材，及时调整并优化广告效果，提供给客户关于投放策略及新营销机会的数据洞察；\n4、与销售部门合作，协助pitch客户，完成投放前的广告方案制定帮助客户转化；\n5、 对接客户进行运营相关沟通，负责收集、了解客户的日常需求，为客户讲解推广表现及下一步优化建议；",
+        "requirement": "1、本科及以上学历，广告学、国际贸易、理工类等相关专业优先，英语口语能作为工作语言使用；\n2、2年以上广告投放经验，有服务品牌客户经验或亚马逊大卖从业经验为加分项；\n3、熟悉出海电商平台，熟悉亚马逊平台以及亚马逊大盘情况为加分项；\n对数据敏感，具备数据分析能力，能借助数据分析的能力深挖细节，并熟练撰写方案；\n4、学习能力强并具备钻研创新的精神、高效执行且善于总结经验，具备团队协助精神并有较强的表达能力。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7629186372402940198/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7618493596949612842",
+        "title": "广州-商务拓展",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "拓展出海行业高潜客户：拓展产业带、跨境电商协会、VC机构、品牌榜单、优质上下游服务商等合作资源，完成新客转化和消耗目标，实现平台产品分销入驻",
+        "description": "1.拓展出海行业高潜客户：拓展产业带、跨境电商协会、VC机构、品牌榜单、优质上下游服务商等合作资源，完成新客转化和消耗目标，实现平台产品分销入驻，对公司业务增长负责。\n2.通过线下拜访、活动、沙龙和电话、微信等线上沟通方式和目标客户进行沟通，促成合作。\n3.为已合作客户提供需要的营销服务，深度挖掘客户需求，拓宽业务脉络，协调内部资源达成客户需求，支持客户增长。\n4.紧跟媒体动向，深耕出海市场，让自己成为一个有品牌影响力的专家型销售。",
+        "requirement": "1.具有优秀的沟通能力和表达能力，有一定的公众演讲能力更佳，并适应一定频率的出差\n2.英语4级以上，英语听、说、写能力良好；\n3.有2年以上的电商销售经验或市场经验，有【服务产品整合销售+跨境行业经验和资源】更佳\n4.优秀商务谈判、信息获取能力和客户管理能力，主动开拓意识强，抗压能力强 ； 能够主动挖掘客户需求，协调内部资源达成客户需求；",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7618493596949612842/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7615441918621288747",
+        "title": "电商品牌商务经理（广州）",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "团队目前需要解决问题与此岗位要解决什么问题*",
+        "description": "团队目前需要解决问题与此岗位要解决什么问题*\n突破现有客户合作模式，通过拓新，挖掘新的客户类型，比如国内品牌出海、工厂转型独立站，亚马逊转型独立站等高潜力客户，提高整体合作客户的利润；\n职位价值*\n在行业顶尖团队的支持与协同下，独立拓展客户，深入挖掘客户需求，加深行业理解，为客户提供优质服务、创造业务价值，拥有广阔的成长空间与高速的成长速度。\n岗位职责*\n1.商务机会获取:参加论坛、展会、沙龙等方式，获取有效客户资源并及时跟进客户需求;\n2.商务机会跟进:寻找机会点挖掘客户合作意愿，并与客户就商业条款进行谈判沟通，促成商务合作;\n3.项目比稿:针对涉及项目比稿的客户，统筹协调内部资源进行相关材料准备，并负责向客户进行述标;\n4.客户关系维护与日常拜访:协助客户经理进行日常客勤关系维护并围绕客户存在的痛点、需求进行沟通并提出建议;\n5.内部管理流程执行:基于公司合规等内部管理要求，与客户沟通协调并准备相关资料(信审、虚拟账户、营业执照等)，并完成内部管理流程执行工作(CRM 信息维护等);\n岗位要求*\n1.具备2年以上商务拓展经验，具备海外渠道销售经验优先；\n2.具有一定的中国出海客户资源（出海跨境电商、品牌等），有大客户资源优先；\n3.具备一定的相关行业知识，有相关行业从业经验优先；\n4.能够独立拓展客户；\n本科以上，有海外教育背景优先；\n能力要求*\n1.商业思维（能够了解市场趋势与商务背景，并依此行动）；\n2.搜集信息（能够通过探究、调查与询问，收集相关信息）；\n3.积极主动（能够采取积极主动的态度与客户沟通）；\n4.结果达成（勇于承担责任，努力实现有挑战性的目标）；\n团队协作（具备良好的团队协作能力，能够跨团队合作，重视他人的意见）；",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7615441918621288747/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7541370225460513087",
+        "title": "广州-电商品牌中高级优化师",
+        "cityId": "guangzhou",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "掌握Facebook、Google、Tiktok等媒体的广告投放技巧，确保各项目广告需求的无误上线执行；",
+        "description": "1. 掌握Facebook、Google、Tiktok等媒体的广告投放技巧，确保各项目广告需求的无误上线执行；\n2. 与组内成员紧密协作，根据客户的需求制定项目推广计划，高效地执行方案；\n3. 实时监控广告数据，及时进行优化调整，实现客户预期的营销效果；\n4. 与商务、创意、技术及产品部门紧密合作，确保项目正常进展；\n5. 定期输出投放数据分析报表，通过定期与客户进行数据review，改善广告投放效果，提升项目的客户满意度。",
+        "requirement": "1. 具备海外市场投放经验，服务过跨境电商客户优先；\n2. 熟悉Meta、Google、TikTok等媒体平台；\n3. 基本能够独立撰写项目报告和分析；有提案经验优先考虑；\n4. 本科以上，英语良好，英语六级以上或有海外教育背景优先考虑\n1. 逻辑思维清晰，有较强数据分析能力；\n2. 学习能力强，能够灵活运用和不断提升本职工作相关的知识、方法、工具等；\n3. 执行能力强，能准确了解客户需求并提供高质量服务，持续主动跟进客户确保问题解决\n4. 项目管理能力强，能够做好内部协调以及客户沟通，使项目按时安质顺利进展",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7541370225460513087/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7672665800180648228",
+        "title": "游戏行业商务经理-华北",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "",
+        "summary": "【工作地点】",
+        "description": "【工作地点】\nbase北京，负责集团游戏行业-华北区域的新客开拓及销售目标达成\n【岗位职责】\n1、负责游戏行业新客拓展及销售工作，达成业务合作及业务对接、建立顺畅且深度的合作关系\n2、承接团队的商务指标，对自己的指标负责，达成业绩交付\n3、收集市场及竞品信息、动态，帮助自己更有针对性的获客\n4、对于行业客户需求有充分认知，深度理解客户痛点和需求，并很好的承接和服务\n【岗位要求】\n1、本科及以上学历，至少3年+互联网公司、广告公司、媒体等行业商务或广告销售经验\n2、熟悉商务工作流程，能够独立、有效的管理全流程\n3、有一定的市场敏锐度及洞察力，强力的责任心和自我驱动力\n4、出色的沟通表达能力&跨部门协作能力，较强的提案汇报能力\n【你将获得】\n1、黄金赛道行业：聚焦海外营销 + 广告智能体双热门赛道\n2、清晰高阶发展路径：业务处于高速增长周期，AI为核心战略引擎，拓展全域海外 MarTech、大模型平台管理赛道\n3、极具竞争力薪酬包：对标一线互联网大厂薪资水平\n4、完善配套福利：足额五险一金、补充商业保险、年度体检、培训预算、行业峰会、带薪年假、团建、下午茶等全套大厂福利",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7672665800180648228/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7668566727844251930",
+        "title": "CSM经理-华北",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "整合营销与商业拓展：负责App行业整合营销业务的拓展与落地，针对头部客户挖掘定制化营销机会，对整合营销收入及利润指标负责。",
+        "description": "整合营销与商业拓展：负责App行业整合营销业务的拓展与落地，针对头部客户挖掘定制化营销机会，对整合营销收入及利润指标负责。\nDSP与中长尾媒体策略挖掘：探索并开拓DSP及中长尾小媒体资源，发掘流量采买及品牌策略机会，丰富团队的媒介采买矩阵，提升整体利润率。\n跨部门协同与产品适配：作为行业与内部服务产品部门的对接窗口，洞察行业趋势与客户痛点，推动内部产品在App行业的定制化落地与适配。\n行业策略与品牌发声：担任行业公众号负责人，制定并执行内容策略；联动市场部门矩阵，持续输出行业洞察与标杆案例，提升团队在出海市场的品牌影响力。",
+        "requirement": "大客户整合营销全案经验：具备丰富的大客户服务经验，完整主导过从客户需求匹配、提案输出、全案策划到项目落地执行的全生命周期闭环，有成功的全案交付案例。自带或积累了一定的优质KOL（达人）资源库，能够快速为出海App客户匹配并撬动KOL营销机会。\n出色的文字功底与内容策划：具备极强的文案撰写与内容策划能力，能够精准提炼行业洞察与业务亮点，独立产出高质量的行业分析、案例包装及公关稿件，赋能行业发声。\n海外媒体认知与DSP经验（加分项）：具备海外媒体或相关领域工作经验，熟悉DSP及中长尾媒体的底层逻辑与流量采买策略，能敏锐捕捉品牌侧投放机会者优先。\n极强的学习与自驱力：面对新业务和新市场具备快速学习和破局的能力；沟通协调能力强，能高效拉通内部多部门资源，具备“行业大脑”特质与强烈的探索欲。\n流利的英语工作能力与商务沟通：因出海营销领域多涉及海外客户，要求英语听说读写精通，能作为日常工作语言进行无障碍的商务沟通、提案宣讲及邮件往来。能够直接与海外KOL进行顺畅、专业的沟通，精准传达Brief并维护良好的达人客情关系。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7668566727844251930/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7614045651266029887",
+        "title": "商务经理-华北",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "新客拓展",
+        "description": "1.新客拓展\n线索收集：通过线上线下渠道（如行业资源、行业展会等）获取潜在客户信息；\n客户需求确认：与潜在客户初步接洽，挖掘客户需求、痛点和预算，判断合作意向。\n2.合作谈判\n政策报价：根据公司政策和客户需求，为客户制定有竞争力的报价方案，并说明条款细节；\n服务售卖：根据客户需求的复杂度，协同AM和CSM为客户提供定制化的售前方案，并详细介绍产品/服务的优势，解答疑问，促成成交。\n3.合作开启\n客户资质评估：通过实际会客等形式审核客户的背景、财务状况、行业口碑等，确保合作安全可靠；\n客户信审&合同流程：配合风控/法务团队进行信审，跟进合同起草、审批、签署及归档流程。\n4.客户交接\n新客交接：有清晰的新客交接checklist，并在新客初期协同AM做联合拜访，确保客户交接质量；\n5.客情维护\n突发情况支持：客诉或突发情况发生，BD需要协助AM一起进行客户的安抚和问题处理；\n客情关系：与客户保持良好的客情关系，对了解到的客户经营动向或投放策略及时与内部分享和同步。1.新客拓展\n线索收集：通过线上线下渠道（如行业资源、行业展会等）获取潜在客户信息；\n客户需求确认：与潜在客户初步接洽，挖掘客户需求、痛点和预算，判断合作意向。\n2.合作谈判\n政策报价：根据公司政策和客户需求，为客户制定有竞争力的报价方案，并说明条款细节；\n服务售卖：根据客户需求的复杂度，协同AM和CSM为客户提供定制化的售前方案，并详细介绍产品/服务的优势，解答疑问，促成成交。\n3.合作开启\n客户资质评估：通过实际会客等形式审核客户的背景、财务状况、行业口碑等，确保合作安全可靠；\n客户信审&合同流程：配合风控/法务团队进行信审，跟进合同起草、审批、签署及归档流程。\n4.客户交接\n新客交接：有清晰的新客交接checklist，并在新客初期协同AM做联合拜访，确保客户交接质量；\n5.客情维护\n突发情况支持：客诉或突发情况发生，BD需要协助AM一起进行客户的安抚和问题处理；\n客情关系：与客户保持良好的客情关系，对了解到的客户经营动向或投放策略及时与内部分享和同步。",
+        "requirement": "",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7614045651266029887/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7605430480973105471",
+        "title": "北京游戏中高级优化师",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "精通至少2个FB/GG/TT/TW等主流媒体特性，熟悉Snapchat媒体为最优筛选项；",
+        "description": "1.精通至少2个FB/GG/TT/TW等主流媒体特性，熟悉Snapchat媒体为最优筛选项；\n2.具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系进行优化和调整;\n3.善于独立思考和积极主动给出解决方案的意识和能力;\n4.具备至少3年的账户管理经验，可跨部门协作\n5.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力\n6.英语书面无障碍，英语可作为工作语言为加分项",
+        "requirement": "1.媒介优化能力(Snapchat最佳，GG,FB,TT精通)\n2.具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系，进行优化和调整;\n3.善于独立思考和积极主动给出解决方案的意识和能力;\n4.具备至少1年的账户管理经验，可跨部门协助\n5.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7605430480973105471/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7586566342926977289",
+        "title": "客户经理-APP华北",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "客户接入",
+        "description": "1.客户接入\n新客接入：与BD进行联合拜访，建立良好的客户关系，理清客户需求；\n客户交付：协同内部团队（优化/服务产品提供方）完成客户需求的落地执行；\n2.日常服务\n日常客户服务：以项目经理的角色，完成客户全流程的管理和服务跟进，包括账户运营(开户、授权、充值、账户申诉等），客户答疑及需求跟进，月度结算对账，跟进回款进度等；\n续签：老客户续签、老客新主体接入的推进；\n3.客户upsell及进阶服务\n定期review客户消耗数据，针对异常情况与客户开展沟通和提供解决方案；\n定期通过客户拜访维系客情关系，了解客户经营动向，挖掘需求，联合CSM为客户提供阶段性诊断报告，并完成有针对性的售卖动作，促成签单。",
+        "requirement": "1、本科以上学历，广告、市场营销等相关专业优先，3年以上工作经验，品牌项目优先；\n2、能拉通资源产出客户方案，具备独立服务大型客户把控及管理能力;\n3、客户服务意识强，良好的沟通、谈判能力；\n4、积极进取，目标导向，具有高度的工作热情与责任心。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7586566342926977289/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7559167511595632932",
+        "title": "游戏行业客户经理-华北",
+        "cityId": "beijing",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "负责跟进重要客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；",
+        "description": "1、负责跟进重要客户的长期管理，挖掘既有客户的新业务潜力，促成售卖；\n2、在客户管理过程中，能与商务紧密配合，深度挖掘客户需求，参与客户方案的撰写和提案；\n3、在客户项目交付期，能够统筹整个项目，协调内外部资源，并协调其所负责的客户及其他部门之间的合作关系，确保项目进度和交付结果；\n4、负责客户合同签署内容的把控和审核，管理客户应收款回收的进程；\n5、能与客户维护良好的客情关系，维系公司和行业的品牌声誉。",
+        "requirement": "1、本科以上学历，广告、市场营销等相关专业，5-8年以上工作经验；\n2、3年以上广告公关、整合营销从业经验；\n3、能拉通资源产出客户方案，有较好的客户把控及管理能力;\n4、客户服务意识强，优秀的沟通和谈判能力；\n5、积极进取，目标导向，具有高度的工作热情与责任心。\"",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7559167511595632932/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7675574248958609691",
+        "title": "创意设计师—成都",
+        "cityId": "chengdu",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "",
+        "summary": "3年以上设计/广告相关行业工作经验，有成熟的商业项目经验。",
+        "description": "1、3年以上设计/广告相关行业工作经验，有成熟的商业项目经验。\n2、有出海广告或海外广告代理商工作经验，熟悉海外广告素材的制作流程和基本逻辑。\n3、具备平面 + 视频综合设计能力，自带作品集。\n4、熟练使用 Photoshop、Illustrator、Figma、Premiere、After Effects、剪映等相关设计/视频工具。\n5、熟练使用 AI 创意工具，能将 AI 应用于广告创意和素材生产。\n6、对 TikTok、Meta、Google等海外内容平台有一定了解。\n7、具备较强的视觉审美、广告创意和内容理解能力，能够独立完成从创意到落地。\n8、对海外社交媒体趋势和互联网文化敏感，能够快速捕捉热门内容及视觉趋势。",
+        "requirement": "",
+        "bonus": "有 TikTok / Meta / Google 等平台广告素材经验。\n有 App、游戏、电商等出海项目经验。\n有较强的短视频广告创意能力，能够独立完成脚本、剪辑及视觉包装。\n有广告数据意识，了解 CTR、CVR、CPA、ROAS 等基础指标，并能根据数据优化素材。\n英语能力较好，能够配合完成海外广告素材及文案的本地化工作。",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7675574248958609691/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7639962427673676075",
+        "title": "成都-游戏优化",
+        "cityId": "chengdu",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "结合客户情况和投放现状，提出优化和产品策略组合建议，帮助客户增量",
+        "description": "1.结合客户情况和投放现状，提出优化和产品策略组合建议，帮助客户增量\n2.和商务媒体共同开拓新客，提升新客数量\n3.需求结构化，提高产出效率和质量",
+        "requirement": "1.熟悉FB/GG/TT/TW等主流媒体特性\n2.具备数据分析和洞察能力，善于通过数据结果捕捉各环节的逻辑关系，进行优化和调整；\n3.善于独立思考和积极主动给出解决方案的意识和能力；\n4.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力",
+        "bonus": "1. 本科及以上学历，互联网相关专业优先，有相关行业从业经验为佳\n2. 对三方数据分析工具有一定的了解\n3. 具备独立撰写项目报告及提案能力\n4.具备独立的广告文案设计能力，对不同市场的本地语言风格有较强的把握能力",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7639962427673676075/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7618494623056775460",
+        "title": "SC商务拓展—成都",
+        "cityId": "chengdu",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "",
+        "summary": "通过电话、微信等线上沟通方式和目标客户进行沟通，促成合作。",
+        "description": "1、通过电话、微信等线上沟通方式和目标客户进行沟通，促成合作。\n2、为已合作客户提供需要的服务，深度挖掘客户需求，拓宽业务脉络，协调内部资源达成客户需求，支持客户增长。\n3、收集客户痛点，提炼后转变为有效产品需求，促进产品迭代\n4、候选人可在飞书提供的平台接触到出海营销行业，培养自身的同理心，逻辑分析能力和沟通能力，未来可以向售前工程师、专家型销售、B端用户运营等方向发展",
+        "requirement": "1、本科以上学历，大学英语四级及以上，较好的英语阅读能力\n2、熟练使用word、excel、ppt等办公软件\n3、一定的学习能力和自驱力，较强的责任心，逻辑分析能力和沟通能力\n1、有2年以上b端用户运营或to b企业客服经验\n2、商务意识和客户管理能力，主动开拓意识强，抗压能力强",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7618494623056775460/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7685972375574120754",
+        "title": "AI视频生成师（合肥）",
+        "cityId": "hefei",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "2026-09-16",
+        "summary": "按分镜与 Prompt 批量生成场景 / 角色 / 动态视频",
+        "description": "1.按分镜与 Prompt 批量生成场景 / 角色 / 动态视频\n2.角色一致性维护，配合调参迭代 Skill\n3.基础美术处理（PS 修图 / 合成 / 抠图）\n4.兼顾 AI 素材剪辑、配音字幕与平台合规输出\n5.素材筛选质检，分类交付剪辑\n6.沉淀可复用资产，向助理导演发展",
+        "requirement": "1.0.5‑2 年 AI 图像 / 视频生成实操经验\n2.熟练主流 AI 生成工具\n3.基础美术技能（Photoshop）\n4.了解镜头语言（景别 / 角度 / 运镜）\n5.英语良好（写 Prompt、理解分镜）\n6.学习意愿强，优先考察审美判断力",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7685972375574120754/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7685967554850949414",
+        "title": "AI导演（合肥）",
+        "cityId": "hefei",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "",
+        "publishedAt": "2026-09-16",
+        "summary": "主导单部剧创意方向（风格、视觉、角色、镜头语言）",
+        "description": "1. 主导单部剧创意方向（风格、视觉、角色、镜头语言）\n2.制作分镜与 AI 生成指令，核心镜头亲自生成\n3.角色一致性把控与生成 Skill 调参\n4.与剪辑师协同把控成片节奏，逐集验收\n5.从视觉可行性反馈剧本调整建议\n6.带教 4‑5 名生成师，沉淀工作流",
+        "requirement": "1.1-‑3 年导演 / AI 内容导演经验，有完整 AIGC 作品\n2.扎实视听语言（构图 / 光影 / 色彩 / 运镜）\n3.熟练主流 AI 生成工具并能亲自产出\n4.有 LoRA / ComfyUI 实战经验优先\n5.英语良好（理解剧本、写 Prompt、文化适配）\n6.能承压，适应快节奏迭代",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7685967554850949414/detail",
+        "extraCities": ""
+      },
+      {
+        "id": "7680819152286812454",
+        "title": "资深JAVA研发工程师（西安）",
+        "cityId": "xian",
+        "type": "全职",
+        "department": "",
+        "tags": "",
+        "urgent": "",
+        "hot": "yes",
+        "publishedAt": "2026-09-02",
+        "summary": "独立完成小型项目架构、需求分析与方案设计，主导核心代码开发，把控项目质量与交付进度。",
+        "description": "1、独立完成小型项目架构、需求分析与方案设计，主导核心代码开发，把控项目质量与交付进度。\n2、吃透现有技术架构，维护架构稳定合理，识别架构痛点并输出可落地优化方案。\n3、遵守研发规范流程，独立完成迭代需求的开发、测试、上线全流程交付。\n4、参与公司整体技术架构升级的方案设计与核心开发，推进分布式架构迭代优化。\n5、带教初 / 中级开发人员，推动开发标准化，提升团队研发效能。\n6、负责日常联调、问题排查，快速处置生产环境问题，保障业务平稳运行。\n7、主导数据采集系统迭代，负责二 / 三方数据接口对接与数据融合，保障采集完整、实时、稳定。\n8、运用 AI 辅助工具，赋能编码、排错、方案设计，提升研发效率。",
+        "requirement": "1、本科及以上，计算机相关优先，5 年以上 Java 后端开发经验，基础扎实。\n2、熟练掌握 SpringCloud/Dubbo 其一；掌握 RabbitMQ/Kafka 其一消息中间件；会 Saturn/elasticJob 任一任务调度框架，有实战落地经验。\n3、熟悉 MySQL、Redis、ElasticSearch，熟练使用 Maven、Git；有 JVM、数据库调优经验优先。\n4、具备高并发系统开发落地经验，并且在数据采集系统建设经验，熟悉二 / 三方数据对接、跨平台数据融合与校验经验优先。\n5、具备 AI 辅助开发实操经验，会借助 AI 完成编码、排错、方案优化。\n6、沟通协作良好，主动性强，可独立攻坚也能融入团队。\n8、重视代码质量，具备较强生产环境风险意识，关注系统稳定性与可用性。",
+        "bonus": "",
+        "applyUrl": "https://q6y68vu0j8.jobs.feishu.cn/index/position/7680819152286812454/detail",
+        "extraCities": ""
+      }
+    ],
+    "portalUrl": "https://q6y68vu0j8.jobs.feishu.cn/index",
+    "applyEmail": "hanwen@adflymobile.com"
+  }
+}
