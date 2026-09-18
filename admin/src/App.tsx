@@ -4,7 +4,6 @@ import { useEffect, useMemo } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import RequireAuth from "@/components/RequireAuth";
-import ModuleScaffold from "@/components/ModuleScaffold";
 import type { AdminTheme } from "@/config/theme";
 import BasicLayout from "@/layouts/BasicLayout";
 import AboutContent from "@/pages/Content/About";
@@ -14,6 +13,9 @@ import SiteContent from "@/pages/Content/Site";
 import Dashboard from "@/pages/Dashboard";
 import CaseEditorPage from "@/pages/cases/CaseEditor";
 import CaseListPage from "@/pages/cases/CaseList";
+import CareersOverviewPage from "@/pages/careers/CareersOverview";
+import CityEditorPage from "@/pages/careers/CityEditor";
+import PositionEditorPage from "@/pages/careers/PositionEditor";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 import ThemeSettings from "@/pages/ThemeSettings";
@@ -87,10 +89,11 @@ export function AppRoutes() {
           <Route path="/cases" element={<CaseListPage />} />
           <Route path="/cases/new" element={<CaseEditorPage />} />
           <Route path="/cases/:id/edit" element={<CaseEditorPage />} />
-          <Route
-            path="/careers"
-            element={<ModuleScaffold moduleKeys={["careersCities", "careersPositions"]} title="招聘管理" />}
-          />
+          <Route path="/careers" element={<CareersOverviewPage />} />
+          <Route path="/careers/cities/new" element={<CityEditorPage />} />
+          <Route path="/careers/cities/:id/edit" element={<CityEditorPage />} />
+          <Route path="/careers/positions/new" element={<PositionEditorPage />} />
+          <Route path="/careers/positions/:id/edit" element={<PositionEditorPage />} />
 
           <Route path="/settings/theme" element={<ThemeSettings />} />
           <Route path="*" element={<NotFound />} />

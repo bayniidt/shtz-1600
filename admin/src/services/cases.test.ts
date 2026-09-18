@@ -16,7 +16,10 @@ import { CASE_ITEM_FIXTURE, CASE_ITEMS_FIXTURE, CASES_PAGE_FIXTURE } from "@/tes
 
 let mock: MockAdapter;
 
-const ok = (data: unknown) => [200, { code: 0, message: "ok", data }] as const;
+const ok = (data: unknown): [number, { code: 0; message: string; data: unknown }] => [
+  200,
+  { code: 0, message: "ok", data },
+];
 
 beforeEach(() => {
   mock = new MockAdapter(http);

@@ -9,7 +9,7 @@ describe("ModuleScaffold", () => {
     renderWithProviders(<ModuleScaffold moduleKeys={["cases"]} />);
 
     expect(screen.getByTestId("page-title")).toHaveTextContent("客户案例");
-    expect(screen.getByText(/业务实现计划：Stage 3/)).toBeInTheDocument();
+    expect(screen.getByText(/接口已实现，当前页面仅展示接口蓝图/)).toBeInTheDocument();
     expect(screen.getByTestId("module-card-cases")).toBeInTheDocument();
 
     // 清单数量与蓝图一致
@@ -32,7 +32,7 @@ describe("ModuleScaffold", () => {
       MODULE_BLUEPRINTS.careersCities.endpoints.length +
       MODULE_BLUEPRINTS.careersPositions.endpoints.length;
     expect(screen.getByTestId("module-endpoint-total")).toHaveTextContent(`共 ${total} 个接口`);
-    expect(screen.getByText(/业务实现计划：Stage 4/)).toBeInTheDocument();
+    expect(screen.getByText(/接口已实现，当前页面仅展示接口蓝图/)).toBeInTheDocument();
   });
 
   it("区分公开接口与需登录接口", () => {

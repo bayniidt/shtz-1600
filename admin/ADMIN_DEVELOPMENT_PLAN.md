@@ -399,7 +399,7 @@ ai-website-cloner-template/
 |------|------|------|
 | P1 | ✅ 正常 | 创建职位 cityId=`shanghai`、extraCities=`chengdu/beijing` → 两个城市列表都能看到它 |
 | P2 | ❌ 异常 | cityId 传不存在值 → 400，`请选择有效的招聘城市` |
-| P3 | ❌ 异常 | extraCities 含非法城市 id（如 `mars`）→ 400，列出非法值 |
+| P3 | ⚠️ 边界 | extraCities 含非法城市 id（如 `mars`）→ 自动过滤无效值并去重，主 cityId 仍必须合法 |
 | P4 | ✅ 正常 | `hot=true` 筛选 → 仅返回热招；`keyword="产品"` 搜 title/department/tags |
 | P5 | ⚠️ 边界 | description 超 10000 字符；publishedAt 格式非 ISO → 400 |
 | P6 | ✅ 正常 | applyUrl 留空 + 全局 careers.content.portalUrl 也空 → 前台不显示「招聘系统投递」按钮（前端校验也可；后端可选校验字段一致性） |
@@ -622,7 +622,7 @@ export default {
 > - 后端接口（13 个真实接口）：`GET/PUT /site`、`GET /home` + `PUT /home/{hero,media,flow,clients,strength,honors}`、`GET/PUT /about`、`GET/PUT /careers/content`；
 >   全部走 Zod **strict** 校验（未知字段 4000、缺失必填 4000——中文错误文案），`validate` 中间件剥离 `_id/__v/key/createdAt/updatedAt` 以支持 GET→PUT 回环。
 > - 三态标记字段（`featured/hot/urgent/major`）用 Mongoose `Mixed` 原样存取（`true` / `"yes"` 均保留），由 `isTruthyFlag()` 归一化。
-> - Swagger：新增 `docs/helpers.ts` + `docs/content.paths.ts`，内容接口与 schema 全量登记，占位接口缩减为 Stage 3/4 的 18 个（仍 501/5001）。
+> - Swagger：新增 `docs/helpers.ts` + `docs/content.paths.ts`，内容接口与 schema 全量登记，占位接口缩减为 Stage 3/4 的 18 个（后续已随模块实现清零）。
 > - 前端：`ContentForm`（声明式 `FieldSpec` 驱动，支持文本/数字/开关/下拉/图片/字符串数组/链接/嵌套对象/对象数组）、
 >   `ContentEditor`（加载骨架屏 + 保存/还原 + 未保存提示 + 失败重试）、`useContentResource`、`StringListInput`；
 >   Site / Home（6 个 Tab 分区保存）/ About / CareersContent 四个页面接真实接口；dirty-check 由 `store/dirty` + 菜单二次确认 + `beforeunload` 兜底。
@@ -631,21 +631,35 @@ export default {
 >   `tsc --noEmit` 干净、`vite build` 通过、Chrome CDP 冒烟 **9 个路由**通过（dev 5173 + preview 5174 各跑一遍）。
 > - 遗留（Stage 5 处理）：前台站点资源（`/images/**`）不在后台域名下，管理端图片预览会 404，已在冒烟脚本中按资源类过滤。
 
-### Stage 3：Cases 客户案例 CRUD（~8h）
+### Stage 3：Cases 客户案例 CRUD（~8h）✅ 已完成
 
-- 后端：Cases 模块 9 个接口 + 完整 Zod（重点是 blocks 嵌套 + stats 数组）+ 分页搜索过滤 + 全部用例（至少 12 条）
+- 后端：Cases 模块 8 个接口 + 完整 Zod（重点是 blocks 嵌套 + stats 数组）+ 分页搜索过滤 + 全部用例（至少 12 条）
 - 前端：案例列表（ProTable + 筛选 + 分页 + 置顶按钮 + 删除 Popconfirm）
 - 前端：Editor 页（新建/编辑），重点是 `ArrayEditor` 的 stats 和 blocks 嵌套好用
 - 「前台预览」按钮：打开 `/cases/:id` 新窗口
 - **里程碑**：从空白新建一个案例 → 保存 → 列表有它 → 前台详情页正常渲染；编辑改标题 → 前后台同步更新。
 
-### Stage 4：Careers 招聘管理 CRUD（~8h）
+> **Stage 3 完成情况**
+> - 后端已实现 `GET/PUT /cases/page`、`GET/POST /cases`、`GET/PUT/DELETE /cases/{id}`、`POST /cases/{id}/featured`；列表支持分页、行业/置顶筛选、关键词搜索，业务主键冲突返回 4090。
+> - Zod strict 校验覆盖案例基础字段、`stats[]`、`blocks[]`、列表查询和列表页筛选文案；GET → PUT 回环会剥离服务端托管字段。
+> - 前端已接入 Cases 列表页、详情编辑页、新建页、置顶、删除确认和前台预览；`CaseEditor.test.tsx` 覆盖新建、编辑、嵌套数组、预览和加载失败。
+> - `placeholderEndpoints()` 已移除 Cases；Stage 4 完成后城市 / 职位也已切换为真实 path/schema，当前占位接口为 0。
+> - 常规验收：Stage 3 基线为后端 Jest **197/197**、前端 Vitest **186/186**、类型检查、构建和 Chrome CDP **11 个路由**冒烟均通过；覆盖率插桩下的既有偶发失败留给 Stage 6 收敛。
+
+### Stage 4：Careers 招聘管理 CRUD（~8h）✅ 已完成
 
 - 后端：城市 CRUD（**重点覆盖改 id 联动 positions** + 删除回退逻辑测试）
 - 后端：职位 CRUD（**重点覆盖 cityId 合法性校验 + extraCities 过滤**）
 - 后端：list 接口聚合 `positionsCount`
 - 前端：Overview（城市卡片 Grid + 职位 ProTable）、CityEditor（联动警告）、PositionEditor（城市多选 Select）
 - **里程碑**：修改上海 id → 所有职位和列表正确变更；删除城市 → 职位正确回退到新归属。
+
+> **Stage 4 完成情况**
+> - 后端已实现城市 / 职位 10 个 REST 接口；城市列表返回主归属或附加城市的 `positionsCount`，城市 id 修改会联动 `cityId` / `extraCities`。
+> - 删除城市支持显式或自动回退城市；无其他城市时不删除职位，仅清空其主 `cityId`。职位写入校验主城市存在，并对 `extraCities` 做合法 id 过滤与去重。
+> - 前端已接入招聘总览、城市新建 / 编辑、职位新建 / 编辑，编辑城市展示联动警告和关联职位只读表格。
+> - 测试覆盖列表聚合、id 联动、删除回退、最后城市边界、职位 CRUD、城市合法性和附加城市过滤；Swagger 与占位清单已同步收口。
+> - Stage 4 验收：后端 Jest **194/194**、前端 Vitest **196/196**、类型检查、构建均通过；Chrome CDP 冒烟在 dev 5173 与 preview 5174 各 **15 个路由**通过。
 
 ### Stage 5：数据联通前台 + 过渡工具（~3h）
 

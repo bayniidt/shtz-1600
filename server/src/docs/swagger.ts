@@ -1,4 +1,5 @@
 import { config } from "@/config";
+import { careersPaths, careersSchemas } from "@/docs/careers.paths";
 import { casesPaths, casesSchemas } from "@/docs/cases.paths";
 import { contentPaths, contentSchemas } from "@/docs/content.paths";
 import { envelope, errorResponse } from "@/docs/helpers";
@@ -11,7 +12,7 @@ export const openApiDocument = {
     description:
       "ADFLY 管理后台接口文档。统一响应体 `{ code, message, data }`；错误码见「错误码」标签。\n\n" +
       "**错误码**：0 成功 · 4000 参数校验失败 · 4010 未登录/Token 失效 · 4030 无权限 · " +
-      "4040 资源不存在 · 4090 ID 冲突 · 4290 请求过于频繁 · 5000 服务器错误 · 5001 功能开发中（Stage 4 占位接口）",
+      "4040 资源不存在 · 4090 ID 冲突 · 4290 请求过于频繁 · 5000 服务器错误 · 5001 功能开发中（保留错误码兼容）",
   },
   servers: [{ url: config.apiPrefix, description: "当前服务" }],
   tags: [
@@ -21,7 +22,7 @@ export const openApiDocument = {
     { name: "Home", description: "首页 6 大板块（✅ Stage 2 已实现）" },
     { name: "Cases", description: "客户案例 CRUD（✅ Stage 3 已实现）" },
     { name: "About", description: "关于我们（✅ Stage 2 已实现）" },
-    { name: "Careers", description: "招聘页面文案（✅ Stage 2）· 城市 / 职位 CRUD（Stage 4，501 占位）" },
+    { name: "Careers", description: "招聘页面文案（✅ Stage 2）· 城市 / 职位 CRUD（✅ Stage 4 已实现）" },
     { name: "错误码", description: "全局错误码说明" },
   ],
   components: {
@@ -127,6 +128,8 @@ export const openApiDocument = {
       ...contentSchemas,
       // 客户案例 schema（Stage 3）
       ...casesSchemas,
+      // 招聘城市 / 职位 schema（Stage 4）
+      ...careersSchemas,
     },
   },
   paths: {
@@ -285,7 +288,9 @@ export const openApiDocument = {
     ...contentPaths(),
     // Stage 3：已实现的客户案例模块（cases）
     ...casesPaths(),
-    // Stage 4：尚未实现的占位接口（501）
+    // Stage 4：已实现的招聘城市 / 职位模块（careers）
+    ...careersPaths(),
+    // 兼容旧测试与外部检查：当前没有未实现的占位接口
     ...buildPlaceholderPaths(),
   },
 };
@@ -302,7 +307,7 @@ export const errorCodeTable = [
   { code: 5001, http: 501, message: "功能开发中（Stage 4 占位接口）" },
 ];
 
-/* ------------------- Stage 4：未实现接口的占位文档 ------------------- */
+/* ------------------- 未实现接口兼容清单 ------------------- */
 
 interface EndpointSpec {
   method: "get" | "post" | "put" | "delete";
@@ -314,21 +319,10 @@ interface EndpointSpec {
 }
 
 export function placeholderEndpoints(): EndpointSpec[] {
-  return [
-  { method: "get", path: "/careers/cities", tag: "Careers", summary: "城市列表（含 positionsCount）", protected: false, stage: "Stage 4" },
-  { method: "post", path: "/careers/cities", tag: "Careers", summary: "新建城市", protected: true, stage: "Stage 4" },
-  { method: "get", path: "/careers/cities/{id}", tag: "Careers", summary: "城市详情 + 该城市职位", protected: false, stage: "Stage 4" },
-  { method: "put", path: "/careers/cities/{id}", tag: "Careers", summary: "编辑城市（改 id 联动职位）", protected: true, stage: "Stage 4" },
-  { method: "delete", path: "/careers/cities/{id}", tag: "Careers", summary: "删除城市（职位回退）", protected: true, stage: "Stage 4" },
-  { method: "get", path: "/careers/positions", tag: "Careers", summary: "职位列表（筛选 / 分页）", protected: false, stage: "Stage 4" },
-  { method: "post", path: "/careers/positions", tag: "Careers", summary: "新建职位", protected: true, stage: "Stage 4" },
-  { method: "get", path: "/careers/positions/{id}", tag: "Careers", summary: "职位详情", protected: false, stage: "Stage 4" },
-  { method: "put", path: "/careers/positions/{id}", tag: "Careers", summary: "编辑职位", protected: true, stage: "Stage 4" },
-  { method: "delete", path: "/careers/positions/{id}", tag: "Careers", summary: "删除职位", protected: true, stage: "Stage 4" },
-  ];
+  return [];
 }
 
-/** 生成占位接口的 OpenAPI path 条目：返回 501 / 5001，写接口标注 401。 */
+/** 保留旧扩展点；Stage 4 完成后不再生成占位 path。 */
 function buildPlaceholderPaths(): Record<string, Record<string, unknown>> {
   const paths: Record<string, Record<string, unknown>> = {};
   for (const endpoint of placeholderEndpoints()) {

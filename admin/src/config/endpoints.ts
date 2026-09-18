@@ -97,6 +97,7 @@ export const MODULE_BLUEPRINTS: Record<string, ModuleBlueprint> = {
     key: "careersCities",
     title: "招聘城市",
     stage: "Stage 4",
+    implemented: true,
     description: "招聘城市维护；修改城市 id 时联动更新职位的归属与附加城市。",
     endpoints: [
       { method: "GET", path: "/careers/cities", label: "城市列表（含职位数）", auth: false },
@@ -110,6 +111,7 @@ export const MODULE_BLUEPRINTS: Record<string, ModuleBlueprint> = {
     key: "careersPositions",
     title: "招聘职位",
     stage: "Stage 4",
+    implemented: true,
     description: "职位维护：所属城市、附加城市、职责/要求/福利等列表型字段。",
     endpoints: [
       { method: "GET", path: "/careers/positions", label: "职位列表（筛选/分页）", auth: false },

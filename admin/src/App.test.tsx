@@ -5,6 +5,7 @@ import { MODULE_BLUEPRINTS } from "@/config/endpoints";
 import { fetchMe, login } from "@/services/auth";
 import { fetchAbout, fetchCareersContent, fetchHome, fetchSite } from "@/services/content";
 import { fetchTheme } from "@/services/settings";
+import { fetchCareerCities, fetchCareerPositions } from "@/services/careers";
 import {
   ABOUT_FIXTURE,
   CAREERS_CONTENT_FIXTURE,
@@ -37,6 +38,11 @@ vi.mock("@/services/content", () => ({
   saveCareersContent: vi.fn(),
 }));
 
+vi.mock("@/services/careers", () => ({
+  fetchCareerCities: vi.fn(),
+  fetchCareerPositions: vi.fn(),
+}));
+
 const mockedLogin = vi.mocked(login);
 const mockedFetchMe = vi.mocked(fetchMe);
 const mockedFetchTheme = vi.mocked(fetchTheme);
@@ -44,6 +50,8 @@ const mockedFetchSite = vi.mocked(fetchSite);
 const mockedFetchHome = vi.mocked(fetchHome);
 const mockedFetchAbout = vi.mocked(fetchAbout);
 const mockedFetchCareersContent = vi.mocked(fetchCareersContent);
+const mockedFetchCareerCities = vi.mocked(fetchCareerCities);
+const mockedFetchCareerPositions = vi.mocked(fetchCareerPositions);
 
 const ADMIN = { id: "1", username: "admin", role: "admin" };
 
@@ -61,12 +69,13 @@ beforeEach(() => {
   mockedFetchHome.mockResolvedValue(HOME_FIXTURE as never);
   mockedFetchAbout.mockResolvedValue(ABOUT_FIXTURE as never);
   mockedFetchCareersContent.mockResolvedValue(CAREERS_CONTENT_FIXTURE as never);
+  mockedFetchCareerCities.mockResolvedValue({ items: [], total: 0, page: 1, pageSize: 100 });
+  mockedFetchCareerPositions.mockResolvedValue({ items: [], total: 0, page: 1, pageSize: 10 });
 });
 
-describe("路由骨架（每个菜单路由都能正常渲染）", () => {
-  /** 仍为骨架页的模块（Stage 3/4 实现） */
-  const SCAFFOLD_ROUTES = [
-    ["/cases", MODULE_BLUEPRINTS.cases.title],
+describe("菜单路由（每个菜单路由都能正常渲染）", () => {
+  /** 已实现的管理页路由 */
+  const IMPLEMENTED_ROUTES = [
     ["/careers", "招聘管理"],
     ["/settings/theme", "主题设置"],
   ] as const;
@@ -79,7 +88,7 @@ describe("路由骨架（每个菜单路由都能正常渲染）", () => {
     ["/content/careers", MODULE_BLUEPRINTS.careersContent.title],
   ] as const;
 
-  it.each(SCAFFOLD_ROUTES)("R %s 渲染页面标题「%s」且无空白页", (route, expected) => {
+  it.each(IMPLEMENTED_ROUTES)("R %s 渲染页面标题「%s」且无空白页", (route, expected) => {
     signInAsAdmin();
     renderWithProviders(<AppRoutes />, { route });
 
@@ -95,6 +104,14 @@ describe("路由骨架（每个菜单路由都能正常渲染）", () => {
     expect(screen.getByTestId("page-title")).toHaveTextContent(expected);
     await waitFor(() => expect(screen.getByTestId("content-form")).toBeInTheDocument());
     expect(screen.getByTestId("content-save")).toBeInTheDocument();
+  });
+
+  it("R /cases 渲染 Cases 列表页", async () => {
+    signInAsAdmin();
+    renderWithProviders(<AppRoutes />, { route: "/cases" });
+
+    expect(screen.getByTestId("case-list")).toBeInTheDocument();
+    expect(screen.getByTestId("page-title")).toHaveTextContent(MODULE_BLUEPRINTS.cases.title);
   });
 
   it("R /dashboard 渲染概览卡片与快捷入口", () => {

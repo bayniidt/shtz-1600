@@ -5,7 +5,7 @@ import { createApp } from "@/app";
 import { CareersCity } from "@/models/CareersCity.model";
 import { CareersContent } from "@/models/CareersContent.model";
 import { CareersPosition } from "@/models/CareersPosition.model";
-import { CAREERS_FIXTURE } from "./fixtures/site-data";
+import { CAREERS_FIXTURE, CITIES_FIXTURE, POSITIONS_FIXTURE } from "./fixtures/site-data";
 import { bearer, loginAsAdmin, resetTestDB, seedFixtureContent, setupTestDB, teardownTestDB } from "./helpers/db";
 
 const CONTENT = "/api/v1/careers/content";
@@ -152,20 +152,145 @@ describe("PUT /careers/content —— 更新招聘页面文案", () => {
   });
 });
 
-describe("Stage 4 占位接口（尚未实现）", () => {
-  it("T12 城市 / 职位 CRUD 仍返回 501 / 5001，写接口需登录", async () => {
-    const read = await request(app).get("/api/v1/careers/cities");
-    expect(read.status).toBe(501);
-    expect(read.body.code).toBe(5001);
+describe("招聘城市 CRUD", () => {
+  it("T12 城市列表聚合 positionsCount，详情返回关联职位", async () => {
+    await seedFixtureContent();
 
+    const list = await request(app).get("/api/v1/careers/cities?pageSize=10");
+    expect(list.status).toBe(200);
+    expect(list.body.data.total).toBe(2);
+    expect(list.body.data.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: "shanghai", positionsCount: 1 }),
+        expect.objectContaining({ id: "shenzhen", positionsCount: 2 }),
+      ]),
+    );
+
+    const detail = await request(app).get("/api/v1/careers/cities/shanghai");
+    expect(detail.status).toBe(200);
+    expect(detail.body.data.positions).toHaveLength(1);
+    expect(detail.body.data.positions[0].id).toBe("position-001");
+  });
+
+  it("T13 修改城市 id 会联动职位主归属和 extraCities", async () => {
+    await seedFixtureContent();
+
+    const shanghai = await request(app)
+      .put("/api/v1/careers/cities/shanghai")
+      .set(bearer(token))
+      .send({ ...CITIES_FIXTURE[0], id: "shanghai-hq" });
+    expect(shanghai.status).toBe(200);
+
+    const position = await request(app).get("/api/v1/careers/positions/position-001");
+    expect(position.body.data.cityId).toBe("shanghai-hq");
+
+    const shenzhen = await request(app)
+      .put("/api/v1/careers/cities/shenzhen")
+      .set(bearer(token))
+      .send({ ...CITIES_FIXTURE[1], id: "shenzhen-south" });
+    expect(shenzhen.status).toBe(200);
+    const linked = await request(app).get("/api/v1/careers/positions/position-001");
+    expect(linked.body.data.extraCities).toBe("shenzhen-south");
+  });
+
+  it("T14 删除城市会把主职位回退并清理附加城市", async () => {
+    await seedFixtureContent();
+    const deleted = await request(app)
+      .delete("/api/v1/careers/cities/shanghai")
+      .set(bearer(token))
+      .send({ fallbackCityId: "shenzhen" });
+
+    expect(deleted.status).toBe(200);
+    expect(deleted.body.data).toMatchObject({ id: "shanghai", fallbackCityId: "shenzhen", reassignedPositions: 1 });
+    const position = await request(app).get("/api/v1/careers/positions/position-001");
+    expect(position.body.data.cityId).toBe("shenzhen");
+    expect(position.body.data.extraCities).toBe("");
+    expect((await request(app).get("/api/v1/careers/cities/shanghai")).status).toBe(404);
+  });
+
+  it("T15 城市写接口需要登录且 id 冲突返回 409", async () => {
+    const unauth = await request(app).post("/api/v1/careers/cities").send(CITIES_FIXTURE[0]);
+    expect(unauth.status).toBe(401);
+
+    await seedFixtureContent();
+    const conflict = await request(app)
+      .post("/api/v1/careers/cities")
+      .set(bearer(token))
+      .send(CITIES_FIXTURE[0]);
+    expect(conflict.status).toBe(409);
+    expect(conflict.body.code).toBe(4090);
+  });
+
+  it("T16 删除最后一个城市时不删除职位，而是清空主城市", async () => {
+    await seedFixtureContent();
+    await CareersCity.deleteMany({ id: "shenzhen" });
+    const deleted = await request(app)
+      .delete("/api/v1/careers/cities/shanghai")
+      .set(bearer(token));
+
+    expect(deleted.status).toBe(200);
+    expect(deleted.body.data).toMatchObject({ id: "shanghai", fallbackCityId: null });
+    const position = await request(app).get("/api/v1/careers/positions/position-001");
+    expect(position.body.data.cityId).toBe("");
+    expect(await CareersPosition.countDocuments()).toBe(2);
+  });
+});
+
+describe("招聘职位 CRUD", () => {
+  it("T17 职位列表支持城市 / 关键词筛选与分页", async () => {
+    await seedFixtureContent();
+    const res = await request(app).get("/api/v1/careers/positions?cityId=shenzhen&pageSize=10");
+    expect(res.status).toBe(200);
+    expect(res.body.data.total).toBe(2);
+    expect(res.body.data.items.map((item: { id: string }) => item.id)).toEqual(
+      expect.arrayContaining(["position-001", "position-002"]),
+    );
+  });
+
+  it("T18 创建 / 更新 / 删除职位，并过滤无效 extraCities", async () => {
+    await seedFixtureContent();
+    const payload = {
+      ...POSITIONS_FIXTURE[0],
+      id: "position-new",
+      cityId: "shanghai",
+      extraCities: "shenzhen/unknown/shenzhen",
+    };
+    const created = await request(app).post("/api/v1/careers/positions").set(bearer(token)).send(payload);
+    expect(created.status).toBe(201);
+    expect(created.body.data.extraCities).toBe("shenzhen");
+
+    const invalidCity = await request(app)
+      .post("/api/v1/careers/positions")
+      .set(bearer(token))
+      .send({ ...payload, id: "position-invalid", cityId: "missing-city" });
+    expect(invalidCity.status).toBe(400);
+    expect(invalidCity.body.errors).toEqual(expect.arrayContaining([expect.objectContaining({ path: "cityId" })]));
+
+    const updated = await request(app)
+      .put("/api/v1/careers/positions/position-new")
+      .set(bearer(token))
+      .send({ ...payload, title: "更新后的职位", extraCities: "unknown/shenzhen" });
+    expect(updated.status).toBe(200);
+    expect(updated.body.data.title).toBe("更新后的职位");
+    expect(updated.body.data.extraCities).toBe("shenzhen");
+
+    const deleted = await request(app)
+      .delete("/api/v1/careers/positions/position-new")
+      .set(bearer(token));
+    expect(deleted.status).toBe(200);
+    expect(deleted.body.data).toMatchObject({ id: "position-new", success: true });
+    expect((await request(app).get("/api/v1/careers/positions/position-new")).status).toBe(404);
+  });
+
+  it("T19 缺少必填字段和未登录写操作返回正确错误", async () => {
     const unauth = await request(app).post("/api/v1/careers/positions").send({});
     expect(unauth.status).toBe(401);
 
-    const authed = await request(app)
+    const invalid = await request(app)
       .post("/api/v1/careers/positions")
       .set(bearer(token))
-      .send({});
-    expect(authed.status).toBe(501);
-    expect(authed.body.code).toBe(5001);
+      .send({ ...POSITIONS_FIXTURE[0], id: "position-invalid" , title: "" });
+    expect(invalid.status).toBe(400);
+    expect(invalid.body.errors).toEqual(expect.arrayContaining([expect.objectContaining({ path: "title" })]));
   });
 });

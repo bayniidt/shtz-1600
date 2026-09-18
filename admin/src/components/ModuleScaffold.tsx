@@ -35,23 +35,28 @@ const columns: ColumnsType<EndpointDoc> = [
 ];
 
 /**
- * Stage 1 模块骨架页：展示该模块已注册的接口清单与实现计划，
- * 保证每个菜单路由都有实际内容（不出现空白页）。Stage 2~4 逐步替换为真实表单。
+ * 模块骨架页：展示尚未接入可视化页面的接口清单与实现计划。
+ * 已实现模块仍可用于查看接口蓝图，但真实业务路由应优先使用对应页面。
  */
 export default function ModuleScaffold({ moduleKeys, title }: ModuleScaffoldProps) {
   const blueprints = moduleKeys.map((key) => MODULE_BLUEPRINTS[key]);
   const pageTitle = title ?? blueprints.map((item) => item.title).join(" · ");
   const stages = [...new Set(blueprints.map((item) => item.stage))].join(" / ");
   const total = blueprints.reduce((sum, item) => sum + item.endpoints.length, 0);
+  const allImplemented = blueprints.every((item) => item.implemented);
 
   return (
     <PageContainer title={pageTitle} subTitle={blueprints.map((item) => item.description).join(" ")}>
       <Space direction="vertical" size={16} style={{ width: "100%" }}>
         <Alert
-          type="info"
+          type={allImplemented ? "success" : "info"}
           showIcon
-          message={`接口骨架已就绪，业务实现计划：${stages}`}
-          description="写操作接口已受 JWT 保护。当前所有接口统一返回 501 / code=5001（功能开发中），前端据此提示“模块建设中”。"
+          message={allImplemented ? "接口已实现，当前页面仅展示接口蓝图" : `接口骨架已就绪，业务实现计划：${stages}`}
+          description={
+            allImplemented
+              ? "写操作接口已受 JWT 保护；请从真实业务路由进入编辑页面。"
+              : "写操作接口已受 JWT 保护。未实现接口统一返回 501 / code=5001。"
+          }
         />
         {blueprints.map((blueprint) => (
           <Card

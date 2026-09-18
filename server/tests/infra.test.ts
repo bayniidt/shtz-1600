@@ -387,8 +387,8 @@ describe("I8 环境变量解析与路由工厂", () => {
   it("createApiRouter：默认参数可用，Swagger 文档生成正常", () => {
     expect(createApiRouter()).toBeTruthy();
     const specs = placeholderEndpoints();
-    // Stage 2 后占位接口仅剩 Stage 3 / 4 的案例与招聘 CRUD
-    expect(specs.length).toBe(18);
+    // Stage 4 完成后不应再有未实现的占位接口
+    expect(specs.length).toBe(0);
 
     const documentedPaths = Object.keys(openApiDocument.paths);
     const distinctSpecPaths = [...new Set(specs.map((e) => e.path))];

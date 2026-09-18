@@ -31,8 +31,14 @@ const ROUTES = [
   ["/content/home", "首页内容", "Hero 区"],
   ["/content/about", "关于我们", "首屏简介"],
   ["/content/careers", "招聘内容", "首屏标题"],
-  ["/cases", "客户案例", "接口清单"],
-  ["/careers", "招聘管理", "接口清单"],
+  ["/cases", "客户案例", "案例增删改查"],
+  ["/cases/new", "新建案例", "基本信息"],
+  ["/cases/longzhu-global-launch/edit", "编辑案例", "核心指标"],
+  ["/careers", "招聘管理", "招聘城市"],
+  ["/careers/cities/new", "新建招聘城市", "城市 ID"],
+  ["/careers/cities/shanghai/edit", "编辑招聘城市", "修改城市 ID"],
+  ["/careers/positions/new", "新建招聘职位", "主归属城市"],
+  ["/careers/positions/7685963815004457270/edit", "编辑招聘职位", "职位名称"],
   ["/settings/theme", "主题设置", "实时预览"],
 ];
 
