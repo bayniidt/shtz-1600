@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
+import type { IndustryKey } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -10,13 +11,59 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function AdminOverviewPage() {
-  const data = getSiteData();
+const INDUSTRY_COLORS = ["#1e96d4", "#ed5736", "#f59e0b", "#7c3aed"];
+
+function IndustryChart({ data }: { data: { label: string; value: number }[] }) {
+  const total = data.reduce((sum, item) => sum + item.value, 0);
+  let cursor = 0;
+  const segments = data.map((item, index) => {
+    const start = cursor;
+    cursor += total ? (item.value / total) * 100 : 0;
+    return `${INDUSTRY_COLORS[index % INDUSTRY_COLORS.length]} ${start}% ${cursor}%`;
+  });
+
+  return (
+    <div className="flex flex-wrap items-center gap-8">
+      <div
+        aria-label="案例行业分布饼图"
+        className="h-44 w-44 shrink-0 rounded-full border-8 border-white shadow-[var(--shadow-card)]"
+        style={{ background: total ? `conic-gradient(${segments.join(", ")})` : "var(--color-surface)" }}
+      />
+      <div className="flex min-w-48 flex-1 flex-col gap-3">
+        {data.map((item, index) => (
+          <div key={item.label} className="flex items-center justify-between gap-4 text-[13px]">
+            <span className="flex items-center gap-2 text-ink-3">
+              <span
+                aria-hidden="true"
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ background: INDUSTRY_COLORS[index % INDUSTRY_COLORS.length] }}
+              />
+              {item.label}
+            </span>
+            <span className="font-semibold text-ink">{item.value}</span>
+          </div>
+        ))}
+        {!data.length ? <p className="text-[13px] text-ink-4">暂无案例数据</p> : null}
+      </div>
+    </div>
+  );
+}
+
+export default async function AdminOverviewPage() {
+  const data = await getSiteDataFromAPI();
+  const industryLabels = new Map(data.cases.page.filters.map((filter) => [filter.key, filter.label]));
+  const industryData = Object.entries(
+    data.cases.items.reduce<Record<string, number>>((counts, item) => {
+      counts[item.industry] = (counts[item.industry] ?? 0) + 1;
+      return counts;
+    }, {}),
+  ).map(([key, value]) => ({ label: industryLabels.get(key as IndustryKey) ?? key, value }));
 
   const cards = [
     { label: "客户案例", value: data.cases.items.length, href: "/admin/cases" },
     { label: "媒体资源", value: data.home.media.partners.length, href: "/admin/content/home" },
     { label: "合作客户", value: data.home.clients.logos.length, href: "/admin/content/home" },
+    { label: "招聘城市", value: data.careers.cities.length, href: "/admin/careers" },
     { label: "招聘岗位", value: data.careers.positions.length, href: "/admin/careers" },
   ];
 
@@ -62,7 +109,7 @@ export default function AdminOverviewPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
         {cards.map((card) => (
           <Link
             key={card.label}
@@ -95,13 +142,39 @@ export default function AdminOverviewPage() {
         ))}
       </div>
 
+      <div className="grid gap-4 lg:grid-cols-2">
+        <section className="rounded-card border border-line bg-white p-6">
+          <h2 className="text-base font-semibold text-ink">案例行业分布</h2>
+          <p className="mt-2 text-[13px] text-ink-4">数据来自 Cases 接口的实时列表。</p>
+          <div className="mt-6">
+            <IndustryChart data={industryData} />
+          </div>
+        </section>
+
+        <section className="rounded-card border border-line bg-white p-6">
+          <h2 className="text-base font-semibold text-ink">公司发展时间线</h2>
+          <p className="mt-2 text-[13px] text-ink-4">数据来自 About 接口的 timeline。</p>
+          <div className="mt-6 flex flex-col gap-4">
+            {data.about.timeline.map((item) => (
+              <div key={`${item.period}-${item.title}`} className="flex gap-4 border-l-2 border-brand/30 pl-4">
+                <span className="w-16 shrink-0 text-[13px] font-semibold text-brand">{item.period}</span>
+                <div>
+                  <p className="text-[14px] font-semibold text-ink">{item.title}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-ink-3">{item.description}</p>
+                </div>
+              </div>
+            ))}
+            {!data.about.timeline.length ? <p className="text-[13px] text-ink-4">暂无时间线数据</p> : null}
+          </div>
+        </section>
+      </div>
+
       <section className="rounded-card border border-line bg-white p-6">
         <h2 className="text-base font-semibold text-ink">数据存储</h2>
         <p className="mt-2 text-[13px] leading-relaxed text-ink-4">
-          页面内容保存在项目根目录的{" "}
-          <code className="rounded bg-surface px-1.5 py-0.5">data/site.json</code>，
-          后台通过 Server Actions 写入并刷新页面缓存。可直接用 Git 做内容版本管理，也可随时迁移到
-          Supabase / 任意数据库。
+          页面优先读取 Admin REST API；后端不可用时自动降级到项目根目录的{" "}
+          <code className="rounded bg-surface px-1.5 py-0.5">data/site.json</code> 快照。
+          可通过 <code className="rounded bg-surface px-1.5 py-0.5">pnpm run export</code> 从 MongoDB 导出最新快照。
         </p>
       </section>
     </div>

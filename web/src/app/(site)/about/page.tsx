@@ -9,7 +9,7 @@ import {
 } from "@/components/about/AboutSections";
 import { PageHero } from "@/components/layout/PageHero";
 import { CtaButton } from "@/components/ui/cta-button";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     "上海翼投智能科技有限公司（ADFLY 飞书汇）成立于 2017 年，专注效果类出海营销解决方案，累计服务超过 10000 家客户。",
 };
 
-export default function AboutPage() {
-  const { about } = getSiteData();
+export default async function AboutPage() {
+  const { about } = await getSiteDataFromAPI();
 
   return (
     <>

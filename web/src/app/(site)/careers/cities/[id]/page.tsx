@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CityPositionsSection } from "@/components/careers/CareerPages";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 import { findCity } from "@/lib/careers";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +13,7 @@ interface CityPageProps {
 
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const { id } = await params;
-  const { careers } = getSiteData();
+  const { careers } = await getSiteDataFromAPI();
   const city = findCity(careers, id);
   if (!city) return { title: "招聘城市" };
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
 export default async function CareersCityPage({ params }: CityPageProps) {
   const { id } = await params;
-  const { careers } = getSiteData();
+  const { careers } = await getSiteDataFromAPI();
   const city = findCity(careers, id);
   if (!city) notFound();
 

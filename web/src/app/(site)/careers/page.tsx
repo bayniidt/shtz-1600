@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { BenefitsSection, CityIndexSection, CultureSection, JobsSection } from "@/components/careers/CareersSections";
 import { PageHero } from "@/components/layout/PageHero";
 import { CtaButton } from "@/components/ui/cta-button";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 import { cityCounts, totalPositions } from "@/lib/careers";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     "加入 ADFLY 飞书汇，与具有全球化视野、积极进取且富有创新精神的出海营销人一起，助力中国企业走向全球。",
 };
 
-export default function CareersPage() {
-  const { careers } = getSiteData();
+export default async function CareersPage() {
+  const { careers } = await getSiteDataFromAPI();
   const counts = cityCounts(careers);
   const cityTotal = Object.values(counts).length;
 

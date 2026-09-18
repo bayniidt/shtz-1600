@@ -1,9 +1,9 @@
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
-  const { site } = getSiteData();
+export default async function SiteLayout({ children }: { children: React.ReactNode }) {
+  const { site } = await getSiteDataFromAPI();
 
   return (
     <>

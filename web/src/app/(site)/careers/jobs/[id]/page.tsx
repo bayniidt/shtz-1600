@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PositionDetailSection } from "@/components/careers/CareerPages";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 import { positionCities, positionSummary } from "@/lib/careers";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +13,7 @@ interface PositionPageProps {
 
 export async function generateMetadata({ params }: PositionPageProps): Promise<Metadata> {
   const { id } = await params;
-  const { careers } = getSiteData();
+  const { careers } = await getSiteDataFromAPI();
   const position = careers.positions.find((item) => item.id === id);
   if (!position) return { title: "招聘职位" };
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PositionPageProps): Promise<M
 
 export default async function CareersPositionPage({ params }: PositionPageProps) {
   const { id } = await params;
-  const { careers } = getSiteData();
+  const { careers } = await getSiteDataFromAPI();
   const position = careers.positions.find((item) => item.id === id);
   if (!position) notFound();
 

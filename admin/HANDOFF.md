@@ -2,16 +2,16 @@
 
 > 给「下一个接手的人 / 下一个对话窗口（AI）」看的工程约定与现状快照。
 > **开工前请先读**：本文件 → `ADMIN_DEVELOPMENT_PLAN.md`（阶段目标与完成情况）→ `admin/README.md` + `server/README.md`（目录与命令）。
-> 最后更新：Stage 4 完成时。
+> 最后更新：Stage 5 完成时。
 
 ---
 
 ## 0. 一句话现状
 
-Stage 0 / 1 / 2 / 3 / 4 全部实现完成，常规测试 / 类型检查 / 构建 / 冒烟验收通过（覆盖率插桩下的既有偶发失败留给 Stage 6）：
+Stage 0 / 1 / 2 / 3 / 4 / 5 全部实现完成，常规测试 / 类型检查 / 构建 / 冒烟验收通过（覆盖率插桩下的既有偶发失败留给 Stage 6）：
 - 后端：认证 + 主题 + **内容模块（site / home 6 板块 / about / careers content，13 个真实接口）** + **Cases 8 个真实接口** + **Careers 城市 / 职位 10 个真实接口**。
 - 后台前端：登录 / 守卫 / 布局 / 主题设置 / 4 个内容编辑页 + **Cases 列表页与新建/编辑页** + **Careers 总览、城市编辑、职位编辑**。
-- **下一步 = Stage 5：数据联通前台 + 过渡工具**。
+- **下一步 = Stage 6：接口文档完整化 + 测试覆盖率冲刺**。
 
 ---
 
@@ -19,7 +19,7 @@ Stage 0 / 1 / 2 / 3 / 4 全部实现完成，常规测试 / 类型检查 / 构�
 
 ```
 /Users/cc/Repository/1600/
-├── web/      Next.js 16 前台         → :3000   （Stage 5 才会改成读 REST API）
+├── web/      Next.js 16 前台         → :3000   （API 优先，JSON 快照兜底）
 ├── admin/    React 18 + antd 5 后台  → :5173/admin/   （preview :5174）
 ├── server/   Express 4 + Mongo 7    → :4000/api/v1
 └── admin/ADMIN_DEVELOPMENT_PLAN.md   阶段计划（唯一进度真相来源）
@@ -45,15 +45,17 @@ cd ../web && npm run dev                                                        
 
 ## 3. 验收命令（每完成一个阶段都要全绿）
 
-| 范围 | 命令 | 门禁 / 当前值（Stage 4） |
+| 范围 | 命令 | 门禁 / 当前值（Stage 5） |
 |------|------|--------------------------|
-| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **194/194** 用例通过 |
+| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **195/195** 用例通过 |
 | 后端覆盖率 | `cd server && npm run test:coverage` | 本轮 196/197 通过；`home.test.ts` 的 T15 在覆盖率插桩下偶发 404，待 Stage 6 收敛 |
 | 前端测试 | `cd admin && npx vitest run` | **196/196** 用例通过 |
 | 前端覆盖率 | `cd admin && npm run test:coverage` | 本轮 185/186 通过；`BasicLayout.test.tsx` 的 B3 在覆盖率插桩下超时，待 Stage 6 收敛 |
 | 类型检查 | `cd admin && npx tsc --noEmit` | 必须干净 |
 | 构建 | `cd admin && npm run build` | 主 chunk 约 2.05 MB / gzip 约 655 kB（Vite 体积提示） |
 | 真实浏览器冒烟 | `cd admin && npm run build && npm run preview` + `npm run test:smoke` | 15 个路由（需后端 :4000 + preview :5174） |
+| 前台类型检查 / 构建 | `cd web && pnpm run typecheck && pnpm run build` | 通过；页面使用 API 优先 + JSON 兜底 |
+| 前台快照导出 | `cd web && pnpm run export` | 从后端 API 导出 `data/site.json` |
 
 阶段收尾清单（一个都别漏）：
 1. 后端/前端常规测试全绿；覆盖率插桩下的既有偶发失败留给 Stage 6 收敛；
@@ -202,7 +204,7 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 
 - **Stage 3 已完成**：Cases 列表页文案 + 7 个案例 CRUD/操作接口，Zod 覆盖 `stats[]` 与 `blocks[]` 嵌套；前端案例列表（ProTable + 筛选 + 置顶 + 删除确认）+ 新建/编辑页（`ArrayEditor`）+ 前台预览。
 - **Stage 4 已完成**：改城市 `id` 联动更新职位的 `cityId`/`extraCities`、删除城市回退、`cityId` 合法性校验、列表聚合 `positionsCount`；前端城市卡片 Grid + 职位 ProTable。
-- **Stage 5**：`web/src/lib/db.ts` 改为读后端 REST API（保留 JSON 兜底）；Dashboard 真实统计。
+- **Stage 5 已完成**：`web/src/lib/db.ts` API 优先读取 site/home/about/cases/careers，任一 API 不可用时回退 `data/site.json`；公共页面保持 `force-dynamic`；新增 `web/scripts/export.mjs` 与 `pnpm run export`；Dashboard 统计卡片、行业分布饼图、公司时间线改为实时 API 数据。
 - **Stage 6**：Swagger 示例补齐 + 覆盖率收尾；`admin/src/config/endpoints.ts` 换成读 `/api/docs/openapi.json`；体积优化。
 - **Stage 7**：部署配置。
 
@@ -211,8 +213,8 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 ## 8. 新对话窗口开场白模板
 
 ```
-继续 stage5。先读 admin/HANDOFF.md、admin/ADMIN_DEVELOPMENT_PLAN.md 的 Stage 5 章节、
-admin/README.md、server/README.md，然后开始实现前台 REST API 联通与 JSON 兜底，完成后按 HANDOFF 第 3 节的收尾清单验收并更新文档。
+继续 stage6。先读 admin/HANDOFF.md、admin/ADMIN_DEVELOPMENT_PLAN.md 的 Stage 6 章节、
+admin/README.md、server/README.md，然后开始实现接口文档完整化与测试覆盖率收尾，完成后按 HANDOFF 第 3 节的收尾清单验收并更新文档。
 ```
 
-换其他阶段把「stage5 / 前台 REST API 联通」替换即可（stage3 / stage4 / stage6 / stage7）。
+换其他阶段把「stage6 / 接口文档与覆盖率收尾」替换即可（stage3 / stage4 / stage5 / stage7）。

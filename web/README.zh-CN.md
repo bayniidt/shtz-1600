@@ -167,6 +167,19 @@ npm run typecheck # TypeScript 检查
 npm run check    # 同时运行 lint + typecheck + build
 ```
 
+### Stage 5 数据读取
+
+前台服务端页面优先从 Admin REST API 读取站点内容，默认地址为
+`http://localhost:4000/api/v1`，可通过 `ADMIN_API_URL` 覆盖；后端不可用时自动回退到
+`data/site.json`。公共页面保持动态渲染，因此后台保存内容后无需重新构建前台。
+
+从当前 API 内容生成 JSON 快照：
+
+```bash
+pnpm run export
+# ADMIN_API_URL=http://localhost:4000/api/v1 EXPORT_OUTPUT=/tmp/site.json pnpm run export
+```
+
 ### 使用 Docker
 
 ```bash

@@ -4,12 +4,12 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { HonorsSection } from "@/components/home/HonorsSection";
 import { MediaSection } from "@/components/home/MediaSection";
 import { StrengthSection } from "@/components/home/StrengthSection";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  const { home } = getSiteData();
+export default async function HomePage() {
+  const { home } = await getSiteDataFromAPI();
 
   return (
     <>

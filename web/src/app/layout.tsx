@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -12,8 +12,10 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export function generateMetadata(): Metadata {
-  const { site } = getSiteData();
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { site } = await getSiteDataFromAPI();
   return {
     title: {
       default: site.seo.title,

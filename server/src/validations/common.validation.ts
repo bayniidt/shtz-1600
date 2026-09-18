@@ -4,6 +4,26 @@ import { z } from "zod";
 export const text = (max: number, label = "内容") =>
   z.string().trim().max(max, `${label}长度不能超过 ${max} 个字符`);
 
+/** 可为空的外部链接：只允许绝对 http / https URL，避免把脚本协议写入前台 href。 */
+export const optionalHttpUrl = (max: number, label = "链接") =>
+  z.preprocess(
+    (value) => (typeof value === "string" ? value.trim() : value),
+    z
+      .union([z.literal(""), z.string().max(max, `${label}长度不能超过 ${max} 个字符`)])
+      .refine(
+        (value) => {
+          if (value === "") return true;
+          try {
+            const url = new URL(value);
+            return (url.protocol === "http:" || url.protocol === "https:") && Boolean(url.hostname);
+          } catch {
+            return false;
+          }
+        },
+        `${label}必须是 http 或 https 地址`,
+      ),
+  );
+
 /** 必填文本（非空）。 */
 export const requiredText = (max: number, label = "内容") =>
   text(max, label).min(1, `${label}不能为空`);

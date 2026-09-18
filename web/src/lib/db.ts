@@ -1,6 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { CaseItem, SiteData } from "@/types";
+import { cache as reactCache } from "react";
+import type {
+  AboutContent,
+  CareersContent,
+  CareersCity,
+  CareersPosition,
+  CaseItem,
+  CasesPageContent,
+  HomeContent,
+  SiteConfig,
+  SiteData,
+} from "@/types";
 
 /**
  * File-backed content store.
@@ -12,25 +23,104 @@ import type { CaseItem, SiteData } from "@/types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "site.json");
+const API_BASE_URL = (
+  process.env.ADMIN_API_URL ?? process.env.NEXT_PUBLIC_ADMIN_API_URL ?? "http://localhost:4000/api/v1"
+).replace(/\/$/, "");
+const API_TIMEOUT_MS = 3000;
 
-let cache: SiteData | null = null;
+let fileCache: SiteData | null = null;
 let cachedMtime = 0;
 
 export function getSiteData(): SiteData {
   // Re-read whenever the file changes on disk so an external edit (or another
   // worker process) is picked up immediately.
   const mtime = fs.statSync(DATA_FILE).mtimeMs;
-  if (cache && mtime === cachedMtime) return cache;
+  if (fileCache && mtime === cachedMtime) return fileCache;
   const raw = fs.readFileSync(DATA_FILE, "utf8");
-  cache = JSON.parse(raw) as SiteData;
+  fileCache = JSON.parse(raw) as SiteData;
   cachedMtime = mtime;
-  return cache;
+  return fileCache;
 }
+
+interface ApiEnvelope<T> {
+  code: number;
+  message: string;
+  data: T;
+}
+
+interface PagedResult<T> {
+  items: T[];
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+async function fetchApi<T>(endpoint: string): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    cache: "no-store",
+    signal: AbortSignal.timeout(API_TIMEOUT_MS),
+  });
+  if (!response.ok) throw new Error(`Admin API ${response.status}: ${endpoint}`);
+  const body = (await response.json()) as ApiEnvelope<T>;
+  if (body.code !== 0) throw new Error(`Admin API ${body.code}: ${body.message}`);
+  return body.data;
+}
+
+async function fetchAllPages<T>(endpoint: string): Promise<T[]> {
+  const pageSize = 100;
+  const items: T[] = [];
+  let page = 1;
+  let total = 0;
+
+  do {
+    const result = await fetchApi<PagedResult<T>>(`${endpoint}?page=${page}&pageSize=${pageSize}`);
+    items.push(...result.items);
+    total = result.total;
+    page += 1;
+    if (result.items.length === 0) break;
+  } while (items.length < total);
+
+  return items.slice(0, total || items.length);
+}
+
+/**
+ * Read the live content API first and fall back to the checked-in JSON snapshot.
+ * This is intentionally server-only: public pages stay dynamic while an offline
+ * or not-yet-seeded API never makes the site unavailable.
+ */
+async function loadSiteDataFromAPI(): Promise<SiteData> {
+  try {
+    const [site, home, about, careersContent, casesPage, cases, cities, positions] = await Promise.all([
+      fetchApi<SiteConfig>("/site"),
+      fetchApi<HomeContent>("/home"),
+      fetchApi<AboutContent>("/about"),
+      fetchApi<Omit<CareersContent, "cities" | "positions">>("/careers/content"),
+      fetchApi<CasesPageContent>("/cases/page"),
+      fetchAllPages<CaseItem>("/cases"),
+      fetchAllPages<CareersCity>("/careers/cities"),
+      fetchAllPages<CareersPosition>("/careers/positions"),
+    ]);
+
+    return {
+      site,
+      home,
+      about,
+      cases: { page: casesPage, items: cases },
+      careers: { ...careersContent, cities, positions },
+    };
+  } catch (error) {
+    console.warn("[web] Admin API unavailable, using data/site.json fallback:", error instanceof Error ? error.message : error);
+    return getSiteData();
+  }
+}
+
+/** Deduplicate the eight API reads when metadata, layouts, and pages render together. */
+export const getSiteDataFromAPI = reactCache(loadSiteDataFromAPI);
 
 export function saveSiteData(next: SiteData): void {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(DATA_FILE, `${JSON.stringify(next, null, 2)}\n`, "utf8");
-  cache = next;
+  fileCache = next;
   cachedMtime = fs.statSync(DATA_FILE).mtimeMs;
 }
 

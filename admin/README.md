@@ -110,6 +110,12 @@ npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染
 - 服务层：src/services/careers.ts 覆盖城市与职位 10 个 REST 接口。
 - 测试：城市 / 职位服务、总览、城市编辑、职位编辑均有用例，覆盖回退参数、多选回写和加载失败基础路径。
 
+## Stage 5 交付（前台 REST API 联通）
+
+- 前台页面优先从 `server` REST API 读取站点、首页、About、Cases、Careers 数据；后端不可用时自动回退到 `web/data/site.json`。
+- Dashboard 的统计卡片、案例行业分布饼图、公司发展时间线使用实时接口数据。
+- `web/scripts/export.mjs` 提供 `pnpm run export`，可将 API 当前内容原子写回 JSON 快照；支持 `ADMIN_API_URL` 与 `EXPORT_OUTPUT` 环境变量。
+
 ## Stage 3 交付（客户案例 CRUD）
 
 - Cases 列表页：ProTable 分页、行业/置顶筛选、关键词搜索、置顶切换、删除确认、新建入口。

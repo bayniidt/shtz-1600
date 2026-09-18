@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { CasesExplorer } from "@/components/cases/CasesExplorer";
 import { PageHero } from "@/components/layout/PageHero";
-import { getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     "ADFLY 飞书汇出海营销成功案例：覆盖电商、游戏、APP 三大行业，以数据与创意驱动的全球化增长实践。",
 };
 
-export default function CasesPage() {
-  const { cases } = getSiteData();
+export default async function CasesPage() {
+  const { cases } = await getSiteDataFromAPI();
 
   return (
     <>

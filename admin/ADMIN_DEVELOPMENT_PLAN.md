@@ -661,12 +661,18 @@ export default {
 > - 测试覆盖列表聚合、id 联动、删除回退、最后城市边界、职位 CRUD、城市合法性和附加城市过滤；Swagger 与占位清单已同步收口。
 > - Stage 4 验收：后端 Jest **194/194**、前端 Vitest **196/196**、类型检查、构建均通过；Chrome CDP 冒烟在 dev 5173 与 preview 5174 各 **15 个路由**通过。
 
-### Stage 5：数据联通前台 + 过渡工具（~3h）
+### Stage 5：数据联通前台 + 过渡工具（~3h）✅ 已完成
 
 - 改造 `src/lib/db.ts`：新增 `getSiteDataFromAPI()`，优先读后端 API，失败降级读本地 JSON
 - `scripts/export.mjs`：把 MongoDB 内容再导回 `data/site.json`（方便只读文件系统部署或冷备份）
 - Dashboard 页统计卡片 + 饼图 + 时间线真实调用接口（不是假数据）
 - **里程碑**：后台改任何字段 → 前台 `force-dynamic` 渲染即时生效；离线模式（后端停了）前台仍可用 JSON 数据（降级）。
+
+> **Stage 5 完成情况**
+> - 前台 `web/src/lib/db.ts` 新增 API-first 数据读取：并行读取 site / home / about / careers / cases，分页拉取案例、城市与职位；请求失败时自动回退到 `web/data/site.json`。
+> - 公共布局、首页、About、Cases、Careers 及详情页统一改用 API 读取，并保留 `force-dynamic`；React request cache 避免同一次渲染重复请求。
+> - 新增 `web/scripts/export.mjs` 与 `pnpm run export`，采用临时文件 + rename 写入快照，支持 `ADMIN_API_URL` / `EXPORT_OUTPUT` 覆盖。
+> - Dashboard 统计卡片、案例行业饼图、公司发展时间线均来自 REST API；前台 `typecheck`、`lint`、`build` 与快照导出验证通过。
 
 ### Stage 6：接口文档完整化 + 测试覆盖率冲刺（~4h）
 

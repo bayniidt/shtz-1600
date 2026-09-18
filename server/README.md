@@ -116,6 +116,7 @@ scripts/                   seed.ts
 > - 校验中间件会剥离 `_id/__v/key/createdAt/updatedAt` 后再解析，客户端无法伪造服务端管理字段。
 > - Zod 全部 **strict**：未知字段 → 4000「不支持的字段：X」，缺失必填 → 4000「该字段必填」。
 > - `featured` / `hot` / `urgent` / `major` 为三态标记，按原值存取（`true` / `"yes"` 均可）。
+> - 招聘 `portalUrl` / `applyUrl` 只接受空值或绝对 `http://` / `https://` 地址，避免脚本协议进入前台链接。
 
 ## Stage 4 Careers CRUD
 
@@ -140,13 +141,13 @@ npm run seed            # 从 ../web/data/site.json 初始化内容（--force / 
 | `tests/site.test.ts` | 16 | 站点配置读取 / 更新 / 鉴权 / strict 校验 / 异常分支 |
 | `tests/home.test.ts` | 20 | 首页 6 板块读取与分区更新 / 非法 section / 嵌套数组校验 |
 | `tests/about.test.ts` | 11 | 关于我们读取 / 更新 / 校验 |
-| `tests/careers.test.ts` | 19 | 招聘文案、城市 / 职位 CRUD、id 联动、回退、筛选与校验 |
+| `tests/careers.test.ts` | 20 | 招聘文案、城市 / 职位 CRUD、id 联动、回退、筛选与校验、外部 URL 协议校验 |
 | `tests/cases.test.ts` | 37 | 案例列表页文案、案例 CRUD、分页筛选搜索、嵌套 stats/blocks、置顶与鉴权 |
 | `tests/seed.test.ts` | 19 | 内容拆分写入 / 幂等 / force / 缺文件 / 启动自愈 |
 | `tests/models.test.ts` | 10 | 8 个模型的默认值 / 索引 / toJSON 剥离规则 |
 | `tests/skeleton.test.ts` | — | 已无 Stage 4 占位接口；静态路由优先级与 Swagger 基础覆盖 |
 | `tests/infra.test.ts` | — | ApiError / 响应封装 / 错误中间件 / 校验中间件 / 鉴权中间件 / JWT / 模型 / 环境变量解析 |
 
-Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；`npm run test:coverage` 的既有插桩偶发问题留给 Stage 6 收尾。
+Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；Stage 5 增加招聘外部 URL 协议校验。当前常规 Jest **195/195** 全部通过；`npm run test:coverage` 的既有插桩偶发问题留给 Stage 6 收尾。
 
 测试使用独立库 `adfly_admin_test`，每个用例前清空集合并重建管理员，不会污染开发数据。

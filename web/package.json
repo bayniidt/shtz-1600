@@ -30,6 +30,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "node scripts/export.mjs",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build"

@@ -124,7 +124,35 @@ describe("PUT /careers/content —— 更新招聘页面文案", () => {
     );
   });
 
-  it("T10 边界：福利分组最多 12 组", async () => {
+  it("T10 安全：外部链接只允许 http / https，空值仍可保存", async () => {
+    const invalidPortal = await request(app)
+      .put(CONTENT)
+      .set(bearer(token))
+      .send({ ...CAREERS_FIXTURE, portalUrl: "javascript:alert(1)" });
+    expect(invalidPortal.status).toBe(400);
+    expect(invalidPortal.body.errors).toEqual(
+      expect.arrayContaining([expect.objectContaining({ path: "portalUrl" })]),
+    );
+
+    await seedFixtureContent();
+    const invalidApply = await request(app)
+      .post("/api/v1/careers/positions")
+      .set(bearer(token))
+      .send({ ...POSITIONS_FIXTURE[0], id: "position-invalid-url", applyUrl: "data:text/html,<script>" });
+    expect(invalidApply.status).toBe(400);
+    expect(invalidApply.body.errors).toEqual(
+      expect.arrayContaining([expect.objectContaining({ path: "applyUrl" })]),
+    );
+
+    const validApply = await request(app)
+      .post("/api/v1/careers/positions")
+      .set(bearer(token))
+      .send({ ...POSITIONS_FIXTURE[0], id: "position-valid-url", applyUrl: "https://jobs.example.com/position" });
+    expect(validApply.status).toBe(201);
+    expect(validApply.body.data.applyUrl).toBe("https://jobs.example.com/position");
+  });
+
+  it("T11 边界：福利分组最多 12 组", async () => {
     const benefits = (count: number) =>
       Array.from({ length: count }, (_, index) => ({ group: `分组${index}`, items: "A / B" }));
 
@@ -141,7 +169,7 @@ describe("PUT /careers/content —— 更新招聘页面文案", () => {
     expect(tooMany.status).toBe(400);
   });
 
-  it("T11 边界：招聘邮箱允许留空", async () => {
+  it("T12 边界：招聘邮箱允许留空", async () => {
     const res = await request(app)
       .put(CONTENT)
       .set(bearer(token))
@@ -153,7 +181,7 @@ describe("PUT /careers/content —— 更新招聘页面文案", () => {
 });
 
 describe("招聘城市 CRUD", () => {
-  it("T12 城市列表聚合 positionsCount，详情返回关联职位", async () => {
+  it("T13 城市列表聚合 positionsCount，详情返回关联职位", async () => {
     await seedFixtureContent();
 
     const list = await request(app).get("/api/v1/careers/cities?pageSize=10");
@@ -172,7 +200,7 @@ describe("招聘城市 CRUD", () => {
     expect(detail.body.data.positions[0].id).toBe("position-001");
   });
 
-  it("T13 修改城市 id 会联动职位主归属和 extraCities", async () => {
+  it("T14 修改城市 id 会联动职位主归属和 extraCities", async () => {
     await seedFixtureContent();
 
     const shanghai = await request(app)
@@ -193,7 +221,7 @@ describe("招聘城市 CRUD", () => {
     expect(linked.body.data.extraCities).toBe("shenzhen-south");
   });
 
-  it("T14 删除城市会把主职位回退并清理附加城市", async () => {
+  it("T15 删除城市会把主职位回退并清理附加城市", async () => {
     await seedFixtureContent();
     const deleted = await request(app)
       .delete("/api/v1/careers/cities/shanghai")
@@ -208,7 +236,7 @@ describe("招聘城市 CRUD", () => {
     expect((await request(app).get("/api/v1/careers/cities/shanghai")).status).toBe(404);
   });
 
-  it("T15 城市写接口需要登录且 id 冲突返回 409", async () => {
+  it("T16 城市写接口需要登录且 id 冲突返回 409", async () => {
     const unauth = await request(app).post("/api/v1/careers/cities").send(CITIES_FIXTURE[0]);
     expect(unauth.status).toBe(401);
 
@@ -221,7 +249,7 @@ describe("招聘城市 CRUD", () => {
     expect(conflict.body.code).toBe(4090);
   });
 
-  it("T16 删除最后一个城市时不删除职位，而是清空主城市", async () => {
+  it("T17 删除最后一个城市时不删除职位，而是清空主城市", async () => {
     await seedFixtureContent();
     await CareersCity.deleteMany({ id: "shenzhen" });
     const deleted = await request(app)
@@ -237,7 +265,7 @@ describe("招聘城市 CRUD", () => {
 });
 
 describe("招聘职位 CRUD", () => {
-  it("T17 职位列表支持城市 / 关键词筛选与分页", async () => {
+  it("T18 职位列表支持城市 / 关键词筛选与分页", async () => {
     await seedFixtureContent();
     const res = await request(app).get("/api/v1/careers/positions?cityId=shenzhen&pageSize=10");
     expect(res.status).toBe(200);
@@ -247,7 +275,7 @@ describe("招聘职位 CRUD", () => {
     );
   });
 
-  it("T18 创建 / 更新 / 删除职位，并过滤无效 extraCities", async () => {
+  it("T19 创建 / 更新 / 删除职位，并过滤无效 extraCities", async () => {
     await seedFixtureContent();
     const payload = {
       ...POSITIONS_FIXTURE[0],
@@ -282,7 +310,7 @@ describe("招聘职位 CRUD", () => {
     expect((await request(app).get("/api/v1/careers/positions/position-new")).status).toBe(404);
   });
 
-  it("T19 缺少必填字段和未登录写操作返回正确错误", async () => {
+  it("T20 缺少必填字段和未登录写操作返回正确错误", async () => {
     const unauth = await request(app).post("/api/v1/careers/positions").send({});
     expect(unauth.status).toBe(401);
 

@@ -7,7 +7,7 @@ import {
   CaseStats,
   RelatedCases,
 } from "@/components/cases/CaseDetail";
-import { getCaseById, getSiteData } from "@/lib/db";
+import { getSiteDataFromAPI } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +15,8 @@ type PageProps = { params: Promise<{ id: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const item = getCaseById(id);
+  const { cases } = await getSiteDataFromAPI();
+  const item = cases.items.find((caseItem) => caseItem.id === id);
   if (!item) return { title: "案例未找到" };
   return {
     title: item.title,
@@ -25,8 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CaseDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const { cases } = getSiteData();
-  const item = getCaseById(id);
+  const { cases } = await getSiteDataFromAPI();
+  const item = cases.items.find((caseItem) => caseItem.id === id);
 
   if (!item) notFound();
 

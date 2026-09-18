@@ -1,6 +1,14 @@
 import { z } from "zod";
 
-import { flagSchema, optionalEmail, requiredText, slugSchema, text, titledItemSchema } from "@/validations/common.validation";
+import {
+  flagSchema,
+  optionalEmail,
+  optionalHttpUrl,
+  requiredText,
+  slugSchema,
+  text,
+  titledItemSchema,
+} from "@/validations/common.validation";
 
 /** PUT /careers/content —— 加入我们页面文案（不含 cities / positions）。 */
 export const careersContentSchema = z
@@ -26,7 +34,7 @@ export const careersContentSchema = z
       .max(12, "福利分组最多 12 组"),
     jobsEyebrow: text(200, "职位眉标"),
     jobsTitle: requiredText(200, "职位标题"),
-    portalUrl: text(500, "招聘系统地址"),
+    portalUrl: optionalHttpUrl(500, "招聘系统地址"),
     applyEmail: optionalEmail,
   })
   .strict();
@@ -86,7 +94,7 @@ export const careersPositionSchema = z
     description: text(10000, "职位职责"),
     requirement: text(10000, "任职要求"),
     bonus: text(10000, "加分项"),
-    applyUrl: text(500, "投递链接"),
+    applyUrl: optionalHttpUrl(500, "投递链接"),
   })
   .strict();
 
