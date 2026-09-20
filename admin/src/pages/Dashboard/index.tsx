@@ -1,7 +1,6 @@
 import {
   FileTextOutlined,
   FolderOpenOutlined,
-  GlobalOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
 import { Alert, Card, Col, List, Row, Space, Statistic, Tag, Typography } from "antd";
@@ -20,8 +19,7 @@ const STAT_META = [
 ] as const;
 
 const ENTRIES = [
-  { title: "站点与导航", desc: "品牌信息 / 联系方式 / SEO / 导航", path: "/content/site", icon: <GlobalOutlined /> },
-  { title: "首页内容", desc: "首页 6 大板块文案与素材", path: "/content/home", icon: <FileTextOutlined /> },
+  { title: "内容管理", desc: "站点、首页、关于我们与招聘内容", path: "/content", icon: <FileTextOutlined /> },
   { title: "客户案例", desc: "案例列表与详情 CRUD", path: "/cases", icon: <FolderOpenOutlined /> },
   { title: "招聘管理", desc: "招聘城市与岗位管理", path: "/careers", icon: <TeamOutlined /> },
 ];

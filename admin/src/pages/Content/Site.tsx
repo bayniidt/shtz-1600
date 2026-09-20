@@ -6,8 +6,13 @@ import { useContentResource } from "@/hooks/useContentResource";
 import { fetchSite, saveSite } from "@/services/content";
 import type { SiteConfig } from "@/types/content";
 
+interface SiteContentPageProps {
+  compact?: boolean;
+  onCancel?: () => void;
+}
+
 /** 站点与导航：GET /site · PUT /site */
-export default function SiteContentPage() {
+export default function SiteContentPage({ compact = false, onCancel }: SiteContentPageProps) {
   const load = useCallback(() => fetchSite(), []);
   const save = useCallback((payload: SiteConfig) => saveSite(payload), []);
   const { data, loading, saving, error, save: persist, reload } = useContentResource<SiteConfig>({ load, save });
@@ -32,6 +37,8 @@ export default function SiteContentPage() {
       error={error}
       onReload={reload}
       onSave={handleSave}
+      onCancel={onCancel}
+      compact={compact}
     />
   );
 }

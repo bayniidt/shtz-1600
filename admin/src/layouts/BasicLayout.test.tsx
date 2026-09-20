@@ -51,9 +51,9 @@ describe("BasicLayout 未保存修改拦截", () => {
     renderWithProviders(<AppRoutes />, { route: "/content/site" });
     await waitFor(() => expect(screen.getByLabelText("公司名称")).toHaveValue(SITE_FIXTURE.name));
 
-    fireEvent.click(screen.getByRole("menuitem", { name: "首页内容" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: /概览/ }));
 
-    await waitFor(() => expect(screen.getByTestId("page-title")).toHaveTextContent("首页内容"));
+    await waitFor(() => expect(screen.getByText("快捷入口")).toBeInTheDocument());
     expect(screen.queryByText("有未保存的修改")).not.toBeInTheDocument();
   });
 
@@ -62,7 +62,7 @@ describe("BasicLayout 未保存修改拦截", () => {
     await waitFor(() => expect(screen.getByLabelText("公司名称")).toHaveValue(SITE_FIXTURE.name));
 
     fireEvent.change(screen.getByLabelText("公司名称"), { target: { value: "改动过的名称" } });
-    fireEvent.click(screen.getByRole("menuitem", { name: "首页内容" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: /概览/ }));
 
     const dialog = await screen.findByRole("dialog");
     expect(dialog).toHaveTextContent("有未保存的修改");
@@ -80,21 +80,22 @@ describe("BasicLayout 未保存修改拦截", () => {
     await waitFor(() => expect(screen.getByLabelText("公司名称")).toHaveValue(SITE_FIXTURE.name));
 
     fireEvent.change(screen.getByLabelText("公司名称"), { target: { value: "改动过的名称" } });
-    fireEvent.click(screen.getByRole("menuitem", { name: "首页内容" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: /概览/ }));
     fireEvent.click(await screen.findByRole("button", { name: "放弃修改并离开" }));
 
-    await waitFor(() => expect(screen.getByTestId("page-title")).toHaveTextContent("首页内容"));
+    await waitFor(() => expect(screen.getByText("快捷入口")).toBeInTheDocument());
     expect(Object.values(useDirtyStore.getState().entries)).toHaveLength(0);
   });
 
-  it("B4 点击当前菜单项不触发确认框", async () => {
+  it("B4 从旧内容编辑地址点击内容管理会回到总览", async () => {
     renderWithProviders(<AppRoutes />, { route: "/content/site" });
     await waitFor(() => expect(screen.getByLabelText("公司名称")).toHaveValue(SITE_FIXTURE.name));
 
     fireEvent.change(screen.getByLabelText("公司名称"), { target: { value: "改动过的名称" } });
-    fireEvent.click(screen.getByRole("menuitem", { name: "站点与导航" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: /内容管理/ }));
 
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(screen.getByTestId("page-title")).toHaveTextContent("站点与导航");
+    expect(await screen.findByRole("dialog")).toHaveTextContent("有未保存的修改");
+    fireEvent.click(screen.getByRole("button", { name: "放弃修改并离开" }));
+    await waitFor(() => expect(screen.getByTestId("page-title")).toHaveTextContent("内容管理"));
   });
 });

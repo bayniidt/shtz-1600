@@ -19,6 +19,7 @@ export interface ContentEditorProps {
   /** 加载失败信息（存在时展示 Alert 且禁用保存） */
   error?: string | null;
   onSave: (values: Record<string, unknown>) => Promise<void> | void;
+  onCancel?: () => void;
   onReload?: () => void;
   extra?: ReactNode;
   footer?: ReactNode;
@@ -44,6 +45,7 @@ export default function ContentEditor({
   saving = false,
   error = null,
   onSave,
+  onCancel,
   onReload,
   extra,
   footer,
@@ -99,6 +101,11 @@ export default function ContentEditor({
           还原
         </Button>
       </Popconfirm>
+      {onCancel ? (
+        <Button onClick={onCancel} data-testid="content-cancel">
+          取消
+        </Button>
+      ) : null}
       <Button
         type="primary"
         loading={saving}
@@ -113,7 +120,8 @@ export default function ContentEditor({
 
   const body = (
     <>
-      {error && (        <Alert
+      {error && (
+        <Alert
           type="error"
           showIcon
           style={{ marginBottom: 16 }}
@@ -164,7 +172,19 @@ export default function ContentEditor({
     return (
       <div data-testid={testId ?? "content-editor"}>
         <div
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginBottom: 12 }}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 16,
+            position: "sticky",
+            top: 0,
+            zIndex: 3,
+            background: "var(--ant-color-bg-container, #fff)",
+            padding: "8px 0",
+            marginBottom: 12,
+            borderBottom: "1px solid var(--ant-color-border-secondary, #f0f0f0)",
+          }}
         >
           <Typography.Text type="secondary">{subTitle}</Typography.Text>
           <div>{toolbar}</div>

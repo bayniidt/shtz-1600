@@ -17,12 +17,6 @@ export const MENU_ITEMS: MenuProps["items"] = [
     key: "/content",
     icon: <FileTextOutlined />,
     label: "内容管理",
-    children: [
-      { key: "/content/site", label: "站点与导航" },
-      { key: "/content/home", label: "首页内容" },
-      { key: "/content/about", label: "关于我们" },
-      { key: "/content/careers", label: "招聘内容" },
-    ],
   },
   {
     key: "/cases",
@@ -45,6 +39,7 @@ export const MENU_ITEMS: MenuProps["items"] = [
 /** 路由 → 面包屑标题 */
 export const ROUTE_TITLES: Record<string, string> = {
   "/dashboard": "概览",
+  "/content": "内容管理",
   "/content/site": "站点与导航",
   "/content/home": "首页内容",
   "/content/about": "关于我们",
@@ -55,4 +50,4 @@ export const ROUTE_TITLES: Record<string, string> = {
 };
 
 /** 默认展开的菜单组 */
-export const DEFAULT_OPEN_KEYS = ["/content", "/settings"];
+export const DEFAULT_OPEN_KEYS = ["/settings"];

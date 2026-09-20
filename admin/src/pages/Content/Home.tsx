@@ -16,7 +16,12 @@ function toMessage(error: unknown): string {
  * 首页内容：GET /home 读取全部板块，PUT /home/:section 按板块保存。
  * 切换 Tab 不会丢弃其他板块未保存的编辑。
  */
-export default function HomeContentPage() {
+interface HomeContentPageProps {
+  compact?: boolean;
+  onCancel?: () => void;
+}
+
+export default function HomeContentPage({ compact = false, onCancel }: HomeContentPageProps) {
   const [home, setHome] = useState<HomeContent | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -51,9 +56,8 @@ export default function HomeContentPage() {
     [],
   );
 
-  return (
-    <PageContainer title="首页内容" subTitle="首页 6 个板块分别保存，互不影响">
-      <Tabs
+  const body = (
+    <Tabs
         items={HOME_SECTIONS.map(({ key, label, description }) => ({
           key,
           label,
@@ -73,10 +77,12 @@ export default function HomeContentPage() {
               error={error}
               onReload={() => void loadHome()}
               onSave={(values) => handleSave(key, values)}
+              onCancel={onCancel}
             />
           ),
         }))}
       />
-    </PageContainer>
   );
+
+  return compact ? body : <PageContainer title="首页内容" subTitle="首页 6 个板块分别保存，互不影响">{body}</PageContainer>;
 }

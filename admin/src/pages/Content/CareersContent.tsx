@@ -6,8 +6,13 @@ import { useContentResource } from "@/hooks/useContentResource";
 import { fetchCareersContent, saveCareersContent } from "@/services/content";
 import type { CareersContent } from "@/types/content";
 
+interface CareersContentPageProps {
+  compact?: boolean;
+  onCancel?: () => void;
+}
+
 /** 招聘页面文案：GET /careers/content · PUT /careers/content */
-export default function CareersContentPage() {
+export default function CareersContentPage({ compact = false, onCancel }: CareersContentPageProps) {
   const load = useCallback(() => fetchCareersContent(), []);
   const save = useCallback((payload: CareersContent) => saveCareersContent(payload), []);
   const { data, loading, saving, error, save: persist, reload } = useContentResource<CareersContent>({
@@ -35,6 +40,8 @@ export default function CareersContentPage() {
       error={error}
       onReload={reload}
       onSave={handleSave}
+      onCancel={onCancel}
+      compact={compact}
     />
   );
 }

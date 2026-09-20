@@ -12,7 +12,7 @@ import { useAuthStore } from "@/store/auth";
 const { Header, Sider, Content } = Layout;
 
 function selectedMenuKey(pathname: string): string {
-  if (pathname.startsWith("/content/careers")) return "/content/careers";
+  if (pathname === "/content" || pathname.startsWith("/content/")) return "/content";
   if (pathname.startsWith("/cases")) return "/cases";
   const exact = Object.keys(ROUTE_TITLES).find((key) => pathname === key);
   return exact ?? "/dashboard";

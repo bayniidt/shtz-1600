@@ -70,4 +70,14 @@ describe("客户案例列表页", () => {
     expect(await screen.findByTestId("page-title")).toHaveTextContent("客户案例");
     expect(screen.getByTestId("case-list")).toBeInTheDocument();
   });
+
+  it("L5 新建案例使用对话框，不跳转到独立编辑页", async () => {
+    renderWithProviders(<CaseListPage />, { route: "/cases" });
+    fireEvent.click(screen.getByTestId("case-create"));
+
+    expect(await screen.findByTestId("case-editor-dialog")).toBeInTheDocument();
+    expect(screen.getByLabelText("案例 ID（slug）")).toBeInTheDocument();
+    expect(screen.getByTestId("case-save")).toBeInTheDocument();
+    expect(screen.getByTestId("page-title")).toHaveTextContent("客户案例");
+  });
 });

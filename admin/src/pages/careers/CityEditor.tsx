@@ -1,4 +1,4 @@
-import { Alert, App, Button, Card, Form, Input, Skeleton, Space, Switch, Table } from "antd";
+import { Alert, App, Button, Card, Form, Input, Modal, Skeleton, Space, Switch, Table } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -7,9 +7,24 @@ import { UNSAVED_CONFIRM_CONTENT, UNSAVED_CONFIRM_TITLE, useUnsavedChanges } fro
 import { createCareerCity, fetchCareerCity, updateCareerCity } from "@/services/careers";
 import { emptyCareerCity, flagValue, type CareerCity, type CareerPosition } from "@/types/careers";
 
+export interface CityEditorPageProps {
+  dialog?: boolean;
+  open?: boolean;
+  cityId?: string;
+  onClose?: () => void;
+  onSaved?: () => void;
+}
+
 /** 城市编辑：城市 id 可修改，保存时由后端联动职位引用。 */
-export default function CityEditorPage() {
-  const { id } = useParams();
+export default function CityEditorPage({
+  dialog = false,
+  open = true,
+  cityId,
+  onClose,
+  onSaved,
+}: CityEditorPageProps) {
+  const routeParams = useParams();
+  const id = cityId ?? routeParams.id;
   const editing = Boolean(id);
   const navigate = useNavigate();
   const { message, modal } = App.useApp();
@@ -24,7 +39,11 @@ export default function CityEditorPage() {
 
   useEffect(() => {
     if (!editing) {
+      form.resetFields();
       form.setFieldsValue(emptyCareerCity());
+      setPositions([]);
+      setError(null);
+      setDirty(false);
       setLoading(false);
       return;
     }
@@ -61,19 +80,25 @@ export default function CityEditorPage() {
           message.success("城市已创建");
         }
         setDirty(false);
-        navigate("/careers");
+        if (dialog) {
+          onSaved?.();
+          onClose?.();
+        } else {
+          navigate("/careers");
+        }
       } catch (saveError) {
         message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
       } finally {
         setSaving(false);
       }
     },
-    [editing, id, message, navigate],
+    [dialog, editing, id, message, navigate, onClose, onSaved],
   );
 
   const handleCancel = useCallback(() => {
     if (!dirty) {
-      navigate("/careers");
+      if (dialog) onClose?.();
+      else navigate("/careers");
       return;
     }
     modal.confirm({
@@ -82,25 +107,25 @@ export default function CityEditorPage() {
       okText: "放弃修改并离开",
       cancelText: "留在本页",
       okButtonProps: { danger: true },
-      onOk: () => navigate("/careers"),
+      onOk: () => {
+        if (dialog) onClose?.();
+        else navigate("/careers");
+      },
     });
-  }, [dirty, modal, navigate]);
+  }, [dialog, dirty, modal, navigate, onClose]);
 
-  return (
-    <div data-testid="city-editor">
-      <PageContainer
-        title={editing ? "编辑招聘城市" : "新建招聘城市"}
-        subTitle={editing ? `当前城市：${id}` : "城市 ID 创建后可通过编辑页修改并联动职位"}
-        extra={
-          <Space>
-            <Button onClick={handleCancel} data-testid="city-cancel">取消</Button>
-            <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="city-save">保存</Button>
-          </Space>
-        }
-      >
-        {loading ? <Skeleton active /> : null}
-        {error ? <Alert type="error" message="城市加载失败" description={error} showIcon /> : null}
-        {!loading && !error ? (
+  const toolbar = (
+    <Space>
+      <Button onClick={handleCancel} data-testid="city-cancel">取消</Button>
+      <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="city-save">保存</Button>
+    </Space>
+  );
+
+  const content = (
+    <>
+      {loading ? <Skeleton active /> : null}
+      {error ? <Alert type="error" message="城市加载失败" description={error} showIcon /> : null}
+      {!loading && !error ? (
           <>
             {editing ? (
               <Alert
@@ -147,7 +172,42 @@ export default function CityEditorPage() {
               </Card>
             ) : null}
           </>
-        ) : null}
+      ) : null}
+    </>
+  );
+
+  if (dialog) {
+    return (
+      <Modal
+        open={open}
+        title={editing ? "编辑招聘城市" : "新建招聘城市"}
+        width={900}
+        centered
+        destroyOnHidden
+        footer={toolbar}
+        styles={{
+          body: {
+            maxHeight: "calc(100vh - 220px)",
+            overflowY: "auto",
+            paddingRight: 4,
+          },
+        }}
+        onCancel={handleCancel}
+        data-testid="city-editor-dialog"
+      >
+        {content}
+      </Modal>
+    );
+  }
+
+  return (
+    <div data-testid="city-editor">
+      <PageContainer
+        title={editing ? "编辑招聘城市" : "新建招聘城市"}
+        subTitle={editing ? `当前城市：${id}` : "城市 ID 创建后可通过编辑页修改并联动职位"}
+        extra={toolbar}
+      >
+        {content}
       </PageContainer>
     </div>
   );

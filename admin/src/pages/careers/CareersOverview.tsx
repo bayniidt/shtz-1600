@@ -1,11 +1,12 @@
 import { PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable } from "@ant-design/pro-components";
-import { Alert, App, Button, Card, Col, Empty, Popconfirm, Row, Space, Tag, Typography } from "antd";
+import { Alert, App, Button, Card, Popconfirm, Space, Table, Tag } from "antd";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
 import PageContainer from "@/components/PageContainer";
+import CityEditorPage from "@/pages/careers/CityEditor";
+import PositionEditorPage from "@/pages/careers/PositionEditor";
 import {
   deleteCareerCity,
   deleteCareerPosition,
@@ -23,14 +24,30 @@ interface PositionQueryParams {
   keyword?: string;
 }
 
-/** 招聘管理总览：城市卡片、职位列表及城市删除回退提示。 */
+/** 招聘管理总览：城市表格、职位列表及城市删除回退提示。 */
 export default function CareersOverviewPage() {
-  const navigate = useNavigate();
   const { message } = App.useApp();
   const actionRef = useRef<ActionType>(null);
   const [cities, setCities] = useState<CareerCity[]>([]);
   const [citiesLoading, setCitiesLoading] = useState(true);
   const [citiesError, setCitiesError] = useState<string | null>(null);
+  const [cityEditorOpen, setCityEditorOpen] = useState(false);
+  const [cityEditorId, setCityEditorId] = useState<string | undefined>();
+  const [positionEditorOpen, setPositionEditorOpen] = useState(false);
+  const [positionEditorId, setPositionEditorId] = useState<string | undefined>();
+
+  const openCityEditor = useCallback((id?: string) => {
+    setCityEditorId(id);
+    setCityEditorOpen(true);
+  }, []);
+
+  const openPositionEditor = useCallback((id?: string) => {
+    setPositionEditorId(id);
+    setPositionEditorOpen(true);
+  }, []);
+
+  const closeCityEditor = useCallback(() => setCityEditorOpen(false), []);
+  const closePositionEditor = useCallback(() => setPositionEditorOpen(false), []);
 
   const loadCities = useCallback(async () => {
     setCitiesLoading(true);
@@ -92,13 +109,56 @@ export default function CareersOverviewPage() {
     [loadCities, message],
   );
 
+  const cityColumns = [
+    { title: "城市 ID", dataIndex: "id", width: 150, ellipsis: true },
+    { title: "城市名称", dataIndex: "name", width: 140 },
+    { title: "英文名称", dataIndex: "nameEn", width: 150, ellipsis: true },
+    { title: "城市编码", dataIndex: "code", width: 130, ellipsis: true },
+    { title: "简介", dataIndex: "summary", width: 220, ellipsis: true },
+    { title: "职位数", dataIndex: "positionsCount", width: 90, render: (count: number) => `${count ?? 0} 个` },
+    {
+      title: "重点城市",
+      dataIndex: "featured",
+      width: 100,
+      render: (_: unknown, record: CareerCity) => (flagValue(record.featured) ? <Tag color="gold">重点</Tag> : <Tag>普通</Tag>),
+    },
+    {
+      title: "操作",
+      key: "action",
+      width: 180,
+      render: (_: unknown, record: CareerCity) => (
+        <Space size={4}>
+          <Button size="small" type="link" onClick={() => openCityEditor(record.id)} aria-label={`编辑城市 ${record.name}`}>
+            编辑
+          </Button>
+          <Popconfirm
+            title="确认删除该城市？"
+            description={(record.positionsCount ?? 0) > 0 ? "关联职位将自动回退到其他城市。" : undefined}
+            okText="删除"
+            cancelText="取消"
+            okButtonProps={{ danger: true }}
+            onConfirm={() => void handleDeleteCity(record)}
+          >
+            <Button size="small" type="link" danger aria-label={`删除城市 ${record.name}`}>
+              删除
+            </Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
   const columns: ProColumns<CareerPosition>[] = [
     {
       title: "职位名称",
       dataIndex: "title",
       ellipsis: true,
       hideInSearch: true,
-      render: (_, record) => <Link to={`/careers/positions/${record.id}/edit`}>{record.title}</Link>,
+      render: (_, record) => (
+        <Button type="link" onClick={() => openPositionEditor(record.id)} style={{ paddingInline: 0 }}>
+          {record.title}
+        </Button>
+      ),
     },
     {
       title: "城市",
@@ -145,9 +205,9 @@ export default function CareersOverviewPage() {
       width: 150,
       render: (_, record) => (
         <Space size={4}>
-          <Link to={`/careers/positions/${record.id}/edit`}>
-            <Button size="small" type="link" aria-label="编辑职位">编辑</Button>
-          </Link>
+          <Button size="small" type="link" aria-label="编辑职位" onClick={() => openPositionEditor(record.id)}>
+            编辑
+          </Button>
           <Popconfirm
             title="确认删除该职位？"
             okText="删除"
@@ -169,46 +229,23 @@ export default function CareersOverviewPage() {
         subTitle="城市归属、职位维护与职位数量聚合"
         extra={
           <Space>
-            <Button onClick={() => navigate("/careers/cities/new")} data-testid="city-create">新建城市</Button>
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/careers/positions/new")} data-testid="position-create">
+            <Button onClick={() => openCityEditor()} data-testid="city-create">新建城市</Button>
+            <Button type="primary" icon={<PlusOutlined />} onClick={() => openPositionEditor()} data-testid="position-create">
               新建职位
             </Button>
           </Space>
         }
       >
-        <Card title="招聘城市" loading={citiesLoading} style={{ marginBottom: 16 }}>
+        <Card title="招聘城市" style={{ marginBottom: 16 }}>
           {citiesError ? <Alert type="error" message="城市加载失败" description={citiesError} showIcon /> : null}
-          {!citiesLoading && !cities.length && !citiesError ? <Empty description="暂无招聘城市" /> : null}
-          <Row gutter={[12, 12]}>
-            {cities.map((city) => (
-              <Col xs={24} sm={12} lg={8} xl={6} key={city.id}>
-                <Card
-                  size="small"
-                  data-testid={`city-card-${city.id}`}
-                  title={<Link to={`/careers/cities/${city.id}/edit`}>{city.name || city.id}</Link>}
-                  extra={flagValue(city.featured) ? <Tag color="gold">重点</Tag> : null}
-                >
-                  <Typography.Text type="secondary">{city.nameEn || city.id}</Typography.Text>
-                  <Typography.Paragraph ellipsis={{ rows: 2 }} style={{ minHeight: 44, margin: "8px 0" }}>
-                    {city.summary || "暂无城市简介"}
-                  </Typography.Paragraph>
-                  <Space>
-                    <Tag color="blue">{city.positionsCount ?? 0} 个职位</Tag>
-                    <Popconfirm
-                      title="确认删除该城市？"
-                      description={(city.positionsCount ?? 0) > 0 ? "关联职位将自动回退到其他城市。" : undefined}
-                      okText="删除"
-                      cancelText="取消"
-                      okButtonProps={{ danger: true }}
-                      onConfirm={() => void handleDeleteCity(city)}
-                    >
-                      <Button size="small" type="link" danger aria-label={`删除城市 ${city.name}`}>删除</Button>
-                    </Popconfirm>
-                  </Space>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+          <Table<CareerCity>
+            rowKey="id"
+            loading={citiesLoading}
+            dataSource={cities}
+            columns={cityColumns}
+            pagination={false}
+            scroll={{ x: 900 }}
+          />
         </Card>
 
         <Card title="职位列表" data-testid="position-list">
@@ -224,6 +261,25 @@ export default function CareersOverviewPage() {
           />
         </Card>
       </PageContainer>
+      {cityEditorOpen ? (
+        <CityEditorPage
+          dialog
+          cityId={cityEditorId}
+          onClose={closeCityEditor}
+          onSaved={() => void loadCities()}
+        />
+      ) : null}
+      {positionEditorOpen ? (
+        <PositionEditorPage
+          dialog
+          positionId={positionEditorId}
+          onClose={closePositionEditor}
+          onSaved={() => {
+            actionRef.current?.reload();
+            void loadCities();
+          }}
+        />
+      ) : null}
     </div>
   );
 }

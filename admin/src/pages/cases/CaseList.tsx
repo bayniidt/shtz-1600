@@ -2,11 +2,11 @@ import { PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable } from "@ant-design/pro-components";
 import { App, Button, Popconfirm, Space, Tag } from "antd";
-import { useCallback, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useCallback, useRef, useState } from "react";
 
 import PageContainer from "@/components/PageContainer";
 import { toFrontendUrl } from "@/config/frontend";
+import CaseEditorPage from "@/pages/cases/CaseEditor";
 import { deleteCase, fetchCases, toggleCaseFeatured } from "@/services/cases";
 import { INDUSTRY_LABELS, type CaseItem } from "@/types/cases";
 
@@ -20,9 +20,19 @@ interface CaseQueryParams {
 
 /** 客户案例列表：ProTable + 筛选 + 分页 + 置顶切换 + 删除确认。 */
 export default function CaseListPage() {
-  const navigate = useNavigate();
   const { message } = App.useApp();
   const actionRef = useRef<ActionType>(null);
+  const [editorOpen, setEditorOpen] = useState(false);
+  const [editorId, setEditorId] = useState<string | undefined>();
+
+  const openEditor = useCallback((id?: string) => {
+    setEditorId(id);
+    setEditorOpen(true);
+  }, []);
+
+  const closeEditor = useCallback(() => {
+    setEditorOpen(false);
+  }, []);
 
   const request = useCallback(
     async (params: CaseQueryParams) => {
@@ -78,7 +88,11 @@ export default function CaseListPage() {
       dataIndex: "title",
       ellipsis: true,
       hideInSearch: true,
-      render: (_, record) => <Link to={`/cases/${record.id}/edit`}>{record.title}</Link>,
+      render: (_, record) => (
+        <Button type="link" onClick={() => openEditor(record.id)} style={{ paddingInline: 0 }}>
+          {record.title}
+        </Button>
+      ),
     },
     { title: "客户", dataIndex: "client", width: 140, ellipsis: true, hideInSearch: true },
     {
@@ -140,11 +154,9 @@ export default function CaseListPage() {
           >
             {record.featured ? "取消置顶" : "置顶"}
           </Button>
-          <Link to={`/cases/${record.id}/edit`}>
-            <Button size="small" type="link" aria-label="编辑">
-              编辑
-            </Button>
-          </Link>
+          <Button size="small" type="link" aria-label="编辑" onClick={() => openEditor(record.id)}>
+            编辑
+          </Button>
           <Button
             size="small"
             type="link"
@@ -182,7 +194,7 @@ export default function CaseListPage() {
             type="primary"
             icon={<PlusOutlined />}
             data-testid="case-create"
-            onClick={() => navigate("/cases/new")}
+            onClick={() => openEditor()}
           >
             新建案例
           </Button>
@@ -199,6 +211,14 @@ export default function CaseListPage() {
           scroll={{ x: 1100 }}
         />
       </PageContainer>
+      {editorOpen ? (
+        <CaseEditorPage
+          dialog
+          caseId={editorId}
+          onClose={closeEditor}
+          onSaved={() => actionRef.current?.reload()}
+        />
+      ) : null}
     </div>
   );
 }

@@ -6,8 +6,13 @@ import { useContentResource } from "@/hooks/useContentResource";
 import { fetchAbout, saveAbout } from "@/services/content";
 import type { AboutContent } from "@/types/content";
 
+interface AboutContentPageProps {
+  compact?: boolean;
+  onCancel?: () => void;
+}
+
 /** 关于我们：GET /about · PUT /about */
-export default function AboutContentPage() {
+export default function AboutContentPage({ compact = false, onCancel }: AboutContentPageProps) {
   const load = useCallback(() => fetchAbout(), []);
   const save = useCallback((payload: AboutContent) => saveAbout(payload), []);
   const { data, loading, saving, error, save: persist, reload } = useContentResource<AboutContent>({ load, save });
@@ -32,6 +37,8 @@ export default function AboutContentPage() {
       error={error}
       onReload={reload}
       onSave={handleSave}
+      onCancel={onCancel}
+      compact={compact}
     />
   );
 }

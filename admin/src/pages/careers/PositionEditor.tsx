@@ -1,4 +1,4 @@
-import { Alert, App, Button, Card, Form, Input, Select, Skeleton, Space, Switch } from "antd";
+import { Alert, App, Button, Card, Form, Input, Modal, Select, Skeleton, Space, Switch } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -20,9 +20,24 @@ import {
 
 type PositionFormValues = Omit<CareerPosition, "extraCities"> & { extraCities: string[] };
 
+export interface PositionEditorPageProps {
+  dialog?: boolean;
+  open?: boolean;
+  positionId?: string;
+  onClose?: () => void;
+  onSaved?: () => void;
+}
+
 /** 职位编辑：主城市单选，附加城市多选并在保存时回写为 / 分隔 id。 */
-export default function PositionEditorPage() {
-  const { id } = useParams();
+export default function PositionEditorPage({
+  dialog = false,
+  open = true,
+  positionId,
+  onClose,
+  onSaved,
+}: PositionEditorPageProps) {
+  const routeParams = useParams();
+  const id = positionId ?? routeParams.id;
   const editing = Boolean(id);
   const navigate = useNavigate();
   const { message, modal } = App.useApp();
@@ -52,6 +67,7 @@ export default function PositionEditorPage() {
             urgent: flagValue(position.urgent),
           });
         } else {
+          form.resetFields();
           form.setFieldsValue({ ...emptyCareerPosition(), extraCities: [] });
         }
         setError(null);
@@ -81,19 +97,25 @@ export default function PositionEditorPage() {
           message.success("职位已创建");
         }
         setDirty(false);
-        navigate("/careers");
+        if (dialog) {
+          onSaved?.();
+          onClose?.();
+        } else {
+          navigate("/careers");
+        }
       } catch (saveError) {
         message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
       } finally {
         setSaving(false);
       }
     },
-    [editing, id, message, navigate],
+    [dialog, editing, id, message, navigate, onClose, onSaved],
   );
 
   const handleCancel = useCallback(() => {
     if (!dirty) {
-      navigate("/careers");
+      if (dialog) onClose?.();
+      else navigate("/careers");
       return;
     }
     modal.confirm({
@@ -102,25 +124,25 @@ export default function PositionEditorPage() {
       okText: "放弃修改并离开",
       cancelText: "留在本页",
       okButtonProps: { danger: true },
-      onOk: () => navigate("/careers"),
+      onOk: () => {
+        if (dialog) onClose?.();
+        else navigate("/careers");
+      },
     });
-  }, [dirty, modal, navigate]);
+  }, [dialog, dirty, modal, navigate, onClose]);
 
-  return (
-    <div data-testid="position-editor">
-      <PageContainer
-        title={editing ? "编辑招聘职位" : "新建招聘职位"}
-        subTitle={editing ? `业务主键：${id}` : "职位 ID 创建后不可修改"}
-        extra={
-          <Space>
-            <Button onClick={handleCancel} data-testid="position-cancel">取消</Button>
-            <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="position-save">保存</Button>
-          </Space>
-        }
-      >
-        {loading ? <Skeleton active /> : null}
-        {error ? <Alert type="error" message="职位加载失败" description={error} showIcon /> : null}
-        {!loading && !error ? (
+  const toolbar = (
+    <Space>
+      <Button onClick={handleCancel} data-testid="position-cancel">取消</Button>
+      <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="position-save">保存</Button>
+    </Space>
+  );
+
+  const content = (
+    <>
+      {loading ? <Skeleton active /> : null}
+      {error ? <Alert type="error" message="职位加载失败" description={error} showIcon /> : null}
+      {!loading && !error ? (
           <Card>
             <Form<PositionFormValues>
               form={form}
@@ -161,7 +183,42 @@ export default function PositionEditorPage() {
               <Form.Item name="applyUrl" label="投递链接"><Input /></Form.Item>
             </Form>
           </Card>
-        ) : null}
+      ) : null}
+    </>
+  );
+
+  if (dialog) {
+    return (
+      <Modal
+        open={open}
+        title={editing ? "编辑招聘职位" : "新建招聘职位"}
+        width={900}
+        centered
+        destroyOnHidden
+        footer={toolbar}
+        styles={{
+          body: {
+            maxHeight: "calc(100vh - 220px)",
+            overflowY: "auto",
+            paddingRight: 4,
+          },
+        }}
+        onCancel={handleCancel}
+        data-testid="position-editor-dialog"
+      >
+        {content}
+      </Modal>
+    );
+  }
+
+  return (
+    <div data-testid="position-editor">
+      <PageContainer
+        title={editing ? "编辑招聘职位" : "新建招聘职位"}
+        subTitle={editing ? `业务主键：${id}` : "职位 ID 创建后不可修改"}
+        extra={toolbar}
+      >
+        {content}
       </PageContainer>
     </div>
   );

@@ -1,5 +1,5 @@
 import { EyeOutlined } from "@ant-design/icons";
-import { Alert, App, Button, Card, Col, Form, Input, Row, Select, Skeleton, Space, Switch } from "antd";
+import { Alert, App, Button, Card, Col, Form, Input, Modal, Row, Select, Skeleton, Space, Switch } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -135,9 +135,25 @@ function BlocksEditor({ value, onChange, disabled = false }: BlocksEditorProps) 
   );
 }
 
-/** 新建 / 编辑案例（复用同一组件）。 */
-export default function CaseEditorPage() {
-  const { id } = useParams();
+export interface CaseEditorPageProps {
+  /** 以 Modal 形式渲染，供客户案例列表直接打开编辑。 */
+  dialog?: boolean;
+  open?: boolean;
+  caseId?: string;
+  onClose?: () => void;
+  onSaved?: () => void;
+}
+
+/** 新建 / 编辑案例（复用同一组件，路由与对话框两种入口兼容）。 */
+export default function CaseEditorPage({
+  dialog = false,
+  open = true,
+  caseId,
+  onClose,
+  onSaved,
+}: CaseEditorPageProps) {
+  const routeParams = useParams();
+  const id = caseId ?? routeParams.id;
   const editing = Boolean(id);
   const navigate = useNavigate();
   const { message, modal } = App.useApp();
@@ -151,6 +167,10 @@ export default function CaseEditorPage() {
 
   useEffect(() => {
     if (!editing) {
+      form.resetFields();
+      form.setFieldsValue(emptyCaseItem());
+      setError(null);
+      setDirty(false);
       setLoading(false);
       return;
     }
@@ -186,19 +206,25 @@ export default function CaseEditorPage() {
           message.success("案例已创建");
         }
         setDirty(false);
-        navigate("/cases");
+        if (dialog) {
+          onSaved?.();
+          onClose?.();
+        } else {
+          navigate("/cases");
+        }
       } catch (saveError) {
         message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
       } finally {
         setSaving(false);
       }
     },
-    [editing, id, message, navigate],
+    [dialog, editing, id, message, navigate, onClose, onSaved],
   );
 
   const handleCancel = useCallback(() => {
     if (!dirty) {
-      navigate("/cases");
+      if (dialog) onClose?.();
+      else navigate("/cases");
       return;
     }
     modal.confirm({
@@ -207,9 +233,12 @@ export default function CaseEditorPage() {
       okText: "放弃修改并离开",
       cancelText: "留在本页",
       okButtonProps: { danger: true },
-      onOk: () => navigate("/cases"),
+      onOk: () => {
+        if (dialog) onClose?.();
+        else navigate("/cases");
+      },
     });
-  }, [dirty, modal, navigate]);
+  }, [dialog, dirty, modal, navigate, onClose]);
 
   const toolbar = (
     <Space>
@@ -232,14 +261,9 @@ export default function CaseEditorPage() {
     </Space>
   );
 
-  return (
-    <div data-testid="case-editor">
-      <PageContainer
-        title={editing ? "编辑案例" : "新建案例"}
-        subTitle={editing ? `业务主键：${id}` : "业务主键（id）创建后不可修改"}
-        extra={toolbar}
-      >
-        {error && (
+  const content = (
+    <>
+      {error && (
           <Alert
             type="error"
             showIcon
@@ -249,7 +273,7 @@ export default function CaseEditorPage() {
           />
         )}
 
-        {dirty && (
+      {dirty && (
           <Alert
             type="warning"
             showIcon
@@ -259,11 +283,11 @@ export default function CaseEditorPage() {
           />
         )}
 
-        <Card size="small" data-testid="case-editor-card">
-          {loading ? (
-            <Skeleton active paragraph={{ rows: 8 }} />
-          ) : (
-            <Form
+      <Card size="small" data-testid="case-editor-card">
+        {loading ? (
+          <Skeleton active paragraph={{ rows: 8 }} />
+        ) : (
+          <Form
               form={form}
               layout="vertical"
               initialValues={emptyCaseItem()}
@@ -361,9 +385,44 @@ export default function CaseEditorPage() {
                   <BlocksEditor disabled={saving} />
                 </Form.Item>
               </Card>
-            </Form>
-          )}
-        </Card>
+          </Form>
+        )}
+      </Card>
+    </>
+  );
+
+  if (dialog) {
+    return (
+      <Modal
+        open={open}
+        title={editing ? "编辑客户案例" : "新建客户案例"}
+        width={1040}
+        centered
+        destroyOnHidden
+        footer={toolbar}
+        styles={{
+          body: {
+            maxHeight: "calc(100vh - 220px)",
+            overflowY: "auto",
+            paddingRight: 4,
+          },
+        }}
+        onCancel={handleCancel}
+        data-testid="case-editor-dialog"
+      >
+        {content}
+      </Modal>
+    );
+  }
+
+  return (
+    <div data-testid="case-editor">
+      <PageContainer
+        title={editing ? "编辑案例" : "新建案例"}
+        subTitle={editing ? `业务主键：${id}` : "业务主键（id）创建后不可修改"}
+        extra={toolbar}
+      >
+        {content}
       </PageContainer>
     </div>
   );

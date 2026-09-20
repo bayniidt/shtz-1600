@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RequireAuth from "@/components/RequireAuth";
 import type { AdminTheme } from "@/config/theme";
 import BasicLayout from "@/layouts/BasicLayout";
+import ContentManagementPage from "@/pages/Content/ContentManagement";
 import AboutContent from "@/pages/Content/About";
 import CareersContent from "@/pages/Content/CareersContent";
 import HomeContent from "@/pages/Content/Home";
@@ -82,6 +83,7 @@ export function AppRoutes() {
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
+          <Route path="/content" element={<ContentManagementPage />} />
           <Route path="/content/site" element={<SiteContent />} />
           <Route path="/content/home" element={<HomeContent />} />
           <Route path="/content/about" element={<AboutContent />} />

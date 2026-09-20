@@ -13,7 +13,7 @@ import {
   SITE_FIXTURE,
 } from "@/test/fixtures/content";
 import { useAuthStore } from "@/store/auth";
-import { renderWithProviders, render, screen, userEvent, waitFor } from "@/test/utils";
+import { fireEvent, renderWithProviders, render, screen, userEvent, waitFor } from "@/test/utils";
 
 vi.mock("@/services/auth", () => ({
   login: vi.fn(),
@@ -76,6 +76,7 @@ beforeEach(() => {
 describe("菜单路由（每个菜单路由都能正常渲染）", () => {
   /** 已实现的管理页路由 */
   const IMPLEMENTED_ROUTES = [
+    ["/content", "内容管理"],
     ["/careers", "招聘管理"],
     ["/settings/theme", "主题设置"],
   ] as const;
@@ -112,6 +113,20 @@ describe("菜单路由（每个菜单路由都能正常渲染）", () => {
 
     expect(screen.getByTestId("case-list")).toBeInTheDocument();
     expect(screen.getByTestId("page-title")).toHaveTextContent(MODULE_BLUEPRINTS.cases.title);
+  });
+
+  it("R /content 以表格展示内容模块，编辑在对话框内完成", async () => {
+    signInAsAdmin();
+    renderWithProviders(<AppRoutes />, { route: "/content" });
+
+    expect(screen.getByTestId("content-management")).toBeInTheDocument();
+    expect(screen.getByTestId("content-edit-site")).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("content-edit-site"));
+
+    expect(await screen.findByTestId("content-edit-dialog")).toBeInTheDocument();
+    expect(await screen.findByTestId("content-form")).toBeInTheDocument();
+    expect(screen.getByTestId("content-cancel")).toBeInTheDocument();
+    expect(screen.getByTestId("content-save")).toBeInTheDocument();
   });
 
   it("R /dashboard 渲染概览卡片与快捷入口", () => {

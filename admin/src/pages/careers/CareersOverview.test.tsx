@@ -47,10 +47,10 @@ beforeEach(() => {
 });
 
 describe("招聘管理总览", () => {
-  it("L1 渲染城市卡片和职位列表", async () => {
+  it("L1 以表格渲染城市和职位列表", async () => {
     renderWithProviders(<CareersOverviewPage />, { route: "/careers" });
     expect(screen.getByTestId("page-title")).toHaveTextContent("招聘管理");
-    expect(await screen.findByTestId("city-card-shanghai")).toBeInTheDocument();
+    expect(await screen.findByText("上海")).toBeInTheDocument();
     expect(screen.getByText("广告优化师")).toBeInTheDocument();
     expect(mockedFetchCities).toHaveBeenCalled();
     expect(mockedFetchPositions).toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe("招聘管理总览", () => {
 
   it("L2 删除城市时传入其他城市作为职位回退城市", async () => {
     renderWithProviders(<CareersOverviewPage />, { route: "/careers" });
-    await screen.findByTestId("city-card-shanghai");
+    await screen.findByText("上海");
     fireEvent.click(screen.getByRole("button", { name: "删除城市 上海" }));
     const confirmButtons = await screen.findAllByRole("button", { name: /删\s*除/ });
     fireEvent.click(confirmButtons[confirmButtons.length - 1]);
@@ -72,5 +72,14 @@ describe("招聘管理总览", () => {
     const confirmButtons = await screen.findAllByRole("button", { name: /删\s*除/ });
     fireEvent.click(confirmButtons[confirmButtons.length - 1]);
     await waitFor(() => expect(mockedDeletePosition).toHaveBeenCalledWith("position-001"));
+  });
+
+  it("L4 新建城市使用对话框，不离开列表页", async () => {
+    renderWithProviders(<CareersOverviewPage />, { route: "/careers" });
+    fireEvent.click(screen.getByTestId("city-create"));
+
+    expect(await screen.findByTestId("city-editor-dialog")).toBeInTheDocument();
+    expect(screen.getByLabelText("城市 ID（slug）")).toBeInTheDocument();
+    expect(screen.getByTestId("page-title")).toHaveTextContent("招聘管理");
   });
 });
