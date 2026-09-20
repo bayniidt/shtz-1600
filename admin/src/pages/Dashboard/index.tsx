@@ -4,18 +4,20 @@ import {
   GlobalOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
-import { Card, Col, List, Row, Space, Statistic, Tag, Typography } from "antd";
+import { Alert, Card, Col, List, Row, Space, Statistic, Tag, Typography } from "antd";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { fetchDashboardStats, type DashboardStats } from "@/services/dashboard";
 import { useAuthStore } from "@/store/auth";
 import { useThemeStore } from "@/store/theme";
 
-const STATS = [
-  { key: "cases", title: "客户案例", value: 0, suffix: "个" },
-  { key: "cities", title: "招聘城市", value: 0, suffix: "个" },
-  { key: "positions", title: "在招职位", value: 0, suffix: "个" },
-  { key: "hot", title: "热招职位", value: 0, suffix: "个" },
-];
+const STAT_META = [
+  { key: "cases", title: "客户案例", suffix: "个" },
+  { key: "cities", title: "招聘城市", suffix: "个" },
+  { key: "positions", title: "在招职位", suffix: "个" },
+  { key: "hot", title: "热招职位", suffix: "个" },
+] as const;
 
 const ENTRIES = [
   { title: "站点与导航", desc: "品牌信息 / 联系方式 / SEO / 导航", path: "/content/site", icon: <GlobalOutlined /> },
@@ -28,6 +30,31 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const theme = useThemeStore((state) => state.theme);
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
+  const [statsError, setStatsError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    setStatsLoading(true);
+    void fetchDashboardStats()
+      .then((nextStats) => {
+        if (!active) return;
+        setStats(nextStats);
+        setStatsError(null);
+      })
+      .catch((error: unknown) => {
+        if (!active) return;
+        setStatsError(error instanceof Error ? error.message : "统计数据加载失败，请稍后重试");
+      })
+      .finally(() => {
+        if (active) setStatsLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <Space direction="vertical" size={20} style={{ width: "100%" }}>
@@ -40,15 +67,23 @@ export default function Dashboard() {
         </Typography.Text>
         <div style={{ marginTop: 12 }}>
           <Tag color={theme.brand.colorPrimary}>当前主题色 {theme.brand.colorPrimary}</Tag>
-          <Tag>数据统计将在内容接入后启用</Tag>
+          <Tag>数据统计来自实时接口</Tag>
         </div>
       </Card>
 
+      {statsError ? (
+        <Alert type="error" showIcon message="统计数据加载失败" description={statsError} />
+      ) : null}
+
       <Row gutter={16}>
-        {STATS.map((item) => (
+        {STAT_META.map((item) => (
           <Col xs={24} sm={12} lg={6} key={item.key}>
-            <Card>
-              <Statistic title={item.title} value={item.value} suffix={item.suffix} />
+            <Card loading={statsLoading && !stats} data-testid={`dashboard-stat-${item.key}`}>
+              <Statistic
+                title={item.title}
+                value={stats ? stats[item.key] : "—"}
+                suffix={item.suffix}
+              />
             </Card>
           </Col>
         ))}

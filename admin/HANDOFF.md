@@ -2,17 +2,17 @@
 
 > 给「下一个接手的人 / 下一个对话窗口（AI）」看的工程约定与现状快照。
 > **开工前请先读**：本文件 → `ADMIN_DEVELOPMENT_PLAN.md`（阶段目标与完成情况）→ `admin/README.md` + `server/README.md`（目录与命令）。
-> 最后更新：Stage 6 完成时。
+> 最后更新：Stage 7 完成时。
 
 ---
 
 ## 0. 一句话现状
 
-Stage 0 / 1 / 2 / 3 / 4 / 5 / 6 全部实现完成，常规测试 / 覆盖率 / 类型检查 / 构建 / 文档验收通过：
+Stage 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 全部实现完成，常规测试 / 覆盖率 / 类型检查 / 构建 / 文档验收通过；Docker 部署配置已准备好，真实镜像构建需在安装 Docker 的环境执行：
 - 后端：认证 + 主题 + **内容模块（site / home 6 板块 / about / careers content，13 个真实接口）** + **Cases 8 个真实接口** + **Careers 城市 / 职位 10 个真实接口**。
 - 后台前端：登录 / 守卫 / 布局 / 主题设置 / 4 个内容编辑页 + **Cases 列表页与新建/编辑页** + **Careers 总览、城市编辑、职位编辑**。
 - Stage 6：OpenAPI 文档完整化、后台蓝图动态同步、边界测试与覆盖率门禁收口。
-- **下一步 = Stage 7：服务器部署准备**。
+- Stage 7：Docker 多阶段构建、Compose 编排、Nginx 网关与生产环境变量模板。
 
 ---
 
@@ -46,10 +46,10 @@ cd ../web && npm run dev                                                        
 
 ## 3. 验收命令（每完成一个阶段都要全绿）
 
-| 范围 | 命令 | 门禁 / 当前值（Stage 6） |
+| 范围 | 命令 | 门禁 / 当前值（Stage 7） |
 |------|------|--------------------------|
-| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **197/197** 用例通过 |
-| 后端覆盖率 | `cd server && npm run test:coverage` | **98.49% / 80.47% / 95.86% / 99.07%**（statements / branches / functions / lines），四项 ≥80% |
+| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **198/198** 用例通过 |
+| 后端覆盖率 | `cd server && npm run test:coverage` | **98.49% / 80.78% / 95.86% / 99.07%**（statements / branches / functions / lines），四项 ≥80% |
 | 前端测试 | `cd admin && npx vitest run` | **198/198** 用例通过 |
 | 前端覆盖率 | `cd admin && npm run test:coverage` | **97.18% / 86.72% / 89.39% / 97.18%**（statements / branches / functions / lines），四项 ≥80% |
 | 类型检查 | `cd admin && npx tsc --noEmit` | 必须干净 |
@@ -210,7 +210,7 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 - **Stage 4 已完成**：改城市 `id` 联动更新职位的 `cityId`/`extraCities`、删除城市回退、`cityId` 合法性校验、列表聚合 `positionsCount`；前端城市卡片 Grid + 职位 ProTable。
 - **Stage 5 已完成**：`web/src/lib/db.ts` API 优先读取 site/home/about/cases/careers，任一 API 不可用时回退 `data/site.json`；公共页面保持 `force-dynamic`；新增 `web/scripts/export.mjs` 与 `pnpm run export`；Dashboard 统计卡片、行业分布饼图、公司时间线改为实时 API 数据。
 - **Stage 6 已完成**：Swagger 请求 / 响应示例补齐；新增 OpenAPI JSON、文档完整性测试、动态接口蓝图同步；后端覆盖率四项达到门禁（branches 80.47%），并补齐 Careers 边界测试。
-- **Stage 7**：部署配置。
+- **Stage 7 已完成**：Docker 多阶段构建、Compose 编排、Nginx 网关、生产环境变量模板与 `ADMIN_PASSWORD_HASH` 管理员初始化已就绪；本机未安装 Docker，真实镜像 / Compose 启动验收需在 Docker 环境执行。
 
 ---
 

@@ -18,7 +18,8 @@ import {
   seedContentIfMissing,
 } from "@/services/seed.service";
 import { ADMIN_USERNAME, resetTestDB, setupTestDB, teardownTestDB } from "./helpers/db";
-import { User } from "@/models/User.model";
+import { User, hashPassword } from "@/models/User.model";
+import { config } from "@/config";
 import { SITE_DATA_FIXTURE } from "./fixtures/site-data";
 import { aboutContentSchema } from "@/validations/about.validation";
 import { careersContentSchema } from "@/validations/careers.validation";
@@ -254,5 +255,22 @@ describe("ensureDefaultAdmin / seedAll / seedContentIfMissing", () => {
     expect(counts.caseItems).toBe(2);
     expect(counts.cities).toBe(2);
     expect(counts.positions).toBe(2);
+  });
+
+  it("T20 安全：生产环境可直接使用 ADMIN_PASSWORD_HASH 创建管理员", async () => {
+    await User.deleteMany({ username: ADMIN_USERNAME });
+    const previousHash = config.adminPasswordHash;
+    const passwordHash = await hashPassword("hashed-production-password");
+    (config as unknown as { adminPasswordHash: string }).adminPasswordHash = passwordHash;
+
+    try {
+      const result = await ensureDefaultAdmin();
+      expect(result.created).toBe(true);
+      const admin = await User.findOne({ username: ADMIN_USERNAME });
+      expect(await admin?.comparePassword("hashed-production-password")).toBe(true);
+      expect(await admin?.comparePassword("admin")).toBe(false);
+    } finally {
+      (config as unknown as { adminPasswordHash: string }).adminPasswordHash = previousHash;
+    }
   });
 });

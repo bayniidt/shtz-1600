@@ -6,6 +6,7 @@ import { useCallback, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import PageContainer from "@/components/PageContainer";
+import { toFrontendUrl } from "@/config/frontend";
 import { deleteCase, fetchCases, toggleCaseFeatured } from "@/services/cases";
 import { INDUSTRY_LABELS, type CaseItem } from "@/types/cases";
 
@@ -148,13 +149,9 @@ export default function CaseListPage() {
             size="small"
             type="link"
             aria-label="预览"
-            onClick={() =>
-              window.open(
-                `${import.meta.env.VITE_FRONTEND_BASE_URL ?? ""}/cases/${record.id}`,
-                "_blank",
-                "noopener",
-              )
-            }
+            href={toFrontendUrl(`/cases/${record.id}`)}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             预览
           </Button>

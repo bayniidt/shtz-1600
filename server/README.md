@@ -144,12 +144,12 @@ npm run seed            # 从 ../web/data/site.json 初始化内容（--force / 
 | `tests/about.test.ts` | 11 | 关于我们读取 / 更新 / 校验 |
 | `tests/careers.test.ts` | 21 | 招聘文案、城市 / 职位 CRUD、id 联动、回退、筛选与校验、外部 URL 协议校验、边界错误 |
 | `tests/cases.test.ts` | 37 | 案例列表页文案、案例 CRUD、分页筛选搜索、嵌套 stats/blocks、置顶与鉴权 |
-| `tests/seed.test.ts` | 19 | 内容拆分写入 / 幂等 / force / 缺文件 / 启动自愈 |
+| `tests/seed.test.ts` | 20 | 内容拆分写入 / 幂等 / force / 缺文件 / 启动自愈 / bcrypt 管理员 hash |
 | `tests/models.test.ts` | 10 | 8 个模型的默认值 / 索引 / toJSON 剥离规则 |
 | `tests/skeleton.test.ts` | 5 | 已无 Stage 4 占位接口；静态路由优先级、OpenAPI JSON 与文档示例完整性 |
 | `tests/infra.test.ts` | — | ApiError / 响应封装 / 错误中间件 / 校验中间件 / 鉴权中间件 / JWT / 模型 / 环境变量解析 |
 
-Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；Stage 5 增加招聘外部 URL 协议校验；Stage 6 补充城市 / 职位筛选、冲突、找不到与非法回退边界。当前常规 Jest **197/197** 全部通过；覆盖率为 **98.49% statements / 80.47% branches / 95.86% functions / 99.07% lines**。
+Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；Stage 5 增加招聘外部 URL 协议校验；Stage 6 补充城市 / 职位筛选、冲突、找不到与非法回退边界；Stage 7 增加生产管理员 hash 配置验证。当前常规 Jest **198/198** 全部通过；覆盖率为 **98.49% statements / 80.78% branches / 95.86% functions / 99.07% lines**。
 
 ## OpenAPI 文档约定
 
@@ -158,3 +158,17 @@ Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边�
 - URL 字段 `portalUrl` / `applyUrl` 的 schema 标注为 URI，并注明仅接受空值或绝对 `http://` / `https://` 地址。
 
 测试使用独立库 `adfly_admin_test`，每个用例前清空集合并重建管理员，不会污染开发数据。
+
+## 生产容器部署
+
+`server/Dockerfile` 使用多阶段构建：builder 编译 TypeScript，runner 仅安装生产依赖并以 `node` 用户运行；启动时仍会自动执行默认管理员与内容补种。生产环境优先设置 `ADMIN_PASSWORD_HASH`，不要把管理员明文密码写入环境变量。
+
+从项目根目录启动完整栈：
+
+```bash
+cp deploy/.env.production.example .env
+# 填写 JWT_SECRET、ADMIN_PASSWORD_HASH、CORS_ORIGIN
+docker compose up -d --build
+```
+
+容器内 API 使用 `mongodb://mongo:27017/adfly_admin`，站点快照路径为 `/app/web/data/site.json`；如接入外部 MongoDB，可覆盖 `MONGO_URI`。

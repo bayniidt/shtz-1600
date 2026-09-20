@@ -28,14 +28,15 @@ export interface SeedContentOptions {
 
 /**
  * 首次启动（或 seed 时）确保默认管理员存在。
- * 生产环境请通过 ADMIN_USERNAME / ADMIN_PASSWORD 覆盖，并登录后立即改密。
+ * 生产环境优先通过 ADMIN_USERNAME / ADMIN_PASSWORD_HASH 注入管理员凭据；
+ * 未提供 hash 时才回退到 ADMIN_PASSWORD（仅建议开发环境使用）。
  */
 export async function ensureDefaultAdmin(): Promise<SeedResult> {
   const username = config.adminUsername;
   const existing = await User.findOne({ username });
   if (existing) return { created: false, username };
 
-  const passwordHash = await hashPassword(config.adminPassword);
+  const passwordHash = config.adminPasswordHash || (await hashPassword(config.adminPassword));
   await User.create({ username, passwordHash, role: "admin" });
   return { created: true, username };
 }

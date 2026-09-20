@@ -7,6 +7,7 @@ import ArrayEditor from "@/components/ArrayEditor";
 import ImagePicker from "@/components/ImagePicker";
 import PageContainer from "@/components/PageContainer";
 import StringListInput from "@/components/StringListInput";
+import { toFrontendUrl } from "@/config/frontend";
 import {
   UNSAVED_CONFIRM_CONTENT,
   UNSAVED_CONFIRM_TITLE,
@@ -210,15 +211,15 @@ export default function CaseEditorPage() {
     });
   }, [dirty, modal, navigate]);
 
-  const handlePreview = useCallback(() => {
-    if (!id) return;
-    window.open(`${import.meta.env.VITE_FRONTEND_BASE_URL ?? ""}/cases/${id}`, "_blank", "noopener");
-  }, [id]);
-
   const toolbar = (
     <Space>
       {editing && (
-        <Button icon={<EyeOutlined />} onClick={handlePreview}>
+        <Button
+          icon={<EyeOutlined />}
+          href={toFrontendUrl(`/cases/${id}`)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           前台预览
         </Button>
       )}

@@ -40,7 +40,10 @@ describe("ImagePicker", () => {
 
     await user.type(screen.getByLabelText("图片地址"), "/images/hero.jpg");
     expect(screen.getByTestId("value")).toHaveTextContent("/images/hero.jpg");
-    expect(screen.getByAltText("图片预览")).toHaveAttribute("src", "/images/hero.jpg");
+    expect(screen.getByAltText("图片预览")).toHaveAttribute(
+      "src",
+      "http://localhost:3000/images/hero.jpg",
+    );
   });
 
   it("非法地址给出提示且不预览", async () => {

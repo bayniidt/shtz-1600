@@ -35,6 +35,8 @@ export const config = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? "12h",
   adminUsername: process.env.ADMIN_USERNAME ?? "admin",
   adminPassword: process.env.ADMIN_PASSWORD ?? "admin",
+  /** 生产环境推荐直接注入 bcrypt hash，避免在环境变量中保存明文密码。 */
+  adminPasswordHash: process.env.ADMIN_PASSWORD_HASH ?? "",
   loginRateWindowMinutes: parseNumber(process.env.LOGIN_RATE_WINDOW_MINUTES, 15),
   loginRateMaxAttempts: parseNumber(process.env.LOGIN_RATE_MAX_ATTEMPTS, 10),
   swaggerEnabled: parseBool(process.env.SWAGGER_ENABLED, true),

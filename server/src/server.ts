@@ -12,8 +12,10 @@ async function bootstrap(): Promise<void> {
   if (seed.created) {
     // eslint-disable-next-line no-console
     console.warn(
-      `[seed] 已创建默认管理员 "${seed.username}"，密码取自 ADMIN_PASSWORD（默认 admin）。` +
-        "⚠️  生产环境请立即修改！",
+      `[seed] 已创建默认管理员 "${seed.username}"。` +
+        (config.adminPasswordHash
+          ? "凭据来自 ADMIN_PASSWORD_HASH。"
+          : "密码取自 ADMIN_PASSWORD（默认 admin）。⚠️  生产环境请立即配置 ADMIN_PASSWORD_HASH！"),
     );
   }
 

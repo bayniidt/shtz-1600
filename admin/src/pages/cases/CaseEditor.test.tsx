@@ -81,14 +81,14 @@ describe("客户案例编辑页", () => {
   });
 
   it("E3 编辑页可打开前台预览", async () => {
-    const open = vi.spyOn(window, "open").mockImplementation(() => null);
     renderEditor("/cases/case-001/edit");
 
     await screen.findByDisplayValue("游戏出海长线买量");
-    fireEvent.click(screen.getByRole("button", { name: /前台预览/ }));
+    const preview = screen.getByRole("link", { name: /前台预览/ });
 
-    expect(open).toHaveBeenCalledWith("/cases/case-001", "_blank", "noopener");
-    open.mockRestore();
+    expect(preview).toHaveAttribute("href", "http://localhost:3000/cases/case-001");
+    expect(preview).toHaveAttribute("target", "_blank");
+    expect(preview).toHaveAttribute("rel", "noopener noreferrer");
   });
 
   it("E4 详情加载失败时展示错误提示", async () => {

@@ -688,7 +688,7 @@ export default {
 > - 后端补充 Careers 查询筛选、城市 / 职位冲突、找不到、非法回退等边界测试；后端 Jest **197/197**、前端 Vitest **198/198**。
 > - 覆盖率阈值统一为四项 ≥80%；后端实测 **98.49% statements / 80.47% branches / 95.86% functions / 99.07% lines**，前端覆盖率门禁通过。
 
-### Stage 7：服务器部署准备（~4h，可与运维协作）
+### Stage 7：服务器部署准备（~4h，可与运维协作）✅ 已完成
 
 - 后端 `Dockerfile` + 前端 Dockerfile（多阶段构建，Nginx 托管静态资源并 `/api` 反代到后端）
 - Nginx 配置示例：
@@ -696,7 +696,14 @@ export default {
   - `/admin` → 前端构建产物（Vite build）
   - `/api` → Express 后端
 - 生产环境变量清单：`ADMIN_PASSWORD_HASH`（bcrypt 存）、`JWT_SECRET`、`MONGO_URI`、白名单等
-- 首次上线流程：`docker compose up` → `npm run seed` → 登录 admin/admin 立即改密码
+- 首次上线流程：填写生产 `.env` 中的 `JWT_SECRET`、`ADMIN_PASSWORD_HASH` 与 `CORS_ORIGIN`，执行 `docker compose up -d --build`；容器启动时自动补种默认管理员与内容，管理员密码由 bcrypt hash 对应的明文决定。
+
+> **Stage 7 完成情况**
+> - 新增 `server/Dockerfile` 与 `admin/Dockerfile` 多阶段构建；后端 runner 以非 root `node` 用户运行，后台 runner 使用 Nginx。
+> - 新增根目录 `docker-compose.yml`，编排 MongoDB、Express API、Next.js 前台与后台入口网关，并加入服务健康检查。
+> - 新增 `deploy/nginx.conf`：`/` → Next.js、`/admin/` → Vite 后台、`/api/` → Express API；新增 `.dockerignore` 与生产环境变量模板。
+> - 后端支持 `ADMIN_PASSWORD_HASH` 直接创建管理员，保留 `ADMIN_PASSWORD` 作为开发环境回退；新增对应安全测试。
+> - 本机未安装 Docker，因此未执行真实镜像构建 / Compose 启动；TypeScript 构建、配置静态检查与现有测试已通过。
 
 ---
 

@@ -2,6 +2,8 @@ import { ClearOutlined } from "@ant-design/icons";
 import { Button, Image, Input, Space, Typography } from "antd";
 import { useMemo, useState } from "react";
 
+import { toFrontendAssetUrl } from "@/config/frontend";
+
 export interface ImagePickerProps {
   /** antd Form.Item 注入：图片地址 */
   value?: string;
@@ -39,6 +41,7 @@ export default function ImagePicker({
   const [broken, setBroken] = useState(false);
 
   const previewable = useMemo(() => isPreviewableImage(current), [current]);
+  const previewSrc = useMemo(() => toFrontendAssetUrl(current), [current]);
   const showWarning = current.trim().length > 0 && !previewable;
 
   return (
@@ -76,7 +79,7 @@ export default function ImagePicker({
       {!hidePreview && previewable && (
         <div style={{ marginTop: 10 }}>
           <Image
-            src={current}
+            src={previewSrc}
             alt="图片预览"
             width={120}
             onError={() => setBroken(true)}

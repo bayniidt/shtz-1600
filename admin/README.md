@@ -15,6 +15,7 @@ npm run dev     # → http://localhost:5173/admin/
 ```
 
 > 默认后端地址通过 Vite 代理指向 `http://localhost:4000`，无需额外配置。
+> 本地前台预览与图片预览默认指向 `http://localhost:3000`，需要同时启动 `web`；生产环境留空 `VITE_FRONTEND_BASE_URL`，由入口 Nginx 负责同域转发。
 > 直接连远程后端时，设置 `VITE_API_BASE_URL=http://<host>/api/v1`。
 
 默认账号：`admin / admin`（生产环境务必修改）。
@@ -109,6 +110,12 @@ npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染
 - `ModuleScaffold` 运行时从 OpenAPI JSON 同步接口方法、路径、摘要与鉴权标记；后端不可用时回退本地蓝图。
 - 覆盖率门禁统一提升为 statements / branches / functions / lines 均 ≥80%；本阶段后端覆盖率为 **98.49% / 80.47% / 95.86% / 99.07%**，前端为 **97.18% / 86.72% / 89.39% / 97.18%**（均按 S/B/F/L）。
 - 新增接口蓝图同步测试与招聘筛选、冲突、找不到、非法回退等边界用例；当前前端常规测试 **198/198** 通过。
+
+## Stage 7 交付（生产部署准备）
+
+- `admin/Dockerfile` 使用 Node builder + Nginx runner 多阶段构建，构建产物部署到 `/admin/`。
+- 入口 Nginx 配置位于 `deploy/nginx.conf`：`/admin/` 提供后台静态资源，`/api/` 反向代理 Express，其他路径代理 Next.js 前台。
+- 项目根目录 `docker-compose.yml` 编排 MongoDB、API、前台与入口网关；生产变量模板位于 `deploy/.env.production.example`。
 
 ## Stage 4 交付（招聘城市 / 职位 CRUD）
 
