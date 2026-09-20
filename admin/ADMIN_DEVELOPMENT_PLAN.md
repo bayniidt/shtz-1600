@@ -674,12 +674,19 @@ export default {
 > - 新增 `web/scripts/export.mjs` 与 `pnpm run export`，采用临时文件 + rename 写入快照，支持 `ADMIN_API_URL` / `EXPORT_OUTPUT` 覆盖。
 > - Dashboard 统计卡片、案例行业饼图、公司发展时间线均来自 REST API；前台 `typecheck`、`lint`、`build` 与快照导出验证通过。
 
-### Stage 6：接口文档完整化 + 测试覆盖率冲刺（~4h）
+### Stage 6：接口文档完整化 + 测试覆盖率冲刺（~4h）✅ 已完成
 
 - 每个接口的 Swagger：请求示例 + 响应示例补全；错误码表
-- Postman Collection 导出（可选）
+- OpenAPI JSON 可直接导入 Postman（不另维护一份容易漂移的 Collection）
 - 补全遗漏边界用例，确保覆盖率 ≥ 80%
 - README：`admin-server/README.md` + `admin-frontend/README.md`，写清启动、测试、种子、部署步骤
+
+> **Stage 6 完成情况**
+> - 新增 `GET /api/docs/openapi.json` 原始 OpenAPI JSON；Swagger UI 与错误码接口保持兼容。
+> - 所有已实现接口补齐请求 / 成功响应 / 错误响应示例，并以 `skeleton.test.ts` 做文档完整性门禁；URL 字段文档同步说明仅允许 http / https。
+> - `admin/src/config/endpoints.ts` 新增 OpenAPI 蓝图加载器，`ModuleScaffold` 运行时同步后端摘要、方法、路径与鉴权信息，失败回退静态蓝图。
+> - 后端补充 Careers 查询筛选、城市 / 职位冲突、找不到、非法回退等边界测试；后端 Jest **197/197**、前端 Vitest **198/198**。
+> - 覆盖率阈值统一为四项 ≥80%；后端实测 **98.49% statements / 80.47% branches / 95.86% functions / 99.07% lines**，前端覆盖率门禁通过。
 
 ### Stage 7：服务器部署准备（~4h，可与运维协作）
 

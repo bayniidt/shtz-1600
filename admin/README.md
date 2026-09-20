@@ -28,7 +28,7 @@ npm run dev     # → http://localhost:5173/admin/
 | `npm run preview` | 预览构建产物（`http://localhost:5174/admin/`，含 `/api` 代理） |
 | `npm run typecheck` | 仅类型检查 |
 | `npm test` | Vitest + Testing Library（jsdom） |
-| `npm run test:coverage` | 覆盖率门禁：statements/lines ≥80%、branches ≥70%、functions ≥80% |
+| `npm run test:coverage` | 覆盖率门禁：statements/lines/branches/functions 均 ≥80% |
 | `npm run test:smoke` | 真实 Chrome（CDP）冒烟：逐个路由检查空白页 / console 错误 / 失败请求 |
 
 > 冒烟测试前置：后端 `:4000` 已启动，且前端构建产物已在 `:5174` 预览（`npm run build && npm run preview`）。
@@ -78,8 +78,8 @@ scripts/smoke.mjs          Chrome CDP 冒烟测试
 ## 测试
 
 ```bash
-npm test                # 196 个用例（jsdom）
-npm run test:coverage   # 覆盖率门禁（阈值：statements/lines 80%、branches 70%、functions 80%）
+npm test                # 198 个用例（jsdom）
+npm run test:coverage   # 覆盖率门禁（四项阈值均为 80%）
 npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染校验
 ```
 
@@ -101,6 +101,14 @@ npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染
 | `config/theme / utils/token / utils/feedback` | 主题合并与 CSS 变量、会话存储、消息反馈 |
 
 > 内容表单字段多、antd 组件层级深，`--coverage` 插桩下用例耗时较长（约 2~3 分钟），已把 `testTimeout` 调至 30s、并发限制为 4 个 worker。
+
+## Stage 6 交付（接口文档与覆盖率收尾）
+
+- 后端新增机器可读 OpenAPI 文档：`GET /api/docs/openapi.json`；Swagger UI 仍通过 `/api/docs` 访问，错误码表通过 `/api/docs/error-codes` 访问。
+- 所有已登记接口补齐请求示例、成功响应示例和错误响应 `code` 示例，并新增文档完整性测试，避免新增接口遗漏文档字段。
+- `ModuleScaffold` 运行时从 OpenAPI JSON 同步接口方法、路径、摘要与鉴权标记；后端不可用时回退本地蓝图。
+- 覆盖率门禁统一提升为 statements / branches / functions / lines 均 ≥80%；本阶段后端覆盖率为 **98.49% / 80.47% / 95.86% / 99.07%**，前端为 **97.18% / 86.72% / 89.39% / 97.18%**（均按 S/B/F/L）。
+- 新增接口蓝图同步测试与招聘筛选、冲突、找不到、非法回退等边界用例；当前前端常规测试 **198/198** 通过。
 
 ## Stage 4 交付（招聘城市 / 职位 CRUD）
 

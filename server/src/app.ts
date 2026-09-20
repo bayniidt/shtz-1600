@@ -51,6 +51,11 @@ export function createApp(options: AppOptions = {}): Express {
 
   // 接口文档
   if (config.swaggerEnabled) {
+    // 给后台接口蓝图与外部工具提供机器可读的 OpenAPI 文档。
+    // 该路由必须返回原始文档，而不是统一 API envelope，便于 Swagger / Postman 直接导入。
+    app.get("/api/docs/openapi.json", (_req, res) => {
+      res.json(openApiDocument);
+    });
     app.get("/api/docs/error-codes", (_req, res) => {
       sendOk(res, errorCodeTable);
     });

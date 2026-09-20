@@ -321,4 +321,64 @@ describe("招聘职位 CRUD", () => {
     expect(invalid.status).toBe(400);
     expect(invalid.body.errors).toEqual(expect.arrayContaining([expect.objectContaining({ path: "title" })]));
   });
+
+  it("T21 边界：覆盖城市/职位筛选分支与 CRUD 冲突、找不到、非法回退", async () => {
+    await seedFixtureContent();
+
+    const featuredCities = await request(app).get(
+      "/api/v1/careers/cities?keyword=%E4%B8%8A%E6%B5%B7&featured=true",
+    );
+    expect(featuredCities.body.data.items.map((item: { id: string }) => item.id)).toEqual(["shanghai"]);
+    const unfeaturedCities = await request(app).get(
+      "/api/v1/careers/cities?keyword=%E6%B7%B1%E5%9C%B3&featured=false",
+    );
+    expect(unfeaturedCities.body.data.items.map((item: { id: string }) => item.id)).toEqual(["shenzhen"]);
+
+    const hotUrgent = await request(app).get(
+      "/api/v1/careers/positions?cityId=shenzhen&keyword=%E6%8A%95%E6%94%BE&hot=true&urgent=true",
+    );
+    expect(hotUrgent.body.data.items.map((item: { id: string }) => item.id)).toEqual(["position-001"]);
+    const coldNormal = await request(app).get(
+      "/api/v1/careers/positions?cityId=shenzhen&keyword=%E5%90%8E%E5%8F%B0&hot=false&urgent=false",
+    );
+    expect(coldNormal.body.data.items.map((item: { id: string }) => item.id)).toEqual(["position-002"]);
+
+    const createdCity = await request(app)
+      .post("/api/v1/careers/cities")
+      .set(bearer(token))
+      .send({ ...CITIES_FIXTURE[0], id: "hangzhou" });
+    expect(createdCity.status).toBe(201);
+
+    const duplicateCity = await request(app)
+      .put("/api/v1/careers/cities/shenzhen")
+      .set(bearer(token))
+      .send({ ...CITIES_FIXTURE[1], id: "shanghai" });
+    expect(duplicateCity.status).toBe(409);
+    expect((await request(app).put("/api/v1/careers/cities/missing").set(bearer(token)).send(CITIES_FIXTURE[0])).status).toBe(404);
+
+    const invalidFallback = await request(app)
+      .delete("/api/v1/careers/cities/shanghai")
+      .set(bearer(token))
+      .send({ fallbackCityId: "missing" });
+    expect(invalidFallback.status).toBe(400);
+    expect((await request(app).delete("/api/v1/careers/cities/missing").set(bearer(token))).status).toBe(404);
+
+    const duplicatePosition = await request(app)
+      .post("/api/v1/careers/positions")
+      .set(bearer(token))
+      .send(POSITIONS_FIXTURE[0]);
+    expect(duplicatePosition.status).toBe(409);
+
+    const immutableId = await request(app)
+      .put("/api/v1/careers/positions/position-001")
+      .set(bearer(token))
+      .send({ ...POSITIONS_FIXTURE[0], id: "position-renamed" });
+    expect(immutableId.status).toBe(400);
+    const missingPosition = await request(app)
+      .put("/api/v1/careers/positions/missing")
+      .set(bearer(token))
+      .send({ ...POSITIONS_FIXTURE[0], id: "missing" });
+    expect(missingPosition.status).toBe(404);
+    expect((await request(app).delete("/api/v1/careers/positions/missing").set(bearer(token))).status).toBe(404);
+  });
 });

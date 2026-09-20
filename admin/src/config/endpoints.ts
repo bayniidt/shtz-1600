@@ -2,8 +2,9 @@
  * 后台各模块的接口蓝图。
  *
  * `implemented: true` 表示该模块已在后台提供可视化编辑页（Stage 2 已完成 4 个内容模块）；
- * 其余模块仍由 ModuleScaffold 展示「接口已注册、业务待实现」的清单。
- * Stage 6 会改为直接读取 `/api/docs/openapi.json`，此处随之退役。
+ * 其余模块仍由 ModuleScaffold 展示接口清单。
+ * 页面运行时会从后端 `/api/docs/openapi.json` 刷新方法、路径、摘要与鉴权信息；
+ * 本文件保留稳定的模块元数据与离线回退，确保后端暂时不可用时后台仍能渲染。
  */
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -124,6 +125,75 @@ export const MODULE_BLUEPRINTS: Record<string, ModuleBlueprint> = {
 };
 
 export type ModuleKey = keyof typeof MODULE_BLUEPRINTS;
+
+export const OPENAPI_DOCUMENT_URL = "/api/docs/openapi.json";
+
+interface OpenApiOperation {
+  summary?: string;
+  tags?: string[];
+  security?: unknown[];
+}
+
+interface OpenApiDocument {
+  paths?: Record<string, Record<string, OpenApiOperation | undefined>>;
+}
+
+const OPENAPI_METHODS: HttpMethod[] = ["GET", "POST", "PUT", "DELETE"];
+
+function moduleKeyForOperation(tag: string | undefined, path: string): ModuleKey | undefined {
+  if (tag === "Site") return "site";
+  if (tag === "Home") return "home";
+  if (tag === "About") return "about";
+  if (tag === "Cases") return "cases";
+  if (tag !== "Careers") return undefined;
+  if (path === "/careers/content") return "careersContent";
+  if (path.startsWith("/careers/cities")) return "careersCities";
+  if (path.startsWith("/careers/positions")) return "careersPositions";
+  return undefined;
+}
+
+/**
+ * 从后端 OpenAPI 文档生成接口清单。
+ * `fetchImpl` 可注入测试替身；请求失败时返回静态蓝图，保证离线可用。
+ */
+export async function loadModuleBlueprints(
+  fetchImpl?: typeof fetch,
+): Promise<Record<ModuleKey, ModuleBlueprint>> {
+  const request = fetchImpl ?? (typeof fetch === "function" ? fetch : undefined);
+  if (!request) return MODULE_BLUEPRINTS as Record<ModuleKey, ModuleBlueprint>;
+
+  try {
+    const response = await request(OPENAPI_DOCUMENT_URL);
+    if (!response.ok) throw new Error(`OpenAPI 请求失败：${response.status}`);
+    const document = (await response.json()) as OpenApiDocument;
+    const discovered: Partial<Record<ModuleKey, EndpointDoc[]>> = {};
+
+    for (const [path, pathItem] of Object.entries(document.paths ?? {})) {
+      for (const method of OPENAPI_METHODS) {
+        const operation = pathItem[method.toLowerCase()];
+        if (!operation) continue;
+        const key = moduleKeyForOperation(operation.tags?.[0], path);
+        if (!key) continue;
+        const endpoint: EndpointDoc = {
+          method,
+          path,
+          label: operation.summary ?? `${method} ${path}`,
+          auth: Array.isArray(operation.security) && operation.security.length > 0,
+        };
+        (discovered[key] ??= []).push(endpoint);
+      }
+    }
+
+    return Object.fromEntries(
+      Object.entries(MODULE_BLUEPRINTS).map(([key, blueprint]) => [
+        key,
+        { ...blueprint, endpoints: discovered[key as ModuleKey] ?? blueprint.endpoints },
+      ]),
+    ) as Record<ModuleKey, ModuleBlueprint>;
+  } catch {
+    return MODULE_BLUEPRINTS as Record<ModuleKey, ModuleBlueprint>;
+  }
+}
 
 export const METHOD_COLORS: Record<HttpMethod, string> = {
   GET: "blue",

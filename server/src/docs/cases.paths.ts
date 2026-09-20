@@ -34,7 +34,11 @@ const caseItemSchema = objectSchema("客户案例（业务主键 id）", {
   awards: stringArray("所获奖项"),
   tags: stringArray("标签"),
   year: { type: "string", example: "2024" },
-  featured: { type: "boolean", description: "首页置顶（三态标记，写入统一归一化为布尔）" },
+  featured: {
+    oneOf: [{ type: "boolean" }, { type: "string", enum: ["yes", "no", ""] }],
+    description: "首页置顶；兼容 boolean 与历史 yes/no/空字符串，写入后归一化为 boolean",
+    example: true,
+  },
   stats: {
     type: "array",
     description: "核心指标（最多 24 项）",
@@ -116,13 +120,25 @@ export function casesPaths(): Record<string, Record<string, unknown>> {
         summary: "读取案例列表页文案",
         description: "尚未初始化时返回 404 / code=4040。",
         responses: {
-          200: { description: "列表页文案", ...envelope(pageSchema) },
+          200: {
+            description: "列表页文案",
+            ...envelope(pageSchema, {
+              code: 0,
+              message: "ok",
+              data: {
+                title: "海外营销成功案例",
+                subtitle: "以数据与创意驱动的增长实践",
+                filters: [{ key: "all", label: "全部" }, { key: "game", label: "游戏" }],
+              },
+            }),
+          },
           ...commonErrors({ notFound: true }),
         },
       },
       put: {
         tags: ["Cases"],
         summary: "更新案例列表页文案",
+        description: "整体覆盖案例列表页标题、副标题与行业筛选项；未知字段返回 4000。",
         security: [{ bearerAuth: [] }],
         requestBody: jsonRequest("#/components/schemas/CasesPageContent", {
           title: "海外营销成功案例",
@@ -133,7 +149,18 @@ export function casesPaths(): Record<string, Record<string, unknown>> {
           ],
         }),
         responses: {
-          200: { description: "保存后的文案", ...envelope(pageSchema) },
+          200: {
+            description: "保存后的文案",
+            ...envelope(pageSchema, {
+              code: 0,
+              message: "案例列表页文案已保存",
+              data: {
+                title: "海外营销成功案例",
+                subtitle: "以数据与创意驱动的增长实践",
+                filters: [{ key: "all", label: "全部" }, { key: "game", label: "游戏" }],
+              },
+            }),
+          },
           ...commonErrors({ protected: true }),
         },
       },
@@ -187,6 +214,7 @@ export function casesPaths(): Record<string, Record<string, unknown>> {
       get: {
         tags: ["Cases"],
         summary: "案例详情",
+        description: "按案例业务主键读取完整案例内容，不存在时返回 4040。",
         parameters: [idParam],
         responses: {
           200: { description: "案例详情", ...envelope(itemSchema, { code: 0, message: "ok", data: CASE_ITEM_EXAMPLE }) },
@@ -212,6 +240,7 @@ export function casesPaths(): Record<string, Record<string, unknown>> {
       delete: {
         tags: ["Cases"],
         summary: "删除案例",
+        description: "按案例业务主键删除案例，删除成功返回被删除 id。",
         security: [{ bearerAuth: [] }],
         parameters: [idParam],
         responses: {
@@ -232,6 +261,7 @@ export function casesPaths(): Record<string, Record<string, unknown>> {
       post: {
         tags: ["Cases"],
         summary: "切换首页置顶",
+        description: "将案例的 featured 标记设置为 true 或 false，并返回更新后的案例。",
         security: [{ bearerAuth: [] }],
         parameters: [idParam],
         requestBody: {

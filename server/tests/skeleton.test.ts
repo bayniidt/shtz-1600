@@ -86,4 +86,40 @@ describe("Stage 4 路由与文档收口", () => {
       expect(Object.keys(operation.responses as object)).toContain("200");
     }
   });
+
+  it("S7 提供机器可读 OpenAPI JSON，所有操作都包含请求/响应示例", async () => {
+    const response = await request(app).get("/api/docs/openapi.json");
+    expect(response.status).toBe(200);
+    expect(response.body.openapi).toBe("3.0.3");
+    expect(response.body.paths).toBeTruthy();
+
+    const methods = new Set(["get", "post", "put", "delete"]);
+    for (const pathItem of Object.values(openApiDocument.paths as Record<string, Record<string, unknown>>)) {
+      for (const [method, rawOperation] of Object.entries(pathItem)) {
+        if (!methods.has(method)) continue;
+        const operation = rawOperation as {
+          description?: string;
+          requestBody?: { content?: Record<string, { example?: unknown }> };
+          responses?: Record<string, { content?: Record<string, { example?: unknown }> }>;
+        };
+        expect(operation.description).toBeTruthy();
+        expect(operation.responses).toBeTruthy();
+
+        const responses = operation.responses ?? {};
+        expect(Object.keys(responses).some((status) => /^2\d\d$/.test(status))).toBe(true);
+
+        for (const [status, rawResponse] of Object.entries(responses)) {
+          const example = rawResponse.content?.["application/json"]?.example;
+          expect(example).toBeDefined();
+          if (!/^2\d\d$/.test(status)) {
+            expect((example as { code?: number })?.code).toEqual(expect.any(Number));
+          }
+        }
+
+        if (operation.requestBody) {
+          expect(operation.requestBody.content?.["application/json"]?.example).toBeDefined();
+        }
+      }
+    }
+  });
 });

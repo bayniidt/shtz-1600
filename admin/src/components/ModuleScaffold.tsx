@@ -1,8 +1,16 @@
 import { Alert, Card, Space, Table, Tag, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { useEffect, useMemo, useState } from "react";
 
 import PageContainer from "@/components/PageContainer";
-import { METHOD_COLORS, MODULE_BLUEPRINTS, type EndpointDoc, type ModuleKey } from "@/config/endpoints";
+import {
+  loadModuleBlueprints,
+  METHOD_COLORS,
+  MODULE_BLUEPRINTS,
+  type EndpointDoc,
+  type ModuleBlueprint,
+  type ModuleKey,
+} from "@/config/endpoints";
 
 export interface ModuleScaffoldProps {
   /** 该路由包含的模块（例如招聘管理 = 城市 + 职位） */
@@ -39,7 +47,21 @@ const columns: ColumnsType<EndpointDoc> = [
  * 已实现模块仍可用于查看接口蓝图，但真实业务路由应优先使用对应页面。
  */
 export default function ModuleScaffold({ moduleKeys, title }: ModuleScaffoldProps) {
-  const blueprints = moduleKeys.map((key) => MODULE_BLUEPRINTS[key]);
+  const moduleKeySignature = moduleKeys.join(",");
+  const fallbackBlueprints = useMemo(() => moduleKeys.map((key) => MODULE_BLUEPRINTS[key]), [moduleKeySignature]);
+  const [blueprints, setBlueprints] = useState<ModuleBlueprint[]>(fallbackBlueprints);
+
+  useEffect(() => {
+    let active = true;
+    setBlueprints(fallbackBlueprints);
+    void loadModuleBlueprints().then((loaded) => {
+      if (active) setBlueprints(moduleKeys.map((key) => loaded[key]));
+    });
+    return () => {
+      active = false;
+    };
+  }, [fallbackBlueprints, moduleKeySignature]);
+
   const pageTitle = title ?? blueprints.map((item) => item.title).join(" · ");
   const stages = [...new Set(blueprints.map((item) => item.stage))].join(" / ");
   const total = blueprints.reduce((sum, item) => sum + item.endpoints.length, 0);

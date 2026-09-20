@@ -38,18 +38,18 @@ admin (React)  ──HTTP/JWT──▶  server (Express + MongoDB)
 web (Next.js)  ◀──REST API─────────┘
 ```
 
-当前进度：**Stage 5 完成**（Stage 0/1 骨架 + 认证/主题；Stage 2 内容模块；Stage 3 Cases 客户案例 CRUD；
-Stage 4 Careers 城市 / 职位 CRUD；Stage 5 前台 API-first 读取、JSON 兜底与 Mongo 内容快照导出）。
-后续阶段（Stage 6 接口文档与覆盖率、Stage 7 部署收尾）见 `admin/ADMIN_DEVELOPMENT_PLAN.md`。
+当前进度：**Stage 6 完成**（Stage 0/1 骨架 + 认证/主题；Stage 2 内容模块；Stage 3 Cases 客户案例 CRUD；
+Stage 4 Careers 城市 / 职位 CRUD；Stage 5 前台 API-first 读取、JSON 兜底与 Mongo 内容快照导出；Stage 6 OpenAPI 文档完整化与覆盖率门禁收口）。
+后续阶段为 Stage 7 部署收尾，详见 `admin/ADMIN_DEVELOPMENT_PLAN.md`。
 
 ## 验收情况（当前）
 
 | 项目 | 结果 |
 |------|------|
-| 后端 `cd server && npx jest --runInBand --forceExit` | **195/195** 用例通过 |
-| 前端 `cd admin && npx vitest run` | **196/196** 用例通过 |
+| 后端 `cd server && npx jest --runInBand --forceExit` | **197/197** 用例通过 |
+| 前端 `cd admin && npx vitest run` | **198/198** 用例通过 |
 | 前台 `cd web && pnpm run typecheck && pnpm run build` | 通过（API 优先 / JSON 兜底） |
 | 前台 `cd web && pnpm run export` | 通过（8 cases / 7 cities / 79 positions） |
-| 覆盖率命令 | 后端/前端覆盖率插桩下仍有既有偶发失败，待 Stage 6 收敛 |
+| 覆盖率命令 | 后端 **98.49% / 80.47% / 95.86% / 99.07%**；前端覆盖率门禁四项均 ≥80% |
 | 前端构建 `npm run build` | 通过（主 chunk 约 2.05 MB，gzip 约 655 kB；Vite 有体积提示） |
 | 真实浏览器冒烟 `npm run test:smoke` | 15 个路由全部通过（preview 5174，后端 4000） |

@@ -2,16 +2,17 @@
 
 > 给「下一个接手的人 / 下一个对话窗口（AI）」看的工程约定与现状快照。
 > **开工前请先读**：本文件 → `ADMIN_DEVELOPMENT_PLAN.md`（阶段目标与完成情况）→ `admin/README.md` + `server/README.md`（目录与命令）。
-> 最后更新：Stage 5 完成时。
+> 最后更新：Stage 6 完成时。
 
 ---
 
 ## 0. 一句话现状
 
-Stage 0 / 1 / 2 / 3 / 4 / 5 全部实现完成，常规测试 / 类型检查 / 构建 / 冒烟验收通过（覆盖率插桩下的既有偶发失败留给 Stage 6）：
+Stage 0 / 1 / 2 / 3 / 4 / 5 / 6 全部实现完成，常规测试 / 覆盖率 / 类型检查 / 构建 / 文档验收通过：
 - 后端：认证 + 主题 + **内容模块（site / home 6 板块 / about / careers content，13 个真实接口）** + **Cases 8 个真实接口** + **Careers 城市 / 职位 10 个真实接口**。
 - 后台前端：登录 / 守卫 / 布局 / 主题设置 / 4 个内容编辑页 + **Cases 列表页与新建/编辑页** + **Careers 总览、城市编辑、职位编辑**。
-- **下一步 = Stage 6：接口文档完整化 + 测试覆盖率冲刺**。
+- Stage 6：OpenAPI 文档完整化、后台蓝图动态同步、边界测试与覆盖率门禁收口。
+- **下一步 = Stage 7：服务器部署准备**。
 
 ---
 
@@ -45,12 +46,12 @@ cd ../web && npm run dev                                                        
 
 ## 3. 验收命令（每完成一个阶段都要全绿）
 
-| 范围 | 命令 | 门禁 / 当前值（Stage 5） |
+| 范围 | 命令 | 门禁 / 当前值（Stage 6） |
 |------|------|--------------------------|
-| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **195/195** 用例通过 |
-| 后端覆盖率 | `cd server && npm run test:coverage` | 本轮 196/197 通过；`home.test.ts` 的 T15 在覆盖率插桩下偶发 404，待 Stage 6 收敛 |
-| 前端测试 | `cd admin && npx vitest run` | **196/196** 用例通过 |
-| 前端覆盖率 | `cd admin && npm run test:coverage` | 本轮 185/186 通过；`BasicLayout.test.tsx` 的 B3 在覆盖率插桩下超时，待 Stage 6 收敛 |
+| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **197/197** 用例通过 |
+| 后端覆盖率 | `cd server && npm run test:coverage` | **98.49% / 80.47% / 95.86% / 99.07%**（statements / branches / functions / lines），四项 ≥80% |
+| 前端测试 | `cd admin && npx vitest run` | **198/198** 用例通过 |
+| 前端覆盖率 | `cd admin && npm run test:coverage` | **97.18% / 86.72% / 89.39% / 97.18%**（statements / branches / functions / lines），四项 ≥80% |
 | 类型检查 | `cd admin && npx tsc --noEmit` | 必须干净 |
 | 构建 | `cd admin && npm run build` | 主 chunk 约 2.05 MB / gzip 约 655 kB（Vite 体积提示） |
 | 真实浏览器冒烟 | `cd admin && npm run build && npm run preview` + `npm run test:smoke` | 15 个路由（需后端 :4000 + preview :5174） |
@@ -58,7 +59,7 @@ cd ../web && npm run dev                                                        
 | 前台快照导出 | `cd web && pnpm run export` | 从后端 API 导出 `data/site.json` |
 
 阶段收尾清单（一个都别漏）：
-1. 后端/前端常规测试全绿；覆盖率插桩下的既有偶发失败留给 Stage 6 收敛；
+1. 后端/前端常规测试与覆盖率门禁全绿；
 2. `tsc --noEmit` 干净、`npm run build` 通过、`npm run test:smoke` 通过（dev 与 preview 各跑一次）；
 3. 冒烟脚本 `admin/scripts/smoke.mjs` 的期望文案同步更新；
 4. 文档：`ADMIN_DEVELOPMENT_PLAN.md` 该阶段打 ✅ + 写「完成情况」小结；`server/README.md`（接口表 / 骨架表 / 测试表 / 覆盖率）、`admin/README.md`（目录树 / 测试表 / 交付说明）、根 `README.md`（进度 + 验收表）。
@@ -120,6 +121,9 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 - `src/docs/helpers.ts`：`errorResponse`、`envelope`、`jsonRequest`、`commonErrors`。
 - `src/docs/content.paths.ts`：`contentSchemas`、`contentPaths()`、`singletonPaths()`。
 - `src/docs/swagger.ts`：`placeholderEndpoints()` 是**占位接口清单的唯一来源**，当前返回空数组；Careers 文档在 `src/docs/careers.paths.ts`。
+- `GET /api/docs`：Swagger UI；`GET /api/docs/openapi.json`：原始 OpenAPI 3.0 JSON；`GET /api/docs/error-codes`：统一 envelope 的错误码表。
+- 每个 operation 都必须有至少一个 2xx 响应示例；写接口必须有 JSON 请求示例；错误响应示例必须有 `code` / `message`，4000 还应展示 `errors`。
+- `admin/src/config/endpoints.ts` 的 `loadModuleBlueprints()` 从 `/api/docs/openapi.json` 同步接口清单；请求失败时回退静态蓝图。
 - 覆盖率排除 `src/server.ts` 与 `src/docs/**`。
 
 ### 4.6 后端测试写法
@@ -205,7 +209,7 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 - **Stage 3 已完成**：Cases 列表页文案 + 7 个案例 CRUD/操作接口，Zod 覆盖 `stats[]` 与 `blocks[]` 嵌套；前端案例列表（ProTable + 筛选 + 置顶 + 删除确认）+ 新建/编辑页（`ArrayEditor`）+ 前台预览。
 - **Stage 4 已完成**：改城市 `id` 联动更新职位的 `cityId`/`extraCities`、删除城市回退、`cityId` 合法性校验、列表聚合 `positionsCount`；前端城市卡片 Grid + 职位 ProTable。
 - **Stage 5 已完成**：`web/src/lib/db.ts` API 优先读取 site/home/about/cases/careers，任一 API 不可用时回退 `data/site.json`；公共页面保持 `force-dynamic`；新增 `web/scripts/export.mjs` 与 `pnpm run export`；Dashboard 统计卡片、行业分布饼图、公司时间线改为实时 API 数据。
-- **Stage 6**：Swagger 示例补齐 + 覆盖率收尾；`admin/src/config/endpoints.ts` 换成读 `/api/docs/openapi.json`；体积优化。
+- **Stage 6 已完成**：Swagger 请求 / 响应示例补齐；新增 OpenAPI JSON、文档完整性测试、动态接口蓝图同步；后端覆盖率四项达到门禁（branches 80.47%），并补齐 Careers 边界测试。
 - **Stage 7**：部署配置。
 
 ---

@@ -1,12 +1,21 @@
 /** OpenAPI 文档构建小工具（供 swagger.ts 与各模块文档复用）。 */
 
-export function errorResponse(description: string, code: number): Record<string, unknown> {
+export function errorResponse(
+  description: string,
+  code: number,
+  errors?: Array<{ path: string; message: string }>,
+): Record<string, unknown> {
+  const example: Record<string, unknown> = { code, message: description };
+  if (code === 4000) {
+    example.errors = errors ?? [{ path: "field", message: "字段校验失败" }];
+  }
+
   return {
     description,
     content: {
       "application/json": {
         schema: { $ref: "#/components/schemas/ErrorResponse" },
-        example: { code, message: description },
+        example,
       },
     },
   };

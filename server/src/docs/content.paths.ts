@@ -31,6 +31,102 @@ const linkObject = (description: string) =>
     external: { type: "boolean" },
   });
 
+const SITE_EXAMPLE = {
+  name: "上海翼投智能科技有限公司",
+  nameEn: "Shanghai ADFLY Intelligent Technology Co., Ltd.",
+  logoText: "ADFLY",
+  logoSub: "飞书汇",
+  nav: [{ label: "客户案例", href: "/cases", external: false }],
+  contactEmail: "master@adflymobile.com",
+  businessEmail: "market@adflymobile.com",
+  phone: "+86 21 5436 8877",
+  address: "上海市徐汇区宜山路425号光启城710室",
+  icp: "沪ICP备18047852号-1",
+  seo: { title: "ADFLY", description: "全球智能营销科技服务商", keywords: "ADFLY,营销" },
+  footerLinks: [{ label: "隐私政策", href: "/privacy", external: false }],
+};
+
+const HOME_SECTION_EXAMPLES: Record<string, Record<string, unknown>> = {
+  hero: {
+    eyebrow: "ADFLY",
+    title: "全球智能营销科技服务商",
+    titleEn: "Global Intelligent Marketing Partner",
+    description: "以数据、创意与 AI 驱动增长。",
+    primaryCta: { label: "联系我们", href: "/contact", external: false },
+    secondaryCta: { label: "查看案例", href: "/cases", external: false },
+    marquee: ["Facebook", "Google"],
+    stats: [{ value: "2017", label: "成立年份" }],
+  },
+  media: {
+    title: "全球媒体资源",
+    subtitle: "覆盖主流增长渠道",
+    benefits: [{ title: "专业服务", description: "一站式投放支持" }],
+    partners: [{ name: "Facebook", mark: "Facebook", category: "Social", accent: "#1877F2" }],
+    cta: { label: "免费开户", href: "/contact", external: false },
+  },
+  flow: {
+    eyebrow: "Flow AI",
+    title: "让创意持续产生增长",
+    description: "从洞察到素材的智能工作流。",
+    orbit: [{ label: "大模型" }],
+    features: [{ title: "智能创意", description: "快速生成素材", mark: "Flow Creative", points: "洞察/生成" }],
+    cta: { label: "了解 Flow AI", href: "/flow", external: false },
+  },
+  clients: {
+    title: "适配不同增长阶段",
+    subtitle: "为行业客户提供可验证的增长方案",
+    industries: [{ key: "game", name: "游戏", description: "游戏出海", stat: "320% ROI" }],
+    logos: [{ name: "4399游戏", industry: "game" }],
+  },
+  strength: {
+    title: "全球化团队与服务网络",
+    description: "连接本地市场与全球媒体。",
+    nodes: [{ city: "总部上海", role: "全球总部", x: "82", y: "42", major: "yes" }],
+    stats: [{ value: "20+", suffix: "", label: "服务市场" }],
+    cta: { label: "认识我们", href: "/about", external: false },
+  },
+  honors: {
+    title: "专业能力获得认可",
+    subtitle: "持续建设长期信任",
+    groups: [{ key: "qualification", title: "权威资质", items: [{ title: "Google Partner", issuer: "Google", year: "2024" }] }],
+  },
+};
+
+const HOME_EXAMPLE = {
+  ...HOME_SECTION_EXAMPLES,
+};
+
+const ABOUT_EXAMPLE = {
+  heroEyebrow: "About ADFLY",
+  heroTitle: "连接品牌与全球增长",
+  heroDescription: "我们为客户提供智能营销服务。",
+  stats: [{ value: "2017", label: "成立年份" }],
+  visionTitle: "我们的愿景",
+  visionText: "让增长更简单。",
+  values: [{ title: "客户成功", description: "以客户结果为导向" }],
+  timeline: [{ year: "2017", title: "公司成立", description: "开始服务全球客户" }],
+  team: [{ name: "ADFLY Team", role: "Growth" }],
+  teamIntro: "一支跨市场团队。",
+  offices: [{ city: "上海", address: "徐汇区" }],
+};
+
+const CAREERS_CONTENT_EXAMPLE = {
+  heroTitle: "与优秀的人一起做有影响力的事",
+  heroSubtitle: "加入 ADFLY",
+  heroDescription: "在全球化团队中持续成长。",
+  citiesEyebrow: "Locations",
+  citiesTitle: "寻找适合你的城市",
+  citiesDescription: "我们在多个城市设有团队。",
+  cultureTitle: "我们的文化",
+  culture: [{ title: "开放协作", description: "分享知识，共同成长" }],
+  benefitsTitle: "福利待遇",
+  benefits: [{ group: "基础福利", items: "五险一金/带薪年假" }],
+  jobsEyebrow: "Open Roles",
+  jobsTitle: "加入我们",
+  portalUrl: "https://jobs.example.com",
+  applyEmail: "hr@example.com",
+};
+
 export const contentSchemas: Record<string, Record<string, unknown>> = {
   SiteConfig: objectSchema("站点与导航配置（单文档）", {
     name: { type: "string", example: "上海翼投智能科技有限公司" },
@@ -220,7 +316,14 @@ export const contentSchemas: Record<string, Record<string, unknown>> = {
     },
     jobsEyebrow: { type: "string" },
     jobsTitle: { type: "string" },
-    portalUrl: { type: "string" },
+    portalUrl: {
+      oneOf: [
+        { type: "string", enum: [""] },
+        { type: "string", format: "uri", pattern: "^https?://" },
+      ],
+      description: "招聘系统地址；可为空，仅允许绝对 http:// 或 https:// 地址",
+      example: "https://jobs.example.com",
+    },
     applyEmail: { type: "string" },
     updatedAt: { type: "string", format: "date-time" },
   }),
@@ -234,6 +337,7 @@ interface SingletonSpec {
   getSummary: string;
   putSummary: string;
   notFoundMessage: string;
+  example: Record<string, unknown>;
 }
 
 /** Get / Put 型单文档模块。 */
@@ -244,9 +348,9 @@ function singletonPaths(spec: SingletonSpec): Record<string, Record<string, unkn
       get: {
         tags: [spec.tag],
         summary: spec.getSummary,
-        description: `读取「${spec.name}」单文档内容。尚未初始化时返回 404 / code=4040。`,
+        description: `读取「${spec.name}」单文档内容。${spec.notFoundMessage}时返回 404 / code=4040。`,
         responses: {
-          200: { description: `${spec.name}内容`, ...envelope(schema) },
+          200: { description: `${spec.name}内容`, ...envelope(schema, { code: 0, message: "ok", data: spec.example }) },
           ...commonErrors({ notFound: true }),
         },
       },
@@ -255,9 +359,9 @@ function singletonPaths(spec: SingletonSpec): Record<string, Record<string, unkn
         summary: spec.putSummary,
         description: `整体覆盖「${spec.name}」。请求体需包含全部字段（详见 Zod 校验规则），未知字段返回 4000。`,
         security: [{ bearerAuth: [] }],
-        requestBody: jsonRequest(spec.schemaRef),
+        requestBody: jsonRequest(spec.schemaRef, spec.example),
         responses: {
-          200: { description: "保存后的完整内容", ...envelope(schema) },
+          200: { description: "保存后的完整内容", ...envelope(schema, { code: 0, message: `${spec.name}已保存`, data: spec.example }) },
           ...commonErrors({ protected: true }),
         },
       },
@@ -272,11 +376,36 @@ const HOME_SECTIONS: { key: string; name: string; schemaRef: string; example?: u
     schemaRef: "#/components/schemas/HomeHeroSection",
     example: { title: "全球智能营销科技服务商", marquee: ["Facebook", "Google"] },
   },
-  { key: "media", name: "媒体资源区", schemaRef: "#/components/schemas/HomeMediaSection" },
-  { key: "flow", name: "Flow AI 区", schemaRef: "#/components/schemas/HomeFlowSection" },
-  { key: "clients", name: "客户选择区", schemaRef: "#/components/schemas/HomeClientsSection" },
-  { key: "strength", name: "公司实力区", schemaRef: "#/components/schemas/HomeStrengthSection" },
-  { key: "honors", name: "企业荣誉区", schemaRef: "#/components/schemas/HomeHonorsSection" },
+  {
+    key: "media",
+    name: "媒体资源区",
+    schemaRef: "#/components/schemas/HomeMediaSection",
+    example: HOME_SECTION_EXAMPLES.media,
+  },
+  {
+    key: "flow",
+    name: "Flow AI 区",
+    schemaRef: "#/components/schemas/HomeFlowSection",
+    example: HOME_SECTION_EXAMPLES.flow,
+  },
+  {
+    key: "clients",
+    name: "客户选择区",
+    schemaRef: "#/components/schemas/HomeClientsSection",
+    example: HOME_SECTION_EXAMPLES.clients,
+  },
+  {
+    key: "strength",
+    name: "公司实力区",
+    schemaRef: "#/components/schemas/HomeStrengthSection",
+    example: HOME_SECTION_EXAMPLES.strength,
+  },
+  {
+    key: "honors",
+    name: "企业荣誉区",
+    schemaRef: "#/components/schemas/HomeHonorsSection",
+    example: HOME_SECTION_EXAMPLES.honors,
+  },
 ];
 
 /** Stage 2 已实现接口的 path 条目。 */
@@ -291,6 +420,7 @@ export function contentPaths(): Record<string, Record<string, unknown>> {
       getSummary: "读取站点配置",
       putSummary: "更新站点配置",
       notFoundMessage: "站点配置尚未初始化",
+      example: SITE_EXAMPLE,
     }),
     "/home": {
       get: {
@@ -298,7 +428,7 @@ export function contentPaths(): Record<string, Record<string, unknown>> {
         summary: "读取首页 6 大板块",
         description: "一次性返回 hero / media / flow / clients / strength / honors。",
         responses: {
-          200: { description: "首页内容", ...envelope(homeSchema) },
+          200: { description: "首页内容", ...envelope(homeSchema, { code: 0, message: "ok", data: HOME_EXAMPLE }) },
           ...commonErrors({ notFound: true }),
         },
       },
@@ -311,6 +441,7 @@ export function contentPaths(): Record<string, Record<string, unknown>> {
       getSummary: "读取关于我们",
       putSummary: "更新关于我们",
       notFoundMessage: "关于我们内容尚未初始化",
+      example: ABOUT_EXAMPLE,
     }),
     ...singletonPaths({
       path: "/careers/content",
@@ -320,6 +451,7 @@ export function contentPaths(): Record<string, Record<string, unknown>> {
       getSummary: "读取招聘页面文案",
       putSummary: "更新招聘页面文案",
       notFoundMessage: "招聘页面文案尚未初始化",
+      example: CAREERS_CONTENT_EXAMPLE,
     }),
   };
 
@@ -330,12 +462,12 @@ export function contentPaths(): Record<string, Record<string, unknown>> {
         summary: `更新${section.name}`,
         description: `局部更新首页「${section.name}」，返回更新后的完整首页内容。`,
         security: [{ bearerAuth: [] }],
-        requestBody: jsonRequest(
-          section.schemaRef,
-          section.example as Record<string, unknown> | undefined,
-        ),
+        requestBody: jsonRequest(section.schemaRef, section.example),
         responses: {
-          200: { description: "更新后的首页完整内容", ...envelope(homeSchema) },
+          200: {
+            description: "更新后的首页完整内容",
+            ...envelope(homeSchema, { code: 0, message: "首页内容已保存", data: HOME_EXAMPLE }),
+          },
           ...commonErrors({ protected: true }),
         },
       },

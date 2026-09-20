@@ -49,6 +49,7 @@ export const openApiDocument = {
             type: "array",
             items: {
               type: "object",
+              required: ["path", "message"],
               properties: {
                 path: { type: "string", example: "username" },
                 message: { type: "string", example: "username 不能为空" },
@@ -175,6 +176,7 @@ export const openApiDocument = {
       get: {
         tags: ["Auth"],
         summary: "获取当前登录用户",
+        description: "校验 Bearer Token 并返回当前管理员的公开信息。",
         security: [{ bearerAuth: [] }],
         responses: {
           200: {
@@ -219,7 +221,10 @@ export const openApiDocument = {
         responses: {
           200: {
             description: "主题配置",
-            ...envelope({ $ref: "#/components/schemas/AdminTheme" }),
+            ...envelope(
+              { $ref: "#/components/schemas/AdminTheme" },
+              { code: 0, message: "ok", data: { brand: { colorPrimary: "#1e96d4" } } },
+            ),
           },
           500: errorResponse("服务器内部错误", 5000),
         },
@@ -227,6 +232,7 @@ export const openApiDocument = {
       put: {
         tags: ["Settings"],
         summary: "更新后台主题配置（局部更新）",
+        description: "仅提交需要修改的主题分组；服务端返回合并后的完整主题配置。",
         security: [{ bearerAuth: [] }],
         requestBody: {
           required: true,
@@ -246,7 +252,13 @@ export const openApiDocument = {
           },
         },
         responses: {
-          200: { description: "更新后的完整主题", ...envelope({ $ref: "#/components/schemas/AdminTheme" }) },
+          200: {
+            description: "更新后的完整主题",
+            ...envelope(
+              { $ref: "#/components/schemas/AdminTheme" },
+              { code: 0, message: "主题配置已保存", data: { brand: { colorPrimary: "#0066ff" } } },
+            ),
+          },
           400: errorResponse("参数校验失败（颜色格式 / 范围 / 未知字段）", 4000),
           401: errorResponse("未登录 / Token 失效", 4010),
           500: errorResponse("服务器内部错误", 5000),
@@ -257,9 +269,16 @@ export const openApiDocument = {
       post: {
         tags: ["Settings"],
         summary: "恢复默认后台主题",
+        description: "将后台主题恢复为 ADFLY 默认品牌色、布局与排版配置。",
         security: [{ bearerAuth: [] }],
         responses: {
-          200: { description: "默认主题", ...envelope({ $ref: "#/components/schemas/AdminTheme" }) },
+          200: {
+            description: "默认主题",
+            ...envelope(
+              { $ref: "#/components/schemas/AdminTheme" },
+              { code: 0, message: "主题配置已恢复默认", data: { brand: { colorPrimary: "#1e96d4" } } },
+            ),
+          },
           401: errorResponse("未登录 / Token 失效", 4010),
           500: errorResponse("服务器内部错误", 5000),
         },
@@ -269,6 +288,7 @@ export const openApiDocument = {
       get: {
         tags: ["Auth"],
         summary: "健康检查",
+        description: "返回服务状态、进程运行时间与当前时间戳，不需要登录。",
         responses: {
           200: {
             description: "服务正常",
@@ -279,7 +299,7 @@ export const openApiDocument = {
                 uptime: { type: "integer", example: 12 },
                 timestamp: { type: "string", format: "date-time" },
               },
-            }),
+            }, { code: 0, message: "ok", data: { status: "ok", uptime: 12, timestamp: "2026-09-20T00:00:00.000Z" } }),
           },
         },
       },
@@ -304,7 +324,7 @@ export const errorCodeTable = [
   { code: 4090, http: 409, message: "业务主键（id）冲突" },
   { code: 4290, http: 429, message: "请求过于频繁" },
   { code: 5000, http: 500, message: "服务器内部错误" },
-  { code: 5001, http: 501, message: "功能开发中（Stage 4 占位接口）" },
+  { code: 5001, http: 501, message: "功能开发中（保留错误码兼容）" },
 ];
 
 /* ------------------- 未实现接口兼容清单 ------------------- */
