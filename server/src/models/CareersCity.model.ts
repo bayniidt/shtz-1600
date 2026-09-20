@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { flagSchema, entitySchemaOptions } from "@/models/schemas/common.schema";
+import { bilingualTranslationsSchema, flagSchema, entitySchemaOptions } from "@/models/schemas/common.schema";
 
 export interface CareersCityDoc extends Document {
   /** 业务主键（URL slug），允许修改，修改时联动 positions */
@@ -12,6 +12,7 @@ export interface CareersCityDoc extends Document {
   summary: string;
   /** true / "yes" 表示在城市索引中高亮 */
   featured: boolean | string;
+  translations?: Record<string, unknown>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,6 +25,7 @@ const careersCitySchema = new Schema<CareersCityDoc>(
     code: { type: String, default: "" },
     summary: { type: String, default: "" },
     featured: flagSchema,
+    translations: bilingualTranslationsSchema,
   },
   entitySchemaOptions(),
 );

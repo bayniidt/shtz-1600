@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { SINGLETON_KEY, singletonSchemaOptions } from "@/models/schemas/common.schema";
+import { SINGLETON_KEY, bilingualTranslationsSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
 
 export const INDUSTRY_KEYS = ["ecommerce", "game", "app", "brand"] as const;
 export type IndustryKey = (typeof INDUSTRY_KEYS)[number];
@@ -11,6 +11,7 @@ export interface CasesPageContentDoc extends Document {
   title: string;
   subtitle: string;
   filters: { key: IndustryKey | "all"; label: string }[];
+  translations?: Record<string, unknown>;
   updatedAt: Date;
 }
 
@@ -29,6 +30,7 @@ const casesPageContentSchema = new Schema<CasesPageContentDoc>(
       ],
       default: [],
     },
+    translations: bilingualTranslationsSchema,
   },
   singletonSchemaOptions(),
 );

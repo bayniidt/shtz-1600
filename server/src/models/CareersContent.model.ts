@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { SINGLETON_KEY, singletonSchemaOptions } from "@/models/schemas/common.schema";
+import { SINGLETON_KEY, bilingualTranslationsSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
 
 export interface CareersContentDoc extends Document {
   key: string;
@@ -19,6 +19,7 @@ export interface CareersContentDoc extends Document {
   jobsTitle: string;
   portalUrl: string;
   applyEmail: string;
+  translations?: Record<string, unknown>;
   updatedAt: Date;
 }
 
@@ -57,6 +58,7 @@ const careersContentSchema = new Schema<CareersContentDoc>(
     jobsTitle: { type: String, default: "" },
     portalUrl: { type: String, default: "" },
     applyEmail: { type: String, default: "" },
+    translations: bilingualTranslationsSchema,
   },
   singletonSchemaOptions(),
 );

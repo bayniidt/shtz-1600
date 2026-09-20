@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import {
+  bilingualTranslationsSchema,
   flagSchema,
   linkSchema,
   requiredText,
@@ -33,6 +34,7 @@ export const heroSectionSchema = z
           .strict(),
       )
       .max(12, "指标最多 12 项"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -55,6 +57,7 @@ export const mediaSectionSchema = z
       )
       .max(60, "媒体最多 60 项"),
     cta: linkSchema,
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -80,6 +83,7 @@ export const flowSectionSchema = z
       )
       .max(12, "能力最多 12 项"),
     cta: linkSchema,
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -110,6 +114,7 @@ export const clientsSectionSchema = z
           .strict(),
       )
       .max(200, "客户 Logo 最多 200 项"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -133,6 +138,7 @@ export const strengthSectionSchema = z
       .max(50, "节点最多 50 项"),
     stats: statListSchema,
     cta: linkSchema,
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -162,6 +168,7 @@ export const honorsSectionSchema = z
           .strict(),
       )
       .max(10, "荣誉分组最多 10 组"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 

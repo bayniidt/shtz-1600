@@ -2,6 +2,7 @@ import { Alert, App, Button, Card, Form, Input, Modal, Select, Skeleton, Space, 
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import PageContainer from "@/components/PageContainer";
 import { UNSAVED_CONFIRM_CONTENT, UNSAVED_CONFIRM_TITLE, useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 import {
@@ -17,8 +18,18 @@ import {
   type CareerCity,
   type CareerPosition,
 } from "@/types/careers";
+import { buildLocalizedPayload, getLocalizedValues, type Locale } from "@/types/i18n";
 
 type PositionFormValues = Omit<CareerPosition, "extraCities"> & { extraCities: string[] };
+
+function toPositionFormValues(value: CareerPosition): PositionFormValues {
+  return {
+    ...value,
+    extraCities: splitCityIds(value.extraCities),
+    hot: flagValue(value.hot),
+    urgent: flagValue(value.urgent),
+  };
+}
 
 export interface PositionEditorPageProps {
   dialog?: boolean;
@@ -47,6 +58,9 @@ export default function PositionEditorPage({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
+  const [locale, setLocale] = useState<Locale>("zh");
+  const [source, setSource] = useState<CareerPosition | null>(null);
+  const [drafts, setDrafts] = useState<Partial<Record<Locale, Record<string, unknown>>>>({});
 
   useUnsavedChanges(dirty, "招聘职位", "careers-position-editor");
 
@@ -60,15 +74,17 @@ export default function PositionEditorPage({
         if (!active) return;
         setCities(cityResult.items);
         if (position) {
+          setSource(position);
+          setDrafts({});
           form.setFieldsValue({
-            ...position,
-            extraCities: splitCityIds(position.extraCities),
-            hot: flagValue(position.hot),
-            urgent: flagValue(position.urgent),
+            ...toPositionFormValues(getLocalizedValues(position, locale) as unknown as CareerPosition),
           });
         } else {
+          const empty = emptyCareerPosition();
+          setSource(empty);
+          setDrafts({});
           form.resetFields();
-          form.setFieldsValue({ ...emptyCareerPosition(), extraCities: [] });
+          form.setFieldsValue({ ...empty, extraCities: [] });
         }
         setError(null);
       })
@@ -84,18 +100,47 @@ export default function PositionEditorPage({
     };
   }, [editing, form, id]);
 
+  const handleLocaleChange = useCallback(
+    (nextLocale: Locale) => {
+      if (nextLocale === locale) return;
+      const nextDrafts = { ...drafts };
+      if (dirty) nextDrafts[locale] = form.getFieldsValue(true) as Record<string, unknown>;
+      const nextValues = nextDrafts[nextLocale]
+        ? (nextDrafts[nextLocale] as Partial<PositionFormValues>)
+        : toPositionFormValues(getLocalizedValues(source ?? emptyCareerPosition(), nextLocale) as unknown as CareerPosition);
+      setDrafts(nextDrafts);
+      setLocale(nextLocale);
+      setDirty(false);
+      form.resetFields();
+      form.setFieldsValue(nextValues);
+    },
+    [dirty, drafts, form, locale, source],
+  );
+
   const handleFinish = useCallback(
     async (values: PositionFormValues) => {
-      const payload: CareerPosition = { ...values, extraCities: values.extraCities.join("/") };
+      const valuesForPayload = { ...values, extraCities: values.extraCities.join("/") };
+      const payload = buildLocalizedPayload(
+        source ?? emptyCareerPosition(),
+        locale,
+        valuesForPayload,
+      ) as unknown as CareerPosition;
       setSaving(true);
       try {
         if (editing) {
-          await updateCareerPosition(id!, payload);
+          const saved = await updateCareerPosition(id!, payload);
+          setSource(saved);
           message.success("职位已保存");
         } else {
-          await createCareerPosition(payload);
+          const saved = await createCareerPosition(payload);
+          setSource(saved);
           message.success("职位已创建");
         }
+        setDrafts((current) => {
+          const next = { ...current };
+          delete next[locale];
+          return next;
+        });
         setDirty(false);
         if (dialog) {
           onSaved?.();
@@ -109,7 +154,7 @@ export default function PositionEditorPage({
         setSaving(false);
       }
     },
-    [dialog, editing, id, message, navigate, onClose, onSaved],
+    [dialog, editing, id, locale, message, navigate, onClose, onSaved, source],
   );
 
   const handleCancel = useCallback(() => {
@@ -133,6 +178,7 @@ export default function PositionEditorPage({
 
   const toolbar = (
     <Space>
+      <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
       <Button onClick={handleCancel} data-testid="position-cancel">取消</Button>
       <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="position-save">保存</Button>
     </Space>

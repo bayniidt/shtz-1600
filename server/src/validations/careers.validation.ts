@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import {
+  bilingualTranslationsSchema,
   flagSchema,
   optionalEmail,
   optionalHttpUrl,
@@ -36,6 +37,7 @@ export const careersContentSchema = z
     jobsTitle: requiredText(200, "职位标题"),
     portalUrl: optionalHttpUrl(500, "招聘系统地址"),
     applyEmail: optionalEmail,
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -50,6 +52,7 @@ export const careersCitySchema = z
     code: text(80, "城市编码"),
     summary: text(500, "城市简介"),
     featured: flagSchema,
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
@@ -95,6 +98,7 @@ export const careersPositionSchema = z
     requirement: text(10000, "任职要求"),
     bonus: text(10000, "加分项"),
     applyUrl: optionalHttpUrl(500, "投递链接"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 

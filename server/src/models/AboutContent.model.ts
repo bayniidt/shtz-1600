@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { SINGLETON_KEY, singletonSchemaOptions } from "@/models/schemas/common.schema";
+import { SINGLETON_KEY, bilingualTranslationsSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
 
 export interface AboutContentDoc extends Document {
   key: string;
@@ -15,6 +15,7 @@ export interface AboutContentDoc extends Document {
   team: { name: string; role: string; bio: string; avatar?: string }[];
   teamIntro: string;
   offices: { city: string; label: string; address: string }[];
+  translations?: Record<string, unknown>;
   updatedAt: Date;
 }
 
@@ -82,6 +83,7 @@ const aboutContentSchema = new Schema<AboutContentDoc>(
       ],
       default: [],
     },
+    translations: bilingualTranslationsSchema,
   },
   singletonSchemaOptions(),
 );

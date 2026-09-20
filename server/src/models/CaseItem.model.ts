@@ -1,7 +1,7 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
 import { INDUSTRY_KEYS, type IndustryKey } from "@/models/CasesPageContent.model";
-import { entitySchemaOptions } from "@/models/schemas/common.schema";
+import { bilingualTranslationsSchema, entitySchemaOptions } from "@/models/schemas/common.schema";
 
 export interface CaseStatDoc {
   value: string;
@@ -31,6 +31,7 @@ export interface CaseItemDoc extends Document {
   featured: boolean;
   stats: CaseStatDoc[];
   blocks: CaseBlockDoc[];
+  translations?: Record<string, unknown>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -71,6 +72,7 @@ const caseItemSchema = new Schema<CaseItemDoc>(
       ],
       default: [],
     },
+    translations: bilingualTranslationsSchema,
   },
   entitySchemaOptions(),
 );

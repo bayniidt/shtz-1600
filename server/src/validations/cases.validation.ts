@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { INDUSTRY_FILTER_KEYS, INDUSTRY_KEYS } from "@/models/CasesPageContent.model";
-import { flagSchema, requiredText, slugSchema, text, textList } from "@/validations/common.validation";
+import { bilingualTranslationsSchema, flagSchema, requiredText, slugSchema, text, textList } from "@/validations/common.validation";
 
 /** 案例核心指标（stats[]）。 */
 export const caseStatSchema = z
@@ -36,6 +36,7 @@ export const caseItemSchema = z
     tags: textList(50, 100),
     year: text(20, "年份"),
     featured: flagSchema,
+    translations: bilingualTranslationsSchema,
     stats: z.array(caseStatSchema).max(24, "核心指标最多 24 项"),
     blocks: z.array(caseBlockSchema).max(100, "内容板块最多 100 项"),
   })
@@ -46,6 +47,7 @@ export const casesPageSchema = z
   .object({
     title: requiredText(200, "页面标题"),
     subtitle: text(500, "页面副标题"),
+    translations: bilingualTranslationsSchema,
     filters: z
       .array(
         z

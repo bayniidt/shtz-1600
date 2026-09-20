@@ -1,11 +1,13 @@
 import { App, Alert, Button, Card, Form, Popconfirm, Skeleton, Space, Typography } from "antd";
 import type { FormInstance } from "antd";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useMemo, useState, type ReactNode } from "react";
 
 import ContentForm from "@/components/ContentForm";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import PageContainer from "@/components/PageContainer";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 import type { FieldSpec } from "@/types/field-spec";
+import { buildLocalizedPayload, getLocalizedValues, type Locale } from "@/types/i18n";
 
 export interface ContentEditorProps {
   title: string;
@@ -56,10 +58,16 @@ export default function ContentEditor({
   const { message } = App.useApp();
   const [form] = Form.useForm<Record<string, unknown>>();
   const [dirty, setDirty] = useState(false);
+  const [locale, setLocale] = useState<Locale>("zh");
+  const [drafts, setDrafts] = useState<Partial<Record<Locale, Record<string, unknown>>>>({});
   const autoId = useId();
   const dirtyKey = dirtyId ?? autoId;
   // 字段 id 前缀，保证同一页面多个表单（首页 6 个 Tab）互不冲突
   const formName = dirtyKey.replace(/[^a-zA-Z0-9_-]/g, "-");
+  const localizedValue = useMemo(() => {
+    if (drafts[locale]) return drafts[locale];
+    return getLocalizedValues(value ?? {}, locale);
+  }, [drafts, locale, value]);
 
   useUnsavedChanges(dirty, pageLabel, dirtyKey);
 
@@ -70,13 +78,33 @@ export default function ContentEditor({
 
   const handleFinish = async (values: Record<string, unknown>) => {
     try {
-      await onSave(values);
+      await onSave(buildLocalizedPayload(value ?? {}, locale, values));
+      setDrafts((current) => {
+        const next = { ...current };
+        delete next[locale];
+        return next;
+      });
       setDirty(false);
       message.success("已保存");
     } catch (saveError) {
       message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
     }
   };
+
+  const handleLocaleChange = useCallback(
+    (nextLocale: Locale) => {
+      if (nextLocale === locale) return;
+      const nextDrafts = { ...drafts };
+      if (dirty) nextDrafts[locale] = form.getFieldsValue(true) as Record<string, unknown>;
+      const nextValues = nextDrafts[nextLocale] ?? getLocalizedValues(value ?? {}, nextLocale);
+      setDrafts(nextDrafts);
+      setLocale(nextLocale);
+      setDirty(false);
+      form.resetFields();
+      form.setFieldsValue(nextValues as never);
+    },
+    [dirty, drafts, form, locale, value],
+  );
 
   const handleReset = () => {
     form.resetFields();
@@ -88,6 +116,7 @@ export default function ContentEditor({
 
   const toolbar = (
     <Space>
+      <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
       {extra}
       <Popconfirm
         title="还原未保存的修改？"
@@ -155,9 +184,9 @@ export default function ContentEditor({
             form={formInstance}
             formName={formName}
             fields={fields}
-            initialValue={value}
+            initialValue={localizedValue}
             disabled={saving}
-            formKey={`${pageLabel}-${String(value.updatedAt ?? "new")}`}
+            formKey={`${pageLabel}-${String(value?.updatedAt ?? "new")}-${locale}`}
             onFinish={(values) => void handleFinish(values)}
             onValuesChange={() => setDirty(true)}
           />

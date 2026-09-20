@@ -71,6 +71,15 @@ export const titledItemSchema = z
   })
   .strict();
 
+/** 双语译文覆盖层：中文仍使用文档原字段，英文及补充中文保存于此。 */
+export const bilingualTranslationsSchema = z
+  .object({
+    zh: z.record(z.unknown()).optional(),
+    en: z.record(z.unknown()).optional(),
+  })
+  .strict()
+  .optional();
+
 /** 业务主键（slug）：小写字母、数字、连字符。 */
 export const slugSchema = z
   .string()

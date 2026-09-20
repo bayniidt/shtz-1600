@@ -20,6 +20,9 @@ export const linkSchema = new Schema(
  */
 export const flagSchema = { type: Schema.Types.Mixed, default: false } as const;
 
+/** 双语译文覆盖层，具体字段结构由管理端按内容文档保存。 */
+export const bilingualTranslationsSchema = { type: Schema.Types.Mixed, default: () => ({}) } as const;
+
 /** 归一化 `true` / `"yes"` / `"1"` 等真假标记。 */
 export function isTruthyFlag(value: unknown): boolean {
   if (value === true) return true;

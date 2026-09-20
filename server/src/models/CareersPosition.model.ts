@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { flagSchema, entitySchemaOptions } from "@/models/schemas/common.schema";
+import { bilingualTranslationsSchema, flagSchema, entitySchemaOptions } from "@/models/schemas/common.schema";
 
 export interface CareersPositionDoc extends Document {
   /** 业务主键（URL slug） */
@@ -27,6 +27,7 @@ export interface CareersPositionDoc extends Document {
   /** 加分项，每行一条 */
   bonus: string;
   applyUrl: string;
+  translations?: Record<string, unknown>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -48,6 +49,7 @@ const careersPositionSchema = new Schema<CareersPositionDoc>(
     requirement: { type: String, default: "" },
     bonus: { type: String, default: "" },
     applyUrl: { type: String, default: "" },
+    translations: bilingualTranslationsSchema,
   },
   entitySchemaOptions(),
 );

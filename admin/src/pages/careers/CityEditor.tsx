@@ -2,10 +2,12 @@ import { Alert, App, Button, Card, Form, Input, Modal, Skeleton, Space, Switch, 
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import PageContainer from "@/components/PageContainer";
 import { UNSAVED_CONFIRM_CONTENT, UNSAVED_CONFIRM_TITLE, useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 import { createCareerCity, fetchCareerCity, updateCareerCity } from "@/services/careers";
 import { emptyCareerCity, flagValue, type CareerCity, type CareerPosition } from "@/types/careers";
+import { buildLocalizedPayload, getLocalizedValues, type Locale } from "@/types/i18n";
 
 export interface CityEditorPageProps {
   dialog?: boolean;
@@ -34,13 +36,19 @@ export default function CityEditorPage({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
+  const [locale, setLocale] = useState<Locale>("zh");
+  const [source, setSource] = useState<CareerCity | null>(null);
+  const [drafts, setDrafts] = useState<Partial<Record<Locale, Record<string, unknown>>>>({});
 
   useUnsavedChanges(dirty, "招聘城市", "careers-city-editor");
 
   useEffect(() => {
     if (!editing) {
+      const empty = emptyCareerCity();
+      setSource(empty);
+      setDrafts({});
       form.resetFields();
-      form.setFieldsValue(emptyCareerCity());
+      form.setFieldsValue(empty);
       setPositions([]);
       setError(null);
       setDirty(false);
@@ -52,7 +60,16 @@ export default function CityEditorPage({
     fetchCareerCity(id!)
       .then((data) => {
         if (!active) return;
-        form.setFieldsValue({ ...data, featured: flagValue(data.featured) });
+        setSource(data);
+        setDrafts((current) => {
+          const next = { ...current };
+          delete next[locale];
+          return next;
+        });
+        form.setFieldsValue({
+          ...getLocalizedValues(data, locale),
+          featured: flagValue(data.featured),
+        } as Partial<CareerCity>);
         setPositions(data.positions ?? []);
         setError(null);
       })
@@ -68,17 +85,36 @@ export default function CityEditorPage({
     };
   }, [editing, form, id]);
 
+  const handleLocaleChange = useCallback(
+    (nextLocale: Locale) => {
+      if (nextLocale === locale) return;
+      const nextDrafts = { ...drafts };
+      if (dirty) nextDrafts[locale] = form.getFieldsValue(true) as Record<string, unknown>;
+      const nextValues = nextDrafts[nextLocale] ?? getLocalizedValues(source ?? emptyCareerCity(), nextLocale);
+      setDrafts(nextDrafts);
+      setLocale(nextLocale);
+      setDirty(false);
+      form.resetFields();
+      form.setFieldsValue({ ...nextValues, featured: flagValue(nextValues.featured as boolean | string) });
+    },
+    [dirty, drafts, form, locale, source],
+  );
+
   const handleFinish = useCallback(
     async (values: CareerCity) => {
       setSaving(true);
       try {
+        const payload = buildLocalizedPayload(source ?? emptyCareerCity(), locale, values) as unknown as CareerCity;
         if (editing) {
-          await updateCareerCity(id!, values);
+          const saved = await updateCareerCity(id!, payload);
+          setSource(saved);
           message.success("城市已保存，职位归属已同步");
         } else {
-          await createCareerCity(values);
+          const saved = await createCareerCity(payload);
+          setSource(saved);
           message.success("城市已创建");
         }
+        setDrafts({});
         setDirty(false);
         if (dialog) {
           onSaved?.();
@@ -92,7 +128,7 @@ export default function CityEditorPage({
         setSaving(false);
       }
     },
-    [dialog, editing, id, message, navigate, onClose, onSaved],
+    [dialog, editing, id, locale, message, navigate, onClose, onSaved, source],
   );
 
   const handleCancel = useCallback(() => {
@@ -116,6 +152,7 @@ export default function CityEditorPage({
 
   const toolbar = (
     <Space>
+      <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
       <Button onClick={handleCancel} data-testid="city-cancel">取消</Button>
       <Button type="primary" loading={saving} onClick={() => void form.submit()} data-testid="city-save">保存</Button>
     </Space>

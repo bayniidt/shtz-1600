@@ -130,4 +130,24 @@ describe("ContentEditor", () => {
     setup({ extra: <button type="button">预览</button> });
     expect(screen.getByRole("button", { name: "预览" })).toBeInTheDocument();
   });
+
+  it("E11 切换英文并保存时只更新英文译文覆盖层", async () => {
+    const { onSave } = setup({
+      value: {
+        ...VALUE,
+        translations: { en: { title: "English title", logoText: "ADFLY" } },
+      },
+    });
+
+    fireEvent.click(screen.getByRole("radio", { name: "English" }));
+    expect(await screen.findByLabelText("标题")).toHaveValue("English title");
+    fireEvent.change(screen.getByLabelText("标题"), { target: { value: "New English title" } });
+    fireEvent.click(screen.getByTestId("content-save"));
+
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(onSave.mock.calls[0][0]).toMatchObject({
+      title: VALUE.title,
+      translations: { en: { title: "New English title", logoText: "ADFLY" } },
+    });
+  });
 });

@@ -74,11 +74,13 @@ describe("PUT /site —— 更新站点配置", () => {
     const res = await request(app).put(SITE).set(bearer(token)).send({
       ...SITE_FIXTURE,
       name: "新的公司名称",
+      translations: { en: { name: "New company name" } },
     });
 
     expect(res.status).toBe(200);
     expect(res.body.message).toBe("站点配置已保存");
     expect(res.body.data.name).toBe("新的公司名称");
+    expect(res.body.data.translations.en.name).toBe("New company name");
 
     const after = await request(app).get(SITE);
     expect(after.body.data.name).toBe("新的公司名称");

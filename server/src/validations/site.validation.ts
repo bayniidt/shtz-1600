@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { linkSchema, optionalEmail, requiredText, text } from "@/validations/common.validation";
+import { bilingualTranslationsSchema, linkSchema, optionalEmail, requiredText, text } from "@/validations/common.validation";
 
 export const navItemSchema = linkSchema;
 
@@ -25,6 +25,7 @@ export const siteConfigSchema = z
       })
       .strict(),
     footerLinks: z.array(navItemSchema).max(50, "页脚链接最多 50 项"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import ArrayEditor from "@/components/ArrayEditor";
 import ImagePicker from "@/components/ImagePicker";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import PageContainer from "@/components/PageContainer";
 import StringListInput from "@/components/StringListInput";
 import { toFrontendUrl } from "@/config/frontend";
@@ -13,6 +14,7 @@ import {
   UNSAVED_CONFIRM_TITLE,
   useUnsavedChanges,
 } from "@/hooks/useUnsavedChanges";
+import { buildLocalizedPayload, getLocalizedValues, type Locale } from "@/types/i18n";
 import { createCase, fetchCase, updateCase } from "@/services/cases";
 import {
   emptyCaseItem,
@@ -162,13 +164,19 @@ export default function CaseEditorPage({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
+  const [locale, setLocale] = useState<Locale>("zh");
+  const [source, setSource] = useState<CaseItem | null>(null);
+  const [drafts, setDrafts] = useState<Partial<Record<Locale, Record<string, unknown>>>>({});
 
   useUnsavedChanges(dirty, "客户案例", "cases-editor");
 
   useEffect(() => {
     if (!editing) {
+      const empty = emptyCaseItem();
+      setSource(empty);
+      setDrafts({});
       form.resetFields();
-      form.setFieldsValue(emptyCaseItem());
+      form.setFieldsValue(empty);
       setError(null);
       setDirty(false);
       setLoading(false);
@@ -179,7 +187,13 @@ export default function CaseEditorPage({
     fetchCase(id!)
       .then((data) => {
         if (!active) return;
-        form.setFieldsValue(data);
+        setSource(data);
+        setDrafts((current) => {
+          const next = { ...current };
+          delete next[locale];
+          return next;
+        });
+        form.setFieldsValue(getLocalizedValues(data, locale) as Partial<CaseItem>);
         setError(null);
       })
       .catch((loadError: unknown) => {
@@ -194,17 +208,36 @@ export default function CaseEditorPage({
     };
   }, [editing, id, form]);
 
+  const handleLocaleChange = useCallback(
+    (nextLocale: Locale) => {
+      if (nextLocale === locale) return;
+      const nextDrafts = { ...drafts };
+      if (dirty) nextDrafts[locale] = form.getFieldsValue(true) as Record<string, unknown>;
+      const nextValues = nextDrafts[nextLocale] ?? getLocalizedValues(source ?? emptyCaseItem(), nextLocale);
+      setDrafts(nextDrafts);
+      setLocale(nextLocale);
+      setDirty(false);
+      form.resetFields();
+      form.setFieldsValue(nextValues as Partial<CaseItem>);
+    },
+    [dirty, drafts, form, locale, source],
+  );
+
   const handleFinish = useCallback(
     async (values: CaseItem) => {
       setSaving(true);
       try {
+        const payload = buildLocalizedPayload(source ?? emptyCaseItem(), locale, values) as unknown as CaseItem;
         if (editing) {
-          await updateCase(id!, { ...values, id: id! });
+          const saved = await updateCase(id!, { ...payload, id: id! });
+          setSource(saved);
           message.success("案例已保存");
         } else {
-          await createCase(values);
+          const saved = await createCase(payload);
+          setSource(saved);
           message.success("案例已创建");
         }
+        setDrafts({});
         setDirty(false);
         if (dialog) {
           onSaved?.();
@@ -218,7 +251,7 @@ export default function CaseEditorPage({
         setSaving(false);
       }
     },
-    [dialog, editing, id, message, navigate, onClose, onSaved],
+    [dialog, editing, id, locale, message, navigate, onClose, onSaved, source],
   );
 
   const handleCancel = useCallback(() => {
@@ -242,6 +275,7 @@ export default function CaseEditorPage({
 
   const toolbar = (
     <Space>
+      <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
       {editing && (
         <Button
           icon={<EyeOutlined />}

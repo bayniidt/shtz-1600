@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { SINGLETON_KEY, linkSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
+import { SINGLETON_KEY, bilingualTranslationsSchema, linkSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
 
 export interface NavItemDoc {
   label: string;
@@ -22,6 +22,7 @@ export interface SiteConfigDoc extends Document {
   icp: string;
   seo: { title: string; description: string; keywords: string };
   footerLinks: NavItemDoc[];
+  translations?: Record<string, unknown>;
   updatedAt: Date;
 }
 
@@ -45,6 +46,7 @@ const siteConfigSchema = new Schema<SiteConfigDoc>(
       keywords: { type: String, default: "" },
     },
     footerLinks: { type: [linkSchema], default: [] },
+    translations: bilingualTranslationsSchema,
   },
   singletonSchemaOptions(),
 );

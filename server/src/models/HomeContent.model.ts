@@ -1,6 +1,6 @@
 import { Schema, model, type Document, type Model } from "mongoose";
 
-import { SINGLETON_KEY, linkSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
+import { SINGLETON_KEY, bilingualTranslationsSchema, linkSchema, singletonSchemaOptions } from "@/models/schemas/common.schema";
 
 export const MEDIA_CATEGORIES = ["Social", "Search", "Content", "Ads"] as const;
 export type MediaCategory = (typeof MEDIA_CATEGORIES)[number];
@@ -16,6 +16,7 @@ export interface HomeContentDoc extends Document {
     secondaryCta: { label: string; href: string; external?: boolean };
     marquee: string[];
     stats: { value: string; label: string }[];
+    translations?: Record<string, unknown>;
   };
   media: {
     title: string;
@@ -23,6 +24,7 @@ export interface HomeContentDoc extends Document {
     benefits: { title: string; description: string }[];
     partners: { name: string; mark: string; category: MediaCategory; accent?: string }[];
     cta: { label: string; href: string; external?: boolean };
+    translations?: Record<string, unknown>;
   };
   flow: {
     eyebrow: string;
@@ -31,12 +33,14 @@ export interface HomeContentDoc extends Document {
     orbit: { label: string }[];
     features: { title: string; description: string; mark?: string; points?: string }[];
     cta: { label: string; href: string; external?: boolean };
+    translations?: Record<string, unknown>;
   };
   clients: {
     title: string;
     subtitle: string;
     industries: { key: string; name: string; description: string; stat: string }[];
     logos: { name: string; industry: string }[];
+    translations?: Record<string, unknown>;
   };
   strength: {
     title: string;
@@ -44,11 +48,13 @@ export interface HomeContentDoc extends Document {
     nodes: { city: string; role: string; x: number | string; y: number | string; major?: boolean | string }[];
     stats: { value: string; suffix: string; label: string }[];
     cta: { label: string; href: string; external?: boolean };
+    translations?: Record<string, unknown>;
   };
   honors: {
     title: string;
     subtitle: string;
     groups: { key: string; title: string; items: { title: string; issuer: string; year: string }[] }[];
+    translations?: Record<string, unknown>;
   };
   updatedAt: Date;
 }
@@ -81,6 +87,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         type: [{ _id: false, value: { type: String, default: "" }, label: { type: String, default: "" } }],
         default: [],
       },
+      translations: bilingualTranslationsSchema,
     },
     media: {
       _id: false,
@@ -109,6 +116,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         default: [],
       },
       cta: { type: linkSchema, default: () => ({}) },
+      translations: bilingualTranslationsSchema,
     },
     flow: {
       _id: false,
@@ -132,6 +140,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         default: [],
       },
       cta: { type: linkSchema, default: () => ({}) },
+      translations: bilingualTranslationsSchema,
     },
     clients: {
       _id: false,
@@ -159,6 +168,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         ],
         default: [],
       },
+      translations: bilingualTranslationsSchema,
     },
     strength: {
       _id: false,
@@ -177,6 +187,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         default: [],
       },
       cta: { type: linkSchema, default: () => ({}) },
+      translations: bilingualTranslationsSchema,
     },
     honors: {
       _id: false,
@@ -203,6 +214,7 @@ const homeContentSchema = new Schema<HomeContentDoc>(
         ],
         default: [],
       },
+      translations: bilingualTranslationsSchema,
     },
   },
   singletonSchemaOptions(),

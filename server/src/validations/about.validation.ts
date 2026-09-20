@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { requiredText, text, titledItemSchema } from "@/validations/common.validation";
+import { bilingualTranslationsSchema, requiredText, text, titledItemSchema } from "@/validations/common.validation";
 
 /** PUT /about —— 关于我们整体更新。 */
 export const aboutContentSchema = z
@@ -57,6 +57,7 @@ export const aboutContentSchema = z
           .strict(),
       )
       .max(30, "办公点最多 30 个"),
+    translations: bilingualTranslationsSchema,
   })
   .strict();
 
