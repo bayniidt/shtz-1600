@@ -33,7 +33,27 @@ function MessageBridge() {
   return null;
 }
 
+/** 把主题色转成 rgba，用于生成与品牌色一致的阴影 / 悬浮态。 */
+function withAlpha(hex: string, alpha: number): string {
+  const normalized = hex.replace("#", "");
+  const full =
+    normalized.length === 3
+      ? normalized
+          .split("")
+          .map((char) => char + char)
+          .join("")
+      : normalized;
+  const value = Number.parseInt(full.slice(0, 6), 16);
+  if (Number.isNaN(value)) return hex;
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 function buildAntdTheme(theme: AdminTheme): ThemeConfig {
+  const radius = theme.typography.borderRadius;
+
   return {
     token: {
       colorPrimary: theme.brand.colorPrimary,
@@ -42,7 +62,20 @@ function buildAntdTheme(theme: AdminTheme): ThemeConfig {
       colorWarning: theme.semantic.colorWarning,
       colorError: theme.semantic.colorError,
       colorLink: theme.brand.colorPrimary,
-      borderRadius: theme.typography.borderRadius,
+      colorText: "#0f1b2a",
+      colorTextSecondary: "#5b6b7f",
+      colorTextTertiary: "#8a97a8",
+      colorBorder: "#dde4ec",
+      colorBorderSecondary: "#eaeff5",
+      colorBgLayout: theme.layout.bodyBg,
+      controlOutline: withAlpha(theme.brand.colorPrimary, 0.14),
+      // 精确编辑风：直角 + 克制的叠加阴影（仅浮层使用）
+      borderRadius: radius,
+      borderRadiusLG: radius,
+      borderRadiusSM: radius,
+      borderRadiusXS: radius,
+      boxShadow: "0 16px 40px -12px rgba(15, 27, 42, 0.18), 0 2px 6px rgba(15, 27, 42, 0.06)",
+      boxShadowSecondary: "0 22px 52px -18px rgba(15, 27, 42, 0.24)",
       fontFamily: theme.typography.fontFamily,
       fontSize: theme.typography.fontSize,
       // 后台不使用动画
@@ -54,18 +87,106 @@ function buildAntdTheme(theme: AdminTheme): ThemeConfig {
         siderBg: theme.layout.siderBg,
         bodyBg: theme.layout.bodyBg,
         headerHeight: theme.layout.headerHeight,
+        headerPadding: "0 24px",
       },
       Menu: {
+        itemBg: "transparent",
         itemSelectedBg: theme.brand.colorPrimarySoft,
-        itemSelectedColor: theme.brand.colorPrimary,
-        itemHoverBg: "#f0f5ff",
+        itemSelectedColor: theme.brand.colorPrimaryStrong,
+        itemHoverBg: "#f2f6fa",
+        itemHoverColor: theme.brand.colorPrimaryStrong,
+        itemHeight: 38,
+        itemMarginInline: 0,
+        itemMarginBlock: 0,
+        itemBorderRadius: radius,
+        subMenuItemBg: "transparent",
+        activeBarWidth: 0,
+        groupTitleColor: "#8a97a8",
+        groupTitleFontSize: 10.5,
+        groupTitleLineHeight: 1.4,
       },
       Button: {
-        controlHeight: 40,
+        controlHeight: 34,
+        controlHeightLG: 38,
+        controlHeightSM: 28,
         primaryShadow: "none",
+        defaultShadow: "none",
+        fontWeight: 500,
       },
       Card: {
-        borderRadiusLG: theme.typography.borderRadius,
+        borderRadiusLG: radius,
+        headerFontSize: 14,
+        headerHeight: 46,
+        paddingLG: 20,
+        headerBg: "transparent",
+      },
+      Table: {
+        headerBg: "#f2f6fa",
+        headerColor: "#5b6b7f",
+        headerSplitColor: "transparent",
+        rowHoverBg: "#f6fafd",
+        borderColor: "#eaeff5",
+        cellPaddingBlock: 12,
+        cellPaddingInline: 16,
+        headerBorderRadius: radius,
+      },
+      Modal: {
+        borderRadiusLG: radius,
+        headerBg: "#fff",
+      },
+      Input: {
+        paddingBlock: 5,
+        activeShadow: `0 0 0 2px ${withAlpha(theme.brand.colorPrimary, 0.12)}`,
+      },
+      InputNumber: {
+        activeShadow: `0 0 0 2px ${withAlpha(theme.brand.colorPrimary, 0.12)}`,
+      },
+      Select: {
+        optionSelectedBg: theme.brand.colorPrimarySoft,
+        optionSelectedColor: theme.brand.colorPrimaryStrong,
+      },
+      Tag: {
+        borderRadiusSM: radius,
+      },
+      Descriptions: {
+        labelBg: "transparent",
+        itemPaddingBottom: 10,
+      },
+      Tabs: {
+        itemSelectedColor: theme.brand.colorPrimary,
+        inkBarColor: theme.brand.colorPrimary,
+      },
+      Breadcrumb: {
+        itemColor: "#8a97a8",
+        lastItemColor: "#0f1b2a",
+        separatorColor: "#c8d2de",
+        linkColor: "#8a97a8",
+        linkHoverColor: theme.brand.colorPrimary,
+        fontSize: 13,
+      },
+      Progress: {
+        defaultColor: theme.brand.colorPrimary,
+        remainingColor: "#eef2f6",
+        lineBorderRadius: radius,
+      },
+      Statistic: {
+        titleFontSize: 12,
+        contentFontSize: 30,
+      },
+      Dropdown: {
+        borderRadiusLG: radius,
+        controlItemBgHover: "#f2f6fa",
+        paddingBlock: 6,
+      },
+      Divider: {
+        colorSplit: "#eaeff6",
+      },
+      Tooltip: {
+        borderRadius: radius,
+        colorBgSpotlight: "#0f1b2a",
+      },
+      FloatButton: {
+        borderRadiusLG: radius,
       },
     },
   };

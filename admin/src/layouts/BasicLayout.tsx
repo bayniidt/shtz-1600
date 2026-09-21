@@ -1,9 +1,47 @@
-import { LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined } from "@ant-design/icons";
-import { App, Avatar, Button, Dropdown, Layout, Menu, Space, Typography } from "antd";
-import { useCallback, useMemo, useState } from "react";
+import {
+  BgColorsOutlined,
+  DownOutlined,
+  ExportOutlined,
+  LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  SearchOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import {
+  App,
+  AutoComplete,
+  Avatar,
+  Badge,
+  Breadcrumb,
+  Button,
+  Divider,
+  Dropdown,
+  Empty,
+  Flex,
+  FloatButton,
+  Input,
+  Layout,
+  Menu,
+  Space,
+  Tag,
+  Tooltip,
+  Typography,
+  type InputRef,
+} from "antd";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import { DEFAULT_OPEN_KEYS, MENU_ITEMS, ROUTE_TITLES } from "@/config/menu";
+import { toFrontendUrl } from "@/config/frontend";
+import {
+  DEFAULT_OPEN_KEYS,
+  MENU_GROUPS,
+  MENU_ITEMS,
+  MENU_SEARCH_ITEMS,
+  ROUTE_PARENTS,
+  ROUTE_TITLES,
+  selectedMenuKey,
+} from "@/config/menu";
 import { UNSAVED_CONFIRM_CONTENT, UNSAVED_CONFIRM_TITLE } from "@/hooks/useUnsavedChanges";
 import { useDirtyLabel, useIsDirty } from "@/store/dirty";
 import { useThemeStore } from "@/store/theme";
@@ -11,17 +49,27 @@ import { useAuthStore } from "@/store/auth";
 
 const { Header, Sider, Content } = Layout;
 
-function selectedMenuKey(pathname: string): string {
-  if (pathname === "/content" || pathname.startsWith("/content/")) return "/content";
-  if (pathname.startsWith("/cases")) return "/cases";
-  const exact = Object.keys(ROUTE_TITLES).find((key) => pathname === key);
-  return exact ?? "/dashboard";
+function parentTitle(pathname: string): string | undefined {
+  return ROUTE_PARENTS.find(([prefix]) => pathname.startsWith(prefix))?.[1];
+}
+
+const ROLE_LABELS: Record<string, string> = { admin: "管理员", editor: "编辑" };
+
+function roleLabel(role?: string): string {
+  if (!role) return ROLE_LABELS.admin;
+  return ROLE_LABELS[role] ?? role;
+}
+
+function pageTitle(pathname: string): string {
+  return ROUTE_TITLES[pathname] ?? ROUTE_TITLES[selectedMenuKey(pathname)] ?? "管理后台";
 }
 
 export default function BasicLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+  const [query, setQuery] = useState("");
+  const searchRef = useRef<InputRef>(null);
   const { modal } = App.useApp();
 
   const theme = useThemeStore((state) => state.theme);
@@ -31,17 +79,58 @@ export default function BasicLayout() {
   const dirtyLabel = useDirtyLabel();
 
   const selectedKey = useMemo(() => selectedMenuKey(location.pathname), [location.pathname]);
-  const title = ROUTE_TITLES[selectedKey] ?? "管理后台";
+  const current = pageTitle(location.pathname);
+  const parent = parentTitle(location.pathname);
+
+  const crumbs = useMemo(() => {
+    const items = [{ title: "管理后台" }];
+    const group = MENU_GROUPS[location.pathname];
+    if (group) items.push({ title: group });
+    if (parent && parent !== current) items.push({ title: parent });
+    if (parent === current || !parent) items.push({ title: current });
+    return items;
+  }, [current, location.pathname, parent]);
+
+  const searchOptions = useMemo(() => {
+    const keyword = query.trim().toLowerCase();
+    return MENU_SEARCH_ITEMS.filter(
+      (item) => !keyword || `${item.label}${item.group}${item.key}`.toLowerCase().includes(keyword),
+    ).map((item) => ({
+      value: item.key,
+      label: (
+        <Flex align="center" justify="space-between" gap={12}>
+          <Space size={8}>
+            <span className="adfly-search-option-icon">{item.icon}</span>
+            {item.label}
+          </Space>
+          <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+            {item.group}
+          </Typography.Text>
+        </Flex>
+      ),
+    }));
+  }, [query]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        searchRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
     navigate("/login", { replace: true });
   };
 
-  /** 菜单跳转：有未保存修改时先确认（不破坏用户编辑） */
-  const handleMenuClick = useCallback(
-    ({ key }: { key: string }) => {
-      if (key === location.pathname) return;
+  /** 跳转前拦截未保存修改（菜单与搜索共用） */
+  const goTo = useCallback(
+    (key: string) => {
+      if (!key || key === location.pathname) return;
       if (!dirty) {
         navigate(key);
         return;
@@ -58,78 +147,188 @@ export default function BasicLayout() {
     [dirty, dirtyLabel, location.pathname, modal, navigate],
   );
 
+  const handleMenuClick = useCallback(({ key }: { key: string }) => goTo(key), [goTo]);
+
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className="adfly-shell" style={{ minHeight: "100vh" }}>
       <Sider
+        className="adfly-sider"
         theme="light"
         collapsible
         collapsed={collapsed}
         trigger={null}
         width={theme.layout.siderWidth}
-        style={{ background: theme.layout.siderBg, borderRight: "1px solid #e4e4e4" }}
+        style={{ background: theme.layout.siderBg }}
       >
-        <div
-          className="adfly-logo"
-          style={{ height: theme.layout.headerHeight, padding: collapsed ? "0 20px" : "0 20px" }}
+        <Flex
+          className={`adfly-brand${collapsed ? " is-collapsed" : ""}`}
+          align="center"
+          gap={10}
+          style={{ height: theme.layout.headerHeight }}
         >
-          <span style={{ fontSize: 18 }}>ADFLY</span>
-          {!collapsed && <span className="adfly-logo-sub">Admin</span>}
+          <span className="adfly-brand-mark">A</span>
+          {!collapsed && (
+            <span className="adfly-brand-text">
+              ADFLY
+              <span className="adfly-brand-sub">Admin Console</span>
+            </span>
+          )}
+        </Flex>
+
+        <div className="adfly-sider-scroll">
+          <Menu
+            className="adfly-menu"
+            mode="inline"
+            items={MENU_ITEMS}
+            selectedKeys={[selectedKey]}
+            defaultOpenKeys={DEFAULT_OPEN_KEYS}
+            onClick={handleMenuClick}
+          />
         </div>
-        <Menu
-          mode="inline"
-          items={MENU_ITEMS}
-          selectedKeys={[selectedKey]}
-          defaultOpenKeys={DEFAULT_OPEN_KEYS}
-          style={{ background: "transparent", borderInlineEnd: "none" }}
-          onClick={handleMenuClick}
-        />
+
+        <div className={`adfly-sider-foot${collapsed ? " is-collapsed" : ""}`}>
+          {collapsed ? (
+            <Tooltip title="v0.1.0" placement="right">
+              <Badge status="success" />
+            </Tooltip>
+          ) : (
+            <Flex align="center" justify="space-between">
+              <Space size={6}>
+                <Badge status="success" />
+                <Typography.Text style={{ fontSize: 12, color: "var(--adfly-text-muted)" }}>
+                  {import.meta.env.DEV ? "本地开发" : "生产环境"}
+                </Typography.Text>
+              </Space>
+              <Typography.Text style={{ fontSize: 12, color: "var(--adfly-text-muted)" }}>
+                v0.1.0
+              </Typography.Text>
+            </Flex>
+          )}
+        </div>
       </Sider>
 
       <Layout style={{ background: theme.layout.bodyBg }}>
         <Header
-          style={{
-            height: theme.layout.headerHeight,
-            padding: "0 20px",
-            background: theme.layout.headerBg,
-            borderBottom: "1px solid #e4e4e4",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
+          className="adfly-header"
+          style={{ background: theme.layout.headerBg, height: theme.layout.headerHeight }}
         >
-          <Space size={12}>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed((value) => !value)}
-            />
-            <Typography.Text strong style={{ fontSize: 16 }}>
-              {title}
-            </Typography.Text>
-          </Space>
+          <div className="adfly-header-left">
+            <Tooltip title={collapsed ? "展开菜单" : "收起菜单"}>
+              <Button
+                type="text"
+                className="adfly-icon-btn"
+                aria-label={collapsed ? "展开菜单" : "收起菜单"}
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed((value) => !value)}
+              />
+            </Tooltip>
+            <Breadcrumb className="adfly-crumb" items={crumbs} />
+          </div>
 
-          <Dropdown
-            menu={{
-              items: [
-                {
-                  key: "signout",
-                  icon: <LogoutOutlined />,
-                  label: "退出登录",
-                  onClick: () => void handleSignOut(),
-                },
-              ],
-            }}
-          >
-            <Space style={{ cursor: "pointer" }}>
-              <Avatar size="small" icon={<UserOutlined />} style={{ background: theme.brand.colorPrimary }} />
-              <Typography.Text>{user?.username ?? "admin"}</Typography.Text>
-            </Space>
-          </Dropdown>
+          <div className="adfly-header-right">
+            <AutoComplete
+              className="adfly-search"
+              popupMatchSelectWidth={320}
+              value={query}
+              options={searchOptions}
+              onSearch={setQuery}
+              onSelect={(value) => {
+                setQuery("");
+                goTo(value);
+              }}
+              notFoundContent={<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="没有匹配的菜单" />}
+            >
+              <Input
+                ref={searchRef}
+                allowClear
+                variant="filled"
+                prefix={<SearchOutlined />}
+                placeholder="搜索菜单"
+                suffix={<Tag className="adfly-kbd">⌘K</Tag>}
+              />
+            </AutoComplete>
+
+            <Divider type="vertical" className="adfly-header-divider" />
+
+            <Tooltip title="打开前台站点">
+              <Button
+                type="text"
+                className="adfly-icon-btn"
+                aria-label="打开前台站点"
+                icon={<ExportOutlined />}
+                href={toFrontendUrl("/")}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            </Tooltip>
+            <Tooltip title="主题设置">
+              <Button
+                type="text"
+                className="adfly-icon-btn"
+                aria-label="主题设置"
+                icon={<BgColorsOutlined />}
+                onClick={() => goTo("/settings/theme")}
+              />
+            </Tooltip>
+
+            <Divider type="vertical" className="adfly-header-divider" />
+
+            <Dropdown
+              trigger={["click"]}
+              placement="bottomRight"
+              menu={{
+                items: [
+                  {
+                    key: "header",
+                    type: "group",
+                    label: (
+                      <Space direction="vertical" size={0}>
+                        <Typography.Text strong>{user?.username ?? "admin"}</Typography.Text>
+                        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+                          {roleLabel(user?.role)} · ADFLY 管理后台
+                        </Typography.Text>
+                      </Space>
+                    ),
+                  },
+                  { type: "divider" },
+                  {
+                    key: "/settings/theme",
+                    icon: <BgColorsOutlined />,
+                    label: "主题设置",
+                    onClick: () => goTo("/settings/theme"),
+                  },
+                  {
+                    key: "signout",
+                    icon: <LogoutOutlined />,
+                    label: "退出登录",
+                    danger: true,
+                    onClick: () => void handleSignOut(),
+                  },
+                ],
+              }}
+            >
+              <span className="adfly-user">
+                <Avatar
+                  size={30}
+                  icon={<UserOutlined />}
+                  style={{ background: theme.brand.colorPrimary, flex: "none" }}
+                />
+                <span className="adfly-user-meta">
+                  <span className="adfly-user-name">{user?.username ?? "admin"}</span>
+                  <span className="adfly-user-role">{roleLabel(user?.role)}</span>
+                </span>
+                <DownOutlined className="adfly-user-caret" />
+              </span>
+            </Dropdown>
+          </div>
         </Header>
 
-        <Content style={{ padding: 20 }}>
-          <Outlet />
+        <Content className="adfly-content">
+          <div className="adfly-content-inner">
+            <Outlet />
+          </div>
         </Content>
+        <FloatButton.BackTop type="primary" />
       </Layout>
     </Layout>
   );

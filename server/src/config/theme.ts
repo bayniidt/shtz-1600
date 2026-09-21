@@ -23,7 +23,8 @@ export const DEFAULT_ADMIN_THEME = {
     fontFamily:
       'Montserrat, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif',
     fontSize: 14,
-    borderRadius: 8,
+    // 后台视觉基调为「精确编辑风」：默认为直角，圆角由主题设置显式调整
+    borderRadius: 0,
   },
 } as const;
 

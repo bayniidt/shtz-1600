@@ -1,5 +1,25 @@
-import { EditOutlined, FileTextOutlined } from "@ant-design/icons";
-import { Button, Card, Input, Modal, Select, Space, Table, Tag, Typography } from "antd";
+import {
+  CheckOutlined,
+  ClockCircleOutlined,
+  EditOutlined,
+  FileTextOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
+import {
+  Button,
+  Card,
+  Col,
+  Flex,
+  Input,
+  Modal,
+  Progress,
+  Row,
+  Select,
+  Space,
+  Table,
+  Tag,
+  Typography,
+} from "antd";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import PageContainer from "@/components/PageContainer";
@@ -199,7 +219,63 @@ export default function ContentManagementPage() {
         title="内容管理"
         subTitle="统一维护前台页面文案与站点配置，新增或编辑均在对话框中完成"
       >
-        <Card style={{ marginBottom: 16 }}>
+        <Card
+          className="adfly-strip"
+          style={{ marginBottom: 16 }}
+          styles={{ body: { padding: 0 } }}
+        >
+          <Row>
+            {[
+              {
+                key: "total",
+                title: "内容模块",
+                value: CONTENT_MODULES.length,
+                icon: <FileTextOutlined />,
+              },
+              {
+                key: "done",
+                title: "已完成",
+                icon: <CheckOutlined />,
+                value: CONTENT_MODULES.filter((item) => {
+                  const progress = progressMap[item.key];
+                  return !progress || progress.total === 0 || progress.done === progress.total;
+                }).length,
+              },
+              {
+                key: "partial",
+                title: "进行中",
+                icon: <SyncOutlined />,
+                value: CONTENT_MODULES.filter((item) => {
+                  const progress = progressMap[item.key];
+                  return Boolean(
+                    progress && progress.total > 0 && progress.done > 0 && progress.done < progress.total,
+                  );
+                }).length,
+              },
+              {
+                key: "idle",
+                title: "未开始",
+                icon: <ClockCircleOutlined />,
+                value: CONTENT_MODULES.filter((item) => {
+                  const progress = progressMap[item.key];
+                  return Boolean(progress && progress.total > 0 && progress.done === 0);
+                }).length,
+              },
+            ].map((item) => (
+              <Col xs={12} lg={6} key={item.key}>
+                <div className="adfly-strip-cell">
+                  <div className="adfly-strip-label">
+                    {item.title}
+                    <span className="adfly-strip-icon">{item.icon}</span>
+                  </div>
+                  <div className="adfly-strip-value">{item.value}</div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Card>
+
+        <Card className="adfly-panel" style={{ marginBottom: 16 }}>
           <Space
             wrap
             size={[16, 12]}
@@ -257,7 +333,7 @@ export default function ContentManagementPage() {
           </Space>
         </Card>
 
-        <Card>
+        <Card className="adfly-panel">
           <Table<ContentModule>
             rowKey="key"
             dataSource={filteredModules}
@@ -287,14 +363,27 @@ export default function ContentManagementPage() {
               { title: "说明", dataIndex: "description" },
               {
                 title: "English 翻译",
-                width: 170,
+                width: 200,
                 render: (_: unknown, record: ContentModule) => {
                   const progress = progressMap[record.key];
                   if (!progress) return <Tag>读取中</Tag>;
                   if (progress.total === 0) return <Tag>无需翻译</Tag>;
-                  if (progress.done === progress.total) return <Tag color="success">已完成</Tag>;
-                  if (progress.done === 0) return <Tag color="default">未开始</Tag>;
-                  return <Tag color="warning">部分完成 {progress.percent}%</Tag>;
+                  const complete = progress.done === progress.total;
+                  const idle = progress.done === 0;
+                  return (
+                    <Flex align="center" gap={8}>
+                      <Progress
+                        percent={progress.percent}
+                        size="small"
+                        showInfo={false}
+                        strokeColor={complete ? "#10b981" : idle ? "#d9d9d9" : "#f59e0b"}
+                        style={{ width: 76, marginBottom: 0 }}
+                      />
+                      <Tag color={complete ? "success" : idle ? "default" : "warning"}>
+                        {progress.done}/{progress.total}
+                      </Tag>
+                    </Flex>
+                  );
                 },
               },
               {

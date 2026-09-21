@@ -103,7 +103,7 @@ export const openApiDocument = {
             properties: {
               fontFamily: { type: "string" },
               fontSize: { type: "integer", example: 14 },
-              borderRadius: { type: "integer", example: 8 },
+              borderRadius: { type: "integer", example: 0 },
             },
           },
         },

@@ -9,7 +9,11 @@
   --color-brand-accent: #ed5736;
 }
 
-/* 品牌 CSS 变量（由 ThemeProvider 运行时覆盖） */
+/* ------------------------------------------------------------------
+   设计令牌
+   方向：精确编辑风（Precision Editorial）—— 直角、发丝线、等宽数字、
+   克制的品牌色点缀；品牌色与圆角由 ThemeProvider 运行时覆盖。
+   ------------------------------------------------------------------ */
 :root {
   --adfly-brand: #1e96d4;
   --adfly-brand-strong: #0f7cbc;
@@ -17,6 +21,30 @@
   --adfly-brand-accent: #ed5736;
   --adfly-header-h: 64px;
   --adfly-sider-w: 220px;
+  --adfly-gutter: 24px;
+  --adfly-gutter-sm: 16px;
+  --adfly-radius-sm: 0px;
+  --adfly-radius: 0px;
+  --adfly-radius-lg: 0px;
+  --adfly-font-sans: Montserrat, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --adfly-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --adfly-ink: #0f1b2a;
+  --adfly-ink-2: #5b6b7f;
+  --adfly-ink-3: #8a97a8;
+  --adfly-line: #dde4ec;
+  --adfly-line-soft: #eaeff5;
+  --adfly-line-strong: #c8d2de;
+  --adfly-surface: #ffffff;
+  --adfly-surface-muted: #f7f9fb;
+  --adfly-thead: #f2f6fa;
+  --adfly-canvas: #f4f6f8;
+  --adfly-grid: rgba(15, 27, 42, 0.035);
+  --adfly-shadow-overlay: 0 16px 40px -12px rgba(15, 27, 42, 0.18),
+    0 2px 6px rgba(15, 27, 42, 0.06);
+  --adfly-gradient-brand: linear-gradient(135deg, var(--adfly-brand) 0%, var(--adfly-brand-strong) 100%);
 }
 
 html,
@@ -27,10 +55,11 @@ body,
 }
 
 body {
-  font-family: Montserrat, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
-  background: #f5f7fa;
-  color: #1a1a1a;
+  font-family: var(--adfly-font-sans);
+  background: var(--adfly-canvas);
+  color: var(--adfly-ink);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
 }
 
 /* 后台不使用动画 */
@@ -42,18 +71,990 @@ body {
   transition-duration: 0s !important;
 }
 
-.adfly-logo {
+::selection {
+  background: var(--adfly-brand);
+  color: #fff;
+}
+
+.adfly-sider-scroll::-webkit-scrollbar,
+.adfly-content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.adfly-sider-scroll::-webkit-scrollbar-thumb,
+.adfly-content::-webkit-scrollbar-thumb {
+  background: var(--adfly-line-strong);
+  border: 3px solid transparent;
+  border-radius: 0;
+  background-clip: content-box;
+}
+
+/* ---------------------------- 通用排版细节 ---------------------------- */
+.adfly-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--adfly-font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3);
+}
+
+.adfly-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--adfly-brand);
+  flex: none;
+}
+
+.adfly-num {
+  font-family: var(--adfly-font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.adfly-mono {
+  font-family: var(--adfly-font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0;
+  color: var(--adfly-ink-2);
+}
+
+/* ---------------------------- 品牌标识 ---------------------------- */
+.adfly-brand {
+  display: flex;
+  flex: none;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--adfly-line);
+}
+
+.adfly-brand.is-collapsed {
+  justify-content: center;
+  padding: 0;
+}
+
+.adfly-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  background: var(--adfly-brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.adfly-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: var(--adfly-ink);
+}
+
+.adfly-brand-sub {
+  font-family: var(--adfly-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3);
+}
+
+/* ---------------------------- 侧边栏 ---------------------------- */
+.adfly-sider.ant-layout-sider {
+  border-right: 1px solid var(--adfly-line);
+}
+
+.adfly-sider .ant-layout-sider-children {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.adfly-sider-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 12px 20px;
+}
+
+.adfly-menu.ant-menu {
+  background: transparent;
+  border-inline-end: none !important;
+  font-weight: 500;
+}
+
+.adfly-menu.ant-menu .ant-menu-item,
+.adfly-menu.ant-menu .ant-menu-submenu-title {
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 2px;
+  padding-inline: 12px !important;
+  border-radius: var(--adfly-radius);
+  color: var(--adfly-ink-2);
+  font-size: 13.5px;
+}
+
+.adfly-menu.ant-menu .ant-menu-item:hover,
+.adfly-menu.ant-menu .ant-menu-submenu-title:hover {
+  color: var(--adfly-ink);
+  background: var(--adfly-surface-muted);
+}
+
+.adfly-menu.ant-menu .ant-menu-item-selected {
+  font-weight: 600;
+  color: var(--adfly-brand-strong);
+  background: var(--adfly-brand-soft);
+  box-shadow: inset 2px 0 0 var(--adfly-brand);
+}
+
+.adfly-menu.ant-menu .ant-menu-item-selected::after {
+  display: none;
+}
+
+.adfly-menu.ant-menu .ant-menu-item .anticon,
+.adfly-menu.ant-menu .ant-menu-submenu-title .anticon {
+  font-size: 14px;
+  color: inherit;
+}
+
+.adfly-menu.ant-menu .ant-menu-item-group-title {
+  padding: 16px 12px 8px;
+  font-family: var(--adfly-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3);
+  line-height: 1.2;
+}
+
+.adfly-menu.ant-menu-inline-collapsed .ant-menu-item-group-title {
+  display: none;
+}
+
+.adfly-sider-foot {
+  flex: none;
+  padding: 12px 18px;
+  border-top: 1px solid var(--adfly-line);
+  font-family: var(--adfly-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--adfly-ink-3);
+}
+
+.adfly-sider-foot.is-collapsed {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+/* ---------------------------- 顶栏 ---------------------------- */
+.adfly-header.ant-layout-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 var(--adfly-gutter);
+  border-bottom: 1px solid var(--adfly-line);
+}
+
+.adfly-header-left,
+.adfly-header-right {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  min-width: 0;
+}
+
+.adfly-crumb.ant-breadcrumb {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.adfly-crumb.ant-breadcrumb li:last-child .ant-breadcrumb-link {
+  color: var(--adfly-ink);
+  font-weight: 600;
+}
+
+.adfly-header-divider.ant-divider-vertical {
+  height: 18px;
+  margin: 0 2px;
+  border-color: var(--adfly-line);
+}
+
+.adfly-icon-btn.ant-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--adfly-radius);
+  color: var(--adfly-ink-2);
+  border: 1px solid transparent;
+}
+
+.adfly-icon-btn.ant-btn:hover {
+  color: var(--adfly-brand-strong);
+  background: var(--adfly-surface-muted);
+  border-color: var(--adfly-line);
+}
+
+.adfly-search.ant-select {
+  width: 212px;
+}
+
+.adfly-search .ant-input-affix-wrapper {
+  border-radius: var(--adfly-radius);
+  background: var(--adfly-surface-muted);
+  border-color: var(--adfly-line);
+}
+
+.adfly-search .ant-input-affix-wrapper:hover,
+.adfly-search .ant-input-affix-wrapper-focused {
+  background: var(--adfly-surface);
+  border-color: var(--adfly-line-strong);
+}
+
+.adfly-search .ant-input-prefix {
+  color: var(--adfly-ink-3);
+  margin-inline-end: 6px;
+}
+
+.adfly-kbd.ant-tag {
+  margin: 0;
+  padding: 0 5px;
+  font-family: var(--adfly-font-mono);
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--adfly-ink-3);
+  background: transparent;
+  border: 1px solid var(--adfly-line);
+}
+
+.adfly-search-option-icon {
+  display: inline-flex;
   color: var(--adfly-brand);
 }
 
-.adfly-logo-sub {
+.adfly-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px 3px 3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.adfly-user:hover {
+  background: var(--adfly-surface-muted);
+  border-color: var(--adfly-line);
+}
+
+.adfly-user .ant-avatar {
+  border-radius: var(--adfly-radius) !important;
+}
+
+.adfly-user-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.adfly-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--adfly-ink);
+}
+
+.adfly-user-role {
+  font-family: var(--adfly-font-mono);
   font-size: 10px;
-  letter-spacing: 0.28em;
-  color: #989898;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--adfly-ink-3);
+}
+
+.adfly-user-caret {
+  font-size: 9px;
+  color: var(--adfly-ink-3);
+}
+
+/* ---------------------------- 内容区 ---------------------------- */
+.adfly-content.ant-layout-content {
+  padding: 0 0 var(--adfly-gutter);
+  background-image:
+    linear-gradient(to right, var(--adfly-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--adfly-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.adfly-content-inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--adfly-gutter) var(--adfly-gutter) 0;
+}
+
+/* ---------------------------- 页面容器 ---------------------------- */
+.adfly-page-head {
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--adfly-line);
+}
+
+.adfly-page-heading {
+  min-width: 0;
+}
+
+.adfly-page-title.ant-typography {
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--adfly-ink);
+}
+
+.adfly-page-subtitle {
+  font-size: 13px;
+  color: var(--adfly-ink-2) !important;
+}
+
+.adfly-page-extra {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+/* ---------------------------- antd 组件微调 ---------------------------- */
+.adfly-panel.ant-card,
+.ant-card {
+  border-radius: var(--adfly-radius-lg);
+  border-color: var(--adfly-line);
+  box-shadow: none;
+}
+
+.ant-card-hoverable:hover {
+  border-color: var(--adfly-brand);
+  box-shadow: none;
+}
+
+.ant-card-head {
+  min-height: 46px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--adfly-line);
+}
+
+.ant-card-head-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--adfly-ink);
+}
+
+.ant-card-extra {
+  font-family: var(--adfly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--adfly-ink-3) !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background: var(--adfly-thead);
+  color: var(--adfly-ink-2);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--adfly-line);
+}
+
+/* 表格与 ProTable 筛选区共用 16px 内边距，避免两段内容左右错位 */
+.ant-pro-table .ant-pro-table-search .ant-pro-query-filter {
+  padding-inline: 16px !important;
+}
+
+.ant-pro-table .ant-table-wrapper .ant-table-thead > tr > th:first-child,
+.ant-pro-table .ant-table-wrapper .ant-table-tbody > tr > td:first-child {
+  padding-inline-start: 16px !important;
+}
+
+.ant-pro-table .ant-table-wrapper .ant-table-thead > tr > th:last-child,
+.ant-pro-table .ant-table-wrapper .ant-table-tbody > tr > td:last-child {
+  padding-inline-end: 16px !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th::before {
+  display: none;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--adfly-line-soft);
+}
+
+.ant-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: var(--adfly-brand-soft);
+}
+
+.ant-table-wrapper .ant-table-column-sorter {
+  color: var(--adfly-ink-3);
+}
+
+.ant-btn-primary:not(.ant-btn-dangerous) {
+  background: var(--adfly-brand);
+  box-shadow: none;
+}
+
+.ant-btn-primary:not(.ant-btn-dangerous):hover {
+  background: var(--adfly-brand-strong);
+}
+
+.ant-btn-default {
+  border-color: var(--adfly-line);
+}
+
+.ant-btn-default:hover {
+  color: var(--adfly-brand-strong);
+  border-color: var(--adfly-brand);
+}
+
+.ant-btn-link {
+  padding-inline: 4px;
+}
+
+.ant-tag {
+  margin-inline-end: 6px;
+  padding-inline: 8px;
+  border-radius: var(--adfly-radius-sm);
+  font-family: var(--adfly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.ant-tag-success,
+.ant-tag-warning,
+.ant-tag-default {
+  border-color: transparent;
+}
+
+.ant-modal .ant-modal-content {
+  border-radius: var(--adfly-radius-lg);
+  box-shadow: var(--adfly-shadow-overlay);
+}
+
+.ant-modal .ant-modal-header {
+  border-bottom: 1px solid var(--adfly-line);
+  border-radius: var(--adfly-radius-lg) var(--adfly-radius-lg) 0 0;
+}
+
+.ant-dropdown .ant-dropdown-menu {
+  border-radius: var(--adfly-radius);
+  border: 1px solid var(--adfly-line);
+  box-shadow: var(--adfly-shadow-overlay);
+  padding: 6px;
+}
+
+.ant-dropdown .ant-dropdown-menu-item,
+.ant-dropdown .ant-dropdown-menu-submenu-title {
+  border-radius: var(--adfly-radius-sm);
+}
+
+.ant-tooltip .ant-tooltip-inner {
+  border-radius: var(--adfly-radius);
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.ant-pro-table .ant-pro-table-search {
+  border-radius: var(--adfly-radius-lg);
+  border-color: var(--adfly-line);
+  box-shadow: none;
+  margin-bottom: 16px;
+}
+
+.ant-pro-card {
+  border-color: var(--adfly-line);
+}
+
+.ant-empty-description {
+  color: var(--adfly-ink-3);
+}
+
+.ant-pagination .ant-pagination-item,
+.ant-pagination .ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next .ant-pagination-item-link {
+  border-radius: var(--adfly-radius-sm);
+}
+
+/* 分页不再贴着卡片边缘：与表格首/末列共用 16px 内缩 */
+.ant-pro-table .ant-table-wrapper .ant-table-pagination.ant-pagination {
+  margin: 16px 16px 16px !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  border-color: var(--adfly-brand);
+  background: var(--adfly-brand-soft);
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: var(--adfly-brand-strong);
+  font-weight: 600;
+}
+
+.ant-back-top .ant-back-top-content,
+.ant-float-btn .ant-float-btn-body {
+  border-radius: var(--adfly-radius-lg);
+}
+
+/* ---------------------------- 统计条（直角分段） ---------------------------- */
+.adfly-strip.ant-card {
+  border-radius: var(--adfly-radius-lg);
+}
+
+.adfly-strip .ant-card-body {
+  padding: 0;
+}
+
+.adfly-strip-cell {
+  position: relative;
+  padding: 18px 20px 20px;
+  border-left: 1px solid var(--adfly-line-soft);
+}
+
+.adfly-strip-cell:first-child {
+  border-left: none;
+}
+
+.adfly-strip-cell .adfly-strip-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--adfly-font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3);
+}
+
+.adfly-strip-cell .adfly-strip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--adfly-brand);
+  font-size: 14px;
+  border: 1px solid var(--adfly-line);
+}
+
+.adfly-strip-cell .adfly-strip-value {
+  margin-top: 12px;
+  font-family: var(--adfly-font-mono);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--adfly-ink);
+}
+
+.adfly-strip-cell .adfly-strip-value.is-loading {
+  color: var(--adfly-ink-3);
+}
+
+/* ---------------------------- 概览页 ---------------------------- */
+.adfly-hero.ant-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border: none;
+  border-radius: var(--adfly-radius-lg);
+  background-color: #0b1622;
+  background-image: linear-gradient(120deg, #0b1622 0%, #16283c 100%);
+  background-image:
+    radial-gradient(
+      120% 160% at 100% 0%,
+      color-mix(in srgb, var(--adfly-brand) 45%, transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(120deg, #0b1622 0%, #16283c 100%);
+  color: #fff;
+}
+
+.adfly-hero .ant-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  min-height: 216px;
+  height: 100%;
+}
+
+.adfly-hero.ant-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.055) 0,
+    rgba(255, 255, 255, 0.055) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+  pointer-events: none;
+}
+
+.adfly-hero.ant-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--adfly-brand);
+}
+
+.adfly-hero .ant-typography {
+  color: #fff;
+}
+
+.adfly-hero-eyebrow {
+  font-family: var(--adfly-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.adfly-hero-sub.ant-typography {
+  display: block;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 13px;
+}
+
+.adfly-hero .ant-tag {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.adfly-hero-ghost.ant-btn {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+
+.adfly-hero-ghost.ant-btn:hover {
+  color: #fff !important;
+  border-color: #fff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+.adfly-hero-primary.ant-btn {
+  color: var(--adfly-brand-strong);
+  background: #fff;
+  border-color: #fff;
+}
+
+.adfly-hero-primary.ant-btn:hover {
+  color: var(--adfly-brand-strong) !important;
+  background: #eef7fd !important;
+  border-color: #eef7fd !important;
+}
+
+.adfly-entry-card.ant-card {
+  height: 100%;
+  border-radius: var(--adfly-radius-lg);
+  border-color: var(--adfly-line);
+  cursor: pointer;
+}
+
+.adfly-entry-card.ant-card:hover {
+  border-color: var(--adfly-brand);
+  background: #fbfdff;
+}
+
+.adfly-entry-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: 1px solid var(--adfly-line);
+  color: var(--adfly-brand);
+  font-size: 15px;
+}
+
+.adfly-entry-arrow {
+  color: var(--adfly-ink-3);
+  font-size: 12px;
+}
+
+/* ---------------------------- 规格表（系统信息 / 预览） ---------------------------- */
+.adfly-spec {
+  display: flex;
+  flex-direction: column;
+}
+
+.adfly-spec-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--adfly-line);
+}
+
+.adfly-spec-row:last-child {
+  border-bottom: none;
+}
+
+.adfly-spec-label {
+  font-family: var(--adfly-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3);
+  white-space: nowrap;
+}
+
+.adfly-spec-value {
+  font-family: var(--adfly-font-mono);
+  font-size: 12.5px;
+  color: var(--adfly-ink);
+  text-align: right;
+  word-break: break-all;
+}
+
+/* ---------------------------- 登录页 ---------------------------- */
+.adfly-login {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--adfly-canvas);
+}
+
+.adfly-login-card.ant-card {
+  width: 100%;
+  max-width: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.adfly-login-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.adfly-login-brand {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 56px 48px;
+  background: var(--adfly-gradient-brand);
+  color: #fff;
+}
+
+.adfly-login-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.adfly-login-brand::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--adfly-ink);
+}
+
+.adfly-login-brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+.adfly-login-brand .adfly-brand-mark {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.adfly-login-brand .adfly-brand-text {
+  color: #fff;
+}
+
+.adfly-login-brand .adfly-brand-sub {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.adfly-login-headline.ant-typography {
+  margin: 64px 0 20px;
+  max-width: 460px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+.adfly-login-sub {
+  max-width: 420px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.adfly-login-points {
+  margin-top: 36px;
+}
+
+.adfly-login-point.ant-typography {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+}
+
+.adfly-login-point-square {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.adfly-login-badge.ant-tag {
+  align-self: flex-start;
+  margin: auto 0 0;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: transparent;
+  color: #fff;
+  font-size: 11px;
+}
+
+.adfly-login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 64px;
+  border-left: 1px solid var(--adfly-line);
+  background: var(--adfly-surface);
+}
+
+.adfly-login-caption {
+  display: block;
+  margin: 8px 0 30px;
+  font-family: var(--adfly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--adfly-ink-3) !important;
+}
+
+.adfly-login-form .ant-form-item-label > label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--adfly-ink-2);
+}
+
+.adfly-login-form .ant-input-affix-wrapper {
+  padding-block: 9px;
+}
+
+.adfly-login-divider.ant-divider {
+  margin: 28px 0 14px;
+  color: var(--adfly-ink-3);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+/* ---------------------------- 主题设置 ---------------------------- */
+.adfly-preview.ant-card {
+  position: sticky;
+  top: 84px;
+}
+
+.adfly-preview-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.adfly-preview-bar {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: var(--adfly-radius);
+  border: 1px solid var(--adfly-line);
+}
+
+/* ---------------------------- 响应式 ---------------------------- */
+@media (max-width: 1080px) {
+  .adfly-search.ant-select {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .adfly-login-grid {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .adfly-login-brand {
+    padding: 32px 24px;
+  }
+
+  .adfly-login-headline.ant-typography {
+    margin: 28px 0 12px;
+    font-size: 22px;
+  }
+
+  .adfly-login-points,
+  .adfly-login-sub {
+    display: none;
+  }
+
+  .adfly-login-badge.ant-tag {
+    margin-top: 24px;
+  }
+
+  .adfly-login-form {
+    padding: 32px 24px;
+    border-left: none;
+    border-top: 1px solid var(--adfly-line);
+  }
+
+  .adfly-content-inner {
+    padding: var(--adfly-gutter-sm) var(--adfly-gutter-sm) 0;
+  }
 }

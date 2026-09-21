@@ -1,5 +1,8 @@
-import { Space, Typography } from "antd";
+import { Flex, Space, Typography } from "antd";
 import type { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
+
+import { groupOf } from "@/config/menu";
 
 export interface PageContainerProps {
   title: string;
@@ -8,32 +11,38 @@ export interface PageContainerProps {
   children?: ReactNode;
 }
 
-/** 统一页面容器：标题 / 副标题 / 右上角操作区。 */
+/** 统一页面容器：眉标 / 标题 / 副标题 / 右上角操作区，底部以发丝线分隔内容。 */
 export default function PageContainer({ title, subTitle, extra, children }: PageContainerProps) {
+  const location = useLocation();
+
   return (
     <div className="adfly-page" data-testid="page-container">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: 16,
-          marginBottom: 16,
-        }}
-      >
-        <Space direction="vertical" size={2}>
-          <Typography.Title level={4} style={{ margin: 0 }} data-testid="page-title">
+      <Flex className="adfly-page-head" align="flex-start" justify="space-between" gap={16} wrap>
+        <Space className="adfly-page-heading" direction="vertical" size={4}>
+          <span className="adfly-eyebrow">
+            <span className="adfly-eyebrow-dot" />
+            {groupOf(location.pathname)}
+          </span>
+          <Typography.Title level={4} className="adfly-page-title" data-testid="page-title">
             {title}
           </Typography.Title>
           {subTitle && (
-            <Typography.Text type="secondary" data-testid="page-subtitle">
+            <Typography.Text
+              type="secondary"
+              className="adfly-page-subtitle"
+              data-testid="page-subtitle"
+            >
               {subTitle}
             </Typography.Text>
           )}
         </Space>
-        {extra && <div data-testid="page-extra">{extra}</div>}
-      </div>
-      <div>{children}</div>
+        {extra && (
+          <div className="adfly-page-extra" data-testid="page-extra">
+            {extra}
+          </div>
+        )}
+      </Flex>
+      <div className="adfly-page-body">{children}</div>
     </div>
   );
 }

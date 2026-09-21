@@ -41,7 +41,7 @@ npm run dev     # → http://localhost:5173/admin/
 src/
 ├── App.tsx                路由 + ConfigProvider（antd 主题）；导出 AppRoutes 便于测试
 ├── main.tsx               入口
-├── layouts/BasicLayout    顶栏 + 侧边栏 + 内容区
+├── layouts/BasicLayout    顶栏（面包屑 + 菜单搜索 + 用户菜单）+ 侧边栏 + 内容区
 ├── components/
 │   ├── RequireAuth        路由守卫
 │   ├── PageContainer      统一页面容器（标题 / 副标题 / 操作区）
@@ -60,7 +60,7 @@ src/
 │   ├── ThemeSettings/     主题设置（颜色 / 布局 / 排版）
 │   └── NotFound.tsx
 ├── config/
-│   ├── menu.tsx           菜单与标题
+│   ├── menu.tsx           菜单分组 / 标题 / 搜索项 / 路由归属
 │   ├── endpoints.ts       各模块接口蓝图（骨架页展示用）
 │   ├── content-fields.ts  内容页字段描述（FieldSpec[]）
 │   └── theme.ts           主题类型 / 默认值 / 深合并 / CSS 变量
@@ -69,7 +69,7 @@ src/
 │   └── useUnsavedChanges  dirty 登记 + beforeunload 拦截
 ├── services/              request(Axios) / auth / settings / content / cases
 ├── store/                 zustand：auth、theme、dirty（多 id 未保存登记）
-├── styles/index.css       Tailwind + 品牌变量 + 禁用动画
+├── styles/index.css       Tailwind + 设计令牌（品牌色 / 直角 / 发丝线 / 等宽字体）+ 组件微调 + 禁用动画
 ├── test/                  测试工具（setup.ts 环境补丁、utils.tsx 统一渲染、fixtures）
 ├── types/                 content / cases（内容模块与案例类型）、field-spec（表单字段描述）
 └── utils/                 token、feedback
@@ -203,9 +203,31 @@ curl -X PUT http://localhost:4000/api/v1/settings/theme \
 
 4. 恢复默认：`POST /api/v1/settings/theme/reset`。
 
+## 视觉规范（antd 组件改版）
+
+美学方向：**精确编辑风（Precision Editorial）** —— 直角、发丝线分隔、等宽数字与微标签、
+克制的品牌色点缀、细网格画布背景；拒绝大圆角 / 重阴影 / 花哨渐变。页面里不写死颜色。
+
+- **令牌**：`src/styles/index.css` 定义 `--adfly-brand*`（主题接口运行时覆盖）、`--adfly-ink/ink-2/ink-3`、`--adfly-line/line-soft/line-strong`、`--adfly-surface*` / `--adfly-thead` / `--adfly-canvas` / `--adfly-grid`、`--adfly-font-sans` / `--adfly-font-mono`、`--adfly-radius*`、`--adfly-shadow-overlay`；`src/App.tsx` 的 `buildAntdTheme()` 把主题转成 antd token 与组件级 token（Menu / Card / Table / Breadcrumb / Descriptions / Progress / Dropdown 等），`withAlpha()` 按主色派生交互阴影。
+- **圆角**：默认 `typography.borderRadius = 0`（直角），antd 的 `borderRadius / LG / SM / XS` 全部跟随主题值；阴影只用于浮层（Modal / Dropdown / Tooltip）。
+- **栅格**：`--adfly-gutter`（24px，窄屏 `--adfly-gutter-sm` 16px）统一顶栏左右内边距、内容区左右内边距与内容区底部留白；内容区不再限制最大宽度，大屏下自动铺满，避免出现大片空白。
+- **排版**：正文跟随主题 `fontFamily`，数字与微标签（表头、标签、规格表、环境信息）使用等宽 `--adfly-font-mono` + 大写 + 字距加宽。
+- **顶栏**：`Layout.Header` + `Breadcrumb`（管理后台 / 分组 / 页面）+ `AutoComplete` 菜单搜索（⌘/Ctrl + K 聚焦，支持子页面快捷入口）+ `Tooltip` 图标按钮（打开前台站点、主题设置）+ `Dropdown` 用户菜单（用户名 / 角色 / 主题设置 / 退出登录）。
+- **侧边栏**：`Layout.Sider` + 品牌标识（ADFLY · Admin Console）+ 分组 `Menu`（内容与业务 / 系统，38px 行高）+ 底部运行环境与版本；收起后仅保留图标（分组标题自动隐藏）。
+- **页面**：统一走 `PageContainer`（分组眉标 + 标题 + 底部发丝线 + `Flex` 操作区）；内容卡片使用 `.adfly-panel`（直角 + 1px 描边）。
+- **概览页**：深色 `Card` 横幅（`.adfly-hero`，品牌色辉光 + 斜纹 + 底部品牌色细条，内容上下分布占满高度）、`.adfly-strip` 分段统计条（等宽大数字 + 图标）、`List` + `Card` 快捷入口、`.adfly-spec` 规格表展示系统信息。
+- **内容管理**：`.adfly-strip` 统计条 + `Table` 内嵌 `Progress` 展示英文翻译完成度。
+- **表格**：表头浅底（`--adfly-thead`）+ 大写微标签；ProTable 的筛选区与表格共用 16px 内边距（首/末列单独补内边距），保证两段内容左右对齐且不挤压列宽；分页统一 `margin: 16px`，不再贴住卡片边缘。
+- **主题设置**：左侧分组表单卡片（`Row/Col` + `ColorPicker` 预设 + `InputNumber` 的 `px` 后缀），右侧 `sticky`「实时预览」卡片（色块、按钮 / Tag / `Progress` 示例、规格表）。
+- **登录页**：全屏双栏（品牌面板：细网格 + 竖条要点 + 底部 JWT 徽标；右侧表单），窄屏（≤860px）自动堆叠。
+- **交互组件**：`FloatButton.BackTop` 回到顶部；`ConfigProvider` 统一 `motion: false`。
+- 仍然遵守「后台不使用动画」约定：`motion: false` + 全局 `animation/transition = 0`。
+
+> 改样式后请跑：`npx tsc -b --noEmit`、`npx vitest run`、`npm run build`、`npm run build && npm run preview` + `npm run test:smoke`。
+
 ## 约定
 
 - **无动画**：`ConfigProvider` 设置 `motion: false`，全局 CSS 将 `animation/transition` 置 0。
 - **鉴权**：Token 存 `localStorage`（`adfly_admin_token`），Axios 拦截器自动附带 `Authorization: Bearer`；`401` 自动清理会话并跳回登录页。
-- **样式**：Tailwind v4 仅引入 `theme` + `utilities`（跳过 preflight），避免覆盖 antd 基础样式。
+- **样式**：Tailwind v4 仅引入 `theme` + `utilities`（跳过 preflight），避免覆盖 antd 基础样式；视觉令牌与组件微调见「视觉规范」。
 - 后台全部页面 `noindex, nofollow`，不进搜索引擎。

@@ -50,9 +50,14 @@ export const DEFAULT_ADMIN_THEME: AdminTheme = {
     fontFamily:
       'Montserrat, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif',
     fontSize: 14,
-    borderRadius: 8,
+    // 视觉基调为「精确编辑风」：默认直角，圆角由主题设置显式调整
+    borderRadius: 0,
   },
 };
+
+/** 数据、编号与微标签统一使用等宽字体。 */
+export const MONO_FONT_STACK =
+  'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace';
 
 /**
  * 主题局部补丁：接口只返回/提交需要变更的分组字段，后端做深合并。
@@ -78,10 +83,17 @@ export function mergeTheme(base: AdminTheme, patch?: ThemePatch | null): AdminTh
 /** 应用主题到 CSS 变量（供 Tailwind / 自定义样式使用）。 */
 export function applyCssVariables(theme: AdminTheme): void {
   const root = document.documentElement.style;
+  const radius = theme.typography.borderRadius;
+
   root.setProperty("--adfly-brand", theme.brand.colorPrimary);
   root.setProperty("--adfly-brand-strong", theme.brand.colorPrimaryStrong);
   root.setProperty("--adfly-brand-soft", theme.brand.colorPrimarySoft);
   root.setProperty("--adfly-brand-accent", theme.brand.colorAccent);
   root.setProperty("--adfly-header-h", `${theme.layout.headerHeight}px`);
   root.setProperty("--adfly-sider-w", `${theme.layout.siderWidth}px`);
+  root.setProperty("--adfly-font-sans", theme.typography.fontFamily);
+  root.setProperty("--adfly-font-mono", MONO_FONT_STACK);
+  root.setProperty("--adfly-radius-sm", `${Math.max(radius - 1, 0)}px`);
+  root.setProperty("--adfly-radius", `${radius}px`);
+  root.setProperty("--adfly-radius-lg", `${radius + 1}px`);
 }
