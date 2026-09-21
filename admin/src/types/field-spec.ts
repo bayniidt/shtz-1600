@@ -9,6 +9,8 @@ export interface BaseField {
   /** 字段名（相对当前表单根） */
   name: string;
   label: string;
+  /** 双语工作台中的字段归属：可翻译、共享或仅由中文主语言维护。 */
+  localization?: "translated" | "shared" | "source-only";
   /** 栅格宽度，默认 24（整行） */
   span?: number;
   hint?: string;

@@ -11,7 +11,18 @@ type NamePath = (string | number)[];
 
 const RULES_LABEL = (label: string) => `${label}不能为空`;
 
-function rulesOf(field: FieldSpec) {
+interface RenderOptions {
+  disabled?: boolean;
+  skipRequiredValidation?: boolean;
+  namePrefix?: NamePath;
+  labelFor?: (field: FieldSpec, path: NamePath) => ReactNode;
+  isShared?: (field: FieldSpec, path: NamePath) => boolean;
+  hideShared?: boolean;
+  lockStructure?: boolean;
+}
+
+function rulesOf(field: FieldSpec, skipRequiredValidation = false) {
+  if (skipRequiredValidation) return [];
   if (field.kind === "link") {
     return [];
   }
@@ -21,86 +32,107 @@ function rulesOf(field: FieldSpec) {
 }
 
 /** 渲染单个标量字段（不含对象数组）。 */
-function renderScalar(field: FieldSpec, path: NamePath): ReactNode {
-  const name = [...path, field.name];
+function renderScalar(field: FieldSpec, path: NamePath, options: RenderOptions): ReactNode {
+  if (options.hideShared && options.isShared?.(field, path) === true) return null;
+  const name = [...(options.namePrefix ?? []), ...path, field.name];
+  const label = options.labelFor?.(field, path) ?? field.label;
+  const disabled = options.disabled || options.isShared?.(field, path) === true;
 
   switch (field.kind) {
     case "text":
       return (
-        <Form.Item name={name} label={field.label} rules={rulesOf(field)} extra={field.hint}>
-          <Input placeholder={field.placeholder} maxLength={field.maxLength} allowClear />
+        <Form.Item name={name} label={label} rules={rulesOf(field, options.skipRequiredValidation)} extra={field.hint}>
+          <Input disabled={disabled} placeholder={field.placeholder} maxLength={field.maxLength} allowClear />
         </Form.Item>
       );
     case "textarea":
       return (
-        <Form.Item name={name} label={field.label} rules={rulesOf(field)} extra={field.hint}>
-          <Input.TextArea rows={field.rows ?? 3} placeholder={field.placeholder} maxLength={field.maxLength} />
+        <Form.Item name={name} label={label} rules={rulesOf(field, options.skipRequiredValidation)} extra={field.hint}>
+          <Input.TextArea disabled={disabled} rows={field.rows ?? 3} placeholder={field.placeholder} maxLength={field.maxLength} />
         </Form.Item>
       );
     case "number":
       return (
-        <Form.Item name={name} label={field.label} rules={rulesOf(field)} extra={field.hint}>
-          <InputNumber min={field.min} max={field.max} step={field.step} style={{ width: "100%" }} />
+        <Form.Item name={name} label={label} rules={rulesOf(field, options.skipRequiredValidation)} extra={field.hint}>
+          <InputNumber disabled={disabled} min={field.min} max={field.max} step={field.step} style={{ width: "100%" }} />
         </Form.Item>
       );
     case "select":
       return (
-        <Form.Item name={name} label={field.label} rules={rulesOf(field)} extra={field.hint}>
-          <Select options={field.options} />
+        <Form.Item name={name} label={label} rules={rulesOf(field, options.skipRequiredValidation)} extra={field.hint}>
+          <Select disabled={disabled} options={field.options} />
         </Form.Item>
       );
     case "switch":
       return (
-        <Form.Item name={name} label={field.label} valuePropName="checked" extra={field.hint}>
-          <Switch />
+        <Form.Item name={name} label={label} valuePropName="checked" extra={field.hint}>
+          <Switch disabled={disabled} />
         </Form.Item>
       );
     case "image":
       return (
-        <Form.Item name={name} label={field.label} rules={rulesOf(field)} extra={field.hint}>
-          <ImagePicker placeholder={field.placeholder} />
+        <Form.Item name={name} label={label} rules={rulesOf(field, options.skipRequiredValidation)} extra={field.hint}>
+          <ImagePicker disabled={disabled} placeholder={field.placeholder} />
         </Form.Item>
       );
     case "stringList":
       return (
-        <Form.Item name={name} label={field.label} extra={field.hint}>
-          <StringListInput addText={field.addText} placeholder={field.placeholder} />
+        <Form.Item name={name} label={label} extra={field.hint}>
+          <StringListInput disabled={disabled} addText={field.addText} placeholder={field.placeholder} />
         </Form.Item>
       );
     case "link":
+      const sharedHref = options.isShared?.({ ...field, name: `${field.name}.href` }, path) === true;
       return (
-        <Form.Item label={field.label} extra={field.hint} style={{ marginBottom: 0 }}>
+        <Form.Item label={label} extra={field.hint} style={{ marginBottom: 0 }}>
           <Row gutter={8}>
-            <Col span={12}>
-              <Form.Item name={[...name, "label"]} rules={[{ required: true, message: "按钮文案不能为空" }]}>
-                <Input placeholder="按钮文案" aria-label={`${field.label}-文案`} allowClear />
+            {!options.hideShared || !sharedHref ? <Col span={12}>
+              <Form.Item
+                name={[...name, "label"]}
+                rules={options.skipRequiredValidation ? [] : [{ required: true, message: "按钮文案不能为空" }]}
+              >
+                <Input disabled={disabled} placeholder="按钮文案" aria-label={`${field.label}-文案`} allowClear />
               </Form.Item>
-            </Col>
+            </Col> : null}
             <Col span={12}>
-              <Form.Item name={[...name, "href"]} rules={[{ required: true, message: "链接不能为空" }]}>
-                <Input placeholder="/cases 或 #contact" aria-label={`${field.label}-链接`} allowClear />
+              <Form.Item
+                name={[...name, "href"]}
+                rules={options.skipRequiredValidation ? [] : [{ required: true, message: "链接不能为空" }]}
+              >
+                <Input
+                  disabled={disabled || options.isShared?.({ ...field, name: `${field.name}.href` }, path) === true}
+                  placeholder="/cases 或 #contact"
+                  aria-label={`${field.label}-链接`}
+                  allowClear
+                />
               </Form.Item>
             </Col>
           </Row>
         </Form.Item>
       );
     case "object":
-      return renderObject(field.fields, field.label, field.hint, path.concat(field.name));
+      return renderObject(field.fields, label, field.hint, path.concat(field.name), options);
     case "groupList":
-      return renderGroupList(field, path);
+      return renderGroupList(field, path, options);
     default:
       return null;
   }
 }
 
 /** 嵌套对象：卡片包裹，子字段路径追加对象名。 */
-function renderObject(fields: FieldSpec[], label: string, hint: string | undefined, path: NamePath): ReactNode {
+function renderObject(
+  fields: FieldSpec[],
+  label: ReactNode,
+  hint: string | undefined,
+  path: NamePath,
+  options: RenderOptions,
+): ReactNode {
   return (
     <Form.Item label={label} extra={hint} style={{ marginBottom: 12 }}>
       <Card size="small" data-testid="object-group">
         <Row gutter={16}>
           {fields.map((child) => (
-            <Fragment key={child.name}>{renderField(child, path)}</Fragment>
+            <Fragment key={child.name}>{renderField(child, path, options)}</Fragment>
           ))}
         </Row>
       </Card>
@@ -109,7 +141,7 @@ function renderObject(fields: FieldSpec[], label: string, hint: string | undefin
 }
 
 /** 对象数组：Form.List + 卡片，支持添加 / 删除 / 上移下移（无动画）。 */
-function renderGroupList(field: GroupListField, path: NamePath): ReactNode {
+function renderGroupList(field: GroupListField, path: NamePath, options: RenderOptions): ReactNode {
   return (
     <Form.Item label={field.label} extra={field.hint} style={{ marginBottom: 12 }}>
       <Form.List name={[...path, field.name]} data-testid={`group-list-${field.name}`}>
@@ -126,6 +158,7 @@ function renderGroupList(field: GroupListField, path: NamePath): ReactNode {
                   </Typography.Text>
                 }
                 extra={
+                  options.lockStructure ? null : (
                   <Space size={4}>
                     <Tooltip title="上移">
                       <Button
@@ -165,27 +198,30 @@ function renderGroupList(field: GroupListField, path: NamePath): ReactNode {
                       />
                     </Tooltip>
                   </Space>
+                  )
                 }
               >
                 <Row gutter={16}>
                   {field.fields.map((child) => (
-                    <Fragment key={child.name}>{renderField(child, [current.name])}</Fragment>
+                    <Fragment key={child.name}>{renderField(child, [current.name], options)}</Fragment>
                   ))}
                 </Row>
               </Card>
             ))}
 
-            <Button
-              type="dashed"
-              block
-              icon={<PlusOutlined />}
-              disabled={field.max !== undefined && fields.length >= field.max}
-              onClick={() => add(emptyItemOf(field.fields))}
-            >
-              {field.max !== undefined && fields.length >= field.max
-                ? `已达上限 ${field.max} 条`
-                : (field.addText ?? "添加一条")}
-            </Button>
+            {!options.lockStructure && (
+              <Button
+                type="dashed"
+                block
+                icon={<PlusOutlined />}
+                disabled={field.max !== undefined && fields.length >= field.max}
+                onClick={() => add(emptyItemOf(field.fields))}
+              >
+                {field.max !== undefined && fields.length >= field.max
+                  ? `已达上限 ${field.max} 条`
+                  : (field.addText ?? "添加一条")}
+              </Button>
+            )}
           </div>
         )}
       </Form.List>
@@ -194,9 +230,9 @@ function renderGroupList(field: GroupListField, path: NamePath): ReactNode {
 }
 
 /** 递归渲染字段：标量直接渲染，数组/分组包一层栅格。 */
-export function renderField(field: FieldSpec, path: NamePath): ReactNode {
+export function renderField(field: FieldSpec, path: NamePath, options: RenderOptions = {}): ReactNode {
   const span = field.span ?? 24;
-  return <Col span={span}>{renderScalar(field, path)}</Col>;
+  return <Col span={span}>{renderScalar(field, path, options)}</Col>;
 }
 
 export interface ContentFormProps {
@@ -210,7 +246,15 @@ export interface ContentFormProps {
   onFinish?: (values: Record<string, unknown>) => void;
   onValuesChange?: () => void;
   disabled?: boolean;
+  /** 英文译文允许逐步补齐，保存时不阻断空字段。 */
+  skipRequiredValidation?: boolean;
   formKey?: string | number;
+  namePrefix?: NamePath;
+  labelFor?: (field: FieldSpec, path: NamePath) => ReactNode;
+  isShared?: (field: FieldSpec, path: NamePath) => boolean;
+  hideShared?: boolean;
+  lockStructure?: boolean;
+  testId?: string;
 }
 
 /** 由字段描述生成的内容表单（无动画）。 */
@@ -222,7 +266,14 @@ export default function ContentForm({
   onFinish,
   onValuesChange,
   disabled = false,
+  skipRequiredValidation = false,
   formKey,
+  namePrefix,
+  labelFor,
+  isShared,
+  hideShared = false,
+  lockStructure = false,
+  testId = "content-form",
 }: ContentFormProps) {
   return (
     <Form
@@ -235,9 +286,15 @@ export default function ContentForm({
       onValuesChange={onValuesChange}
       onFinish={onFinish}
       scrollToFirstError
-      data-testid="content-form"
+      data-testid={testId}
     >
-      <Row gutter={16}>{fields.map((field) => <Fragment key={field.name}>{renderField(field, [])}</Fragment>)}</Row>
+      <Row gutter={16}>
+        {fields.map((field) => (
+          <Fragment key={field.name}>
+            {renderField(field, [], { disabled, skipRequiredValidation, namePrefix, labelFor, isShared, hideShared, lockStructure })}
+          </Fragment>
+        ))}
+      </Row>
     </Form>
   );
 }

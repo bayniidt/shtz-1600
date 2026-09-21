@@ -13,12 +13,12 @@ export const SITE_SEO_FIELDS: FieldSpec[] = [
 export const SITE_FIELDS: FieldSpec[] = [
   { kind: "text", name: "name", label: "公司名称", span: 12 },
   { kind: "text", name: "nameEn", label: "英文名称", span: 12 },
-  { kind: "text", name: "logoText", label: "Logo 主标识", span: 8 },
-  { kind: "text", name: "logoSub", label: "Logo 副标识", span: 8 },
-  { kind: "text", name: "icp", label: "ICP 备案号", span: 8, required: false },
-  { kind: "text", name: "contactEmail", label: "对外联系邮箱", span: 8, required: false, hint: "留空则前台不展示" },
-  { kind: "text", name: "businessEmail", label: "商务合作邮箱", span: 8, required: false },
-  { kind: "text", name: "phone", label: "联系电话", span: 8, required: false },
+  { kind: "text", name: "logoText", label: "Logo 主标识", span: 8, localization: "shared" },
+  { kind: "text", name: "logoSub", label: "Logo 副标识", span: 8, localization: "shared" },
+  { kind: "text", name: "icp", label: "ICP 备案号", span: 8, required: false, localization: "shared" },
+  { kind: "text", name: "contactEmail", label: "对外联系邮箱", span: 8, required: false, localization: "shared", hint: "留空则前台不展示" },
+  { kind: "text", name: "businessEmail", label: "商务合作邮箱", span: 8, required: false, localization: "shared" },
+  { kind: "text", name: "phone", label: "联系电话", span: 8, required: false, localization: "shared" },
   { kind: "textarea", name: "address", label: "公司地址", rows: 2 },
   {
     kind: "groupList",
@@ -29,7 +29,7 @@ export const SITE_FIELDS: FieldSpec[] = [
     max: 20,
     fields: [
       { kind: "text", name: "label", label: "文案", span: 8 },
-      { kind: "text", name: "href", label: "链接", span: 16 },
+      { kind: "text", name: "href", label: "链接", span: 16, localization: "shared" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const SITE_FIELDS: FieldSpec[] = [
     max: 50,
     fields: [
       { kind: "text", name: "label", label: "文案", span: 8 },
-      { kind: "text", name: "href", label: "链接", span: 16 },
+      { kind: "text", name: "href", label: "链接", span: 16, localization: "shared" },
     ],
   },
   {
@@ -76,7 +76,7 @@ export const HOME_HERO_FIELDS: FieldSpec[] = [
     itemTitle: "指标",
     max: 12,
     fields: [
-      { kind: "text", name: "value", label: "数值", span: 8 },
+      { kind: "text", name: "value", label: "数值", span: 8, localization: "shared" },
       { kind: "text", name: "label", label: "说明", span: 16 },
     ],
   },
@@ -106,9 +106,9 @@ export const HOME_MEDIA_FIELDS: FieldSpec[] = [
     max: 60,
     fields: [
       { kind: "text", name: "name", label: "名称", span: 8 },
-      { kind: "text", name: "mark", label: "字标", span: 8, required: false },
-      { kind: "select", name: "category", label: "分类", span: 8, options: MEDIA_CATEGORIES },
-      { kind: "text", name: "accent", label: "主色（可选）", span: 8, required: false, placeholder: "#1877F2" },
+      { kind: "text", name: "mark", label: "字标", span: 8, required: false, localization: "shared" },
+      { kind: "select", name: "category", label: "分类", span: 8, options: MEDIA_CATEGORIES, localization: "shared" },
+      { kind: "text", name: "accent", label: "主色（可选）", span: 8, required: false, localization: "shared", placeholder: "#1877F2" },
     ],
   },
   { kind: "link", name: "cta", label: "底部按钮" },
@@ -155,7 +155,7 @@ export const HOME_CLIENTS_FIELDS: FieldSpec[] = [
     itemTitle: "行业",
     max: 20,
     fields: [
-      { kind: "text", name: "key", label: "标识", span: 8 },
+      { kind: "text", name: "key", label: "标识", span: 8, localization: "shared" },
       { kind: "text", name: "name", label: "名称", span: 8 },
       { kind: "text", name: "stat", label: "数据说明", span: 8, required: false },
       { kind: "textarea", name: "description", label: "行业描述", rows: 2, required: false },
@@ -170,7 +170,7 @@ export const HOME_CLIENTS_FIELDS: FieldSpec[] = [
     max: 200,
     fields: [
       { kind: "text", name: "name", label: "客户名称", span: 12 },
-      { kind: "text", name: "industry", label: "所属行业标识", span: 12 },
+      { kind: "text", name: "industry", label: "所属行业标识", span: 12, localization: "shared" },
     ],
   },
 ];
@@ -186,10 +186,10 @@ export const HOME_STRENGTH_FIELDS: FieldSpec[] = [
     itemTitle: "节点",
     max: 50,
     fields: [
-      { kind: "text", name: "city", label: "城市", span: 8 },
+      { kind: "text", name: "city", label: "城市", span: 8, localization: "shared" },
       { kind: "text", name: "role", label: "角色", span: 8, required: false },
-      { kind: "text", name: "x", label: "地图 X 坐标", span: 4, required: false },
-      { kind: "text", name: "y", label: "地图 Y 坐标", span: 4, required: false },
+      { kind: "text", name: "x", label: "地图 X 坐标", span: 4, required: false, localization: "shared" },
+      { kind: "text", name: "y", label: "地图 Y 坐标", span: 4, required: false, localization: "shared" },
     ],
   },
   {
@@ -200,8 +200,8 @@ export const HOME_STRENGTH_FIELDS: FieldSpec[] = [
     itemTitle: "指标",
     max: 12,
     fields: [
-      { kind: "text", name: "value", label: "数值", span: 8 },
-      { kind: "text", name: "suffix", label: "后缀", span: 4, required: false },
+      { kind: "text", name: "value", label: "数值", span: 8, localization: "shared" },
+      { kind: "text", name: "suffix", label: "后缀", span: 4, required: false, localization: "shared" },
       { kind: "text", name: "label", label: "说明", span: 12 },
     ],
   },
@@ -219,7 +219,7 @@ export const HOME_HONORS_FIELDS: FieldSpec[] = [
     itemTitle: "分组",
     max: 10,
     fields: [
-      { kind: "text", name: "key", label: "分组标识", span: 8 },
+      { kind: "text", name: "key", label: "分组标识", span: 8, localization: "shared" },
       { kind: "text", name: "title", label: "分组名称", span: 16 },
       {
         kind: "groupList",
@@ -231,7 +231,7 @@ export const HOME_HONORS_FIELDS: FieldSpec[] = [
         fields: [
           { kind: "text", name: "title", label: "荣誉名称", span: 12 },
           { kind: "text", name: "issuer", label: "颁发机构", span: 8, required: false },
-          { kind: "text", name: "year", label: "年份", span: 4, required: false },
+          { kind: "text", name: "year", label: "年份", span: 4, required: false, localization: "shared" },
         ],
       },
     ],
@@ -252,8 +252,8 @@ export const ABOUT_FIELDS: FieldSpec[] = [
     itemTitle: "指标",
     max: 12,
     fields: [
-      { kind: "text", name: "value", label: "数值", span: 8 },
-      { kind: "text", name: "unit", label: "单位", span: 4, required: false },
+      { kind: "text", name: "value", label: "数值", span: 8, localization: "shared" },
+      { kind: "text", name: "unit", label: "单位", span: 4, required: false, localization: "shared" },
       { kind: "text", name: "label", label: "说明", span: 12 },
     ],
   },
@@ -296,7 +296,7 @@ export const ABOUT_FIELDS: FieldSpec[] = [
       { kind: "text", name: "name", label: "姓名", span: 6 },
       { kind: "text", name: "role", label: "职位", span: 6, required: false },
       { kind: "textarea", name: "bio", label: "简介", rows: 2, required: false },
-      { kind: "image", name: "avatar", label: "头像", span: 12 },
+      { kind: "image", name: "avatar", label: "头像", span: 12, localization: "shared" },
     ],
   },
   {
@@ -307,7 +307,7 @@ export const ABOUT_FIELDS: FieldSpec[] = [
     itemTitle: "办公点",
     max: 30,
     fields: [
-      { kind: "text", name: "city", label: "城市", span: 8 },
+      { kind: "text", name: "city", label: "城市", span: 8, localization: "shared" },
       { kind: "text", name: "label", label: "标签", span: 4, required: false },
       { kind: "text", name: "address", label: "地址", span: 12, required: false },
     ],
@@ -351,8 +351,8 @@ export const CAREERS_CONTENT_FIELDS: FieldSpec[] = [
   },
   { kind: "text", name: "jobsEyebrow", label: "职位区眉标", span: 8, required: false },
   { kind: "text", name: "jobsTitle", label: "职位区标题", span: 8 },
-  { kind: "text", name: "portalUrl", label: "招聘系统地址", span: 12, required: false },
-  { kind: "text", name: "applyEmail", label: "简历投递邮箱", span: 12, required: false },
+  { kind: "text", name: "portalUrl", label: "招聘系统地址", span: 12, required: false, localization: "shared" },
+  { kind: "text", name: "applyEmail", label: "简历投递邮箱", span: 12, required: false, localization: "shared" },
 ];
 
 /** 首页 6 个板块 → 字段描述 */

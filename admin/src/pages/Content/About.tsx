@@ -9,10 +9,11 @@ import type { AboutContent } from "@/types/content";
 interface AboutContentPageProps {
   compact?: boolean;
   onCancel?: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
 /** 关于我们：GET /about · PUT /about */
-export default function AboutContentPage({ compact = false, onCancel }: AboutContentPageProps) {
+export default function AboutContentPage({ compact = false, onCancel, onDirtyChange }: AboutContentPageProps) {
   const load = useCallback(() => fetchAbout(), []);
   const save = useCallback((payload: AboutContent) => saveAbout(payload), []);
   const { data, loading, saving, error, save: persist, reload } = useContentResource<AboutContent>({ load, save });
@@ -38,7 +39,9 @@ export default function AboutContentPage({ compact = false, onCancel }: AboutCon
       onReload={reload}
       onSave={handleSave}
       onCancel={onCancel}
+      onDirtyChange={onDirtyChange}
       compact={compact}
+      bilingual
     />
   );
 }

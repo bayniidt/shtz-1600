@@ -1,12 +1,21 @@
 import { EditOutlined, FileTextOutlined } from "@ant-design/icons";
 import { Button, Card, Input, Modal, Select, Space, Table, Tag, Typography } from "antd";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import PageContainer from "@/components/PageContainer";
+import {
+  ABOUT_FIELDS,
+  CAREERS_CONTENT_FIELDS,
+  HOME_SECTION_FIELDS,
+  SITE_FIELDS,
+} from "@/config/content-fields";
 import AboutContentPage from "@/pages/Content/About";
 import CareersContentPage from "@/pages/Content/CareersContent";
 import HomeContentPage from "@/pages/Content/Home";
 import SiteContentPage from "@/pages/Content/Site";
+import { fetchAbout, fetchCareersContent, fetchHome, fetchSite } from "@/services/content";
+import { HOME_SECTIONS } from "@/types/content";
+import { getTranslationProgress } from "@/types/i18n";
 
 type ContentKey = "site" | "home" | "about" | "careers";
 
@@ -20,9 +29,17 @@ interface ContentModule {
 
 interface ContentFilters {
   scope?: string;
-  status?: string;
+  status?: "not-started" | "partial" | "complete";
   keyword?: string;
 }
+
+interface TranslationProgress {
+  done: number;
+  total: number;
+  percent: number;
+}
+
+type ProgressMap = Partial<Record<ContentKey, TranslationProgress>>;
 
 const CONTENT_MODULES: ContentModule[] = [
   {
@@ -55,22 +72,28 @@ const CONTENT_MODULES: ContentModule[] = [
   },
 ];
 
-function renderEditor(key: ContentKey, onCancel: () => void) {
+function renderEditor(
+  key: ContentKey,
+  onCancel: () => void,
+  onDirtyChange: (dirty: boolean) => void,
+) {
   switch (key) {
     case "site":
-      return <SiteContentPage compact onCancel={onCancel} />;
+      return <SiteContentPage compact onCancel={onCancel} onDirtyChange={onDirtyChange} />;
     case "home":
-      return <HomeContentPage compact onCancel={onCancel} />;
+      return <HomeContentPage compact onCancel={onCancel} onDirtyChange={onDirtyChange} />;
     case "about":
-      return <AboutContentPage compact onCancel={onCancel} />;
+      return <AboutContentPage compact onCancel={onCancel} onDirtyChange={onDirtyChange} />;
     case "careers":
-      return <CareersContentPage compact onCancel={onCancel} />;
+      return <CareersContentPage compact onCancel={onCancel} onDirtyChange={onDirtyChange} />;
   }
 }
 
 /** 内容总览：所有单例页面内容在同一张表里管理，编辑统一使用对话框。 */
 export default function ContentManagementPage() {
   const [editingKey, setEditingKey] = useState<ContentKey | null>(null);
+  const [editorDirty, setEditorDirty] = useState(false);
+  const [progressMap, setProgressMap] = useState<ProgressMap>({});
   const [draftFilters, setDraftFilters] = useState<ContentFilters>({});
   const [filters, setFilters] = useState<ContentFilters>({});
   const editingModule = useMemo(
@@ -81,7 +104,11 @@ export default function ContentManagementPage() {
     const keyword = filters.keyword?.trim().toLowerCase();
     return CONTENT_MODULES.filter((item) => {
       if (filters.scope && item.scope !== filters.scope) return false;
-      if (filters.status && filters.status !== "editable") return false;
+      const progress = progressMap[item.key];
+      const status = progress && progress.total > 0
+        ? progress.done === progress.total ? "complete" : progress.done === 0 ? "not-started" : "partial"
+        : "complete";
+      if (filters.status && filters.status !== status) return false;
       if (
         keyword &&
         ![item.key, item.title, item.scope, item.description, item.endpoint]
@@ -93,9 +120,73 @@ export default function ContentManagementPage() {
       }
       return true;
     });
-  }, [filters]);
+  }, [filters, progressMap]);
 
-  const closeEditor = () => setEditingKey(null);
+  useEffect(() => {
+    let active = true;
+    const loadProgress = async () => {
+      const [site, home, about, careers] = await Promise.allSettled([
+        fetchSite(),
+        fetchHome(),
+        fetchAbout(),
+        fetchCareersContent(),
+      ]);
+      if (!active) return;
+
+      const next: ProgressMap = {};
+      if (site.status === "fulfilled") {
+        next.site = getTranslationProgress(site.value, SITE_FIELDS);
+      }
+      if (home.status === "fulfilled") {
+        const summary = HOME_SECTIONS.reduce(
+          (current, section) => {
+            const item = getTranslationProgress(home.value[section.key], HOME_SECTION_FIELDS[section.key]);
+            return { done: current.done + item.done, total: current.total + item.total };
+          },
+          { done: 0, total: 0 },
+        );
+        next.home = {
+          ...summary,
+          percent: summary.total === 0 ? 100 : Math.round((summary.done / summary.total) * 100),
+        };
+      }
+      if (about.status === "fulfilled") {
+        next.about = getTranslationProgress(about.value, ABOUT_FIELDS);
+      }
+      if (careers.status === "fulfilled") {
+        next.careers = getTranslationProgress(careers.value, CAREERS_CONTENT_FIELDS);
+      }
+      setProgressMap(next);
+    };
+    void loadProgress();
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const closeEditor = useCallback(() => {
+    setEditingKey(null);
+    setEditorDirty(false);
+  }, []);
+
+  const handleEditorDirtyChange = useCallback((dirty: boolean) => {
+    setEditorDirty(dirty);
+  }, []);
+
+  const handleModalCancel = () => {
+    if (!editorDirty) {
+      closeEditor();
+      return;
+    }
+    Modal.confirm({
+      title: "仍有未保存的修改",
+      content: "关闭内容编辑框前，是否放弃当前中英文修改？",
+      okText: "放弃并关闭",
+      cancelText: "继续编辑",
+      okButtonProps: { danger: true },
+      onOk: closeEditor,
+    });
+  };
 
   const resetFilters = () => {
     setDraftFilters({});
@@ -135,7 +226,11 @@ export default function ContentManagementPage() {
                   placeholder="请选择"
                   style={{ width: 150 }}
                   value={draftFilters.status}
-                  options={[{ label: "可编辑", value: "editable" }]}
+                  options={[
+                    { label: "未开始", value: "not-started" },
+                    { label: "部分完成", value: "partial" },
+                    { label: "已完成", value: "complete" },
+                  ]}
                   onChange={(status) => setDraftFilters((current) => ({ ...current, status }))}
                 />
               </Space>
@@ -143,7 +238,7 @@ export default function ContentManagementPage() {
                 <Typography.Text>关键词：</Typography.Text>
                 <Input
                   allowClear
-                  placeholder="搜索模块 / 说明 / 接口"
+                  placeholder="搜索模块 / 说明"
                   style={{ width: 260 }}
                   value={draftFilters.keyword}
                   onChange={(event) =>
@@ -191,15 +286,16 @@ export default function ContentManagementPage() {
               { title: "内容范围", dataIndex: "scope", width: 150 },
               { title: "说明", dataIndex: "description" },
               {
-                title: "接口",
-                dataIndex: "endpoint",
-                width: 260,
-                render: (endpoint: string) => <Typography.Text code>{endpoint}</Typography.Text>,
-              },
-              {
-                title: "状态",
-                width: 90,
-                render: () => <Tag color="green">可编辑</Tag>,
+                title: "English 翻译",
+                width: 170,
+                render: (_: unknown, record: ContentModule) => {
+                  const progress = progressMap[record.key];
+                  if (!progress) return <Tag>读取中</Tag>;
+                  if (progress.total === 0) return <Tag>无需翻译</Tag>;
+                  if (progress.done === progress.total) return <Tag color="success">已完成</Tag>;
+                  if (progress.done === 0) return <Tag color="default">未开始</Tag>;
+                  return <Tag color="warning">部分完成 {progress.percent}%</Tag>;
+                },
               },
               {
                 title: "操作",
@@ -235,10 +331,12 @@ export default function ContentManagementPage() {
             paddingRight: 4,
           },
         }}
-        onCancel={closeEditor}
+        maskClosable={false}
+        keyboard={false}
+        onCancel={handleModalCancel}
         data-testid="content-edit-dialog"
       >
-        {editingKey ? renderEditor(editingKey, closeEditor) : null}
+        {editingKey ? renderEditor(editingKey, closeEditor, handleEditorDirtyChange) : null}
       </Modal>
     </div>
   );

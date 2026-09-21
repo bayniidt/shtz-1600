@@ -19,13 +19,23 @@ function toMessage(error: unknown): string {
 interface HomeContentPageProps {
   compact?: boolean;
   onCancel?: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
-export default function HomeContentPage({ compact = false, onCancel }: HomeContentPageProps) {
+export default function HomeContentPage({ compact = false, onCancel, onDirtyChange }: HomeContentPageProps) {
   const [home, setHome] = useState<HomeContent | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [savingSection, setSavingSection] = useState<HomeSectionKey | null>(null);
+  const [dirtySections, setDirtySections] = useState<Partial<Record<HomeSectionKey, boolean>>>({});
+
+  const handleSectionDirtyChange = useCallback((section: HomeSectionKey, dirty: boolean) => {
+    setDirtySections((current) => ({ ...current, [section]: dirty }));
+  }, []);
+
+  useEffect(() => {
+    onDirtyChange?.(Object.values(dirtySections).some(Boolean));
+  }, [dirtySections, onDirtyChange]);
 
   const loadHome = useCallback(async () => {
     setLoading(true);
@@ -78,6 +88,8 @@ export default function HomeContentPage({ compact = false, onCancel }: HomeConte
               onReload={() => void loadHome()}
               onSave={(values) => handleSave(key, values)}
               onCancel={onCancel}
+              onDirtyChange={(dirty) => handleSectionDirtyChange(key, dirty)}
+              bilingual
             />
           ),
         }))}

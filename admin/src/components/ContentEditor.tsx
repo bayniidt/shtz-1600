@@ -1,13 +1,21 @@
-import { App, Alert, Button, Card, Form, Popconfirm, Skeleton, Space, Typography } from "antd";
+import { Alert, App, Button, Card, Form, Popconfirm, Segmented, Skeleton, Space, Typography } from "antd";
 import type { FormInstance } from "antd";
-import { useCallback, useEffect, useId, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 
 import ContentForm from "@/components/ContentForm";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import PageContainer from "@/components/PageContainer";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 import type { FieldSpec } from "@/types/field-spec";
-import { buildLocalizedPayload, getLocalizedValues, type Locale } from "@/types/i18n";
+import {
+  buildBilingualPayload,
+  buildLocalizedPayload,
+  getLocalizedFormValues,
+  getLocalizedValues,
+  type Locale,
+  type ViewMode,
+} from "@/types/i18n";
+import BilingualContentForm from "@/components/BilingualContentForm";
 
 export interface ContentEditorProps {
   title: string;
@@ -22,11 +30,14 @@ export interface ContentEditorProps {
   error?: string | null;
   onSave: (values: Record<string, unknown>) => Promise<void> | void;
   onCancel?: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
   onReload?: () => void;
   extra?: ReactNode;
   footer?: ReactNode;
   /** 内嵌在 Tabs 中时使用：不渲染 PageContainer */
   compact?: boolean;
+  /** 使用中英对照工作台，中文维护结构，英文只维护译文。 */
+  bilingual?: boolean;
   /** 未保存登记 id（同一页面多个编辑器需显式指定） */
   dirtyId?: string;
   testId?: string;
@@ -48,18 +59,24 @@ export default function ContentEditor({
   error = null,
   onSave,
   onCancel,
+  onDirtyChange,
   onReload,
   extra,
   footer,
   compact = false,
+  bilingual = false,
   dirtyId,
   testId,
 }: ContentEditorProps) {
-  const { message } = App.useApp();
+  const { message, modal } = App.useApp();
   const [form] = Form.useForm<Record<string, unknown>>();
+  const [zhForm] = Form.useForm<Record<string, unknown>>();
+  const [enForm] = Form.useForm<Record<string, unknown>>();
   const [dirty, setDirty] = useState(false);
   const [locale, setLocale] = useState<Locale>("zh");
+  const [viewMode, setViewMode] = useState<ViewMode>("bilingual");
   const [drafts, setDrafts] = useState<Partial<Record<Locale, Record<string, unknown>>>>({});
+  const lastReportedDirty = useRef<boolean | undefined>(undefined);
   const autoId = useId();
   const dirtyKey = dirtyId ?? autoId;
   // 字段 id 前缀，保证同一页面多个表单（首页 6 个 Tab）互不冲突
@@ -76,6 +93,12 @@ export default function ContentEditor({
     setDirty(false);
   }, [value]);
 
+  useEffect(() => {
+    if (lastReportedDirty.current === dirty) return;
+    lastReportedDirty.current = dirty;
+    onDirtyChange?.(dirty);
+  }, [dirty, onDirtyChange]);
+
   const handleFinish = async (values: Record<string, unknown>) => {
     try {
       await onSave(buildLocalizedPayload(value ?? {}, locale, values));
@@ -87,6 +110,19 @@ export default function ContentEditor({
       setDirty(false);
       message.success("已保存");
     } catch (saveError) {
+      message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
+    }
+  };
+
+  const handleBilingualFinish = async () => {
+    try {
+      const zhValues = await zhForm.validateFields();
+      const enValues = enForm.getFieldsValue(true) as Record<string, unknown>;
+      await onSave(buildBilingualPayload(value ?? {}, fields, zhValues, enValues));
+      setDirty(false);
+      message.success("已保存");
+    } catch (saveError) {
+      if (saveError && typeof saveError === "object" && "errorFields" in saveError) return;
       message.error(saveError instanceof Error ? saveError.message : "保存失败，请稍后重试");
     }
   };
@@ -107,6 +143,17 @@ export default function ContentEditor({
   );
 
   const handleReset = () => {
+    if (bilingual) {
+      const zhValues = getLocalizedFormValues(value ?? {}, "zh", fields);
+      const enValues = getLocalizedFormValues(value ?? {}, "en", fields);
+      zhForm.resetFields();
+      enForm.resetFields();
+      zhForm.setFieldsValue(zhValues as never);
+      enForm.setFieldsValue(enValues as never);
+      setDirty(false);
+      message.info("已还原为上次保存的内容");
+      return;
+    }
     form.resetFields();
     setDirty(false);
     message.info("已还原为上次保存的内容");
@@ -114,9 +161,56 @@ export default function ContentEditor({
 
   const formInstance = form as FormInstance<Record<string, unknown>>;
 
+  const handleClose = () => {
+    if (!onCancel) return;
+    if (!dirty) {
+      onCancel();
+      return;
+    }
+    modal.confirm({
+      title: "仍有未保存的修改",
+      content: `关闭${pageLabel}前，是否放弃当前中英文修改？`,
+      okText: "放弃并关闭",
+      cancelText: "继续编辑",
+      okButtonProps: { danger: true },
+      onOk: onCancel,
+    });
+  };
+
+  const saveButton = (
+    <Button
+      type="primary"
+      loading={saving}
+      disabled={!value}
+      data-testid="content-save"
+      onClick={() => void (bilingual ? handleBilingualFinish() : formInstance.submit())}
+    >
+      {bilingual ? "保存全部修改" : "保存"}
+    </Button>
+  );
+
+  const cancelButton = onCancel ? (
+    <Button onClick={handleClose} data-testid="content-cancel">
+      取消
+    </Button>
+  ) : null;
+
   const toolbar = (
     <Space>
-      <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
+      {bilingual ? (
+        <Segmented
+          aria-label="语言视图"
+          value={viewMode}
+          options={[
+            { label: "中英对照", value: "bilingual" },
+            { label: "仅中文", value: "zh" },
+            { label: "仅 English", value: "en" },
+          ]}
+          onChange={(next) => setViewMode(next as ViewMode)}
+        />
+      ) : (
+        <LanguageSwitcher value={locale} onChange={handleLocaleChange} />
+      )}
       {extra}
       <Popconfirm
         title="还原未保存的修改？"
@@ -130,20 +224,8 @@ export default function ContentEditor({
           还原
         </Button>
       </Popconfirm>
-      {onCancel ? (
-        <Button onClick={onCancel} data-testid="content-cancel">
-          取消
-        </Button>
-      ) : null}
-      <Button
-        type="primary"
-        loading={saving}
-        disabled={!value}
-        data-testid="content-save"
-        onClick={() => void formInstance.submit()}
-      >
-        保存
-      </Button>
+      {(!bilingual || !compact) && cancelButton}
+      {(!bilingual || !compact) && saveButton}
     </Space>
   );
 
@@ -179,18 +261,30 @@ export default function ContentEditor({
       <Card size="small" data-testid={testId ? `${testId}-card` : "content-editor-card"}>
         {loading || !value ? (
           <Skeleton active paragraph={{ rows: 6 }} />
-        ) : (
-          <ContentForm
-            form={formInstance}
-            formName={formName}
-            fields={fields}
-            initialValue={localizedValue}
-            disabled={saving}
-            formKey={`${pageLabel}-${String(value?.updatedAt ?? "new")}-${locale}`}
-            onFinish={(values) => void handleFinish(values)}
-            onValuesChange={() => setDirty(true)}
-          />
-        )}
+        ) : bilingual ? (
+            <BilingualContentForm
+              fields={fields}
+              value={value}
+              zhForm={zhForm}
+              enForm={enForm}
+              viewMode={viewMode}
+              disabled={saving}
+              valueKey={value.updatedAt as string | number | undefined}
+              onValuesChange={() => setDirty(true)}
+              testId={testId}
+            />
+          ) : (
+            <ContentForm
+              form={formInstance}
+              formName={formName}
+              fields={fields}
+              initialValue={localizedValue}
+              disabled={saving}
+              formKey={`${pageLabel}-${String(value?.updatedAt ?? "new")}-${locale}`}
+              onFinish={(values) => void handleFinish(values)}
+              onValuesChange={() => setDirty(true)}
+            />
+          )}
       </Card>
 
       {footer && <div style={{ marginTop: 16 }}>{footer}</div>}
@@ -219,6 +313,24 @@ export default function ContentEditor({
           <div>{toolbar}</div>
         </div>
         {body}
+        {bilingual && (
+          <div
+            style={{
+              position: "sticky",
+              bottom: 0,
+              zIndex: 4,
+              display: "flex",
+              justifyContent: "flex-end",
+              padding: "12px 0 4px",
+              background: "linear-gradient(transparent, var(--ant-color-bg-container, #fff) 35%)",
+            }}
+          >
+            <Space>
+              {cancelButton}
+              {saveButton}
+            </Space>
+          </div>
+        )}
       </div>
     );
   }

@@ -10,6 +10,11 @@ const FIELDS: FieldSpec[] = [
   { kind: "text", name: "logoText", label: "Logo 主标识", required: false },
 ];
 
+const BILINGUAL_FIELDS: FieldSpec[] = [
+  { kind: "text", name: "title", label: "标题" },
+  { kind: "text", name: "slug", label: "链接", localization: "shared" },
+];
+
 const VALUE = { title: "全球智能营销科技服务商", logoText: "ADFLY", updatedAt: "2024-05-01T00:00:00.000Z" };
 
 function setup(overrides: Partial<React.ComponentProps<typeof ContentEditor>> = {}) {
@@ -148,6 +153,31 @@ describe("ContentEditor", () => {
     expect(onSave.mock.calls[0][0]).toMatchObject({
       title: VALUE.title,
       translations: { en: { title: "New English title", logoText: "ADFLY" } },
+    });
+  });
+
+  it("E12 双语工作台并排展示、英文缺失保持为空且一次保存两种语言", async () => {
+    const { onSave } = setup({
+      fields: BILINGUAL_FIELDS,
+      bilingual: true,
+      compact: true,
+      value: { title: "中文标题", slug: "/about", updatedAt: VALUE.updatedAt },
+    });
+
+    expect(await screen.findByText("中文主语言")).toBeInTheDocument();
+    expect(screen.getByText("English 翻译")).toBeInTheDocument();
+    const inputs = screen.getAllByRole("textbox");
+    expect(inputs[2]).toHaveValue("");
+
+    fireEvent.change(inputs[0], { target: { value: "新中文标题" } });
+    fireEvent.change(inputs[2], { target: { value: "New English title" } });
+    fireEvent.click(screen.getByTestId("content-save"));
+
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(onSave.mock.calls[0][0]).toMatchObject({
+      title: "新中文标题",
+      slug: "/about",
+      translations: { en: { title: "New English title" } },
     });
   });
 });

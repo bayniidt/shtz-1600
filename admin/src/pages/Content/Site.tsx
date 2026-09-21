@@ -9,10 +9,11 @@ import type { SiteConfig } from "@/types/content";
 interface SiteContentPageProps {
   compact?: boolean;
   onCancel?: () => void;
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
 /** 站点与导航：GET /site · PUT /site */
-export default function SiteContentPage({ compact = false, onCancel }: SiteContentPageProps) {
+export default function SiteContentPage({ compact = false, onCancel, onDirtyChange }: SiteContentPageProps) {
   const load = useCallback(() => fetchSite(), []);
   const save = useCallback((payload: SiteConfig) => saveSite(payload), []);
   const { data, loading, saving, error, save: persist, reload } = useContentResource<SiteConfig>({ load, save });
@@ -38,7 +39,9 @@ export default function SiteContentPage({ compact = false, onCancel }: SiteConte
       onReload={reload}
       onSave={handleSave}
       onCancel={onCancel}
+      onDirtyChange={onDirtyChange}
       compact={compact}
+      bilingual
     />
   );
 }
