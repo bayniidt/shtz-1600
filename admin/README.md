@@ -29,7 +29,7 @@ npm run dev     # → http://localhost:5173/admin/
 | `npm run preview` | 预览构建产物（`http://localhost:5174/admin/`，含 `/api` 代理） |
 | `npm run typecheck` | 仅类型检查 |
 | `npm test` | Vitest + Testing Library（jsdom） |
-| `npm run test:coverage` | 覆盖率门禁：statements/lines/branches/functions 均 ≥80% |
+| `npm run test:coverage` | 覆盖率门禁：串行执行覆盖率用例，statements/lines/branches/functions 均 ≥80% |
 | `npm run test:smoke` | 真实 Chrome（CDP）冒烟：逐个路由检查空白页 / console 错误 / 失败请求 |
 
 > 冒烟测试前置：后端 `:4000` 已启动，且前端构建产物已在 `:5174` 预览（`npm run build && npm run preview`）。
@@ -79,8 +79,8 @@ scripts/smoke.mjs          Chrome CDP 冒烟测试
 ## 测试
 
 ```bash
-npm test                # 198 个用例（jsdom）
-npm run test:coverage   # 覆盖率门禁（四项阈值均为 80%）
+npm test                # 207 个用例（jsdom）
+npm run test:coverage   # 稳定覆盖率门禁（单 worker、关闭文件并行，四项阈值均为 80%）
 npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染校验
 ```
 
@@ -101,21 +101,50 @@ npm run build && npm run preview && npm run test:smoke   # 真实浏览器渲染
 | `store/*.test.ts` | 登录态、主题状态机、dirty 多 id 登记 |
 | `config/theme / utils/token / utils/feedback` | 主题合并与 CSS 变量、会话存储、消息反馈 |
 
-> 内容表单字段多、antd 组件层级深，`--coverage` 插桩下用例耗时较长（约 2~3 分钟），已把 `testTimeout` 调至 30s、并发限制为 4 个 worker。
+> 内容表单字段多、antd 组件层级深，覆盖率插桩下用例耗时较长且并行执行会抢占 jsdom / CPU。测试全局超时为 `60s`；`npm run test:coverage` 另固定为单 worker、关闭文件并行，优先保证门禁可重复通过；常规 `npm test` 仍保留并行执行以缩短反馈时间。
 
 ## Stage 6 交付（接口文档与覆盖率收尾）
 
 - 后端新增机器可读 OpenAPI 文档：`GET /api/docs/openapi.json`；Swagger UI 仍通过 `/api/docs` 访问，错误码表通过 `/api/docs/error-codes` 访问。
 - 所有已登记接口补齐请求示例、成功响应示例和错误响应 `code` 示例，并新增文档完整性测试，避免新增接口遗漏文档字段。
 - `ModuleScaffold` 运行时从 OpenAPI JSON 同步接口方法、路径、摘要与鉴权标记；后端不可用时回退本地蓝图。
-- 覆盖率门禁统一提升为 statements / branches / functions / lines 均 ≥80%；本阶段后端覆盖率为 **98.49% / 80.47% / 95.86% / 99.07%**，前端为 **97.18% / 86.72% / 89.39% / 97.18%**（均按 S/B/F/L）。
-- 新增接口蓝图同步测试与招聘筛选、冲突、找不到、非法回退等边界用例；当前前端常规测试 **198/198** 通过。
+- 覆盖率门禁统一提升为 statements / branches / functions / lines 均 ≥80%；本阶段后端覆盖率为 **98.42% / 81.11% / 95.94% / 98.98%**，前端实测为 **95.29% / 84.97% / 86.38% / 95.29%**（均按 S/B/F/L）。
+- 新增接口蓝图同步测试与招聘筛选、冲突、找不到、非法回退等边界用例；当前前端常规测试 **207/207** 通过。
 
 ## Stage 7 交付（生产部署准备）
 
 - `admin/Dockerfile` 使用 Node builder + Nginx runner 多阶段构建，构建产物部署到 `/admin/`。
 - 入口 Nginx 配置位于 `deploy/nginx.conf`：`/admin/` 提供后台静态资源，`/api/` 反向代理 Express，其他路径代理 Next.js 前台。
 - 项目根目录 `docker-compose.yml` 编排 MongoDB、API、前台与入口网关；生产变量模板位于 `deploy/.env.production.example`。
+- 已在本机 Docker Desktop 完成真实镜像构建与 Compose 启动；MongoDB、API、前台、后台入口 4 个服务均通过健康检查。
+- 已通过网关验证 `/admin/`、`/api/v1/health` 与前台首页，并完成 15 个后台路由冒烟测试。
+
+## Stage 8 交付（生产上线验收与运维收口）✅ 已完成
+
+Stage 8 不新增业务模块，目标是把 Stage 7 的部署准备收口为可上线、可回滚、可维护的生产交付：
+
+- 生产环境变量与安全基线检查：禁止默认 JWT、明文管理员密码和开发级 CORS 配置。
+- 完整栈上线验收：Compose 构建、健康检查、网关路由、管理员登录、公开前台页面和 API 鉴权流程。
+- 数据可靠性验收：MongoDB volume 持久化、容器重启后数据仍在，并形成备份 / 恢复操作说明。
+- 运维文档：启动、升级、回滚、日志查看、健康检查和故障排查步骤。
+
+Stage 8 实际交付：
+
+- `server/src/config/index.ts` 增加生产 JWT、bcrypt hash、CORS 白名单校验；server 生产启动前执行安全基线检查，Compose 要求显式配置 `CORS_ORIGIN`、`JWT_SECRET` 和 `ADMIN_PASSWORD_HASH`。
+- `deploy/verify-production-env.mjs` 检查生产环境变量，`deploy/smoke.mjs` 验证网关、前台、API 健康、登录、当前用户和未授权写入防护。
+- `deploy/backup-mongo.sh` / `deploy/restore-mongo.sh` 提供 Mongo archive gzip 备份与显式确认恢复；`deploy/RUNBOOK.md` 收口上线、回滚、持久化、备份恢复和故障排查。
+- 已完成真实 Compose 重建与启动、4 服务健康检查、发布冒烟、备份 / 临时库恢复演练，以及 Mongo 重启后的案例数据持久化验证。
+
+Stage 8 验收标准：
+
+| 范围 | 验收标准 |
+|------|----------|
+| 配置安全 | 生产模板不含真实密钥；缺少 `JWT_SECRET` / `ADMIN_PASSWORD_HASH` 时 Compose 拒绝启动；CORS 仅允许明确域名 |
+| 发布验证 | `docker compose build`、`docker compose up -d` 完成；MongoDB、server、web、admin 全部 healthy |
+| 路由与鉴权 | `/admin/`、`/`、`/api/v1/health` 返回 200；管理员登录成功，未登录写接口返回鉴权错误 |
+| 数据持久化 | 重启 server / MongoDB 容器后案例、招聘和内容数据保持一致；备份与恢复命令可按文档执行 |
+| 回归质量 | server 199/199、admin 207/207、admin 覆盖率四项 ≥80%、admin/web/server 类型检查与构建通过 |
+| 文档交付 | 根 README、admin README、server README、HANDOFF 和部署 Runbook 的命令、端口、环境变量保持一致 |
 
 ## Stage 4 交付（招聘城市 / 职位 CRUD）
 

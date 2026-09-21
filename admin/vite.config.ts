@@ -47,7 +47,7 @@ export default defineConfig({
     css: false,
     restoreMocks: true,
     // 内容表单字段多、antd 组件层级深，覆盖率插桩下单测耗时明显变长
-    testTimeout: 30000,
+    testTimeout: 60000,
     // 限制并发 worker 数，避免 antd/jsdom 用例互相抢 CPU 导致超时抖动
     poolOptions: {
       threads: { maxThreads: 4, minThreads: 1 },

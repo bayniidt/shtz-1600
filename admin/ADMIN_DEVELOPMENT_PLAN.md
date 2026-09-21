@@ -685,8 +685,8 @@ export default {
 > - 新增 `GET /api/docs/openapi.json` 原始 OpenAPI JSON；Swagger UI 与错误码接口保持兼容。
 > - 所有已实现接口补齐请求 / 成功响应 / 错误响应示例，并以 `skeleton.test.ts` 做文档完整性门禁；URL 字段文档同步说明仅允许 http / https。
 > - `admin/src/config/endpoints.ts` 新增 OpenAPI 蓝图加载器，`ModuleScaffold` 运行时同步后端摘要、方法、路径与鉴权信息，失败回退静态蓝图。
-> - 后端补充 Careers 查询筛选、城市 / 职位冲突、找不到、非法回退等边界测试；后端 Jest **197/197**、前端 Vitest **198/198**。
-> - 覆盖率阈值统一为四项 ≥80%；后端实测 **98.49% statements / 80.47% branches / 95.86% functions / 99.07% lines**，前端覆盖率门禁通过。
+> - 后端补充 Careers 查询筛选、城市 / 职位冲突、找不到、非法回退等边界测试；当前后端 Jest **199/199**、前端 Vitest **207/207**。
+> - 覆盖率阈值统一为四项 ≥80%；后端实测 **98.42% statements / 81.11% branches / 95.94% functions / 98.98% lines**，前端覆盖率门禁通过。
 
 ### Stage 7：服务器部署准备（~4h，可与运维协作）✅ 已完成
 
@@ -703,7 +703,32 @@ export default {
 > - 新增根目录 `docker-compose.yml`，编排 MongoDB、Express API、Next.js 前台与后台入口网关，并加入服务健康检查。
 > - 新增 `deploy/nginx.conf`：`/` → Next.js、`/admin/` → Vite 后台、`/api/` → Express API；新增 `.dockerignore` 与生产环境变量模板。
 > - 后端支持 `ADMIN_PASSWORD_HASH` 直接创建管理员，保留 `ADMIN_PASSWORD` 作为开发环境回退；新增对应安全测试。
-> - 本机未安装 Docker，因此未执行真实镜像构建 / Compose 启动；TypeScript 构建、配置静态检查与现有测试已通过。
+> - 已在本机 Docker Desktop 完成真实镜像构建与 Compose 启动；MongoDB、Express API、Next.js 前台、后台入口 4 个服务均 healthy。
+> - 已通过网关验证 `/admin/`、`/api/v1/health` 与前台首页返回 200，并完成后台 15 个路由冒烟测试。
+> - 修复生产构建后 TypeScript 路径别名无法被 Node 解析的问题：server build 追加 `tsc-alias`；为 web 增加 `.dockerignore`，将 Docker 构建上下文从约 780 MB 降到约 15 MB。
+
+### Stage 8：生产上线验收与运维收口（~4h）✅ 已完成
+
+Stage 8 不新增业务模块，目标是把 Stage 7 的部署准备收口为可上线、可回滚、可维护的生产交付：
+
+- 生产环境变量与安全基线：禁止默认 JWT、明文管理员密码和开发级 CORS 配置；缺少必填密钥时 Compose 必须拒绝启动。
+- 完整栈上线验收：验证 Compose 构建、健康检查、Nginx 网关、管理员登录、公开前台页面与 API 鉴权流程。
+- 数据可靠性：验证 MongoDB volume 持久化、容器重启后的数据一致性，并补充备份 / 恢复操作说明。
+- 运维文档：补齐启动、升级、回滚、日志查看、健康检查与故障排查 Runbook。
+
+> **Stage 8 验收标准**
+> - 配置安全：生产模板不含真实密钥；缺少 `JWT_SECRET` / `ADMIN_PASSWORD_HASH` 时 Compose 拒绝启动；CORS 仅允许明确域名。
+> - 发布验证：`docker compose build`、`docker compose up -d` 完成，MongoDB / server / web / admin 全部 healthy。
+> - 路由与鉴权：`/admin/`、`/`、`/api/v1/health` 返回 200；管理员可登录，未登录写接口返回鉴权错误。
+> - 数据持久化：重启 server / MongoDB 容器后案例、招聘和内容数据保持一致；备份与恢复命令可按文档执行。
+> - 回归质量：server 199/199、admin 207/207；admin 覆盖率 statements / branches / functions / lines 均 ≥80%；admin / web / server 类型检查与构建通过。
+> - 文档交付：根 README、admin README、server README、HANDOFF 与部署 Runbook 的命令、端口、环境变量保持一致。
+
+> **Stage 8 完成情况**
+> - 生产启动增加 JWT 长度 / 占位值、bcrypt hash、CORS 来源校验；Compose 对 `CORS_ORIGIN`、`JWT_SECRET`、`ADMIN_PASSWORD_HASH` 做必填约束，生产模板不含真实密钥。
+> - 新增 `deploy/verify-production-env.mjs`、`deploy/smoke.mjs`、`deploy/backup-mongo.sh`、`deploy/restore-mongo.sh` 和 [`deploy/RUNBOOK.md`](../deploy/RUNBOOK.md)。
+> - 验收实测：`docker compose build && docker compose up -d` 成功；MongoDB / server / web / admin 全部 healthy；发布冒烟 6 项通过；备份 62 KB、临时库恢复 101 documents / 0 failures；Mongo 重启前后案例 8 / 8 保持一致。
+> - 回归实测：server Jest **199/199**、覆盖率 **98.42% / 81.11% / 95.94% / 98.98%**（S/B/F/L）；admin **207/207**；admin / web / server 类型检查与构建通过。
 
 ---
 

@@ -149,7 +149,7 @@ npm run seed            # 从 ../web/data/site.json 初始化内容（--force / 
 | `tests/skeleton.test.ts` | 5 | 已无 Stage 4 占位接口；静态路由优先级、OpenAPI JSON 与文档示例完整性 |
 | `tests/infra.test.ts` | — | ApiError / 响应封装 / 错误中间件 / 校验中间件 / 鉴权中间件 / JWT / 模型 / 环境变量解析 |
 
-Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；Stage 5 增加招聘外部 URL 协议校验；Stage 6 补充城市 / 职位筛选、冲突、找不到与非法回退边界；Stage 7 增加生产管理员 hash 配置验证。当前常规 Jest **198/198** 全部通过；覆盖率为 **98.49% statements / 80.78% branches / 95.86% functions / 99.07% lines**。
+Stage 4 常规测试已覆盖城市 id 联动、删除回退、最后城市边界、职位城市合法性与 `extraCities` 过滤；Stage 5 增加招聘外部 URL 协议校验；Stage 6 补充城市 / 职位筛选、冲突、找不到与非法回退边界；Stage 7 增加生产管理员 hash 配置验证；Stage 8 增加生产 JWT / bcrypt / CORS 安全基线测试。当前常规 Jest **199/199** 全部通过；覆盖率为 **98.42% statements / 81.11% branches / 95.94% functions / 98.98% lines**。
 
 ## OpenAPI 文档约定
 
@@ -172,3 +172,20 @@ docker compose up -d --build
 ```
 
 容器内 API 使用 `mongodb://mongo:27017/adfly_admin`，站点快照路径为 `/app/web/data/site.json`；如接入外部 MongoDB，可覆盖 `MONGO_URI`。
+
+## Stage 8 上线验收与运维
+
+从项目根目录执行生产配置校验和全栈冒烟：
+
+```bash
+node deploy/verify-production-env.mjs .env
+docker compose build && docker compose up -d
+node deploy/smoke.mjs
+```
+
+Mongo 备份 / 恢复与回滚、持久化、日志和故障排查见 [`deploy/RUNBOOK.md`](../deploy/RUNBOOK.md)：
+
+```bash
+./deploy/backup-mongo.sh backups/adfly-$(date -u +%Y%m%dT%H%M%SZ).archive.gz
+./deploy/restore-mongo.sh backups/adfly-20260921T000000Z.archive.gz --confirm
+```

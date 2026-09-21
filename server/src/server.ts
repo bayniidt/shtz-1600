@@ -1,9 +1,10 @@
 import { createApp } from "@/app";
-import { config } from "@/config";
+import { config, validateProductionConfig } from "@/config";
 import { connectDB, disconnectDB } from "@/config/db";
 import { ensureDefaultAdmin, seedContentIfMissing } from "@/services/seed.service";
 
 async function bootstrap(): Promise<void> {
+  if (config.isProd) validateProductionConfig();
   await connectDB();
   // eslint-disable-next-line no-console
   console.log(`[db] connected: ${config.mongoUri.replace(/\/\/.*@/, "//***@")}`);

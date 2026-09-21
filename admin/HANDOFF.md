@@ -2,17 +2,18 @@
 
 > 给「下一个接手的人 / 下一个对话窗口（AI）」看的工程约定与现状快照。
 > **开工前请先读**：本文件 → `ADMIN_DEVELOPMENT_PLAN.md`（阶段目标与完成情况）→ `admin/README.md` + `server/README.md`（目录与命令）。
-> 最后更新：Stage 7 完成时。
+> 最后更新：Stage 8 生产上线验收与运维收口完成时。
 
 ---
 
 ## 0. 一句话现状
 
-Stage 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 全部实现完成，常规测试 / 覆盖率 / 类型检查 / 构建 / 文档验收通过；Docker 部署配置已准备好，真实镜像构建需在安装 Docker 的环境执行：
+Stage 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 全部实现完成，常规测试 / 覆盖率 / 类型检查 / 构建 / 文档验收通过。Docker 镜像与 Compose 已在本机真实构建、启动并完成生产验收：
 - 后端：认证 + 主题 + **内容模块（site / home 6 板块 / about / careers content，13 个真实接口）** + **Cases 8 个真实接口** + **Careers 城市 / 职位 10 个真实接口**。
 - 后台前端：登录 / 守卫 / 布局 / 主题设置 / 4 个内容编辑页 + **Cases 列表页与新建/编辑页** + **Careers 总览、城市编辑、职位编辑**。
 - Stage 6：OpenAPI 文档完整化、后台蓝图动态同步、边界测试与覆盖率门禁收口。
 - Stage 7：Docker 多阶段构建、Compose 编排、Nginx 网关与生产环境变量模板。
+- Stage 8：生产环境安全校验、全栈发布冒烟、Mongo 备份 / 恢复演练、持久化验证与运维 Runbook。
 
 ---
 
@@ -48,10 +49,10 @@ cd ../web && npm run dev                                                        
 
 | 范围 | 命令 | 门禁 / 当前值（Stage 7） |
 |------|------|--------------------------|
-| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **198/198** 用例通过 |
-| 后端覆盖率 | `cd server && npm run test:coverage` | **98.49% / 80.78% / 95.86% / 99.07%**（statements / branches / functions / lines），四项 ≥80% |
-| 前端测试 | `cd admin && npx vitest run` | **198/198** 用例通过 |
-| 前端覆盖率 | `cd admin && npm run test:coverage` | **97.18% / 86.72% / 89.39% / 97.18%**（statements / branches / functions / lines），四项 ≥80% |
+| 后端测试 | `cd server && npx jest --runInBand --forceExit` | **199/199** 用例通过 |
+| 后端覆盖率 | `cd server && npm run test:coverage` | **98.42% / 81.11% / 95.94% / 98.98%**（statements / branches / functions / lines），四项 ≥80% |
+| 前端测试 | `cd admin && npx vitest run` | **207/207** 用例通过 |
+| 前端覆盖率 | `cd admin && npm run test:coverage` | **95.29% / 84.97% / 86.38% / 95.29%**（statements / branches / functions / lines），四项 ≥80%；脚本使用单 worker、关闭文件并行 |
 | 类型检查 | `cd admin && npx tsc --noEmit` | 必须干净 |
 | 构建 | `cd admin && npm run build` | 主 chunk 约 2.05 MB / gzip 约 655 kB（Vite 体积提示） |
 | 真实浏览器冒烟 | `cd admin && npm run build && npm run preview` + `npm run test:smoke` | 15 个路由（需后端 :4000 + preview :5174） |
@@ -170,7 +171,7 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 - **交互一律用 `fireEvent`**（`fireEvent.click` / `fireEvent.change(input, { target: { value } })`）。
   `userEvent` 在 `--coverage` 插桩下**慢 10 倍以上**（单次 click 从 0.6s 变 7s），Stage 2 因此踩过大量超时坑。仅在下拉框等确实需要时才用 `userEvent`。
 - 渲染统一走 `renderWithProviders(ui, { route })`（自带 antd ConfigProvider + zh_CN + AntdApp + MemoryRouter）；`src/test/utils.tsx` re-export 了 testing-library。
-- 覆盖率插桩 + 并发下测试很慢，配置已调到：`testTimeout: 30000`、`poolOptions.threads.maxThreads: 4`、`configure({ asyncUtilTimeout: 5000 })`（`src/test/setup.ts`）。
+- 覆盖率插桩 + 并发下测试很慢：全局 `testTimeout: 60000`、常规测试最多 4 个 worker；`npm run test:coverage` 额外使用单 worker、关闭文件并行，`configure({ asyncUtilTimeout: 5000 })`（`src/test/setup.ts`）。
   **超大表单用例（About / Site 列表项 / Home 切 Tab）单独加超时**，如 `it("...", async () => {...}, 60000);`。
 - 断言注意：
   - antd `Modal.confirm` 的标题文本会出现在 `.ant-modal-confirm-title` 和 body 里两次 → 用 `findByRole("dialog")` 再断言 `toHaveTextContent`，别用 `getByText`。
@@ -210,15 +211,16 @@ Stage 2 实测：site 1 / home 1 / casesPage 1 / caseItems 8 / about 1 / careers
 - **Stage 4 已完成**：改城市 `id` 联动更新职位的 `cityId`/`extraCities`、删除城市回退、`cityId` 合法性校验、列表聚合 `positionsCount`；前端城市卡片 Grid + 职位 ProTable。
 - **Stage 5 已完成**：`web/src/lib/db.ts` API 优先读取 site/home/about/cases/careers，任一 API 不可用时回退 `data/site.json`；公共页面保持 `force-dynamic`；新增 `web/scripts/export.mjs` 与 `pnpm run export`；Dashboard 统计卡片、行业分布饼图、公司时间线改为实时 API 数据。
 - **Stage 6 已完成**：Swagger 请求 / 响应示例补齐；新增 OpenAPI JSON、文档完整性测试、动态接口蓝图同步；后端覆盖率四项达到门禁（branches 80.47%），并补齐 Careers 边界测试。
-- **Stage 7 已完成**：Docker 多阶段构建、Compose 编排、Nginx 网关、生产环境变量模板与 `ADMIN_PASSWORD_HASH` 管理员初始化已就绪；本机未安装 Docker，真实镜像 / Compose 启动验收需在 Docker 环境执行。
+- **Stage 7 已完成**：Docker 多阶段构建、Compose 编排、Nginx 网关、生产环境变量模板与 `ADMIN_PASSWORD_HASH` 管理员初始化已就绪；本机 4 个 Compose 服务均 healthy，网关探活与 15 个后台路由冒烟通过。
+- **Stage 8 已完成**：生产 JWT / bcrypt / CORS 安全基线、全栈发布冒烟、MongoDB 备份 / 临时库恢复演练、Mongo 重启持久化验证与部署运维 Runbook 已交付；详见 `deploy/RUNBOOK.md`。
 
 ---
 
 ## 8. 新对话窗口开场白模板
 
 ```
-继续 stage6。先读 admin/HANDOFF.md、admin/ADMIN_DEVELOPMENT_PLAN.md 的 Stage 6 章节、
-admin/README.md、server/README.md，然后开始实现接口文档完整化与测试覆盖率收尾，完成后按 HANDOFF 第 3 节的收尾清单验收并更新文档。
+继续 stage8。先读 admin/HANDOFF.md、admin/ADMIN_DEVELOPMENT_PLAN.md 的 Stage 8 章节、
+admin/README.md、server/README.md，然后开始执行生产上线验收与运维收口，完成后按 HANDOFF 第 3 节的收尾清单验收并更新文档。
 ```
 
-换其他阶段把「stage6 / 接口文档与覆盖率收尾」替换即可（stage3 / stage4 / stage5 / stage7）。
+换其他阶段把「stage8 / 生产上线验收与运维收口」替换即可（stage3 / stage4 / stage5 / stage6 / stage7）。

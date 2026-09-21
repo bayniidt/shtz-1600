@@ -23,7 +23,7 @@ services:
       PORT: 4000
       API_PREFIX: /api/v1
       MONGO_URI: ${MONGO_URI:-mongodb://mongo:27017/adfly_admin}
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost}
+      CORS_ORIGIN: ${CORS_ORIGIN:?CORS_ORIGIN must be set in .env}
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set in .env}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-12h}
       ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}

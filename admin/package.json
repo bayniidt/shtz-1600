@@ -11,7 +11,7 @@
     "typecheck": "tsc -b --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage --testTimeout=60000 --maxWorkers=1 --minWorkers=1 --no-file-parallelism",
     "test:smoke": "node scripts/smoke.mjs",
     "lint": "echo \"(eslint not configured yet)\""
   },

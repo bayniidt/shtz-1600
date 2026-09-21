@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
 import { createApp } from "@/app";
-import { parseBool, parseNumber } from "@/config";
+import { parseBool, parseNumber, validateProductionConfig } from "@/config";
 import { openApiDocument, placeholderEndpoints } from "@/docs/swagger";
 import { errorHandler, notFoundHandler } from "@/middlewares/error";
 import { extractToken, protect, requireRole } from "@/middlewares/auth";
@@ -378,6 +378,25 @@ describe("I8 环境变量解析与路由工厂", () => {
     expect(parseBool("false", true)).toBe(false);
     expect(parseBool("0", true)).toBe(false);
     expect(parseBool(undefined, true)).toBe(true);
+  });
+
+  it("validateProductionConfig：接受明确配置并拒绝弱安全配置", () => {
+    const valid = {
+      jwtSecret: "stage8-production-secret-0123456789abcdef0123456789",
+      adminPasswordHash: "$2a$10$265ea7OTbAsgcDhifXoLaO0KRUMLaQB.hE.fBLb8DeXwPyhWQP7Ze",
+      corsOrigin: "https://www.example.com, https://admin.example.com",
+    };
+    expect(() => validateProductionConfig(valid)).not.toThrow();
+    expect(() => validateProductionConfig({ ...valid, jwtSecret: "change-me" })).toThrow(
+      "JWT_SECRET",
+    );
+    expect(() => validateProductionConfig({ ...valid, adminPasswordHash: "admin" })).toThrow(
+      "ADMIN_PASSWORD_HASH",
+    );
+    expect(() => validateProductionConfig({ ...valid, corsOrigin: "*" })).toThrow("CORS_ORIGIN");
+    expect(() => validateProductionConfig({ ...valid, corsOrigin: "not-a-url" })).toThrow(
+      "CORS_ORIGIN",
+    );
   });
 
   it("createAuthRouter：不传限流器也能正常创建", () => {

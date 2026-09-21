@@ -44,6 +44,57 @@ export const config = {
   siteDataFile: process.env.SITE_DATA_FILE ?? path.resolve(process.cwd(), "../web/data/site.json"),
 } as const;
 
+export interface ProductionConfigValues {
+  jwtSecret: string;
+  adminPasswordHash: string;
+  corsOrigin: string;
+}
+
+const BCRYPT_HASH_PATTERN = /^\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}$/;
+
+/**
+ * 生产启动前的安全基线，避免服务在默认凭据或通配 CORS 下上线。
+ * 开发 / 测试环境仍允许使用默认值，便于本地测试与种子初始化。
+ */
+export function validateProductionConfig(values: ProductionConfigValues = config): void {
+  const errors: string[] = [];
+
+  if (
+    values.jwtSecret.length < 32 ||
+    values.jwtSecret === "dev-only-insecure-secret" ||
+    /replace-with|change-me|your[-_]?secret/i.test(values.jwtSecret)
+  ) {
+    errors.push("JWT_SECRET 必须是至少 32 个字符的非占位随机值");
+  }
+
+  if (!BCRYPT_HASH_PATTERN.test(values.adminPasswordHash)) {
+    errors.push("ADMIN_PASSWORD_HASH 必须是有效的 bcrypt hash");
+  }
+
+  const origins = values.corsOrigin
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  if (origins.length === 0 || values.corsOrigin === "*") {
+    errors.push("CORS_ORIGIN 必须配置一个或多个明确的 http(s) 来源，不能使用 *");
+  } else {
+    for (const origin of origins) {
+      try {
+        const parsed = new URL(origin);
+        if (!/^https?:$/.test(parsed.protocol) || !parsed.hostname || parsed.pathname !== "/") {
+          errors.push(`CORS_ORIGIN 来源无效：${origin}`);
+        }
+      } catch {
+        errors.push(`CORS_ORIGIN 来源无效：${origin}`);
+      }
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`[config] 生产环境安全检查失败：${errors.join("；")}`);
+  }
+}
+
 if (config.isProd && config.jwtSecret === "dev-only-insecure-secret") {
   // eslint-disable-next-line no-console
   console.warn("[config] ⚠️  JWT_SECRET 未设置，生产环境请务必配置强随机值");
