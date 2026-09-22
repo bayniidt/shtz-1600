@@ -1,5 +1,5 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Empty, Input, Space } from "antd";
+import { Button, Input, Space } from "antd";
 
 export interface StringListInputProps {
   /** antd Form.Item 注入 */
@@ -34,7 +34,9 @@ export default function StringListInput({
   return (
     <div data-testid="string-list">
       {items.length === 0 && (
-        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="暂无内容" style={{ margin: "4px 0 8px" }} />
+        <div className="adfly-empty">
+          <span>暂无内容</span>
+        </div>
       )}
 
       <Space direction="vertical" size={8} style={{ width: "100%" }}>
@@ -60,6 +62,7 @@ export default function StringListInput({
       <Button
         type="dashed"
         block
+        className="adfly-add-btn"
         icon={<PlusOutlined />}
         disabled={disabled}
         style={{ marginTop: items.length === 0 ? 0 : 8 }}

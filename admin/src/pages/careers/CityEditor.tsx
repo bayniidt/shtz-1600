@@ -180,6 +180,7 @@ export default function CityEditorPage({
                 onValuesChange={() => setDirty(true)}
                 onFinish={(values) => void handleFinish(values)}
               >
+                <div className="adfly-field-grid">
                 <Form.Item name="id" label="城市 ID（slug）" rules={[{ required: true, message: "请输入城市 ID" }]}>
                   <Input placeholder="如 shanghai" />
                 </Form.Item>
@@ -188,10 +189,13 @@ export default function CityEditorPage({
                 </Form.Item>
                 <Form.Item name="nameEn" label="英文名称"><Input placeholder="如 Shanghai" /></Form.Item>
                 <Form.Item name="code" label="城市编码"><Input placeholder="如 CT_125" /></Form.Item>
-                <Form.Item name="summary" label="城市简介"><Input.TextArea rows={3} /></Form.Item>
                 <Form.Item name="featured" label="重点城市" valuePropName="checked">
                   <Switch checkedChildren="重点" unCheckedChildren="普通" />
                 </Form.Item>
+                <Form.Item name="summary" label="城市简介" className="adfly-field-full">
+                  <Input.TextArea rows={3} />
+                </Form.Item>
+                </div>
               </Form>
             </Card>
             {editing ? (

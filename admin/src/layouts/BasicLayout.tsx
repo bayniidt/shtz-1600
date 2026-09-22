@@ -17,7 +17,6 @@ import {
   Button,
   Divider,
   Dropdown,
-  Empty,
   Flex,
   FloatButton,
   Input,
@@ -236,7 +235,7 @@ export default function BasicLayout() {
                 setQuery("");
                 goTo(value);
               }}
-              notFoundContent={<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="没有匹配的菜单" />}
+              notFoundContent={<div className="adfly-empty adfly-empty-compact">没有匹配的菜单</div>}
             >
               <Input
                 ref={searchRef}

@@ -1,5 +1,5 @@
 import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Card, Empty, Space, Tooltip, Typography } from "antd";
+import { Button, Card, Space, Tooltip, Typography } from "antd";
 import type { ReactNode } from "react";
 
 export interface ArrayEditorProps<T> {
@@ -68,18 +68,24 @@ export default function ArrayEditor<T>({
   return (
     <div className="adfly-array-editor" data-testid="array-editor">
       {items.length === 0 && (
-        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={emptyText} style={{ marginBottom: 12 }} />
+        <div className="adfly-empty">
+          <span>{emptyText}</span>
+        </div>
       )}
 
       {items.map((item, index) => (
         <Card
           key={index}
           size="small"
+          className="adfly-array-item"
           style={{ marginBottom: 12 }}
           title={
-            <Typography.Text strong>
-              {itemTitle ? itemTitle(item, index) : `条目 ${index + 1}`}
-            </Typography.Text>
+            <Space size={8} align="center">
+              <span className="adfly-array-index">{String(index + 1).padStart(2, "0")}</span>
+              <Typography.Text strong>
+                {itemTitle ? itemTitle(item, index) : `条目 ${index + 1}`}
+              </Typography.Text>
+            </Space>
           }
           extra={
             <Space size={4}>
@@ -128,6 +134,7 @@ export default function ArrayEditor<T>({
       <Button
         type="dashed"
         block
+        className="adfly-add-btn"
         icon={<PlusOutlined />}
         disabled={!canAdd}
         onClick={add}

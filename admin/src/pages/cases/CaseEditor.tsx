@@ -331,7 +331,7 @@ export default function CaseEditorPage({
               scrollToFirstError
               data-testid="case-form"
             >
-              <Card type="inner" size="small" title="基本信息" style={{ marginBottom: 16 }}>
+              <Card size="small" className="adfly-subcard" title="基本信息">
                 <Row gutter={16}>
                   <Col span={8}>
                     <Form.Item
@@ -408,13 +408,13 @@ export default function CaseEditorPage({
                 </Row>
               </Card>
 
-              <Card type="inner" size="small" title="核心指标（stats）" style={{ marginBottom: 16 }}>
+              <Card size="small" className="adfly-subcard" title="核心指标（stats）">
                 <Form.Item name="stats" style={{ marginBottom: 0 }}>
                   <StatsEditor disabled={saving} />
                 </Form.Item>
               </Card>
 
-              <Card type="inner" size="small" title="内容板块（blocks）">
+              <Card size="small" className="adfly-subcard" title="内容板块（blocks）">
                 <Form.Item name="blocks" style={{ marginBottom: 0 }}>
                   <BlocksEditor disabled={saving} />
                 </Form.Item>

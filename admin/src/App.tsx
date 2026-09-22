@@ -134,6 +134,13 @@ function buildAntdTheme(theme: AdminTheme): ThemeConfig {
         borderRadiusLG: radius,
         headerBg: "#fff",
       },
+      Form: {
+        labelColor: "#5b6b7f",
+        labelFontSize: 12.5,
+        labelHeight: 22,
+        verticalLabelPadding: "0 0 6px",
+        itemMarginBottom: 18,
+      },
       Input: {
         paddingBlock: 5,
         activeShadow: `0 0 0 2px ${withAlpha(theme.brand.colorPrimary, 0.12)}`,

@@ -618,6 +618,134 @@ body {
   border-radius: var(--adfly-radius-lg);
 }
 
+/* ---------------------------- 404 ---------------------------- */
+.adfly-notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52vh;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.adfly-notfound-code {
+  font-family: var(--adfly-font-mono);
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--adfly-ink);
+}
+
+.adfly-notfound-code::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin: 14px auto 6px;
+  background: var(--adfly-brand);
+}
+
+/* ---------------------------- 表单栅格与空状态 ---------------------------- */
+.adfly-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0 20px;
+}
+
+.adfly-field-grid .adfly-field-full {
+  grid-column: 1 / -1;
+}
+
+.adfly-empty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--adfly-line-soft);
+  background: var(--adfly-surface-muted);
+  color: var(--adfly-ink-3);
+  font-size: 12.5px;
+}
+
+.adfly-empty::before {
+  content: "";
+  flex: none;
+  width: 3px;
+  height: 14px;
+  background: var(--adfly-line-strong);
+}
+
+.adfly-empty-compact {
+  margin: 0;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+}
+
+.adfly-empty-compact::before {
+  display: none;
+}
+
+/* 数组编辑器：编号 + 直角卡片 + 虚线新增按钮 */
+.adfly-array-editor .adfly-array-item.ant-card {
+  border-color: var(--adfly-line);
+}
+
+.adfly-array-editor .adfly-array-item.ant-card .ant-card-head {
+  min-height: 40px;
+  border-bottom: 1px solid var(--adfly-line-soft);
+}
+
+.adfly-array-index {
+  font-family: var(--adfly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--adfly-ink-3);
+}
+
+.adfly-array-editor .adfly-add-btn.ant-btn {
+  height: 38px;
+  border: 1px dashed var(--adfly-line-strong);
+  border-radius: var(--adfly-radius);
+  color: var(--adfly-ink-2);
+  font-size: 12.5px;
+  box-shadow: none;
+}
+
+.adfly-array-editor .adfly-add-btn.ant-btn:hover:not(:disabled) {
+  border: 1px solid var(--adfly-brand);
+  color: var(--adfly-brand-strong);
+  background: var(--adfly-brand-soft);
+}
+
+/* 编辑器内的分组小节卡片 */
+.adfly-subcard.ant-card {
+  margin-bottom: 16px;
+  border: 1px solid var(--adfly-line);
+  background: var(--adfly-surface);
+}
+
+.adfly-subcard.ant-card:last-child {
+  margin-bottom: 0;
+}
+
+.adfly-subcard.ant-card .ant-card-head {
+  min-height: 42px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--adfly-line-soft);
+}
+
+.adfly-subcard.ant-card .ant-card-head-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--adfly-ink);
+}
+
 /* ---------------------------- 统计条（直角分段） ---------------------------- */
 .adfly-strip.ant-card {
   border-radius: var(--adfly-radius-lg);

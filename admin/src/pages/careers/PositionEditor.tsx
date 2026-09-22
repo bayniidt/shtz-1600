@@ -196,6 +196,7 @@ export default function PositionEditorPage({
               onValuesChange={() => setDirty(true)}
               onFinish={(values) => void handleFinish(values)}
             >
+              <div className="adfly-field-grid">
               <Form.Item name="id" label="职位 ID（slug）" rules={[{ required: true, message: "请输入职位 ID" }]}>
                 <Input disabled={editing} placeholder="如 position-001" />
               </Form.Item>
@@ -222,11 +223,22 @@ export default function PositionEditorPage({
                 <Form.Item name="urgent" label="急招" valuePropName="checked"><Switch /></Form.Item>
               </Space>
               <Form.Item name="publishedAt" label="发布日期"><Input placeholder="如 2026-09-18" /></Form.Item>
-              <Form.Item name="summary" label="职位简介"><Input.TextArea rows={3} /></Form.Item>
-              <Form.Item name="description" label="职位职责"><Input.TextArea rows={7} /></Form.Item>
-              <Form.Item name="requirement" label="任职要求"><Input.TextArea rows={7} /></Form.Item>
-              <Form.Item name="bonus" label="加分项"><Input.TextArea rows={5} /></Form.Item>
-              <Form.Item name="applyUrl" label="投递链接"><Input /></Form.Item>
+              <Form.Item name="summary" label="职位简介" className="adfly-field-full">
+                <Input.TextArea rows={3} />
+              </Form.Item>
+              <Form.Item name="description" label="职位职责" className="adfly-field-full">
+                <Input.TextArea rows={7} />
+              </Form.Item>
+              <Form.Item name="requirement" label="任职要求" className="adfly-field-full">
+                <Input.TextArea rows={7} />
+              </Form.Item>
+              <Form.Item name="bonus" label="加分项" className="adfly-field-full">
+                <Input.TextArea rows={5} />
+              </Form.Item>
+              <Form.Item name="applyUrl" label="投递链接" className="adfly-field-full">
+                <Input />
+              </Form.Item>
+              </div>
             </Form>
           </Card>
       ) : null}

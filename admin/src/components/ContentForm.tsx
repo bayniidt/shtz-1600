@@ -151,11 +151,15 @@ function renderGroupList(field: GroupListField, path: NamePath, options: RenderO
               <Card
                 key={current.key}
                 size="small"
+                className="adfly-array-item"
                 style={{ marginBottom: 12 }}
                 title={
-                  <Typography.Text strong>
-                    {field.itemTitle ?? "条目"} {index + 1}
-                  </Typography.Text>
+                  <Space size={8} align="center">
+                    <span className="adfly-array-index">{String(index + 1).padStart(2, "0")}</span>
+                    <Typography.Text strong>
+                      {field.itemTitle ?? "条目"} {index + 1}
+                    </Typography.Text>
+                  </Space>
                 }
                 extra={
                   options.lockStructure ? null : (
@@ -213,6 +217,7 @@ function renderGroupList(field: GroupListField, path: NamePath, options: RenderO
               <Button
                 type="dashed"
                 block
+                className="adfly-add-btn"
                 icon={<PlusOutlined />}
                 disabled={field.max !== undefined && fields.length >= field.max}
                 onClick={() => add(emptyItemOf(field.fields))}

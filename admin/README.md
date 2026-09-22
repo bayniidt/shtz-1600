@@ -219,6 +219,10 @@ curl -X PUT http://localhost:4000/api/v1/settings/theme \
 - **内容管理**：`.adfly-strip` 统计条 + `Table` 内嵌 `Progress` 展示英文翻译完成度。
 - **表格**：表头浅底（`--adfly-thead`）+ 大写微标签；ProTable 的筛选区与表格共用 16px 内边距（首/末列单独补内边距），保证两段内容左右对齐且不挤压列宽；分页统一 `margin: 16px`，不再贴住卡片边缘。
 - **主题设置**：左侧分组表单卡片（`Row/Col` + `ColorPicker` 预设 + `InputNumber` 的 `px` 后缀），右侧 `sticky`「实时预览」卡片（色块、按钮 / Tag / `Progress` 示例、规格表）。
+- **表单**：antd `Form` 组件级 token（`labelFontSize: 12.5` / `itemMarginBottom: 18` / 直角必填标记）；编辑页短字段用 `.adfly-field-grid`（`auto-fit` 300px，窄屏自动堆叠），长文本字段加 `.adfly-field-full` 独占整行；`ConfigProvider` 之外的排版全部走令牌。
+- **数组编辑器**：`ArrayEditor` 与 `ContentForm` 的 `Form.List` 统一为「等宽编号（01/02/03）+ 直角卡片 + 虚线新增按钮」（`.adfly-array-item` / `.adfly-add-btn`）。
+- **空状态**：不再使用 antd `Empty` 大插画，统一 `.adfly-empty`（发丝线 + 灰底 + 12.5px 文案）紧凑样式。
+- **404**：等宽大号 `404` + 品牌色细条 + 返回概览按钮（`.adfly-notfound`）。
 - **登录页**：全屏双栏（品牌面板：细网格 + 竖条要点 + 底部 JWT 徽标；右侧表单），窄屏（≤860px）自动堆叠。
 - **交互组件**：`FloatButton.BackTop` 回到顶部；`ConfigProvider` 统一 `motion: false`。
 - 仍然遵守「后台不使用动画」约定：`motion: false` + 全局 `animation/transition = 0`。
