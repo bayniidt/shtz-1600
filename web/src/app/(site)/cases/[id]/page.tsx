@@ -9,9 +9,12 @@ import {
 } from "@/components/cases/CaseDetail";
 import { getSiteDataFromAPI } from "@/lib/db";
 
-export const dynamic = "force-dynamic";
-
 type PageProps = { params: Promise<{ id: string }> };
+
+export async function generateStaticParams() {
+  const { cases } = await getSiteDataFromAPI();
+  return cases.items.map(({ id }) => ({ id }));
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;

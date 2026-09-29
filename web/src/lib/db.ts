@@ -115,7 +115,12 @@ async function loadSiteDataFromAPI(): Promise<SiteData> {
 }
 
 /** Deduplicate the eight API reads when metadata, layouts, and pages render together. */
-export const getSiteDataFromAPI = reactCache(loadSiteDataFromAPI);
+export const getSiteDataFromAPI = reactCache(async (): Promise<SiteData> => {
+  // GitHub Pages has no server runtime. During a static export, render from
+  // the checked-in snapshot and keep the API-backed behavior elsewhere.
+  if (process.env.STATIC_EXPORT === "true") return getSiteData();
+  return loadSiteDataFromAPI();
+});
 
 export function saveSiteData(next: SiteData): void {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });

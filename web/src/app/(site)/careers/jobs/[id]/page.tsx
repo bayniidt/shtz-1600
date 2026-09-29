@@ -5,10 +5,13 @@ import { PositionDetailSection } from "@/components/careers/CareerPages";
 import { getSiteDataFromAPI } from "@/lib/db";
 import { positionCities, positionSummary } from "@/lib/careers";
 
-export const dynamic = "force-dynamic";
-
 interface PositionPageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateStaticParams() {
+  const { careers } = await getSiteDataFromAPI();
+  return careers.positions.map(({ id }) => ({ id }));
 }
 
 export async function generateMetadata({ params }: PositionPageProps): Promise<Metadata> {

@@ -11,8 +11,6 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CtaButton } from "@/components/ui/cta-button";
 import { getSiteDataFromAPI } from "@/lib/db";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "关于我们",
   description:

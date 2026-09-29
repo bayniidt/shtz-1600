@@ -6,8 +6,6 @@ import { CtaButton } from "@/components/ui/cta-button";
 import { getSiteDataFromAPI } from "@/lib/db";
 import { cityCounts, totalPositions } from "@/lib/careers";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "加入我们",
   description:

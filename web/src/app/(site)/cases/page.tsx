@@ -4,8 +4,6 @@ import { CasesExplorer } from "@/components/cases/CasesExplorer";
 import { PageHero } from "@/components/layout/PageHero";
 import { getSiteDataFromAPI } from "@/lib/db";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "客户案例",
   description:
