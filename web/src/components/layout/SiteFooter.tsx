@@ -3,10 +3,12 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import { CtaButton } from "@/components/ui/cta-button";
+import { UI_COPY, localizedHref, type Locale } from "@/lib/i18n";
 import type { SiteConfig } from "@/types";
 
-export function SiteFooter({ site }: { site: SiteConfig }) {
+export function SiteFooter({ site, locale = "zh" }: { site: SiteConfig; locale?: Locale }) {
   const year = new Date().getFullYear();
+  const copy = UI_COPY[locale];
 
   return (
     <footer id="contact" className="bg-night-gradient relative overflow-hidden text-white">
@@ -23,17 +25,15 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
         <Reveal className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-12 md:flex-row md:items-end">
           <div className="max-w-xl">
             <p className="text-xs font-semibold tracking-[0.24em] text-brand-glow uppercase">
-              GET IN TOUCH
+              {copy.footer.getInTouch}
             </p>
             <h2 className="mt-4 text-[clamp(1.6rem,3vw,2.6rem)] leading-tight font-bold text-white">
-              全球成功，从这里开始
+              {copy.footer.title}
             </h2>
-            <p className="mt-3 text-sm text-white/60">
-              欢迎咨询任何跨境出海问题的解决方案。
-            </p>
+            <p className="mt-3 text-sm text-white/60">{copy.footer.description}</p>
           </div>
           <CtaButton href={`mailto:${site.businessEmail}`} size="lg">
-            联系我们
+            {copy.footer.contactUs}
           </CtaButton>
         </Reveal>
 
@@ -41,13 +41,20 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
           <div>
             <BrandLogo logoText={site.logoText} logoSub={site.logoSub} variant="light" />
             <p className="mt-5 text-sm leading-relaxed text-white/60">
-              {site.name}
-              <br />
-              {site.nameEn}
+              {locale === "zh" ? (
+                <>
+                  {site.name}
+                  <br />
+                  {site.nameEn}
+                </>
+              ) : (
+                site.nameEn || site.name
+              )}
             </p>
             <div className="mt-5 space-y-1.5 text-sm text-white/60">
               <p>
-                商务合作：
+                {copy.footer.business}
+                {locale === "zh" ? "：" : ": "}
                 <a
                   href={`mailto:${site.businessEmail}`}
                   className="text-white transition-colors hover:text-brand-glow"
@@ -56,7 +63,8 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
                 </a>
               </p>
               <p>
-                客户咨询：
+                {copy.footer.customerService}
+                {locale === "zh" ? "：" : ": "}
                 <a
                   href={`mailto:${site.contactEmail}`}
                   className="text-white transition-colors hover:text-brand-glow"
@@ -69,12 +77,12 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
 
           <nav className="flex flex-col gap-3 text-sm">
             <p className="mb-1 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">
-              网站导航
+              {copy.footer.navigation}
             </p>
             {site.footerLinks.map((item) => (
               <Link
                 key={`${item.href}-${item.label}`}
-                href={item.href}
+                href={localizedHref(item.href, locale)}
                 {...(item.external || item.href.startsWith("http")
                   ? { target: "_blank", rel: "noreferrer noopener" }
                   : {})}
@@ -87,10 +95,14 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
 
           <div className="text-sm">
             <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">
-              联系我们
+              {copy.footer.contactUs}
             </p>
             <p className="leading-relaxed text-white/70">{site.address}</p>
-            <p className="mt-4 text-white/70">电话：{site.phone}</p>
+            <p className="mt-4 text-white/70">
+              {copy.footer.phone}
+              {locale === "zh" ? "：" : ": "}
+              {site.phone}
+            </p>
             <div className="mt-5 flex gap-3">
               {["WeChat", "LinkedIn", "X"].map((name) => (
                 <span
@@ -106,7 +118,7 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
 
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {site.name} All Rights Reserved.
+            © {year} {site.name} {copy.footer.rights}
           </p>
           <p>{site.icp}</p>
         </div>

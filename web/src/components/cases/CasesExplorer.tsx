@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { CaseCard } from "@/components/cases/CaseCard";
+import { UI_COPY, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { CaseItem, CasesPageContent, IndustryKey } from "@/types";
 
@@ -11,10 +12,13 @@ const PAGE_SIZE = 6;
 export function CasesExplorer({
   items,
   page,
+  locale = "zh",
 }: {
   items: CaseItem[];
   page: CasesPageContent;
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
   const [filter, setFilter] = useState<IndustryKey | "all">("all");
   const [current, setCurrent] = useState(1);
 
@@ -39,7 +43,7 @@ export function CasesExplorer({
       <div
         className="flex flex-wrap items-center justify-center gap-2"
         role="tablist"
-        aria-label="行业筛选"
+        aria-label={copy.cases.filterLabel}
       >
         {page.filters.map((item) => {
           const isActive = item.key === filter;
@@ -70,12 +74,13 @@ export function CasesExplorer({
             item={item}
             industryLabel={labelOf(item.industry)}
             delay={i * 60}
+            locale={locale}
           />
         ))}
       </div>
 
       {visible.length === 0 ? (
-        <p className="py-20 text-center text-sm text-ink-4">该分类下暂无案例。</p>
+        <p className="py-20 text-center text-sm text-ink-4">{copy.cases.empty}</p>
       ) : null}
 
       {totalPages > 1 ? (

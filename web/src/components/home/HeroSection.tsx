@@ -3,16 +3,21 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
 import { assetPath } from "@/lib/asset-path";
+import { UI_COPY, type Locale } from "@/lib/i18n";
 import type { ShtzLogo } from "@/lib/shtz-assets";
 import type { HeroContent } from "@/types";
 
 export function HeroSection({
   content,
   mediaLogos,
+  locale = "zh",
 }: {
   content: HeroContent;
   mediaLogos: ShtzLogo[];
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 lg:pt-44 lg:pb-24">
       <div aria-hidden className="grain-grid absolute inset-0 opacity-70" />
@@ -68,13 +73,13 @@ export function HeroSection({
         </div>
 
         <Reveal delay={200} className="relative">
-          <HeroVisual />
+          <HeroVisual locale={locale} />
         </Reveal>
       </div>
 
       <Reveal delay={120} className="relative mt-16 lg:mt-20">
         <div className="flex items-center gap-3 text-xs tracking-[0.2em] text-ink-4 uppercase">
-          <span className="container-x w-full">合作媒体资源</span>
+          <span className="container-x w-full">{copy.home.mediaResources}</span>
         </div>
         <div className="relative mt-4 overflow-hidden border-y border-line bg-white/60 py-4">
           {mediaLogos.length > 0 ? (
@@ -116,18 +121,20 @@ export function HeroSection({
   );
 }
 
-function HeroVisual() {
+function HeroVisual({ locale }: { locale: Locale }) {
+  const copy = UI_COPY[locale];
+
   return (
     <div className="relative mx-auto max-w-[520px]">
       <div className="card-surface relative overflow-visible border border-line/70 p-6">
         <div className="flex items-center justify-between pr-20 sm:pr-24">
           <div>
             <p className="text-xs tracking-[0.18em] text-ink-4 uppercase">Flow AI · Live</p>
-            <p className="mt-1 text-lg font-semibold text-ink">投放效果实时看板</p>
+            <p className="mt-1 text-lg font-semibold text-ink">{copy.home.dashboardTitle}</p>
           </div>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">
             <span className="size-1.5 rounded-full bg-brand" />
-            运行中
+            {copy.home.running}
           </span>
         </div>
 
@@ -142,9 +149,9 @@ function HeroVisual() {
           ))}
         </div>
         <div className="mt-3 flex justify-between text-[11px] text-ink-4">
-          <span>曝光</span>
-          <span>点击</span>
-          <span>转化</span>
+          <span>{copy.home.exposure}</span>
+          <span>{copy.home.clicks}</span>
+          <span>{copy.home.conversions}</span>
           <span>ROI</span>
         </div>
 
@@ -176,7 +183,7 @@ function HeroVisual() {
         <span className="grid size-8 place-items-center rounded-lg bg-brand-soft text-sm font-bold text-brand">
           AI
         </span>
-        <span className="text-xs font-medium text-ink">素材自动生成</span>
+        <span className="text-xs font-medium text-ink">{copy.home.aiAsset}</span>
       </div>
       <div
         className="card-surface absolute -right-4 -bottom-6 hidden animate-[var(--animate-float-slow)] items-center gap-2 px-4 py-3 sm:flex"
@@ -185,7 +192,7 @@ function HeroVisual() {
         <span className="grid size-8 place-items-center rounded-lg bg-brand-soft text-sm font-bold text-brand">
           50+
         </span>
-        <span className="text-xs font-medium text-ink">媒体渠道直连</span>
+        <span className="text-xs font-medium text-ink">{copy.home.mediaChannels}</span>
       </div>
     </div>
   );

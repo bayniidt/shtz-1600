@@ -4,16 +4,25 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cityCounts, hotPositions, isOn, positionCities, totalPositions } from "@/lib/careers";
+import { UI_COPY, localizedHref, type Locale } from "@/lib/i18n";
 import type { CareersContent } from "@/types";
 
-export function CultureSection({ content }: { content: CareersContent }) {
+export function CultureSection({
+  content,
+  locale = "zh",
+}: {
+  content: CareersContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y bg-white">
       <div className="container-x">
         <SectionHeading
           eyebrow="CORPORATE CULTURE"
           title={content.cultureTitle}
-          description="ADFLY 坚信，优秀的企业文化可以使我们看得更远、走得更稳。"
+          description={copy.careers.cultureDescription}
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {content.culture.map((item, i) => (
@@ -37,7 +46,15 @@ export function CultureSection({ content }: { content: CareersContent }) {
   );
 }
 
-export function BenefitsSection({ content }: { content: CareersContent }) {
+export function BenefitsSection({
+  content,
+  locale = "zh",
+}: {
+  content: CareersContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y relative overflow-hidden">
       <div aria-hidden className="grain-grid absolute inset-0 opacity-50" />
@@ -45,7 +62,7 @@ export function BenefitsSection({ content }: { content: CareersContent }) {
         <SectionHeading
           eyebrow="BENEFITS"
           title={content.benefitsTitle}
-          description="开放多元的团队氛围、完善多样的内部培训，让所有员工快乐成长。"
+          description={copy.careers.benefitsDescription}
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {content.benefits.map((group, i) => (
@@ -78,7 +95,14 @@ export function BenefitsSection({ content }: { content: CareersContent }) {
 }
 
 /** 招聘城市索引 — every card leads to that city's position list. */
-export function CityIndexSection({ content }: { content: CareersContent }) {
+export function CityIndexSection({
+  content,
+  locale = "zh",
+}: {
+  content: CareersContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
   const counts = cityCounts(content);
   const featured = content.cities.filter((city) => isOn(city.featured));
   const cities = featured.length > 0 ? featured : content.cities;
@@ -98,15 +122,15 @@ export function CityIndexSection({ content }: { content: CareersContent }) {
           {cities.map((city, i) => (
             <Reveal key={city.id} delay={i * 60}>
               <Link
-                href={`/careers/cities/${city.id}`}
+                href={localizedHref(`/careers/cities/${city.id}`, locale)}
                 className="card-surface group flex h-full flex-col justify-between border border-transparent p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/30"
               >
                 <div>
                   <div className="flex items-baseline justify-between gap-3">
                     <h3 className="text-xl font-semibold text-ink transition-colors duration-300 group-hover:text-brand">
-                      {city.name}
+                      {locale === "en" ? city.nameEn ?? city.name : city.name}
                     </h3>
-                    {city.nameEn ? (
+                    {locale === "zh" && city.nameEn ? (
                       <span className="text-[11px] tracking-[0.14em] text-ink-4 uppercase">
                         {city.nameEn}
                       </span>
@@ -118,10 +142,10 @@ export function CityIndexSection({ content }: { content: CareersContent }) {
                 </div>
                 <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
                   <span className="text-[13px] font-semibold text-brand">
-                    {counts[city.id] ?? 0} 个在招职位
+                    {copy.careers.cityJobs(counts[city.id] ?? 0)}
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand">
-                    查看职位 →
+                    {copy.careers.viewPositions}
                   </span>
                 </div>
               </Link>
@@ -130,7 +154,7 @@ export function CityIndexSection({ content }: { content: CareersContent }) {
         </div>
 
         <p className="mt-10 text-center text-[13px] text-ink-4">
-          共 {totalPositions(content)} 个在招职位 · 简历投递：
+          {copy.careers.totalJobs(totalPositions(content))} · {copy.careers.resumeEmail}：
           <a
             href={`mailto:${content.applyEmail}`}
             className="ml-1 text-brand transition-transform duration-300 hover:translate-x-0.5"
@@ -144,7 +168,14 @@ export function CityIndexSection({ content }: { content: CareersContent }) {
 }
 
 /** 热招职位 — links to the in-site position detail page. */
-export function JobsSection({ content }: { content: CareersContent }) {
+export function JobsSection({
+  content,
+  locale = "zh",
+}: {
+  content: CareersContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
   const jobs = hotPositions(content, 8);
 
   return (
@@ -153,7 +184,7 @@ export function JobsSection({ content }: { content: CareersContent }) {
         <SectionHeading
           eyebrow={content.jobsEyebrow}
           title={content.jobsTitle}
-          description={`简历投递：${content.applyEmail}，或进入职位详情查看完整岗位说明。`}
+          description={copy.careers.jobsDescription(content.applyEmail)}
         />
 
         <div className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-card border border-line bg-white">
@@ -162,7 +193,7 @@ export function JobsSection({ content }: { content: CareersContent }) {
             return (
               <Reveal key={job.id} delay={i * 40}>
                 <Link
-                  href={`/careers/jobs/${job.id}`}
+                  href={localizedHref(`/careers/jobs/${job.id}`, locale)}
                   className="group flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 transition-colors duration-300 last:border-0 hover:bg-surface/70"
                 >
                   <div className="flex items-center gap-3">
@@ -172,7 +203,7 @@ export function JobsSection({ content }: { content: CareersContent }) {
                         {job.title}
                         {isOn(job.urgent) ? (
                           <span className="ml-2 rounded-full bg-accent-brand/10 px-2 py-0.5 text-[11px] font-semibold text-accent-brand">
-                            急聘
+                            {copy.careers.urgent}
                           </span>
                         ) : null}
                       </p>
@@ -184,7 +215,7 @@ export function JobsSection({ content }: { content: CareersContent }) {
                     </div>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand">
-                    查看详情 →
+                    {copy.careers.viewDetails}
                   </span>
                 </Link>
               </Reveal>
@@ -194,10 +225,10 @@ export function JobsSection({ content }: { content: CareersContent }) {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <CtaButton href="#cities" size="lg">
-            浏览全部招聘城市
+            {copy.careers.browseCities}
           </CtaButton>
           <CtaButton href={`mailto:${content.applyEmail}`} variant="outline" size="lg">
-            投递简历
+            {copy.careers.submitResume}
           </CtaButton>
         </div>
       </div>

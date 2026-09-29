@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/motion/Reveal";
+import { UI_COPY, localizedHref, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { CaseItem } from "@/types";
 
@@ -10,16 +11,20 @@ export function CaseCard({
   industryLabel,
   delay = 0,
   className,
+  locale = "zh",
 }: {
   item: CaseItem;
   industryLabel: string;
   delay?: number;
   className?: string;
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
+
   return (
     <Reveal delay={delay} className={cn("h-full", className)}>
       <Link
-        href={`/cases/${item.id}`}
+        href={localizedHref(`/cases/${item.id}`, locale)}
         className="card-surface group flex h-full flex-col overflow-hidden border border-transparent"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-surface">
@@ -41,7 +46,7 @@ export function CaseCard({
           </div>
           {item.featured ? (
             <span className="absolute top-4 right-4 rounded-full bg-brand-gradient px-3 py-1 text-[11px] font-semibold text-white">
-              精选
+              {copy.cases.featured}
             </span>
           ) : null}
         </div>
@@ -67,7 +72,7 @@ export function CaseCard({
           </div>
 
           <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-brand opacity-0 transition-all duration-300 group-hover:opacity-100">
-            查看案例
+            {copy.cases.viewCase}
             <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true">
               <path
                 d="M2 8h11M9 3.5 13.5 8 9 12.5"

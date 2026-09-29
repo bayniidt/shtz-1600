@@ -1,9 +1,18 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { UI_COPY, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { HonorsSectionContent } from "@/types";
 
-export function HonorsSection({ content }: { content: HonorsSectionContent }) {
+export function HonorsSection({
+  content,
+  locale = "zh",
+}: {
+  content: HonorsSectionContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y relative overflow-hidden bg-surface">
       <div aria-hidden className="grain-grid absolute inset-0 opacity-50" />
@@ -16,7 +25,7 @@ export function HonorsSection({ content }: { content: HonorsSectionContent }) {
               <Reveal className="mb-6 flex items-center gap-4">
                 <h3 className="text-lg font-semibold text-ink">{group.title}</h3>
                 <span className="h-px flex-1 bg-line" />
-                <span className="text-xs text-ink-4">{group.items.length} 项</span>
+                <span className="text-xs text-ink-4">{copy.home.honorItems(group.items.length)}</span>
               </Reveal>
 
               <div

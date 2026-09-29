@@ -1,9 +1,18 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { UI_COPY, type Locale } from "@/lib/i18n";
 import type { MediaSectionContent } from "@/types";
 
-export function MediaSection({ content }: { content: MediaSectionContent }) {
+export function MediaSection({
+  content,
+  locale = "zh",
+}: {
+  content: MediaSectionContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y relative">
       <div className="container-x">
@@ -41,8 +50,12 @@ export function MediaSection({ content }: { content: MediaSectionContent }) {
                 }}
               />
               <div className="relative flex items-center justify-between">
-                <p className="text-sm font-semibold text-ink">媒体资源矩阵</p>
-                <p className="text-xs text-ink-4">共 {content.partners.length} 个直连渠道</p>
+                <p className="text-sm font-semibold text-ink">{copy.home.mediaMatrix}</p>
+                <p className="text-xs text-ink-4">
+                  {locale === "en"
+                    ? `${content.partners.length} ${copy.home.directChannels}`
+                    : `共 ${content.partners.length} 个${copy.home.directChannels}`}
+                </p>
               </div>
 
               <div className="relative mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -72,7 +85,7 @@ export function MediaSection({ content }: { content: MediaSectionContent }) {
 
               <div className="relative mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-night-gradient px-5 py-4">
                 <p className="text-sm text-white/70">
-                  官方一级代理 · 0 元开户 · 最快当天过审
+                  {copy.home.offer}
                 </p>
                 <CtaButton href={content.cta.href} size="md" variant="light">
                   {content.cta.label}

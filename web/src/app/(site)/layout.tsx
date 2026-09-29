@@ -7,9 +7,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
 
   return (
     <>
-      <SiteHeader site={site} />
+      <SiteHeader site={site} locale="zh" />
       <main className="min-h-screen flex-1">{children}</main>
-      <SiteFooter site={site} />
+      <SiteFooter site={site} locale="zh" />
     </>
   );
 }

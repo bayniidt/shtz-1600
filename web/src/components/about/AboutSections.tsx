@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { UI_COPY, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { AboutContent } from "@/types";
 
@@ -60,17 +61,21 @@ export function VisionSection({ content }: { content: AboutContent }) {
 
 export function TimelineSection({
   items,
+  locale = "zh",
 }: {
   items: AboutContent["timeline"];
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y relative overflow-hidden">
       <div aria-hidden className="grain-grid absolute inset-0 opacity-50" />
       <div className="container-x relative">
         <SectionHeading
           eyebrow="DEVELOPMENT HISTORY"
-          title="发展历程"
-          description="从 2017 年至今，持续深耕出海效果营销与智能广告技术。"
+          title={copy.about.developmentHistory}
+          description={copy.about.developmentDescription}
         />
 
         <div className="relative mt-14">
@@ -113,11 +118,23 @@ export function TimelineSection({
   );
 }
 
-export function TeamSection({ content }: { content: AboutContent }) {
+export function TeamSection({
+  content,
+  locale = "zh",
+}: {
+  content: AboutContent;
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y bg-white">
       <div className="container-x">
-        <SectionHeading eyebrow="OUR TEAM" title="我们的精英团队" description={content.teamIntro} />
+        <SectionHeading
+          eyebrow="OUR TEAM"
+          title={copy.about.teamTitle}
+          description={content.teamIntro}
+        />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.team.map((member, i) => (
@@ -151,7 +168,15 @@ export function TeamSection({ content }: { content: AboutContent }) {
   );
 }
 
-export function OfficesSection({ offices }: { offices: AboutContent["offices"] }) {
+export function OfficesSection({
+  offices,
+  locale = "zh",
+}: {
+  offices: AboutContent["offices"];
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y relative overflow-hidden bg-night-gradient text-white">
       <div
@@ -164,8 +189,8 @@ export function OfficesSection({ offices }: { offices: AboutContent["offices"] }
       <div className="container-x relative">
         <SectionHeading
           eyebrow="GLOBAL LAYOUT"
-          title="全球布局"
-          description="以上海为总部，辐射广州、北京、成都与日本，为出海客户提供在地化服务。"
+          title={copy.about.globalLayout}
+          description={copy.about.globalDescription}
           tone="light"
         />
 

@@ -1,0 +1,567 @@
+{
+  "site": {
+    "logoSub": "Intelligent Marketing",
+    "nav": [
+      {
+        "label": "Services",
+        "href": "/"
+      },
+      {
+        "label": "Customer Cases",
+        "href": "/cases"
+      },
+      {
+        "label": "About Us",
+        "href": "/about"
+      },
+      {
+        "label": "Careers",
+        "href": "/careers"
+      }
+    ],
+    "address": "Room 710, Guangqi City, No. 425 Yishan Road, Xuhui District, Shanghai",
+    "seo": {
+      "title": "ADFLY | Global AI-Powered Martech Solutions",
+      "description": "ADFLY helps brands grow globally with performance marketing, AI-driven creative production and direct access to 50+ leading media channels.",
+      "keywords": "global marketing, overseas advertising, Facebook agency, Google agency, TikTok agency, AI marketing, performance marketing, ADFLY"
+    },
+    "footerLinks": [
+      {
+        "label": "Services",
+        "href": "/"
+      },
+      {
+        "label": "Customer Cases",
+        "href": "/cases"
+      },
+      {
+        "label": "About Us",
+        "href": "/about"
+      },
+      {
+        "label": "Careers",
+        "href": "/careers"
+      },
+      {
+        "label": "Feishu Careers",
+        "href": "https://q6y68vu0j8.jobs.feishu.cn/index"
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "GLOBAL AI-POWERED MARTECH SOLUTION PROVIDER",
+      "title": "Global AI-Powered Martech Solutions",
+      "titleEn": "GLOBAL AI-POWERED MARTECH SOLUTION PROVIDER",
+      "description": "Reach global audiences through 50+ leading channels including Facebook, Google and TikTok, powered by AI and large-scale performance data.",
+      "primaryCta": {
+        "label": "Open an Account",
+        "href": "/cases"
+      },
+      "secondaryCta": {
+        "label": "Book a Consultation",
+        "href": "#contact"
+      },
+      "stats": [
+        {
+          "value": "2017",
+          "label": "Founded"
+        },
+        {
+          "value": "4000+",
+          "label": "Clients Served Annually"
+        },
+        {
+          "value": "10+",
+          "label": "Years of Ad Experience"
+        },
+        {
+          "value": "50+",
+          "label": "Global Media Channels"
+        }
+      ]
+    },
+    "media": {
+      "title": "Direct Access to 50+ Leading Global Media Platforms",
+      "subtitle": "Official tier-one partner of TikTok and Google",
+      "cta": {
+        "label": "Open an Account",
+        "href": "#contact"
+      },
+      "benefits": [
+        {
+          "title": "Official Certified Agency",
+          "description": "Authorized by Meta, Google, TikTok, SmartNews and more, with a fast-track account-opening process."
+        },
+        {
+          "title": "Zero-Fee Account Opening",
+          "description": "No setup or service fee, with review completed as quickly as the same day."
+        },
+        {
+          "title": "Tier-One Agency Support",
+          "description": "Preferred rebates and traffic support help every budget work harder."
+        },
+        {
+          "title": "One-to-One Campaign Guidance",
+          "description": "Experienced optimization specialists manage everything from setup to scaling."
+        },
+        {
+          "title": "All-in-One Media Account Management",
+          "description": "Manage budgets, creative and performance across platforms from one dashboard."
+        },
+        {
+          "title": "Multi-Platform, Multi-Currency Top-Ups",
+          "description": "Efficient and transparent multi-currency settlement and compliant top-ups."
+        }
+      ]
+    },
+    "flow": {
+      "title": "AI-Powered Advertising System",
+      "description": "Scroll through four core capabilities and see how Flow AI powers the full campaign lifecycle.",
+      "cta": {
+        "label": "Try It Now",
+        "href": "#contact"
+      },
+      "orbit": [
+        {
+          "label": "Large Models"
+        },
+        {
+          "label": "Machine Learning"
+        },
+        {
+          "label": "Massive Data"
+        }
+      ],
+      "features": [
+        {
+          "title": "One-Click Creative Generation",
+          "mark": "Flow Creative",
+          "description": "Analyze product links and images, extract selling points, match the right content strategy, and rapidly generate high-converting creative informed by proven ad cases.",
+          "points": "Link & image analysis / Selling-point extraction / Content strategy matching / High-volume creative production"
+        },
+        {
+          "title": "Precision Performance Analytics",
+          "mark": "Flow Insight",
+          "description": "Analyze audiences, market trends and campaign performance to match the right customer segments and traffic channels, from product selection to bidding strategy.",
+          "points": "Audience insights / Market trend tracking / Performance attribution / Audience and placement matching"
+        },
+        {
+          "title": "Machine Learning Engine",
+          "mark": "Flow Engine",
+          "description": "An AI Agent built on large models combines real campaign data and industry expertise to continuously optimize strategies across the full growth journey.",
+          "points": "AI Agent analysis / Campaign data intelligence / Continuous creative learning / Automated full-funnel optimization"
+        },
+        {
+          "title": "Campaign Optimization Management",
+          "mark": "Flow Optimize",
+          "description": "Track campaign performance in real time, identify anomalies and conversion bottlenecks, and optimize every stage from launch to iteration.",
+          "points": "Real-time tracking / Anomaly detection / Conversion diagnosis / Full-cycle management"
+        }
+      ]
+    },
+    "clients": {
+      "title": "Chosen by 10,000+ Clients",
+      "subtitle": "Serving gaming, apps, ecommerce, finance, blockchain and more",
+      "industries": [
+        {
+          "key": "ecommerce",
+          "name": "Ecommerce",
+          "stat": "10,000+ incremental visits in a single day",
+          "description": "Connect product selection, creative, media buying and repeat purchase across marketplaces and DTC stores."
+        },
+        {
+          "key": "game",
+          "name": "Gaming",
+          "stat": "10,000+ incremental users in a single day",
+          "description": "Global user acquisition and creative production across testing, launch and long-term live operations."
+        },
+        {
+          "key": "app",
+          "name": "Apps",
+          "stat": "10,000+ downloads in a single day",
+          "description": "Scale high-quality users through data-driven install, retention and monetization optimization."
+        }
+      ]
+    },
+    "strength": {
+      "title": "Make Global Growth Simpler",
+      "cta": {
+        "label": "Contact Us",
+        "href": "#contact"
+      },
+      "nodes": [
+        {
+          "city": "Beijing",
+          "role": "Beijing Office",
+          "x": "65",
+          "y": "42"
+        },
+        {
+          "city": "Chengdu",
+          "role": "Southwest Service Center",
+          "x": "55",
+          "y": "54"
+        },
+        {
+          "city": "Shanghai HQ",
+          "role": "Global Headquarters",
+          "x": "69",
+          "y": "57",
+          "major": "yes"
+        },
+        {
+          "city": "Guangzhou",
+          "role": "Guangzhou Office",
+          "x": "62",
+          "y": "63"
+        },
+        {
+          "city": "Japan",
+          "role": "Japan Subsidiary",
+          "x": "82",
+          "y": "41"
+        }
+      ],
+      "stats": [
+        {
+          "value": "2017",
+          "suffix": "",
+          "label": "Founded"
+        },
+        {
+          "value": "4000",
+          "suffix": "+",
+          "label": "Clients Served Annually"
+        },
+        {
+          "value": "10",
+          "suffix": "+",
+          "label": "Years of Ad Experience"
+        },
+        {
+          "value": "50",
+          "suffix": "+",
+          "label": "Global Media Channels"
+        }
+      ],
+      "description": "ADFLY is a Shanghai-based performance marketing company focused on helping brands grow globally. We have served more than 10,000 clients, operate localized teams across Japan, Thailand and other markets, and support gaming, apps, ecommerce, finance and blockchain businesses."
+    },
+    "honors": {
+      "title": "Awards and Industry Recognition",
+      "subtitle": "Credentials and recognition that reflect ADFLY's expertise and delivery capability",
+      "groups": [
+        {
+          "key": "qualification",
+          "title": "Qualifications",
+          "items": [
+            {
+              "title": "National High-Tech Enterprise",
+              "issuer": "National level · Ministry of Science and Technology",
+              "year": "2021"
+            },
+            {
+              "title": "National Specialized and Innovative Enterprise",
+              "issuer": "National level · Ministry of Industry and Information Technology",
+              "year": "2023"
+            },
+            {
+              "title": "Shanghai Innovative SME",
+              "issuer": "Municipal level · Shanghai",
+              "year": "2022"
+            }
+          ]
+        },
+        {
+          "key": "industry",
+          "title": "Industry Recognition",
+          "items": [
+            {
+              "title": "China Top 100 Digital Marketing Company",
+              "issuer": "China Digital Marketing Summit",
+              "year": "2024"
+            },
+            {
+              "title": "Most Investable High-Growth Enterprise",
+              "issuer": "Global Growth Summit",
+              "year": "2024"
+            },
+            {
+              "title": "CFS 2026 AI Innovation Pioneer Award",
+              "issuer": "CFS Finance Summit",
+              "year": "2026"
+            },
+            {
+              "title": "TikTok Breakthrough Growth Award",
+              "issuer": "TikTok for Business",
+              "year": "2025"
+            },
+            {
+              "title": "2025 Dark Horse Partner",
+              "issuer": "TikTok for Business",
+              "year": "2025"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "about": {
+    "heroEyebrow": "ABOUT ADFLY",
+    "heroTitle": "Global success starts here",
+    "heroDescription": "Founded in Shanghai in 2017, ADFLY focuses on performance marketing solutions designed around brands expanding globally. We combine campaign goals, audience insight and integrated execution, and are a trusted partner of Facebook, Google and SmartNews.",
+    "stats": [
+      {
+        "value": "2017",
+        "unit": "",
+        "label": "Founded"
+      },
+      {
+        "value": "10000",
+        "unit": "+",
+        "label": "Clients Served"
+      },
+      {
+        "value": "50",
+        "unit": "+",
+        "label": "Global Media Channels"
+      },
+      {
+        "value": "10",
+        "unit": "+",
+        "label": "Years of Ad Experience"
+      }
+    ],
+    "visionTitle": "Connecting Chinese Businesses with Global Consumers",
+    "visionText": "Our ADFLYMIND advertising system identifies the factors that most influence campaign performance, recommends stronger creative directions, and turns those insights into more efficient, lower-cost growth.",
+    "values": [
+      {
+        "title": "MISSION",
+        "description": "Help clients go global and make their products more successful."
+      },
+      {
+        "title": "VISION",
+        "description": "Be the advertising company that understands data best, and the data company that understands advertising best."
+      },
+      {
+        "title": "PRINCIPLE",
+        "description": "Let data guide every decision."
+      }
+    ],
+    "timeline": [
+      {
+        "period": "2017",
+        "title": "ADFLY Is Founded",
+        "description": "Built a performance marketing team for global growth and served the first gaming and utility clients."
+      },
+      {
+        "period": "2018",
+        "title": "Named an Official SmartNews Agency",
+        "description": "Also earned preferred partner status with Facebook and Google, serving more than 1,000 clients."
+      },
+      {
+        "period": "2019",
+        "title": "Expanded into Global Ecommerce",
+        "description": "Created industry solutions for cross-border ecommerce, DTC brands and marketplace sellers."
+      },
+      {
+        "period": "2021",
+        "title": "Local Teams Launched Overseas",
+        "description": "Opened local teams in Japan and Thailand to provide PR and localized content services."
+      },
+      {
+        "period": "2023",
+        "title": "AI Advertising System",
+        "description": "Used large models to drive creative generation, analytics and campaign optimization across the full growth journey."
+      },
+      {
+        "period": "2025",
+        "title": "10,000+ Clients Served",
+        "description": "Expanded support across gaming, apps, ecommerce, finance and blockchain."
+      }
+    ],
+    "teamIntro": "Our core team comes from leading internet companies including Cheetah Mobile, NetEase and Kingnet. We also bring together experienced SEM specialists who provide end-to-end consulting and managed service across media selection, creative production and performance monitoring.",
+    "team": [
+      {
+        "name": "莫夏芸",
+        "role": "Chairwoman / CEO",
+        "avatar": "/images/adfly/new_team_1.png",
+        "bio": "A serial entrepreneur and one of China's early global growth pioneers. She holds a master's degree in entrepreneurship and innovation from Nanyang Technological University and has 10 years of management experience across three successful companies."
+      },
+      {
+        "name": "Roy Yao",
+        "role": "Chief Digital Officer",
+        "avatar": "/images/adfly/team_2.png",
+        "bio": "A serial entrepreneur and founder of the cross-border logistics SaaS platform Fengyun. He founded fashion ecommerce brand Plern and global search startup Ororx, and co-founded Plato AI to serve ecommerce, public opinion and large-model clients."
+      },
+      {
+        "name": "Aaron",
+        "role": "Optimization Director",
+        "avatar": "/images/adfly/new_team_3.png",
+        "bio": "With eight years in global marketing, Aaron is experienced in app and mobile game acquisition across leading channels, having supported clients and products including Dota Legends, Goddess Alliance, Invasion and Pocket7Games."
+      }
+    ],
+    "offices": [
+      {
+        "city": "Shanghai",
+        "label": "Headquarters",
+        "address": "Room 710, Guangqi City, No. 425 Yishan Road, Xuhui District, Shanghai"
+      },
+      {
+        "city": "Guangzhou",
+        "label": "Guangzhou Office",
+        "address": "5F, Damazhan Business Center, Lizhiwan, Guangzhou, Guangdong"
+      },
+      {
+        "city": "Beijing",
+        "label": "Beijing Office",
+        "address": "8F, Guoxin Building, No. 1 Courtyard, Chuangda 3rd Road, Chaoyang District, Beijing"
+      },
+      {
+        "city": "Chengdu",
+        "label": "Chengdu Office",
+        "address": "1F, 6A, Jingrong Hui, Tianfu 5th Street, Wuhou District, Chengdu, Sichuan"
+      },
+      {
+        "city": "Tokyo",
+        "label": "Japan Office",
+        "address": "189-51 Naganuma-cho, Inage-ku, Chiba, Japan"
+      }
+    ]
+  },
+  "cases": {
+    "page": {
+      "title": "Global Marketing Success Stories",
+      "subtitle": "Data- and creative-driven growth stories from around the world",
+      "filters": [
+        {
+          "key": "all",
+          "label": "All"
+        },
+        {
+          "key": "ecommerce",
+          "label": "Ecommerce"
+        },
+        {
+          "key": "game",
+          "label": "Gaming"
+        },
+        {
+          "key": "app",
+          "label": "Apps"
+        }
+      ]
+    }
+  },
+  "careers": {
+    "heroTitle": "Join ADFLY",
+    "heroSubtitle": "Our world is your canvas",
+    "heroDescription": "Join a globally minded team of ambitious marketers and help ADFLY deliver on its mission to support Chinese businesses as they grow worldwide.",
+    "citiesEyebrow": "OPEN POSITIONS",
+    "citiesTitle": "Hiring Cities",
+    "citiesDescription": "Choose a city where you live or want to work and explore all open roles.",
+    "cultureTitle": "Our Culture",
+    "culture": [
+      {
+        "title": "Client First",
+        "description": "Start from the client's perspective and respond to what matters most."
+      },
+      {
+        "title": "Results Driven",
+        "description": "Measure success by client satisfaction, value creation and stronger connections."
+      },
+      {
+        "title": "Open Communication",
+        "description": "Face challenges directly, speak up and listen with empathy."
+      },
+      {
+        "title": "Growth Mindset",
+        "description": "Stay curious, keep learning and embrace new challenges."
+      },
+      {
+        "title": "Innovation with Discipline",
+        "description": "Keep improving the fundamentals while exploring new ways to win."
+      }
+    ],
+    "benefitsTitle": "Why Join Us",
+    "benefits": [
+      {
+        "group": "Core Benefits",
+        "items": "Social insurance & housing fund / Annual bonus / Paid leave / Annual health check"
+      },
+      {
+        "group": "Incentives",
+        "items": "Business bonus / Referral bonus / Long-service award / Equity incentive"
+      },
+      {
+        "group": "Growth Support",
+        "items": "Structured training / Leadership development / Global rotation / Industry summits"
+      },
+      {
+        "group": "Everyday Care",
+        "items": "Free breakfast / Phone allowance / Gym membership / Team events"
+      }
+    ],
+    "jobsEyebrow": "FEATURED ROLES",
+    "jobsTitle": "Featured Roles",
+    "cities": [
+      {
+        "id": "shanghai",
+        "name": "Shanghai",
+        "nameEn": "Shanghai",
+        "code": "CT_125",
+        "summary": "Global headquarters · Media strategy / Product technology / Brand marketing",
+        "featured": "yes"
+      },
+      {
+        "id": "shenzhen",
+        "name": "Shenzhen",
+        "nameEn": "Shenzhen",
+        "code": "CT_128",
+        "summary": "South China hub · Ecommerce brands / Amazon operations / Client success",
+        "featured": "yes"
+      },
+      {
+        "id": "guangzhou",
+        "name": "Guangzhou",
+        "nameEn": "Guangzhou",
+        "code": "CT_45",
+        "summary": "R&D and advertising operations · Java engineering / QA / Amazon advertising",
+        "featured": "yes"
+      },
+      {
+        "id": "beijing",
+        "name": "Beijing",
+        "nameEn": "Beijing",
+        "code": "CT_11",
+        "summary": "North China hub · Gaming clients and business development",
+        "featured": "yes"
+      },
+      {
+        "id": "chengdu",
+        "name": "Chengdu",
+        "nameEn": "Chengdu",
+        "code": "CT_22",
+        "summary": "Southwest hub · Creative design / Game optimization / Business development",
+        "featured": "yes"
+      },
+      {
+        "id": "hefei",
+        "name": "Hefei",
+        "nameEn": "Hefei",
+        "code": "CT_55",
+        "summary": "AI content center · AI video generation / AI directing",
+        "featured": "yes"
+      },
+      {
+        "id": "xian",
+        "name": "Xi'an",
+        "nameEn": "Xi'an",
+        "code": "CT_155",
+        "summary": "R&D center · Java engineering",
+        "featured": "yes"
+      }
+    ],
+    "applyEmail": "hanwen@adflymobile.com"
+  }
+}

@@ -12,6 +12,7 @@ import type {
   SiteConfig,
   SiteData,
 } from "@/types";
+import type { Locale } from "@/lib/i18n";
 
 /**
  * File-backed content store.
@@ -23,6 +24,7 @@ import type {
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "site.json");
+const ENGLISH_DATA_FILE = path.join(DATA_DIR, "site.en.json");
 const API_BASE_URL = (
   process.env.ADMIN_API_URL ?? process.env.NEXT_PUBLIC_ADMIN_API_URL ?? "http://localhost:4000/api/v1"
 ).replace(/\/$/, "");
@@ -40,6 +42,35 @@ export function getSiteData(): SiteData {
   fileCache = JSON.parse(raw) as SiteData;
   cachedMtime = mtime;
   return fileCache;
+}
+
+type DeepPartial<T> = T extends (infer Item)[]
+  ? Item[]
+  : T extends object
+    ? { [Key in keyof T]?: DeepPartial<T[Key]> }
+    : T;
+
+function mergeLocalized<T>(base: T, override: DeepPartial<T> | undefined): T {
+  if (override === undefined || override === null) return base;
+  if (Array.isArray(override)) return override as T;
+  if (typeof override !== "object") return override as T;
+  if (typeof base !== "object" || base === null || Array.isArray(base)) {
+    return override as T;
+  }
+
+  const merged: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const [key, value] of Object.entries(override)) {
+    merged[key] = mergeLocalized(
+      (base as Record<string, unknown>)[key],
+      value as DeepPartial<unknown>,
+    );
+  }
+  return merged as T;
+}
+
+function getEnglishData(): DeepPartial<SiteData> {
+  if (!fs.existsSync(ENGLISH_DATA_FILE)) return {};
+  return JSON.parse(fs.readFileSync(ENGLISH_DATA_FILE, "utf8")) as DeepPartial<SiteData>;
 }
 
 interface ApiEnvelope<T> {
@@ -121,6 +152,13 @@ export const getSiteDataFromAPI = reactCache(async (): Promise<SiteData> => {
   if (process.env.STATIC_EXPORT === "true") return getSiteData();
   return loadSiteDataFromAPI();
 });
+
+/** Resolve localized content while keeping the API-backed Chinese content as the source of truth. */
+export async function getLocalizedSiteData(locale: Locale): Promise<SiteData> {
+  const data = await getSiteDataFromAPI();
+  if (locale === "zh") return data;
+  return mergeLocalized(data, getEnglishData());
+}
 
 export function saveSiteData(next: SiteData): void {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });

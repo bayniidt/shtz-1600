@@ -3,29 +3,33 @@ import Link from "next/link";
 
 import { CaseCard } from "@/components/cases/CaseCard";
 import { Reveal } from "@/components/motion/Reveal";
+import { UI_COPY, localizedHref, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { CaseItem, CasesPageContent } from "@/types";
 
 export function CaseDetailHero({
   item,
   industryLabel,
+  locale = "zh",
 }: {
   item: CaseItem;
   industryLabel: string;
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
   const meta = [
-    { label: "客户", value: item.client },
-    { label: "行业", value: industryLabel },
-    { label: "地区", value: item.region },
-    { label: "年份", value: item.year },
+    { label: copy.cases.client, value: item.client },
+    { label: copy.cases.industry, value: industryLabel },
+    { label: copy.cases.region, value: item.region },
+    { label: copy.cases.year, value: item.year },
   ];
 
   return (
     <section className="relative pt-32 md:pt-40">
       <div className="container-x">
         <Reveal className="flex items-center gap-2 text-[13px] text-ink-4">
-          <Link href="/cases" className="transition-colors hover:text-brand">
-            客户案例
+          <Link href={localizedHref("/cases", locale)} className="transition-colors hover:text-brand">
+            {copy.cases.breadcrumb}
           </Link>
           <span>/</span>
           <span className="text-ink-3">{item.client}</span>
@@ -104,13 +108,21 @@ export function CaseStats({ stats }: { stats: CaseItem["stats"] }) {
   );
 }
 
-export function CaseBlocks({ blocks }: { blocks: CaseItem["blocks"] }) {
+export function CaseBlocks({
+  blocks,
+  locale = "zh",
+}: {
+  blocks: CaseItem["blocks"];
+  locale?: Locale;
+}) {
+  const copy = UI_COPY[locale];
+
   return (
     <section className="section-y pt-16">
       <div className="container-x grid gap-12 lg:grid-cols-[240px_1fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-[11px] tracking-[0.2em] text-ink-4 uppercase">CASE STUDY</p>
-          <h2 className="mt-3 text-2xl font-bold text-ink">项目复盘</h2>
+          <h2 className="mt-3 text-2xl font-bold text-ink">{copy.cases.projectReview}</h2>
           <nav className="mt-6 hidden flex-col gap-3 lg:flex">
             {blocks.map((block) => (
               <a
@@ -165,12 +177,15 @@ export function RelatedCases({
   page,
   currentId,
   className,
+  locale = "zh",
 }: {
   items: CaseItem[];
   page: CasesPageContent;
   currentId: string;
   className?: string;
+  locale?: Locale;
 }) {
+  const copy = UI_COPY[locale];
   const related = items.filter((item) => item.id !== currentId).slice(0, 3);
   const labelOf = (key: string) => page.filters.find((f) => f.key === key)?.label ?? key;
 
@@ -182,13 +197,15 @@ export function RelatedCases({
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-[11px] tracking-[0.2em] text-ink-4 uppercase">MORE CASES</p>
-            <h2 className="mt-3 text-2xl font-bold text-ink md:text-[32px]">相关案例</h2>
+            <h2 className="mt-3 text-2xl font-bold text-ink md:text-[32px]">
+              {copy.cases.relatedCases}
+            </h2>
           </div>
           <Link
-            href="/cases"
+            href={localizedHref("/cases", locale)}
             className="inline-flex items-center gap-1.5 text-[14px] font-medium text-brand transition-transform duration-300 hover:translate-x-1"
           >
-            查看全部案例 →
+            {copy.cases.viewAll}
           </Link>
         </div>
 
@@ -199,6 +216,7 @@ export function RelatedCases({
               item={item}
               industryLabel={labelOf(item.industry)}
               delay={i * 70}
+              locale={locale}
             />
           ))}
         </div>
