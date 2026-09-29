@@ -61,6 +61,7 @@ jobs:
       - name: Build static site
         env:
           STATIC_EXPORT: true
+          GITHUB_PAGES: true
         run: npm run build
 
       - name: Disable Jekyll processing
