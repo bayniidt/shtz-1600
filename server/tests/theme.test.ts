@@ -38,8 +38,8 @@ describe("GET /settings/theme", () => {
     const res = await request(app).get(THEME);
 
     expect(res.status).toBe(200);
-    expect(res.body.data.brand.colorPrimary).toBe("#1e96d4");
-    expect(res.body.data.brand.colorAccent).toBe("#ed5736");
+    expect(res.body.data.brand.colorPrimary).toBe("#eb3407");
+    expect(res.body.data.brand.colorAccent).toBe("#070301");
     expect(res.body.data.typography.fontSize).toBe(14);
   });
 });

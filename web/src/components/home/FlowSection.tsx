@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState, type TransitionEvent } from "react";
 
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
+import { assetPath } from "@/lib/asset-path";
 import { cn } from "@/lib/utils";
 import type { FlowSectionContent } from "@/types";
 
@@ -35,6 +37,7 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
   const count = Math.max(features.length, 1);
   const step = 360 / count;
   const [active, setActive] = useState(0);
+  const [robotRotation, setRobotRotation] = useState(360);
   const trackRef = useRef<HTMLElement | null>(null);
   const settled = useRef(0);
 
@@ -66,6 +69,11 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
     };
   }, [count]);
 
+  const handleRotorTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget || event.propertyName !== "transform") return;
+    setRobotRotation(360 - active * step);
+  };
+
   return (
     <section
       ref={trackRef}
@@ -76,7 +84,7 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
         <div aria-hidden className="grain-grid absolute inset-0 opacity-70" />
         <div
           aria-hidden
-          className="absolute top-[57%] left-1/2 size-[var(--wheel)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(30,150,212,.14),rgba(30,150,212,0)_62%)]"
+          className="absolute top-[57%] left-1/2 size-[var(--wheel)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(235,52,7,.14),rgba(235,52,7,0)_62%)]"
         />
 
         <Reveal className="absolute top-[7vh] left-[5vw] z-3 w-[84vw] md:w-[26vw] lg:w-[min(38vw,36ch)]">
@@ -94,18 +102,30 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
 
         {/* rotor: dotted ring + node spokes + orbit diamonds */}
         <div className="absolute top-[57%] left-1/2 size-[var(--wheel)] -translate-x-1/2 -translate-y-1/2">
-          <span
-            aria-hidden
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(2.5rem,9vh,6rem)] leading-none font-bold tracking-tight text-brand/8 select-none"
-          >
-            FLOW AI
-          </span>
           <div
             aria-hidden
             className="absolute inset-[15%] rounded-full border border-dashed border-brand/15"
           />
 
-          <div className="flow-rotor absolute inset-0 size-full" style={{ transform: `rotate(${-360 + active * step}deg)` }}>
+          <div
+            className="flow-rotor absolute inset-0 size-full"
+            style={{ transform: `rotate(${-360 + active * step}deg)` }}
+            onTransitionEnd={handleRotorTransitionEnd}
+          >
+            <div
+              aria-hidden
+              className="flow-robot absolute inset-[26%] overflow-hidden rounded-full opacity-[0.16] mix-blend-multiply"
+              style={{ transform: `rotate(${robotRotation}deg)` }}
+            >
+              <Image
+                src={assetPath("/shtz/robot.jpg")}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 36vw, 72vw"
+                className="scale-[1.16] object-cover"
+              />
+            </div>
+
             <svg aria-hidden viewBox="0 0 100 100" className="absolute inset-0 size-full text-brand/30">
               <circle
                 cx="50"
@@ -157,7 +177,7 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
                       <CtaButton href={content.cta.href} size="md" className="mt-4 rounded-full">
                         {feature.title}
                       </CtaButton>
-                      <p className="mt-4 max-w-[52vh] text-center text-[13px] leading-relaxed text-ink-3 md:text-[14px]">
+                      <p className="mt-4 max-w-[52vh] text-center text-[13px] leading-relaxed text-ink-2 md:text-[14px]">
                         {feature.description}
                       </p>
                       {points.length > 0 ? (
@@ -165,7 +185,7 @@ export function FlowSection({ content }: { content: FlowSectionContent }) {
                           {points.map((point) => (
                             <li
                               key={point}
-                              className="flex items-start gap-2 text-[12px] leading-snug text-ink-3 md:text-[13px]"
+                              className="flex items-start gap-2 text-[12px] leading-snug text-ink-2 md:text-[13px]"
                             >
                               <span
                                 aria-hidden

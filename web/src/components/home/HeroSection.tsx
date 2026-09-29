@@ -21,13 +21,13 @@ export function HeroSection({
         className="pointer-events-none absolute -top-24 right-[-10%] size-[620px] rounded-full opacity-70 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(30,150,212,.28) 0%, rgba(242,242,242,0) 65%)",
+            "radial-gradient(circle, rgba(235,52,7,.26) 0%, rgba(242,242,242,0) 65%)",
         }}
       />
 
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         <div>
-          <Reveal className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/80 px-4 py-2 text-[11px] font-semibold tracking-[0.16em] text-brand uppercase shadow-[0_6px_20px_rgba(30,150,212,.12)]">
+          <Reveal className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/80 px-4 py-2 text-[11px] font-semibold tracking-[0.16em] text-brand uppercase shadow-[0_6px_20px_rgba(235,52,7,.12)]">
             <span className="size-1.5 animate-pulse rounded-full bg-brand" />
             {content.eyebrow}
           </Reveal>
@@ -162,7 +162,7 @@ function HeroVisual() {
         </div>
       </div>
 
-      <div className="absolute -top-10 -right-3 z-10 size-28 overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_18px_45px_rgba(16,42,67,.2)] sm:-right-6 sm:size-32">
+      <div className="absolute -top-10 -right-3 z-10 size-28 overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_18px_45px_rgba(7,3,1,.2)] sm:-right-6 sm:size-32">
         <Image
           src={assetPath("/shtz/robot.jpg")}
           alt="Flow AI 智能助手"

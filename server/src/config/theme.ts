@@ -1,16 +1,16 @@
 /** 后台主题默认值 —— 与前台 web/src/app/globals.css 的 ADFLY 品牌色保持一致。 */
 export const DEFAULT_ADMIN_THEME = {
   brand: {
-    colorPrimary: "#1e96d4",
-    colorPrimaryStrong: "#0f7cbc",
-    colorPrimarySoft: "#e8f5fc",
-    colorAccent: "#ed5736",
+    colorPrimary: "#eb3407",
+    colorPrimaryStrong: "#b72805",
+    colorPrimarySoft: "#fff0eb",
+    colorAccent: "#070301",
   },
   semantic: {
     colorSuccess: "#10b981",
     colorWarning: "#f59e0b",
     colorError: "#ef4444",
-    colorInfo: "#1e96d4",
+    colorInfo: "#eb3407",
   },
   layout: {
     headerBg: "#ffffff",

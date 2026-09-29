@@ -24,7 +24,7 @@ export function ClientsSection({ content }: { content: ClientsSectionContent }) 
         aria-hidden
         className="pointer-events-none absolute top-1/3 -left-32 size-[520px] rounded-full opacity-60 blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(30,150,212,.2) 0%, rgba(242,242,242,0) 70%)",
+          background: "radial-gradient(circle, rgba(235,52,7,.2) 0%, rgba(242,242,242,0) 70%)",
         }}
       />
       <div className="container-x relative">

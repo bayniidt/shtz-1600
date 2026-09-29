@@ -15,7 +15,7 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
         className="pointer-events-none absolute -top-40 -right-24 size-[520px] rounded-full opacity-40 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(30,150,212,.55) 0%, rgba(7,19,32,0) 68%)",
+            "radial-gradient(circle, rgba(235,52,7,.5) 0%, rgba(7,3,1,0) 68%)",
         }}
       />
 

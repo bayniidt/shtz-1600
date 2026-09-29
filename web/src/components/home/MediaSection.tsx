@@ -37,7 +37,7 @@ export function MediaSection({ content }: { content: MediaSectionContent }) {
                 className="pointer-events-none absolute -top-20 -right-16 size-72 rounded-full opacity-60 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(30,150,212,.25) 0%, rgba(255,255,255,0) 70%)",
+                    "radial-gradient(circle, rgba(235,52,7,.22) 0%, rgba(255,255,255,0) 70%)",
                 }}
               />
               <div className="relative flex items-center justify-between">

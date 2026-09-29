@@ -73,10 +73,10 @@ export const openApiDocument = {
           brand: {
             type: "object",
             properties: {
-              colorPrimary: { type: "string", example: "#1e96d4" },
-              colorPrimaryStrong: { type: "string", example: "#0f7cbc" },
-              colorPrimarySoft: { type: "string", example: "#e8f5fc" },
-              colorAccent: { type: "string", example: "#ed5736" },
+              colorPrimary: { type: "string", example: "#eb3407" },
+              colorPrimaryStrong: { type: "string", example: "#b72805" },
+              colorPrimarySoft: { type: "string", example: "#fff0eb" },
+              colorAccent: { type: "string", example: "#070301" },
             },
           },
           semantic: {
@@ -85,7 +85,7 @@ export const openApiDocument = {
               colorSuccess: { type: "string", example: "#10b981" },
               colorWarning: { type: "string", example: "#f59e0b" },
               colorError: { type: "string", example: "#ef4444" },
-              colorInfo: { type: "string", example: "#1e96d4" },
+              colorInfo: { type: "string", example: "#eb3407" },
             },
           },
           layout: {
@@ -223,7 +223,7 @@ export const openApiDocument = {
             description: "主题配置",
             ...envelope(
               { $ref: "#/components/schemas/AdminTheme" },
-              { code: 0, message: "ok", data: { brand: { colorPrimary: "#1e96d4" } } },
+              { code: 0, message: "ok", data: { brand: { colorPrimary: "#eb3407" } } },
             ),
           },
           500: errorResponse("服务器内部错误", 5000),
@@ -276,7 +276,7 @@ export const openApiDocument = {
             description: "默认主题",
             ...envelope(
               { $ref: "#/components/schemas/AdminTheme" },
-              { code: 0, message: "主题配置已恢复默认", data: { brand: { colorPrimary: "#1e96d4" } } },
+              { code: 0, message: "主题配置已恢复默认", data: { brand: { colorPrimary: "#eb3407" } } },
             ),
           },
           401: errorResponse("未登录 / Token 失效", 4010),

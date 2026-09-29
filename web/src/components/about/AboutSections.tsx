@@ -158,7 +158,7 @@ export function OfficesSection({ offices }: { offices: AboutContent["offices"] }
         aria-hidden
         className="pointer-events-none absolute -bottom-40 -left-20 size-[520px] rounded-full opacity-50 blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(30,150,212,.45) 0%, rgba(7,19,32,0) 70%)",
+          background: "radial-gradient(circle, rgba(235,52,7,.42) 0%, rgba(7,3,1,0) 70%)",
         }}
       />
       <div className="container-x relative">

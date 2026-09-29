@@ -31,7 +31,7 @@ import { resetTheme, updateTheme } from "@/services/settings";
 import { useThemeStore } from "@/store/theme";
 
 const BRAND_PRESETS = [
-  { label: "品牌色", colors: ["#1e96d4", "#0f7cbc", "#e8f5fc", "#ed5736"] },
+  { label: "品牌色", colors: ["#eb3407", "#b72805", "#fff0eb", "#070301"] },
   { label: "常用", colors: ["#1677ff", "#00aa88", "#7c3aed", "#f59e0b", "#ef4444"] },
 ];
 

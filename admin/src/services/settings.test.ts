@@ -19,10 +19,10 @@ describe("settings 服务", () => {
     mock.onGet("/settings/theme").reply(200, {
       code: 0,
       message: "ok",
-      data: { brand: { colorPrimary: "#1e96d4" } },
+      data: { brand: { colorPrimary: "#eb3407" } },
     });
 
-    await expect(fetchTheme()).resolves.toEqual({ brand: { colorPrimary: "#1e96d4" } });
+    await expect(fetchTheme()).resolves.toEqual({ brand: { colorPrimary: "#eb3407" } });
   });
 
   it("updateTheme 提交局部主题补丁", async () => {
@@ -40,11 +40,11 @@ describe("settings 服务", () => {
     mock.onPost("/settings/theme/reset").reply(200, {
       code: 0,
       message: "ok",
-      data: { brand: { colorPrimary: "#1e96d4" } },
+      data: { brand: { colorPrimary: "#eb3407" } },
     });
 
     const result = await resetTheme();
-    expect(result.brand?.colorPrimary).toBe("#1e96d4");
+    expect(result.brand?.colorPrimary).toBe("#eb3407");
     expect(mock.history.post[0].url).toBe("/settings/theme/reset");
   });
 });

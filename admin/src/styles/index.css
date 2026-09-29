@@ -3,10 +3,10 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
-  --color-brand: #1e96d4;
-  --color-brand-strong: #0f7cbc;
-  --color-brand-soft: #e8f5fc;
-  --color-brand-accent: #ed5736;
+  --color-brand: #eb3407;
+  --color-brand-strong: #b72805;
+  --color-brand-soft: #fff0eb;
+  --color-brand-accent: #070301;
 }
 
 /* ------------------------------------------------------------------
@@ -15,10 +15,10 @@
    克制的品牌色点缀；品牌色与圆角由 ThemeProvider 运行时覆盖。
    ------------------------------------------------------------------ */
 :root {
-  --adfly-brand: #1e96d4;
-  --adfly-brand-strong: #0f7cbc;
-  --adfly-brand-soft: #e8f5fc;
-  --adfly-brand-accent: #ed5736;
+  --adfly-brand: #eb3407;
+  --adfly-brand-strong: #b72805;
+  --adfly-brand-soft: #fff0eb;
+  --adfly-brand-accent: #070301;
   --adfly-header-h: 64px;
   --adfly-sider-w: 220px;
   --adfly-gutter: 24px;

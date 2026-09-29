@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const INDUSTRY_COLORS = ["#1e96d4", "#ed5736", "#f59e0b", "#7c3aed"];
+const INDUSTRY_COLORS = ["#eb3407", "#070301", "#f59e0b", "#7c3aed"];
 
 function IndustryChart({ data }: { data: { label: string; value: number }[] }) {
   const total = data.reduce((sum, item) => sum + item.value, 0);

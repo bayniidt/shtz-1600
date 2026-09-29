@@ -29,7 +29,7 @@ export function PageHero({
         className="pointer-events-none absolute -top-32 left-1/2 size-[640px] -translate-x-1/2 rounded-full opacity-70 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(30,150,212,.22) 0%, rgba(242,242,242,0) 66%)",
+            "radial-gradient(circle, rgba(235,52,7,.2) 0%, rgba(242,242,242,0) 66%)",
         }}
       />
       <div className="container-x relative">

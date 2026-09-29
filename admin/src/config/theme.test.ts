@@ -27,8 +27,8 @@ describe("mergeTheme", () => {
   });
 
   it("默认主题与前台品牌色一致", () => {
-    expect(DEFAULT_ADMIN_THEME.brand.colorPrimary).toBe("#1e96d4");
-    expect(DEFAULT_ADMIN_THEME.brand.colorAccent).toBe("#ed5736");
+    expect(DEFAULT_ADMIN_THEME.brand.colorPrimary).toBe("#eb3407");
+    expect(DEFAULT_ADMIN_THEME.brand.colorAccent).toBe("#070301");
   });
 });
 
@@ -36,10 +36,10 @@ describe("applyCssVariables", () => {
   it("写入全部 CSS 变量", () => {
     applyCssVariables(DEFAULT_ADMIN_THEME);
     const style = document.documentElement.style;
-    expect(style.getPropertyValue("--adfly-brand")).toBe("#1e96d4");
-    expect(style.getPropertyValue("--adfly-brand-strong")).toBe("#0f7cbc");
-    expect(style.getPropertyValue("--adfly-brand-soft")).toBe("#e8f5fc");
-    expect(style.getPropertyValue("--adfly-brand-accent")).toBe("#ed5736");
+    expect(style.getPropertyValue("--adfly-brand")).toBe("#eb3407");
+    expect(style.getPropertyValue("--adfly-brand-strong")).toBe("#b72805");
+    expect(style.getPropertyValue("--adfly-brand-soft")).toBe("#fff0eb");
+    expect(style.getPropertyValue("--adfly-brand-accent")).toBe("#070301");
     expect(style.getPropertyValue("--adfly-header-h")).toBe("64px");
     expect(style.getPropertyValue("--adfly-sider-w")).toBe("220px");
   });
