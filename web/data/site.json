@@ -3,7 +3,7 @@
     "name": "上海翼投智能科技有限公司",
     "nameEn": "Shanghai ADFLY Intelligent Technology Co., Ltd.",
     "logoText": "ADFLY",
-    "logoSub": "飞书汇",
+    "logoSub": "翼投智能",
     "nav": [
       {
         "label": "服务与产品",
@@ -28,9 +28,9 @@
     "address": "上海市徐汇区宜山路425号光启城710室",
     "icp": "沪ICP备18047852号-1",
     "seo": {
-      "title": "ADFLY 飞书汇｜全球智能营销科技服务商",
-      "description": "ADFLY 飞书汇专注效果类出海营销解决方案，覆盖 Facebook、Google、TikTok 等 50+ 海外主流媒体资源，以人工智能与大数据分析为全球广告主提供精准营销服务。",
-      "keywords": "出海营销,海外广告投放,Facebook代理,Google代理,TikTok代理,AI营销,效果营销,ADFLY,飞书汇"
+      "title": "ADFLY 翼投智能｜全球智能营销科技服务商",
+      "description": "ADFLY 翼投智能专注效果类出海营销解决方案，覆盖 Facebook、Google、TikTok 等 50+ 海外主流媒体资源，以人工智能与大数据分析为全球广告主提供精准营销服务。",
+      "keywords": "出海营销,海外广告投放,Facebook代理,Google代理,TikTok代理,AI营销,效果营销,ADFLY,翼投智能"
     },
     "footerLinks": [
       {
@@ -211,7 +211,7 @@
     },
     "flow": {
       "eyebrow": "FLOW AI SYSTEM",
-      "title": "自研 Flow Ai 智能广告系统",
+      "title": "AI 智能广告系统",
       "description": "滚动查看四大能力，了解 Flow Ai 如何驱动投放全流程。",
       "cta": {
         "label": "马上体验",
@@ -365,35 +365,35 @@
       },
       "nodes": [
         {
+          "city": "北京",
+          "role": "北京分公司",
+          "x": "65",
+          "y": "42"
+        },
+        {
+          "city": "成都",
+          "role": "西南服务中心",
+          "x": "55",
+          "y": "54"
+        },
+        {
           "city": "总部上海",
           "role": "全球总部",
-          "x": "82",
-          "y": "42",
+          "x": "69",
+          "y": "57",
           "major": "yes"
-        },
-        {
-          "city": "东京",
-          "role": "日本子公司",
-          "x": "88",
-          "y": "26"
-        },
-        {
-          "city": "义乌",
-          "role": "电商服务中心",
-          "x": "79",
-          "y": "50"
-        },
-        {
-          "city": "福州",
-          "role": "华南运营中心",
-          "x": "78",
-          "y": "56"
         },
         {
           "city": "广州",
           "role": "广州分公司",
-          "x": "74",
-          "y": "60"
+          "x": "62",
+          "y": "63"
+        },
+        {
+          "city": "日本",
+          "role": "日本子公司",
+          "x": "82",
+          "y": "41"
         }
       ],
       "stats": [
@@ -1172,7 +1172,7 @@
       },
       {
         "period": "2023",
-        "title": "自研 Flow Ai 智能广告系统",
+        "title": "AI 智能广告系统",
         "description": "以大模型驱动素材生成、数据分析与投放优化，实现全链路 AI 增长。"
       },
       {

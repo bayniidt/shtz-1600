@@ -14,7 +14,7 @@ import { getSiteDataFromAPI } from "@/lib/db";
 export const metadata: Metadata = {
   title: "关于我们",
   description:
-    "上海翼投智能科技有限公司（ADFLY 飞书汇）成立于 2017 年，专注效果类出海营销解决方案，累计服务超过 10000 家客户。",
+    "上海翼投智能科技有限公司（ADFLY 翼投智能）成立于 2017 年，专注效果类出海营销解决方案，累计服务超过 10000 家客户。",
 };
 
 export default async function AboutPage() {

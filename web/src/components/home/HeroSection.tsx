@@ -1,8 +1,18 @@
+import Image from "next/image";
+
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
+import { assetPath } from "@/lib/asset-path";
+import type { ShtzLogo } from "@/lib/shtz-assets";
 import type { HeroContent } from "@/types";
 
-export function HeroSection({ content }: { content: HeroContent }) {
+export function HeroSection({
+  content,
+  mediaLogos,
+}: {
+  content: HeroContent;
+  mediaLogos: ShtzLogo[];
+}) {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 lg:pt-44 lg:pb-24">
       <div aria-hidden className="grain-grid absolute inset-0 opacity-70" />
@@ -66,17 +76,40 @@ export function HeroSection({ content }: { content: HeroContent }) {
         <div className="flex items-center gap-3 text-xs tracking-[0.2em] text-ink-4 uppercase">
           <span className="container-x w-full">合作媒体资源</span>
         </div>
-        <div className="relative mt-4 overflow-hidden border-y border-line bg-white/60 py-5">
-          <div className="flex w-max animate-[var(--animate-marquee)] gap-14 pr-14">
-            {[...content.marquee, ...content.marquee].map((name, i) => (
-              <span
-                key={`${name}-${i}`}
-                className="text-lg font-semibold whitespace-nowrap text-ink-4 transition-colors duration-300 hover:text-brand"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
+        <div className="relative mt-4 overflow-hidden border-y border-line bg-white/60 py-4">
+          {mediaLogos.length > 0 ? (
+            <div
+              aria-hidden
+              className="logo-marquee flex w-max animate-[var(--animate-marquee)] gap-3 pr-3"
+              style={{ animationDuration: "120s" }}
+            >
+              {[...mediaLogos, ...mediaLogos].map((logo, index) => (
+                <div
+                  key={`${logo.src}-${index}`}
+                  className="flex h-14 w-28 shrink-0 items-center justify-center rounded-xl border border-line/60 bg-white px-3"
+                >
+                  <Image
+                    src={logo.src}
+                    alt=""
+                    width={88}
+                    height={36}
+                    className="max-h-9 w-auto max-w-[88px] object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex w-max animate-[var(--animate-marquee)] gap-14 pr-14">
+              {[...content.marquee, ...content.marquee].map((name, i) => (
+                <span
+                  key={`${name}-${i}`}
+                  className="text-lg font-semibold whitespace-nowrap text-ink-4"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </Reveal>
     </section>
@@ -86,8 +119,8 @@ export function HeroSection({ content }: { content: HeroContent }) {
 function HeroVisual() {
   return (
     <div className="relative mx-auto max-w-[520px]">
-      <div className="card-surface relative overflow-hidden border border-line/70 p-6">
-        <div className="flex items-center justify-between">
+      <div className="card-surface relative overflow-visible border border-line/70 p-6">
+        <div className="flex items-center justify-between pr-20 sm:pr-24">
           <div>
             <p className="text-xs tracking-[0.18em] text-ink-4 uppercase">Flow AI · Live</p>
             <p className="mt-1 text-lg font-semibold text-ink">投放效果实时看板</p>
@@ -127,6 +160,16 @@ function HeroVisual() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="absolute -top-10 -right-3 z-10 size-28 overflow-hidden rounded-full border-[6px] border-white bg-white shadow-[0_18px_45px_rgba(16,42,67,.2)] sm:-right-6 sm:size-32">
+        <Image
+          src={assetPath("/shtz/robot.jpg")}
+          alt="Flow AI 智能助手"
+          fill
+          sizes="128px"
+          className="scale-[1.08] object-cover"
+        />
       </div>
 
       <div className="card-surface absolute -top-5 -left-4 hidden animate-[var(--animate-float-slow)] items-center gap-2 px-4 py-3 sm:flex">

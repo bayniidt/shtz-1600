@@ -11,7 +11,7 @@ export const SITE_FIXTURE = {
   name: "测试科技有限公司",
   nameEn: "Test Tech Co., Ltd.",
   logoText: "ADFLY",
-  logoSub: "飞书汇",
+  logoSub: "翼投智能",
   nav: [
     { label: "首页", href: "/" },
     { label: "案例", href: "/cases" },
@@ -56,7 +56,7 @@ export const HOME_MEDIA_FIXTURE = {
 
 export const HOME_FLOW_FIXTURE = {
   eyebrow: "FLOW AI SYSTEM",
-  title: "自研 Flow Ai 智能广告系统",
+  title: "AI 智能广告系统",
   description: "滚动查看四大能力",
   orbit: [{ label: "大模型" }, { label: "机器学习" }],
   features: [

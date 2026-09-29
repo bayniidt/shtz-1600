@@ -39,7 +39,7 @@ const HOME = {
   },
   flow: {
     eyebrow: "FLOW AI SYSTEM",
-    title: "自研 Flow Ai 智能广告系统",
+    title: "AI 智能广告系统",
     description: "滚动查看四大能力",
     orbit: [{ label: "大模型" }],
     features: [{ title: "一键生成广告素材", mark: "Flow Creative", description: "智能解析", points: "解析 / 提炼" }],

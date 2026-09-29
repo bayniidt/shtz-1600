@@ -245,6 +245,10 @@
   }
 }
 
+.logo-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* ------------------------------------------------------------------ *
  * Flow Ai scroll wheel
  *

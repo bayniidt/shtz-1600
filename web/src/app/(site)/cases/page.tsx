@@ -7,7 +7,7 @@ import { getSiteDataFromAPI } from "@/lib/db";
 export const metadata: Metadata = {
   title: "客户案例",
   description:
-    "ADFLY 飞书汇出海营销成功案例：覆盖电商、游戏、APP 三大行业，以数据与创意驱动的全球化增长实践。",
+    "ADFLY 翼投智能出海营销成功案例：覆盖电商、游戏、APP 三大行业，以数据与创意驱动的全球化增长实践。",
 };
 
 export default async function CasesPage() {

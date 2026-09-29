@@ -9,7 +9,7 @@ import { cityCounts, totalPositions } from "@/lib/careers";
 export const metadata: Metadata = {
   title: "加入我们",
   description:
-    "加入 ADFLY 飞书汇，与具有全球化视野、积极进取且富有创新精神的出海营销人一起，助力中国企业走向全球。",
+    "加入 ADFLY 翼投智能，与具有全球化视野、积极进取且富有创新精神的出海营销人一起，助力中国企业走向全球。",
 };
 
 export default async function CareersPage() {

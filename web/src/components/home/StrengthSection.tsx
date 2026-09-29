@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Counter } from "@/components/motion/Counter";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaButton } from "@/components/ui/cta-button";
+import { assetPath } from "@/lib/asset-path";
 import type { StrengthSectionContent } from "@/types";
 
 export function StrengthSection({ content }: { content: StrengthSectionContent }) {
@@ -49,7 +50,7 @@ export function StrengthSection({ content }: { content: StrengthSectionContent }
           <Reveal delay={140} className="relative">
             <div className="relative aspect-[16/11] overflow-hidden rounded-card border border-line bg-surface">
               <Image
-                src="/images/adfly/map.jpg"
+                src={assetPath("/images/adfly/map.jpg")}
                 alt="ADFLY 全球服务网络"
                 fill
                 sizes="(min-width: 1024px) 640px, 100vw"
@@ -57,33 +58,6 @@ export function StrengthSection({ content }: { content: StrengthSectionContent }
                 priority={false}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/40" />
-
-              {content.nodes.map((node, i) => (
-                <div
-                  key={node.city}
-                  className="group absolute"
-                  style={{ left: `${Number(node.x)}%`, top: `${Number(node.y)}%` }}
-                >
-                  <span className="relative flex items-center gap-2">
-                    <span className="relative grid place-items-center">
-                      <span className="absolute size-6 animate-ping rounded-full bg-brand/30" />
-                      <span
-                        className={
-                          node.major && node.major !== "no"
-                            ? "relative size-3 rounded-full border-2 border-white bg-brand shadow-[0_0_0_4px_rgba(30,150,212,.25)]"
-                            : "relative size-2.5 rounded-full border-2 border-white bg-brand-glow"
-                        }
-                      />
-                    </span>
-                    <span
-                      className="rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-medium whitespace-nowrap text-ink shadow-sm backdrop-blur transition-transform duration-300 group-hover:-translate-y-0.5"
-                      style={{ animation: `float-slow ${6 + i}s ease-in-out infinite` }}
-                    >
-                      {node.city}
-                    </span>
-                  </span>
-                </div>
-              ))}
             </div>
           </Reveal>
         </div>

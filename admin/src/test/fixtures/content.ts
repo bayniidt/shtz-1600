@@ -1,21 +1,21 @@
 /**
  * 内容模块测试数据（与 web/data/site.json 结构一致的精简版本）。
  */
-import type { AboutContent, CareersContent, HomeContent, SiteConfig } from "@/types/content";
 import type { CaseItem, CasesPageContent } from "@/types/cases";
+import type { AboutContent, CareersContent, HomeContent, SiteConfig } from "@/types/content";
 
 export const SITE_FIXTURE: SiteConfig = {
   name: "上海翼投智能科技有限公司",
   nameEn: "Shanghai ADFLY Intelligent Technology Co., Ltd.",
   logoText: "ADFLY",
-  logoSub: "飞书汇",
+  logoSub: "翼投智能",
   nav: [{ label: "服务与产品", href: "/" }],
   contactEmail: "master@adflymobile.com",
   businessEmail: "market@adflymobile.com",
   phone: "+86 21 5436 8877",
   address: "上海市徐汇区宜山路425号光启城710室",
   icp: "沪ICP备18047852号-1",
-  seo: { title: "ADFLY 飞书汇", description: "全球化营销", keywords: "出海营销" },
+  seo: { title: "ADFLY 翼投智能", description: "全球化营销", keywords: "出海营销" },
   footerLinks: [{ label: "服务与产品", href: "/" }],
   updatedAt: "2024-05-01T00:00:00.000Z",
 };
@@ -40,7 +40,7 @@ export const HOME_FIXTURE: HomeContent = {
   },
   flow: {
     eyebrow: "FLOW AI SYSTEM",
-    title: "自研 Flow Ai 智能广告系统",
+    title: "AI 智能广告系统",
     description: "滚动查看四大能力",
     orbit: [{ label: "大模型" }],
     features: [
